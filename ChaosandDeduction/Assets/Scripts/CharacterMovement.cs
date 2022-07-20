@@ -10,8 +10,6 @@ public class CharacterMovement : MonoBehaviour
     public float moveSpeed = 5;
 
     Vector3 playerVelocity;
-    bool groundedPlayer;
-    float gravityValue = -9.81f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +29,10 @@ public class CharacterMovement : MonoBehaviour
 
         playerVelocity += new Vector3(joystick.inputVector.x, 0, joystick.inputVector.y) * moveSpeed;
         //playerVelocity.y += gravityValue * Time.deltaTime;
+        if (playerVelocity != Vector3.zero)
+            gameObject.transform.forward = playerVelocity;
 
-        character.SimpleMove(playerVelocity ); //* Time.deltaTime
+        character.SimpleMove(playerVelocity); //* Time.deltaTime
 
         //groundedPlayer = character.isGrounded;
     }

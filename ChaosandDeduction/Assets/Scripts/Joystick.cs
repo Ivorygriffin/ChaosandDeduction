@@ -10,6 +10,7 @@ public class Joystick : MonoBehaviour
     public RectTransform knob;
     RectTransform backPlate;
     public float magnitudeMultiplier = 1;
+    public Canvas canvas;
 
     public Vector2 inputVector
     {
@@ -33,7 +34,15 @@ public class Joystick : MonoBehaviour
 
     public void OnMoveFinger(Finger finger)
     {
-        knob.anchoredPosition = finger.screenPosition - backPlate.anchoredPosition - (backPlate.sizeDelta / 2);
+        if ((finger.screenPosition - backPlate.anchoredPosition - (backPlate.sizeDelta / 2)).magnitude > backPlate.sizeDelta.x * magnitudeMultiplier * 2)
+            return;
+
+        Vector2 fingerPos = finger.screenPosition;
+
+        if (canvas != null) //annoying screen scale fixing, god this took forever to find
+            fingerPos /= canvas.scaleFactor;
+
+        knob.anchoredPosition = fingerPos - backPlate.anchoredPosition - (backPlate.sizeDelta / 2);
 
         if (knob.anchoredPosition.magnitude > backPlate.sizeDelta.x * magnitudeMultiplier)
             knob.anchoredPosition = knob.anchoredPosition.normalized * backPlate.sizeDelta.x * magnitudeMultiplier;
