@@ -14,11 +14,18 @@ public class Joystick : MonoBehaviour
 
     Finger legalFinger;
 
-    public Vector2 inputVector
-    {
-        get { return knob.anchoredPosition / (backPlate.sizeDelta.x * rimMultiplier); }
-    }
-    // Start is called before the first frame update
+    public Vector2 inputVector = Vector2.zero;
+
+
+#if UNITY_EDITOR
+    bool usingDebugControls = true;
+#endif
+    //public Vector2 inputVector
+    //{
+    //    get { return knob.anchoredPosition / (backPlate.sizeDelta.x * rimMultiplier); }
+    //}
+
+
     void Start()
     {
         EnhancedTouchSupport.Enable();
@@ -32,7 +39,29 @@ public class Joystick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
 
+        Vector2 fingerPos = Vector2.zero;
+        if (Keyboard.current[Key.W].isPressed)
+        {
+            fingerPos.y += 1;
+        }
+        if (Keyboard.current[Key.A].isPressed)
+        {
+            fingerPos.x -= 1;
+        }
+        if (Keyboard.current[Key.S].isPressed)
+        {
+            fingerPos.y -= 1;
+        }
+        if (Keyboard.current[Key.D].isPressed)
+        {
+            fingerPos.x += 1;
+        }
+
+        if (usingDebugControls)
+            inputVector = fingerPos.normalized;
+#endif
     }
 
     public void OnFingerDown(Finger finger)
@@ -50,6 +79,9 @@ public class Joystick : MonoBehaviour
             return;
 
         legalFinger = finger;
+#if UNITY_EDITOR
+        usingDebugControls = false;
+#endif
         OnMoveFinger(finger); //run it once at the start incase no movement on finger
     }
 
@@ -64,10 +96,13 @@ public class Joystick : MonoBehaviour
         if (canvas != null) //annoying screen scale fixing, god this took forever to find
             fingerPos /= canvas.scaleFactor;
 
-        knob.anchoredPosition = fingerPos - backPlate.anchoredPosition - (backPlate.sizeDelta / 2);
+        inputVector = fingerPos - backPlate.anchoredPosition - (backPlate.sizeDelta / 2);
 
-        if (knob.anchoredPosition.magnitude > backPlate.sizeDelta.x * rimMultiplier) //cap the joystick to the rim
-            knob.anchoredPosition = knob.anchoredPosition.normalized * backPlate.sizeDelta.x * rimMultiplier;
+        if (inputVector.magnitude > backPlate.sizeDelta.x * rimMultiplier) //cap the joystick to the rim
+            inputVector = inputVector.normalized * backPlate.sizeDelta.x * rimMultiplier;
+
+        knob.anchoredPosition = inputVector;
+        inputVector /= (backPlate.sizeDelta.x * rimMultiplier); //adjust to be magnitude of 1
     }
 
     public void OnFingerUp(Finger finger)
@@ -75,8 +110,12 @@ public class Joystick : MonoBehaviour
         if (!finger.Equals(legalFinger)) //only reset if its the correct finger going up
             return;
 
-        knob.anchoredPosition = new Vector2(0, 0);
+        inputVector = Vector2.zero;
+        knob.anchoredPosition = Vector2.zero;
 
         legalFinger = null;
+#if UNITY_EDITOR
+        usingDebugControls = true;
+#endif
     }
 }

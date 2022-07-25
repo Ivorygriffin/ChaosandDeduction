@@ -17,4 +17,18 @@ public class CameraFollower : MonoBehaviour
     {
         transform.position = target.position + offset;
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (target != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawCube(target.position + offset, Vector3.one * 0.25f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(target.position + offset, transform.forward*3);
+        }
+    }
+#endif
+
 }
