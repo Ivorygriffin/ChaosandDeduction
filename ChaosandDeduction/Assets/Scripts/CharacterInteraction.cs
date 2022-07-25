@@ -48,4 +48,8 @@ public class CharacterInteraction : MonoBehaviour
                 currentInteraction = null;
         }
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube((transform.position + (transform.forward)), Vector3.one * 0.2f);
+    }
 }
