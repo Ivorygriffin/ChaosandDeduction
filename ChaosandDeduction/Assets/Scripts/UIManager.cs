@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
     //Texts
     public TMP_Text winScreenText;
     public TMP_Text taskScreenText;
-    public TMP_Text villagerTaskScreenText;
+    public TMP_Text villagerTaskScreenText;  
+    public TMP_Text villagerTaskScreenText2;
     public TMP_Text taskNotificationText;
 
     //Strings
@@ -99,6 +100,8 @@ public class UIManager : MonoBehaviour
     public void VillagerTaskListText()
     {
         villagerTaskScreenText.text = villagerCurrentTaskList;
+        villagerTaskScreenText2.text = villagerCurrentTaskList;
+
     }
 
 }

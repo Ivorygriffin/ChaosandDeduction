@@ -29,7 +29,7 @@ public class task : MonoBehaviour
     public void ChangeVillagerTaskList()
     {
        
-
+        //if we add more tasks/pcik random ones for villagers
     }
 
     public void ChangeTraitorTaskList()
@@ -68,7 +68,6 @@ public class task : MonoBehaviour
         {
             for (int i = 0; i < villagerTasks.Count; i++)
             {
-                Debug.Log("fsxhsf");
                 string task = villagerTasks[i];
                 UIManager.Instance.villagerCurrentTaskList += (villagerTasks[i]+ "\n"+ "\n");
                 Debug.Log(UIManager.Instance.villagerCurrentTaskList);
