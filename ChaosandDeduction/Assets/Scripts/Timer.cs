@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
     {
         TimerStart();
         UpdateTimerText();
+        CheckTime();
     }
 
     public void TimerStart()
@@ -28,4 +29,15 @@ public class Timer : MonoBehaviour
         timerText.text = timeRemaining.ToString("F0");
     }
 
+    public void CheckTime()
+    {
+        if(timeRemaining <= 0)
+        {
+            TimerEnd();
+        }
+    }
+    public void TimerEnd()
+    {
+        UIManager.Instance.Voting();
+    }
 }
