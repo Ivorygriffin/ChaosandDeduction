@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     //Texts
     public TMP_Text winScreenText;
     public TMP_Text taskScreenText;
+    public TMP_Text villagerTaskScreenText;
     public TMP_Text taskNotificationText;
 
     //Strings
@@ -26,7 +27,7 @@ public class UIManager : MonoBehaviour
     public string traitorCurrentTaskList;
 
     //need variable to differenciate between villager or traitor interaction with UI,if the traitor clicks on the task list then traitor task list will open
-    //temp variable
+    //for the sake of getting rid of compile errors variable
     public bool villager;
     public bool traitor;
     
@@ -44,7 +45,13 @@ public class UIManager : MonoBehaviour
 
     }
 
-    
+    private void Update()
+    {
+        TraitorTaskListText();
+        VillagerTaskListText();
+    }
+
+
     public void Voting()
     {
         voteScreen.SetActive(true);
@@ -85,13 +92,13 @@ public class UIManager : MonoBehaviour
             TraitorTaskScreen.SetActive(false);
         }
     }
-    public void VillagerTaskListText()
-    {
-        taskScreenText.text = villagerCurrentTaskList;
-    }  
     public void TraitorTaskListText()
     {
         taskScreenText.text = traitorCurrentTaskList;
+    }  
+    public void VillagerTaskListText()
+    {
+        villagerTaskScreenText.text = villagerCurrentTaskList;
     }
 
 }
