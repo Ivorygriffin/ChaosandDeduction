@@ -13,13 +13,10 @@ public class task : MonoBehaviour
 
     private bool hasDisplayed;
     private bool hasDisplayedVillager;
+    public bool vTasksComplete;
+    public bool tTasksComplete;
 
-    private void Start()
-    {
-        //UIManager.Instance.traitorCurrentTaskList = selectedTraitorTasks[0];
-
-
-    }
+  
     public void Update()
     {
         ChangeTraitorTaskList();
