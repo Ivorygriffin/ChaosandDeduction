@@ -4,9 +4,31 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
+//  Namespace Properties ------------------------------
 
+
+//  Class Attributes ----------------------------------
+
+
+/// <summary>
+/// Homemade joystick using the new input system, gets finger down, tracks movement and outputs that as a public vector2 with a maximum magnitude of 1
+/// </summary>
 public class Joystick : MonoBehaviour
 {
+    //  Events ----------------------------------------
+
+
+    //  Properties ------------------------------------
+
+    //public Vector2 inputVector
+    //{
+    //    get { return knob.anchoredPosition / (backPlate.sizeDelta.x * rimMultiplier); }
+    //}
+
+
+    //  Fields ----------------------------------------
+    public static Joystick Instance; //make this an instance, since its the only one, and needs to be referenced by the local player dynamically
+
     public RectTransform knob;
     RectTransform backPlate;
     public float rimMultiplier = 1;
@@ -16,18 +38,19 @@ public class Joystick : MonoBehaviour
 
     public Vector2 inputVector = Vector2.zero;
 
-
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     bool usingDebugControls = true;
-#endif
-    //public Vector2 inputVector
-    //{
-    //    get { return knob.anchoredPosition / (backPlate.sizeDelta.x * rimMultiplier); }
-    //}
+//#endif
 
 
-    void Start()
+    //  Unity Methods ---------------------------------
+    protected void Start()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+
         EnhancedTouchSupport.Enable();
         UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnFingerDown;
         UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove += OnMoveFinger;
@@ -36,10 +59,20 @@ public class Joystick : MonoBehaviour
         backPlate = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void OnDestroy()
     {
-#if UNITY_EDITOR
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnFingerDown;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove += OnMoveFinger;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp += OnFingerUp;
+
+        if (Instance == this)
+            Instance = null;
+    }
+
+
+    protected void Update()
+    {
+//#if UNITY_EDITOR
 
         Vector2 fingerPos = Vector2.zero;
         if (Keyboard.current[Key.W].isPressed)
@@ -61,9 +94,11 @@ public class Joystick : MonoBehaviour
 
         if (usingDebugControls)
             inputVector = fingerPos.normalized;
-#endif
+//#endif
     }
 
+
+    //  Methods ---------------------------------------
     public void OnFingerDown(Finger finger)
     {
         if (legalFinger != null) //if joystick already engaged, ignore extra fingers
@@ -84,7 +119,6 @@ public class Joystick : MonoBehaviour
 #endif
         OnMoveFinger(finger); //run it once at the start incase no movement on finger
     }
-
 
     public void OnMoveFinger(Finger finger)
     {
@@ -117,5 +151,12 @@ public class Joystick : MonoBehaviour
 #if UNITY_EDITOR
         usingDebugControls = true;
 #endif
+    }
+
+
+    //  Event Handlers --------------------------------
+    public void Target_OnCompleted(string message)
+    {
+
     }
 }
