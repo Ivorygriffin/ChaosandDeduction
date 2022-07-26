@@ -59,20 +59,32 @@ public class CharacterInteraction : MonoBehaviour
     {
         if (!currentInteraction)
         {
-            Collider[] Results = Physics.OverlapSphere(transform.position, interactionRadius);
+            Collider[] Results = Physics.OverlapSphere(transform.position + transform.forward, interactionRadius);
+
+            if (Results.Length <= 0)
+                return;
+
+            float closestDistance = float.MaxValue;
+            Interactable interactable = null;
+
             for (int i = 0; i < Results.Length; i++)
             {
-                if (Results[i] != null)
+                float distance = Vector3.Distance(transform.position + transform.forward, Results[i].transform.position); //calculate distance from grab point to object
+                Interactable interacter = Results[i].GetComponent<Interactable>();
+
+                if (Results[i] != null && interacter != null && distance < closestDistance) //record the closest object
                 {
-                    Interactable interactable = Results[i].GetComponent<Interactable>();
-                    if (interactable != null)
-                    {
-                        if (interactable.Interact(this)) //if is only used for checking if the interaction should be kept, it will be interacted with either way here
-                            currentInteraction = interactable;
-                        break; //only trigger first interaction
-                               //TODO: Determine if i need to do the closest interactable or if the list is already sorted
-                    }
+                    closestDistance = distance;
+                    interactable = interacter;
                 }
+            }
+
+
+           // Interactable interactable = Results[closestIndex].GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                if (interactable.Interact(this)) //if is only used for checking if the interaction should be kept, it will be interacted with either way here
+                    currentInteraction = interactable;
             }
 
         }

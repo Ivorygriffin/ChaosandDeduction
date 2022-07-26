@@ -9,9 +9,9 @@ using UnityEngine;
 
 
 /// <summary>
-/// Allows objects to be picked up by the player
+/// Allows player to pickup object and attempt to bring it to the destination
 /// </summary>
-public class Ingredient : PickUp
+public class Deliver : PickUp
 {
     //  Events ----------------------------------------
 
@@ -27,6 +27,13 @@ public class Ingredient : PickUp
 
     //  Fields ----------------------------------------
     Vector3 startPos;
+    public Vector3 deliverPoint = Vector3.zero;
+    public float deliverRadius = 5;
+
+
+    public bool useResetTimer = false;
+    public float resetMaxTimer = 5;
+    float resetTimer = 0;
 
 
 
@@ -37,12 +44,33 @@ public class Ingredient : PickUp
         startPos = transform.position;
     }
 
+
+    protected void Update()
+    {
+        if (useResetTimer && resetTimer > 0)
+        {
+            resetTimer -= Time.deltaTime;
+            if (resetTimer < 0)
+                transform.position = startPos;
+        }
+    }
+
     //  Methods ---------------------------------------
+    public override void PickedUp(CharacterInteraction character)
+    {
+        base.PickedUp(character);
+        resetTimer = -1;
+    }
+
     public override void Dropped(CharacterInteraction character)
     {
         transform.parent = null;
-        transform.position = startPos;
+        if (Vector3.Distance(transform.position, deliverPoint) < deliverRadius)
+            Destroy(gameObject); //TODO: create ingredient class that ondestroy adds point
+
+        resetTimer = resetMaxTimer;
     }
+
 
     //  Event Handlers --------------------------------
 }
