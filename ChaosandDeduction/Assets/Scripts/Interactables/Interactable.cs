@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Mirror;
 //  Namespace Properties ------------------------------
 
 
@@ -11,7 +11,7 @@ using UnityEngine;
 /// <summary>
 /// Abstract interactable class intended to allow the player to interact with a variaty of different objects without knowing about each object
 /// </summary>
-public abstract class Interactable : MonoBehaviour
+public abstract class Interactable : NetworkBehaviour
 {
 	//  Events ----------------------------------------
 

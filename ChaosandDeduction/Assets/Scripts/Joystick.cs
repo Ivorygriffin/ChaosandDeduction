@@ -27,6 +27,8 @@ public class Joystick : MonoBehaviour
 
 
     //  Fields ----------------------------------------
+    public static Joystick Instance; //make this an instance, since its the only one, and needs to be referenced by the local player dynamically
+
     public RectTransform knob;
     RectTransform backPlate;
     public float rimMultiplier = 1;
@@ -36,14 +38,19 @@ public class Joystick : MonoBehaviour
 
     public Vector2 inputVector = Vector2.zero;
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     bool usingDebugControls = true;
-#endif
+//#endif
 
 
     //  Unity Methods ---------------------------------
     protected void Start()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+
         EnhancedTouchSupport.Enable();
         UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnFingerDown;
         UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove += OnMoveFinger;
@@ -52,10 +59,20 @@ public class Joystick : MonoBehaviour
         backPlate = GetComponent<RectTransform>();
     }
 
+    protected void OnDestroy()
+    {
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnFingerDown;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove += OnMoveFinger;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp += OnFingerUp;
+
+        if (Instance == this)
+            Instance = null;
+    }
+
 
     protected void Update()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
         Vector2 fingerPos = Vector2.zero;
         if (Keyboard.current[Key.W].isPressed)
@@ -77,7 +94,7 @@ public class Joystick : MonoBehaviour
 
         if (usingDebugControls)
             inputVector = fingerPos.normalized;
-#endif
+//#endif
     }
 
 

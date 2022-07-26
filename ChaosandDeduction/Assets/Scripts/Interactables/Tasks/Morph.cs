@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 //  Namespace Properties ------------------------------
 
@@ -35,10 +36,9 @@ public class Morph : Interactable
     //  Unity Methods ---------------------------------
     protected void Start()
     {
-        stages[0].SetActive(true);
-        for (int i = 1; i < stages.Length; i++)
+        for (int i = 0; i < stages.Length; i++)
         {
-            stages[i].SetActive(false);
+            stages[i].SetActive(stage == i);
         }
 
 
@@ -63,12 +63,27 @@ public class Morph : Interactable
     //  Methods ---------------------------------------
     public override bool Interact(CharacterInteraction character)
     {
+        CmdInteract();
+        return false;
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdInteract()
+    {
+        RpcInteract();
+    }
+
+    [ClientRpc]
+    void RpcInteract()
+    {
         ChangeStage(true);
         if (stage >= stages.Length - 1) //reached the conclusion
         {
             //award ingredient
             if (reward)
-                Instantiate(reward, transform.position + Vector3.up, Quaternion.identity);
+            {
+                CmdReward();
+            }
 
             if (chainInteractable)
                 chainInteractable.enabled = true;
@@ -76,7 +91,13 @@ public class Morph : Interactable
             //script now serves no purpose
             Destroy(this); //only destroy script so the progress remains
         }
-        return false;
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdReward()
+    {
+        GameObject temp = Instantiate(reward, transform.position + Vector3.up, Quaternion.identity);
+        NetworkServer.Spawn(temp);
     }
 
     void ChangeStage(bool increase)

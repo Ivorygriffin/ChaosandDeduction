@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 //  Namespace Properties ------------------------------
 
@@ -30,6 +31,7 @@ public class Door : Interactable
     public float timeTaken = 0;
 
     [HideInInspector]
+    [SyncVar]
     public bool state = false;
 
     [Header("First Door")]

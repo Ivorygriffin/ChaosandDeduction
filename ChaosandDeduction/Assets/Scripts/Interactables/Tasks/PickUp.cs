@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 //  Namespace Properties ------------------------------
 
@@ -26,6 +27,7 @@ public class PickUp : Interactable
 
 
     //  Fields ----------------------------------------
+    [SyncVar]
     bool pickedUp = false;
     Rigidbody rb;
     float holdDistance = 1;
@@ -76,33 +78,42 @@ public class PickUp : Interactable
         pickedUp = !pickedUp;
         if (pickedUp)
         {
-            PickedUp(character);
+            CmdPickedUp(character.transform);
         }
         else
         {
-            Dropped(character);
+            CmdDropped(character.transform);
         }
-
-        if (rb != null)
-            rb.isKinematic = pickedUp;
 
         return pickedUp;
     }
 
-    public virtual void PickedUp(CharacterInteraction character)
+
+
+    [Command(requiresAuthority = false)]
+    void CmdPickedUp(Transform character)
+    {
+        RpcPickedUp(character);
+    }
+    [ClientRpc]
+    void RpcPickedUp(Transform character)
+    {
+        PickedUp(character);
+    }
+    public virtual void PickedUp(Transform character)
     {
         float closestPoint = float.MaxValue;
         int closestIndex = 0;
         for (int i = 0; i < grabPoints.Length; i++)
         {
-            float distance = Vector3.Distance(grabPoints[i].position, character.transform.position);
+            float distance = Vector3.Distance(grabPoints[i].position, character.position);
             if (distance < closestPoint)
             {
                 closestPoint = distance;
                 closestIndex = i;
             }
         }
-        transform.parent = character.transform;
+        transform.parent = character;
 
         Vector3 EulerShenanigans = grabPoints[closestIndex].localRotation.eulerAngles; //TODO: WHY THE FUCK DOES THIS FIX IT? (inverse the y axis (pulling the Z through itself))
         EulerShenanigans.y -= 90;
@@ -110,16 +121,34 @@ public class PickUp : Interactable
         EulerShenanigans.y += 90;
 
         transform.localRotation = Quaternion.Euler(EulerShenanigans); //grabPoints[closestIndex].localRotation * character.transform.rotation;// * transform.rotation;
-        transform.position = (character.transform.position + (character.transform.forward * holdDistance)) + (transform.position - grabPoints[closestIndex].position); //place the object infront of the character
+        transform.position = (character.position + (character.forward * holdDistance)) + (transform.position - grabPoints[closestIndex].position); //place the object infront of the character
 #if UNITY_EDITOR
         secondLastGrabbed = lastGrabbed;
         lastGrabbed = closestIndex;
 #endif
+
+        if (rb != null)
+            rb.isKinematic = true;
     }
 
-    public virtual void Dropped(CharacterInteraction character)
+
+
+    [Command(requiresAuthority = false)]
+    void CmdDropped(Transform character)
+    {
+        RpcDropped(character);
+    }
+    [ClientRpc]
+    void RpcDropped(Transform character)
+    {
+        Dropped(character);
+    }
+    public virtual void Dropped(Transform character)
     {
         transform.parent = null;
+
+        if (rb != null)
+            rb.isKinematic = false;
     }
 
     //  Event Handlers --------------------------------

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 5667775671556560869}
   - component: {fileID: 5667775671556560868}
   - component: {fileID: 5667775671556560875}
+  - component: {fileID: -2576083876960450940}
   m_Layer: 0
   m_Name: Ingredient Example
   m_TagString: Untagged
@@ -140,13 +141,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a60f7706e56d54cb7ed525d9cdadb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   grabPoints:
   - {fileID: 5667775672273952728}
   - {fileID: 5667775671135131193}
   deliverPoint: {x: 0, y: 0, z: 0}
-  deliverRadius: 5
+  deliverRadius: 1
   useResetTimer: 1
-  resetMaxTimer: 5
+  resetMaxTimer: 3
+--- !u!114 &-2576083876960450940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334217430156678873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: a319136b15b319d41a713a6e5d51ab98
+  hasSpawned: 0
 --- !u!1 &8334273294633911451
 GameObject:
   m_ObjectHideFlags: 0

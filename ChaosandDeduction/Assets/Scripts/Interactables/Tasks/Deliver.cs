@@ -56,15 +56,17 @@ public class Deliver : PickUp
     }
 
     //  Methods ---------------------------------------
-    public override void PickedUp(CharacterInteraction character)
+    public override void PickedUp(Transform character)
     {
         base.PickedUp(character);
+
         resetTimer = -1;
     }
 
-    public override void Dropped(CharacterInteraction character)
+    public override void Dropped(Transform character)
     {
-        transform.parent = null;
+        base.Dropped(character);
+
         if (Vector3.Distance(transform.position, deliverPoint) < deliverRadius)
             Destroy(gameObject); //TODO: create ingredient class that ondestroy adds point
 
