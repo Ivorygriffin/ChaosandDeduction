@@ -4,9 +4,29 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
+//  Namespace Properties ------------------------------
 
+
+//  Class Attributes ----------------------------------
+
+
+/// <summary>
+/// Homemade joystick using the new input system, gets finger down, tracks movement and outputs that as a public vector2 with a maximum magnitude of 1
+/// </summary>
 public class Joystick : MonoBehaviour
 {
+    //  Events ----------------------------------------
+
+
+    //  Properties ------------------------------------
+
+    //public Vector2 inputVector
+    //{
+    //    get { return knob.anchoredPosition / (backPlate.sizeDelta.x * rimMultiplier); }
+    //}
+
+
+    //  Fields ----------------------------------------
     public RectTransform knob;
     RectTransform backPlate;
     public float rimMultiplier = 1;
@@ -16,17 +36,13 @@ public class Joystick : MonoBehaviour
 
     public Vector2 inputVector = Vector2.zero;
 
-
 #if UNITY_EDITOR
     bool usingDebugControls = true;
 #endif
-    //public Vector2 inputVector
-    //{
-    //    get { return knob.anchoredPosition / (backPlate.sizeDelta.x * rimMultiplier); }
-    //}
 
 
-    void Start()
+    //  Unity Methods ---------------------------------
+    protected void Start()
     {
         EnhancedTouchSupport.Enable();
         UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnFingerDown;
@@ -36,8 +52,8 @@ public class Joystick : MonoBehaviour
         backPlate = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    protected void Update()
     {
 #if UNITY_EDITOR
 
@@ -64,6 +80,8 @@ public class Joystick : MonoBehaviour
 #endif
     }
 
+
+    //  Methods ---------------------------------------
     public void OnFingerDown(Finger finger)
     {
         if (legalFinger != null) //if joystick already engaged, ignore extra fingers
@@ -84,7 +102,6 @@ public class Joystick : MonoBehaviour
 #endif
         OnMoveFinger(finger); //run it once at the start incase no movement on finger
     }
-
 
     public void OnMoveFinger(Finger finger)
     {
@@ -117,5 +134,12 @@ public class Joystick : MonoBehaviour
 #if UNITY_EDITOR
         usingDebugControls = true;
 #endif
+    }
+
+
+    //  Event Handlers --------------------------------
+    public void Target_OnCompleted(string message)
+    {
+
     }
 }

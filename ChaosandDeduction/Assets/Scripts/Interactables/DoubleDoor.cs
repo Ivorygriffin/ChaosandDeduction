@@ -9,9 +9,9 @@ using UnityEngine;
 
 
 /// <summary>
-/// An interactable door that opens/closes each time the player interacts with it
+/// Double door variation of the door interactable
 /// </summary>
-public class Door : Interactable
+public class DoubleDoor : Door
 {
     //  Events ----------------------------------------
 
@@ -21,26 +21,15 @@ public class Door : Interactable
 
 
     //  Fields ----------------------------------------
-    public float angle;
-
-    [Header("Time taken to open/close")]
-    public float transitionTime = 1.5f;
-
-    [HideInInspector]
-    public float timeTaken = 0;
-
-    [HideInInspector]
-    public bool state = false;
-
-    [Header("First Door")]
-    public Vector3 doorAxis;
-    public Transform door;
-
+    [Header("Second Door")]
+    public Vector3 doorAxis2;
+    public Transform door2;
 
     //  Unity Methods ---------------------------------
     protected void Start()
     {
         doorAxis += transform.position;
+        doorAxis2 += transform.position;
     }
 
 
@@ -50,11 +39,13 @@ public class Door : Interactable
         {
             timeTaken += Time.deltaTime;
             door.RotateAround(doorAxis, Vector3.up, (angle / transitionTime) * Time.deltaTime);
+            door2.RotateAround(doorAxis2, Vector3.up, -(angle / transitionTime) * Time.deltaTime);
         }
         if (!state && timeTaken > 0)
         {
             timeTaken -= Time.deltaTime;
             door.RotateAround(doorAxis, Vector3.up, -(angle / transitionTime) * Time.deltaTime);
+            door2.RotateAround(doorAxis2, Vector3.up, (angle / transitionTime) * Time.deltaTime);
         }
     }
 
@@ -62,17 +53,12 @@ public class Door : Interactable
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(doorAxis + transform.position, 0.1f);
+        Gizmos.DrawSphere(doorAxis2 + transform.position, 0.1f);
     }
 #endif
 
-
     //  Methods ---------------------------------------
-    public override bool Interact(CharacterInteraction character)
-    {
-        state = !state;
-        //timeTaken = state ? 0 : transitionTime;
-        return false;
-    }
+  
 
 
     //  Event Handlers --------------------------------

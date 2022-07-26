@@ -6,12 +6,37 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 
+//  Namespace Properties ------------------------------
+
+
+//  Class Attributes ----------------------------------
+
+
+/// <summary>
+/// The player's interaction component, allowing the player to interact with objects after giving input
+/// </summary>
 public class CharacterInteraction : MonoBehaviour
 {
+    //  Events ----------------------------------------
+
+
+    //  Properties ------------------------------------
+
+
+
+    //  Fields ----------------------------------------
     public float interactionRadius = 1;
     Interactable currentInteraction = null;
 
-    void Update()
+
+    //  Unity Methods ---------------------------------
+    protected void Start()
+    {
+
+    }
+
+
+    protected void Update()
     {
 #if UNITY_EDITOR
         if (Keyboard.current[Key.E].wasReleasedThisFrame)
@@ -21,6 +46,15 @@ public class CharacterInteraction : MonoBehaviour
 #endif
     }
 
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube((transform.position + (transform.forward)), Vector3.one * 0.2f);
+    }
+#endif
+
+
+    //  Methods ---------------------------------------
     public void Interact()
     {
         if (!currentInteraction)
@@ -48,8 +82,7 @@ public class CharacterInteraction : MonoBehaviour
                 currentInteraction = null;
         }
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube((transform.position + (transform.forward)), Vector3.one * 0.2f);
-    }
+
+
+    //  Event Handlers --------------------------------
 }

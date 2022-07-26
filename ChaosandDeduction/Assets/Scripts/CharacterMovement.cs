@@ -1,9 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//  Namespace Properties ------------------------------
+
+//  Class Attributes ----------------------------------
+
+/// <summary>
+/// This script handles all the movement for the player, recieving input from a virtual joystick
+/// </summary>
 
 public class CharacterMovement : MonoBehaviour
 {
+    //  Events ----------------------------------------
+
+
+    //  Properties ------------------------------------
+
+
+
+    //  Fields ----------------------------------------
     public Joystick joystick;
     CharacterController character;
 
@@ -11,14 +26,14 @@ public class CharacterMovement : MonoBehaviour
 
     Vector3 playerVelocity;
 
-    // Start is called before the first frame update
-    void Start()
+    //  Unity Methods ---------------------------------
+    protected void Start()
     {
         character = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    protected void Update()
     {
         playerVelocity = Vector3.zero;
 
@@ -36,4 +51,11 @@ public class CharacterMovement : MonoBehaviour
 
         //groundedPlayer = character.isGrounded;
     }
+
+
+    //  Methods ---------------------------------------
+
+
+
+    //  Event Handlers --------------------------------
 }
