@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using Mirror;
 
 public class Timer : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
     {
         timeRemaining = startTime;
     }
-
+    
     void Update()
     {
         TimerStart();

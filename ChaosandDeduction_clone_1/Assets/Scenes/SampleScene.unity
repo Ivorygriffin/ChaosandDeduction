@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3488175}
   - component: {fileID: 3488176}
+  - component: {fileID: 3488177}
   m_Layer: 0
   m_Name: timer
   m_TagString: Untagged
@@ -169,6 +170,23 @@ MonoBehaviour:
   timeRemaining: 0
   startTime: 120
   timerText: {fileID: 1403424708}
+--- !u!114 &3488177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 158561700
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &4013053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &73766462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6465,6 +6483,7 @@ GameObject:
   - component: {fileID: 250494098}
   - component: {fileID: 250494097}
   - component: {fileID: 250494096}
+  - component: {fileID: 250494099}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6585,6 +6604,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250494094}
   m_CullTransparentMesh: 1
+--- !u!114 &250494099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250494094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e695071d9e8a1f4aab99f7e96f9d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerType: 1
 --- !u!43 &258910211
 Mesh:
   m_ObjectHideFlags: 0
@@ -10798,7 +10830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &460429133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13710,6 +13742,7 @@ GameObject:
   - component: {fileID: 637805513}
   - component: {fileID: 637805512}
   - component: {fileID: 637805511}
+  - component: {fileID: 637805514}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -13830,6 +13863,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637805509}
   m_CullTransparentMesh: 1
+--- !u!114 &637805514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637805509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e695071d9e8a1f4aab99f7e96f9d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerType: 0
 --- !u!43 &647047311
 Mesh:
   m_ObjectHideFlags: 0
@@ -26425,6 +26471,7 @@ GameObject:
   - component: {fileID: 1275413038}
   - component: {fileID: 1275413037}
   - component: {fileID: 1275413036}
+  - component: {fileID: 1275413039}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -26545,6 +26592,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275413034}
   m_CullTransparentMesh: 1
+--- !u!114 &1275413039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275413034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e695071d9e8a1f4aab99f7e96f9d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerType: 0
 --- !u!1 &1330531869
 GameObject:
   m_ObjectHideFlags: 0
@@ -28640,11 +28700,11 @@ RectTransform:
   m_Father: {fileID: 1414796253}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -160}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -132}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!43 &1406473812
 Mesh:
   m_ObjectHideFlags: 0
@@ -38461,6 +38521,115 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1889420702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889420707}
+  - component: {fileID: 1889420706}
+  - component: {fileID: 1889420705}
+  - component: {fileID: 1889420704}
+  - component: {fileID: 1889420703}
+  m_Layer: 0
+  m_Name: villagerLibraryItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1889420703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889420702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817639dc229d87b45868bd049e1ab7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskType: 0
+--- !u!65 &1889420704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889420702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1889420705
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889420702}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1889420706
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889420702}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1889420707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889420702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 476.48108, y: 118.722626, z: 263.83124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890037167
 GameObject:
   m_ObjectHideFlags: 0
@@ -39335,33 +39504,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9960667d85caf48bd37afe0f6e852e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  potentialVillagerTasks: []
   villagerTasks:
-  - -Get book from Library, deliver it to the school
-  - -Collect flowers from the Hollow Tree and deliver them to the Graveyard
-  - -Get a flask from Packaging and fill it at the Well
-  - -Get a Jar from Packaging and catch the Cave Fireflies
-  - -Prepare Ingredient at the Food Spot
-  - -Help build a tent at the Campsite
-  - -Worship at the Statue
-  - -Grab a book from the School and return it to the Library
-  - -Grab an ingredient from the Hollow Tree
-  - -Collect tears from the Graveyard
-  - -Collect moss from the Cave
-  - -Enhance the Magic at the Power Source
-  traitorTasks:
-  - ' -Laugh at grave'
-  - ' -Scold a child at the School'
-  - ' -Vandalize Statue'
-  - ' -Destroy tent at the Campsite'
-  - ' -Destroy shipment at Packaging'
-  - ' -Push a villager into the well'
-  - ' -Burn a book at the Library'
-  - ' -Scare a Villager in the Cave'
-  - ' -Carve a message in the Hollow Tree'
-  traitorSelectedTasks: []
+  - {fileID: 11400000, guid: 1c6b552c86dddf04b993dcfa7fac9180, type: 2}
+  - {fileID: 11400000, guid: 441791468f8af4346ba699aa9c075098, type: 2}
+  - {fileID: 11400000, guid: 9a000a9ad9461b54a8dc4d5f0943d06c, type: 2}
+  - {fileID: 11400000, guid: 668af657f0937934181ccffef644ba6a, type: 2}
+  - {fileID: 11400000, guid: 3db8f7fe1326fdf40b11d4a47534d2d2, type: 2}
+  uncompleteVillagerTasks: []
+  potentialTraitorTasks:
+  - {fileID: 11400000, guid: 4be2cadd1044944439d62473fa0199b1, type: 2}
+  - {fileID: 11400000, guid: 6ddee4f055a3c9b4ca7e0dfb41af8da0, type: 2}
+  - {fileID: 11400000, guid: 5315fb01d3f426c4dbd5cb7caa8723c5, type: 2}
+  - {fileID: 11400000, guid: d00894dd1bb38824d89cd5ee9846825e, type: 2}
+  - {fileID: 11400000, guid: 8259114c7e44d6d4ea909d625aabdfc4, type: 2}
+  uncompleteTraitorTasks: []
+  selectedTraitorTasks: []
   numTraitorTasks: 4
-  vTasksComplete: 0
-  tTasksComplete: 0
+  villagerTasksComplete: 0
+  traitorTasksComplete: 0
+  vTaskComplete: 0
+  tTaskComplete: 0
 --- !u!1 &1916256878
 GameObject:
   m_ObjectHideFlags: 0
@@ -41876,7 +42039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2067924524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41902,6 +42065,101 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2076326376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076326380}
+  - component: {fileID: 2076326379}
+  - component: {fileID: 2076326378}
+  - component: {fileID: 2076326377}
+  m_Layer: 0
+  m_Name: traitorItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &2076326377
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076326376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2076326378
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076326376}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2076326379
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076326376}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2076326380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076326376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 476.48108, y: 118.722626, z: 263.83124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2077102266
 GameObject:
   m_ObjectHideFlags: 0
@@ -42048,6 +42306,7 @@ GameObject:
   - component: {fileID: 2106282000}
   - component: {fileID: 2106281999}
   - component: {fileID: 2106281998}
+  - component: {fileID: 2106282001}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -42168,6 +42427,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106281996}
   m_CullTransparentMesh: 1
+--- !u!114 &2106282001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106281996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e695071d9e8a1f4aab99f7e96f9d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerType: 0
 --- !u!1 &2127776829
 GameObject:
   m_ObjectHideFlags: 0

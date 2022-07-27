@@ -29,12 +29,12 @@ public class votingSystem : NetworkBehaviour
     [ClientRpc]
     void RpcVote()
     {
-        if (traitorDetected == true && GetComponent<task>().vTasksComplete == true)
+        if (traitorDetected == true && GetComponent<task>().vTaskComplete == true)
         {
             UIManager.Instance.winner = "The Villagers Win";
             UIManager.Instance.WinScreen();
         }
-        if (traitorDetected == false && GetComponent<task>().vTasksComplete == true && GetComponent<task>().tTasksComplete == true)
+        if (traitorDetected == false && GetComponent<task>().vTaskComplete == true && GetComponent<task>().tTaskComplete == true)
         {
             UIManager.Instance.winner = "The Traitor Wins";
             UIManager.Instance.WinScreen();
@@ -50,6 +50,7 @@ public class votingSystem : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdSelectPlayer()
     {
+        Debug.Log("selected");
         switch (GetComponent<voteobject>().playerType)
         {
             case PlayerType.villager:
@@ -62,7 +63,7 @@ public class votingSystem : NetworkBehaviour
                 Debug.Log(numTraitorVote);
                 break ;
             default:
-                Debug.Log("playertype not set");
+                
                 break;
         }
 
@@ -75,7 +76,7 @@ public class votingSystem : NetworkBehaviour
         voteObjects.SetActive(false);
     }
 
-    [ClientRpc]
+   
     void RpcConfirmVote()
     {
         if (numVoted == 4)
@@ -93,7 +94,7 @@ public class votingSystem : NetworkBehaviour
         }
         else
         {
-            Debug.Log("Not everyone has confirmed vote");
+            
         }
     }
 }
