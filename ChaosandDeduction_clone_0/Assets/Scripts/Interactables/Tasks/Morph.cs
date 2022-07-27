@@ -30,6 +30,7 @@ public class Morph : Interactable
     public GameObject[] stages;
 
     public GameObject reward;
+    bool givenReward = false;
     [Header("This will be toggled on after this morph is completed")]
     public Interactable chainInteractable;
 
@@ -89,19 +90,26 @@ public class Morph : Interactable
                 chainInteractable.enabled = true;
 
             //script now serves no purpose
-            Destroy(this); //only destroy script so the progress remains
+            this.enabled = false; //self disable? hopefully prevents issue of false exploit error
         }
     }
 
     [Command(requiresAuthority = false)]
     void CmdReward()
     {
+        if (givenReward)
+            return;
+
+        givenReward = true;
         GameObject temp = Instantiate(reward, transform.position + Vector3.up, Quaternion.identity);
         NetworkServer.Spawn(temp);
     }
 
     void ChangeStage(bool increase)
     {
+        if (stage >= stages.Length - 1)
+            return;
+
         stages[stage].SetActive(false);
         stage += increase ? 1 : -1;
         stages[stage].SetActive(true);
