@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 //  Namespace Properties ------------------------------
 
@@ -68,7 +69,8 @@ public class Deliver : PickUp
         base.Dropped(character);
 
         if (Vector3.Distance(transform.position, deliverPoint) < deliverRadius)
-            Destroy(gameObject); //TODO: create ingredient class that ondestroy adds point
+            NetworkServer.Destroy(gameObject); //TODO: create ingredient class that ondestroy adds point
+                                               //Destroy(gameObject); 
 
         resetTimer = resetMaxTimer;
     }
