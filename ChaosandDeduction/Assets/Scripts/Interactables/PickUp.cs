@@ -73,7 +73,7 @@ public class PickUp : Interactable
 #endif
 
     //  Methods ---------------------------------------
-    public override bool Interact(CharacterInteraction character)
+    public override bool InteractOverride(CharacterInteraction character)
     {
         pickedUp = !pickedUp;
         if (pickedUp)

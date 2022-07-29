@@ -57,14 +57,14 @@ public class Deliver : PickUp
     }
 
     //  Methods ---------------------------------------
-    public override void PickedUp(Transform character)
+    public override void PickedUp(Transform character) //These will be RPCed from base pickup's interact
     {
         base.PickedUp(character);
 
         resetTimer = -1;
     }
 
-    public override void Dropped(Transform character)
+    public override void Dropped(Transform character) //These will be RPCed from base pickup's interact
     {
         base.Dropped(character);
 

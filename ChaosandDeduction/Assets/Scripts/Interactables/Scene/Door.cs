@@ -22,9 +22,8 @@ public class Door : Interactable
 
 
     //  Fields ----------------------------------------
+    [Header("Both Doors")]
     public float angle;
-
-    [Header("Time taken to open/close")]
     public float transitionTime = 1.5f;
 
     [HideInInspector]
@@ -69,7 +68,7 @@ public class Door : Interactable
 
 
     //  Methods ---------------------------------------
-    public override bool Interact(CharacterInteraction character)
+    public override bool InteractOverride(CharacterInteraction character)
     {
         state = !state;
         //timeTaken = state ? 0 : transitionTime;

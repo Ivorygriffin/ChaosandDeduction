@@ -8,7 +8,12 @@ using UnityEngine.InputSystem;
 //#endif
 
 //  Namespace Properties ------------------------------
-
+public enum Alignment
+{
+    Neutral,
+    Villager,
+    Traitor
+}
 
 //  Class Attributes ----------------------------------
 
@@ -28,7 +33,7 @@ public class CharacterInteraction : NetworkBehaviour
     //  Fields ----------------------------------------
     public float interactionRadius = 1;
     Interactable currentInteraction = null;
-
+    public Alignment alignment = Alignment.Villager; //TOOD: distribute roles
 
     //  Unity Methods ---------------------------------
     protected void Start()

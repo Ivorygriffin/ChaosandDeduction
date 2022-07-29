@@ -21,7 +21,8 @@ public abstract class Interactable : NetworkBehaviour
 
 
 	//  Fields ----------------------------------------
-
+	[Tooltip("What alignement is required to interact with this script, Neutral means any")]
+	public Alignment requiredAlignment = Alignment.Neutral; //Neutral means any
 
 
 	//  Unity Methods ---------------------------------
@@ -29,7 +30,15 @@ public abstract class Interactable : NetworkBehaviour
 
 
 	//  Methods ---------------------------------------
-	public abstract bool Interact(CharacterInteraction character); //return true to require the player to drop
+	public bool Interact(CharacterInteraction character)
+	{
+		//Gate keep from characters not aligned with this object
+		if (requiredAlignment != Alignment.Neutral && requiredAlignment != character.alignment)
+			return false;
+
+		return InteractOverride(character);
+	}
+	public abstract bool InteractOverride(CharacterInteraction character); //return true to require the player to drop
 
 
 	//  Event Handlers --------------------------------

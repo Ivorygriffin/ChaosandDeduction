@@ -22,16 +22,23 @@ public class Morph : Interactable
 
 
     //  Fields ----------------------------------------
+
+    [Header("Regression")]
+    [Tooltip("If the morph should go backwards with inaction")]
     public bool regressOverTime = false;
     public float regressMaxTimer = 1;
     float regressTimer = 0;
 
     int stage = 0;
+    [Tooltip("Only one stage will be active at each time")]
     public GameObject[] stages;
 
+
+    [Header("Rewards")]
+    [Tooltip("Object that will spawn after task complete")]
     public GameObject reward;
     bool givenReward = false;
-    [Header("This will be toggled on after this morph is completed")]
+    [Tooltip("Chain quest, This will be toggled on after this morph is completed")]
     public Interactable chainInteractable;
 
     //  Unity Methods ---------------------------------
@@ -62,7 +69,7 @@ public class Morph : Interactable
 
 
     //  Methods ---------------------------------------
-    public override bool Interact(CharacterInteraction character)
+    public override bool InteractOverride(CharacterInteraction character)
     {
         CmdInteract();
         return false;
