@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour
     {
         voteScreen.SetActive(true);
     }
+    
     public void WinScreen()
     {
         winScreen.SetActive(true);
@@ -101,6 +102,7 @@ public class UIManager : MonoBehaviour
     {
         villagerTaskScreenText.text = villagerCurrentTaskList;
         villagerTaskScreenText2.text = villagerCurrentTaskList;
+        
 
     }
 

@@ -20,12 +20,13 @@ public class votingSystem : NetworkBehaviour
 
     public GameObject voteObjects;
 
-    public void Update()
+    [ServerCallback]
+    void Update()
     {
         RpcConfirmVote();
     }
 
-
+    
     [ClientRpc]
     void RpcVote()
     {
