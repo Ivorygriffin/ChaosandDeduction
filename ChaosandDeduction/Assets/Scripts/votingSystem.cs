@@ -25,7 +25,10 @@ public class votingSystem : NetworkBehaviour
         RpcConfirmVote();
     }
 
-
+    public void EarlyVote()
+    {
+        RpcVote();
+    }
     [ClientRpc]
     void RpcVote()
     {
