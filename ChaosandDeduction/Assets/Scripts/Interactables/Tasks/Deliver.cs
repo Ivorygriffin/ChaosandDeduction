@@ -55,6 +55,12 @@ public class Deliver : PickUp
                 transform.position = startPos;
         }
     }
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(deliverPoint, deliverRadius);
+    }
+#endif
 
     //  Methods ---------------------------------------
     public override void PickedUp(Transform character) //These will be RPCed from base pickup's interact
