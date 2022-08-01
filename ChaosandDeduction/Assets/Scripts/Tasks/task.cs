@@ -20,11 +20,14 @@ public class task : MonoBehaviour
     //Strings
 
     private TaskScriptableObject randomTask;
+    private TaskScriptableObject randomVTask;
 
     //ints
 
-    private int currentTaskNum = 0;
-    public int numTraitorTasks = 0;
+    private int currentTaskNum;
+    public int numTraitorTasks;
+    private int currentVillagerTaskNum;
+    public int numVillagerTasks;
     public int villagerTasksComplete;
     public int traitorTasksComplete;
 
@@ -42,13 +45,27 @@ public class task : MonoBehaviour
         ConvertTraitorToString();
         ChangeVillagerTaskList();
         ConvertVillagerToString();
+        CheckTaskComplete();
+        ConvertVillagerToString();
+        ChangeVillagerTaskList();
+
         //gotta move outta update to allow for network behaviour
         
     }
     public void ChangeVillagerTaskList()
     {
-  
-        //if villager tasks random feature
+        if (currentVillagerTaskNum != numVillagerTasks)
+        {
+            int numTasksSelected = Random.Range(0, potentialVillagerTasks.Count);
+            randomVTask = potentialVillagerTasks[numTasksSelected];
+
+            villagerTasks.Add(randomVTask);
+            potentialVillagerTasks.RemoveAt(numTasksSelected);
+            currentVillagerTaskNum += 1;
+            Debug.Log(currentVillagerTaskNum);
+            Debug.Log(randomVTask);
+            AddVSelectedTaskToUncompleteList();
+        }
     }
 
     public void ChangeTraitorTaskList()
@@ -66,6 +83,15 @@ public class task : MonoBehaviour
             AddSelectedTaskToUncompleteList();
         }
       
+    }
+    public void AddVSelectedTaskToUncompleteList()//adding 10???
+    {
+
+        foreach(TaskScriptableObject listItem in villagerTasks)
+        {
+            uncompleteVillagerTasks.Add(listItem);
+            villagerTasks.Remove(listItem);
+        }
     }
     public void AddSelectedTaskToUncompleteList()//adding 10???
     {
@@ -94,16 +120,21 @@ public class task : MonoBehaviour
     }    
     public void ConvertVillagerToString()
     {
-        if (hasDisplayedVillager == false)
+        if (currentVillagerTaskNum == numVillagerTasks && hasDisplayedVillager == false)
         {
+            
             for (int i = 0; i < uncompleteVillagerTasks.Count; i++)
             {
+            
                 string task = uncompleteVillagerTasks[i].description;
                 UIManager.Instance.villagerCurrentTaskList += (uncompleteVillagerTasks[i].description + "\n"+ "\n");
                 Debug.Log(UIManager.Instance.villagerCurrentTaskList);
+
                 hasDisplayedVillager = true;
-                //will happen everytime task complete is checked
             }
+           
+
+
         }
        
     }
@@ -160,143 +191,3 @@ public class task : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-//switch (GetComponent<VillagerTaskLabel>().taskType) 
-//{
-//    //when item with an emun enters a trigger it will call this function, function will detect which enum assigned and will change the task list and number of tasks completed
-//    case VillagerTaskType.Tree:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(0);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Tree Task Complete");
-//        break; 
-//    case VillagerTaskType.Cave:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(2);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Cave Task Complete");
-//        break; 
-//    case VillagerTaskType.Well:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(3);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Well Task Complete");
-//        break; 
-//    case VillagerTaskType.Camp:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(4);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Camp Task Complete");
-//        break; 
-//    case VillagerTaskType.Library:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(5);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Library Task Complete");
-//        break; 
-//    case VillagerTaskType.School:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(6);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("School Task Complete");
-//        break; 
-//    case VillagerTaskType.Foodspot:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(7);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Foodspot Task Complete");
-//        break; 
-//    case VillagerTaskType.Packaging:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(8);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Packaging Task Complete");
-//        break; 
-//    case VillagerTaskType.Graveyard:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(9);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Graveyard Task Complete");
-//        break; 
-//    case VillagerTaskType.Statue:
-//        villagerTasksComplete += 1;
-//        selectedVillagerTasks.RemoveAt(10);
-//        UIManager.Instance.villagerCurrentTaskList = string.Empty;
-//        hasDisplayedVillager = false;
-//        ConvertVillagerToString();
-//        Debug.Log("Statue Task Complete");
-//        break;
-
-//    default:
-
-//        break;
-
-
-
-//}
-
-//int numTreeSelected = Random.Range(0, treeVillagerTasks.Count);
-//ranTree = treeVillagerTasks[numTreeSelected];
-//selectedVillagerTasks.Add(ranTree);
-
-//int numCaveSelected = Random.Range(0, caveVillagerTasks.Count);
-//ranCave = caveVillagerTasks[numCaveSelected];
-//selectedVillagerTasks.Add(ranCave);
-
-//int numWellSelected = Random.Range(0, wellVillagerTasks.Count);
-//ranWell = wellVillagerTasks[numWellSelected];
-//selectedVillagerTasks.Add(ranWell);
-
-//int numCampSelected = Random.Range(0, campVillagerTasks.Count);
-//ranCamp = campVillagerTasks[numCampSelected];
-//selectedVillagerTasks.Add(ranCamp);
-
-//int numLibrarySelected = Random.Range(0, libraryVillagerTasks.Count);
-//ranLibrary = libraryVillagerTasks[numLibrarySelected];
-//selectedVillagerTasks.Add(ranLibrary);
-
-//int numSchoolSelected = Random.Range(0, schoolVillagerTasks.Count);
-//ranSchool = schoolVillagerTasks[numSchoolSelected];
-//selectedVillagerTasks.Add(ranSchool);
-
-//int numFoodspotSelected = Random.Range(0, foodspotVillagerTasks.Count);
-//ranFoodspot = foodspotVillagerTasks[numFoodspotSelected];
-//selectedVillagerTasks.Add(ranFoodspot);
-
-//int numPackagingSelected = Random.Range(0, packagingVillagerTasks.Count);
-//ranPackaging = packagingVillagerTasks[numPackagingSelected];
-//selectedVillagerTasks.Add(ranPackaging);
-
-//int numGraveyardSelected = Random.Range(0, graveyardVillagerTasks.Count);
-//ranGraveyard = graveyardVillagerTasks[numGraveyardSelected];
-//selectedVillagerTasks.Add(ranGraveyard);
-
-//int numStatueSelected = Random.Range(0, statueVillagerTasks.Count);
-//ranStatue = statueVillagerTasks[numStatueSelected];
-//selectedVillagerTasks.Add(ranStatue);

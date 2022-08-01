@@ -101,6 +101,7 @@ public class UIManager : MonoBehaviour
     {
         villagerTaskScreenText.text = villagerCurrentTaskList;
         villagerTaskScreenText2.text = villagerCurrentTaskList;
+        
 
     }
 
