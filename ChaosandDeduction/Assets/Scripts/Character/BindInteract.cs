@@ -16,12 +16,15 @@ public class BindInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject temp = PlayerManager.Instance.localPlayer;
-        if (temp != null && (temp != player || player == null))
+        if (PlayerManager.Instance)
         {
-            player = PlayerManager.Instance.localPlayer;
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(player.GetComponent<CharacterInteraction>().Interact);
+            GameObject temp = PlayerManager.Instance.localPlayer;
+            if (temp != null && (temp != player || player == null))
+            {
+                player = PlayerManager.Instance.localPlayer;
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(player.GetComponent<CharacterInteraction>().Interact);
+            }
         }
     }
 }

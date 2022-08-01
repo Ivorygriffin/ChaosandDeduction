@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEngine.InputSystem;
+#endif
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 //  Namespace Properties ------------------------------
@@ -38,9 +40,9 @@ public class Joystick : MonoBehaviour
 
     public Vector2 inputVector = Vector2.zero;
 
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
     bool usingDebugControls = true;
-//#endif
+#endif
 
 
     //  Unity Methods ---------------------------------
@@ -72,7 +74,7 @@ public class Joystick : MonoBehaviour
 
     protected void Update()
     {
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
 
         Vector2 fingerPos = Vector2.zero;
         if (Keyboard.current[Key.W].isPressed)
@@ -94,7 +96,7 @@ public class Joystick : MonoBehaviour
 
         if (usingDebugControls)
             inputVector = fingerPos.normalized;
-//#endif
+#endif
     }
 
 

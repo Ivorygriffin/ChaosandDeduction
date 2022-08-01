@@ -69,10 +69,9 @@ public class Morph : Interactable
 
 
     //  Methods ---------------------------------------
-    public override bool InteractOverride(CharacterInteraction character)
+    public override void InteractOverride(CharacterInteraction character)
     {
         CmdInteract();
-        return false;
     }
 
     [Command(requiresAuthority = false)]

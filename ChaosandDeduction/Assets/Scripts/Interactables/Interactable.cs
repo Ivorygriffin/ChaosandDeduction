@@ -13,33 +13,34 @@ using Mirror;
 /// </summary>
 public abstract class Interactable : NetworkBehaviour
 {
-	//  Events ----------------------------------------
+    //  Events ----------------------------------------
 
 
-	//  Properties ------------------------------------
-
-
-
-	//  Fields ----------------------------------------
-	[Tooltip("What alignement is required to interact with this script, Neutral means any")]
-	public Alignment requiredAlignment = Alignment.Neutral; //Neutral means any
-
-
-	//  Unity Methods ---------------------------------
+    //  Properties ------------------------------------
 
 
 
-	//  Methods ---------------------------------------
-	public bool Interact(CharacterInteraction character)
-	{
-		//Gate keep from characters not aligned with this object
-		if (requiredAlignment != Alignment.Neutral && requiredAlignment != character.alignment)
-			return false;
-
-		return InteractOverride(character);
-	}
-	public abstract bool InteractOverride(CharacterInteraction character); //return true to require the player to drop
+    //  Fields ----------------------------------------
+    [Tooltip("What alignement is required to interact with this script, Neutral means any")]
+    public Alignment requiredAlignment = Alignment.Neutral; //Neutral means any
 
 
-	//  Event Handlers --------------------------------
+    //  Unity Methods ---------------------------------
+
+
+
+    //  Methods ---------------------------------------
+    public void Interact(CharacterInteraction character)
+    {
+        //Gate keep from characters not aligned with this object
+        if ((requiredAlignment != Alignment.Neutral && requiredAlignment != character.alignment))
+            return;
+        //  || Vector3.Distance(character.transform.position, transform.position) > character.interactionRadius * 2 //TODO: Implement check against interacting too far away
+
+        InteractOverride(character);
+    }
+    public abstract void InteractOverride(CharacterInteraction character);
+
+
+    //  Event Handlers --------------------------------
 }
