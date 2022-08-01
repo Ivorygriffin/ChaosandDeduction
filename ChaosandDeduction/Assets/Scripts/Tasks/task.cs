@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-public class task : MonoBehaviour
+public class task : NetworkBehaviour
 {
 
     // STILL NEED TO MAKE ALL OF THIS WORK WITH MULTIPLAYER CONSIDERATIONS
@@ -47,6 +47,9 @@ public class task : MonoBehaviour
             AddVillagerTask();
         for (int i = 0; i < numTraitorTasks; i++)
             AddTraitorTask();
+
+        UpdateTraitorString();
+        UpdateVillagerString();
     }
 
     public void Update()
@@ -85,11 +88,13 @@ public class task : MonoBehaviour
         //AddSelectedTaskToUncompleteList();
     }
 
-    public void ConvertTraitorToString()
+    public void UpdateTraitorString()
     {
         if (!hasDisplayedTraitor)
         {
-            for (int i = 0; i < traitorTasks.Count; i++)
+            UIManager.Instance.traitorCurrentTaskList = ""; //clear the UI text
+
+            for (int i = 0; i < traitorTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
             {
                 string par = traitorTasks[i].description;
                 UIManager.Instance.traitorCurrentTaskList += (traitorTasks[i].description + "\n" + "\n");
@@ -99,11 +104,13 @@ public class task : MonoBehaviour
             }
         }
     }
-    public void ConvertVillagerToString()
+    public void UpdateVillagerString()
     {
         if (!hasDisplayedVillager)
         {
-            for (int i = 0; i < villagerTasks.Count; i++)
+            UIManager.Instance.villagerCurrentTaskList = "";  //clear the UI text
+
+            for (int i = 0; i < villagerTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
             {
                 string task = villagerTasks[i].description;
                 UIManager.Instance.villagerCurrentTaskList += (villagerTasks[i].description + "\n" + "\n");
@@ -114,22 +121,8 @@ public class task : MonoBehaviour
         }
     }
 
-    public void CheckTaskComplete() //run upon task completion
+    public void CheckTaskComplete() // TODO: move from update to only run upon task completion
     {
-        //uncompleteVillagerTasks.Clear();
-        //foreach (TaskScriptableObject task in villagerTasks)
-        //{
-
-        //    if (task.isComplete != true)
-        //    {
-        //        uncompleteVillagerTasks.Add(task);
-        //        ConvertVillagerToString();
-        //    }
-        //    if (task.isComplete == true)
-        //    {
-        //        villagerTasksComplete += 1;
-        //    }
-        //}
         for (int i = 0; i < villagerTasks.Count; i++)
         {
 
@@ -138,26 +131,9 @@ public class task : MonoBehaviour
                 villagerTasks.RemoveAt(i);
                 i--;
                 villagerTasksComplete += 1;
-                ConvertVillagerToString();
-            }
-            else
-            {
-                //uncompleteVillagerTasks.Add(villagerTasks[i]);
+                UpdateVillagerString();
             }
         }
-        //uncompleteTraitorTasks.Clear();
-        //foreach (TaskScriptableObject tasks in uncompleteTraitorTasks)
-        //{
-        //    if (tasks.isComplete != true)
-        //    {
-        //        uncompleteTraitorTasks.Add(tasks);
-        //        ConvertTraitorToString();
-        //    }
-        //    if (tasks.isComplete == true)
-        //    {
-        //        traitorTasksComplete += 1;
-        //    }
-        //}
 
         for (int i = 0; i < traitorTasks.Count; i++)
         {
@@ -167,38 +143,13 @@ public class task : MonoBehaviour
                 traitorTasks.RemoveAt(i);
                 i--;
                 traitorTasksComplete += 1;
-                ConvertTraitorToString();
-            }
-            else
-            {
-                //uncompleteVillagerTasks.Add(villagerTasks[i]);
+                UpdateTraitorString();
             }
         }
 
-
-
-
-
-        if (traitorTasksComplete == traitorTasks.Count)
-        {
+        if (traitorTasks.Count <= 0)
             tTaskComplete = true;
-        }
-        if (villagerTasksComplete == villagerTasks.Count)
-        {
+        if (villagerTasks.Count <= 0)
             vTaskComplete = true;
-        }
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-

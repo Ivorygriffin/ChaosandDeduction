@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Mirror;
 
-public class UIManager : MonoBehaviour
+public class UIManager : NetworkBehaviour
 {
     public static UIManager Instance;
 
@@ -22,9 +23,11 @@ public class UIManager : MonoBehaviour
     public TMP_Text taskNotificationText;
 
     //Strings
-    public string winner; // this string will change upon voting/or timer end
+    //public string winner; // this string will change upon voting/or timer end
     public string completedTask;// will change depending on which task a player has completed
-    public string villagerCurrentTaskList; 
+    [TextArea]
+    public string villagerCurrentTaskList;
+    [TextArea]
     public string traitorCurrentTaskList;
 
     //need variable to differenciate between villager or traitor interaction with UI,if the traitor clicks on the task list then traitor task list will open
@@ -52,19 +55,15 @@ public class UIManager : MonoBehaviour
         VillagerTaskListText();
     }
 
-
-    public void Voting()
+    [ClientRpc] //TODO: get command to call this RPC
+    public void RpcVoting(bool active)
     {
-        voteScreen.SetActive(true);
+        voteScreen.SetActive(active);
     }
     
     public void WinScreen()
     {
         winScreen.SetActive(true);
-    }
-    public void WinScreenText()
-    {
-        winScreenText.text = winner; 
     }
 
     public void TaskNotifications()

@@ -35,6 +35,9 @@ public class PlayerManager : NetworkBehaviour
     bool traitorAssigned = false;
     [SyncVar]
     int playersJoined = 0;
+
+    public SyncList<GameObject> allPlayers = new SyncList<GameObject>();
+
     GameObject player;
 
 
@@ -55,17 +58,21 @@ public class PlayerManager : NetworkBehaviour
     [Command(requiresAuthority = false)]
     void CmdAssignRole(GameObject player)
     {
+        allPlayers.Add(player);
         playersJoined++;
+
         if (!traitorAssigned) //if no traitor yet, and 
         {
-            if (Random.Range(0, 4) == 0 || playersJoined >= 4)
+            if (Random.Range(0, 4) == 0 || playersJoined >= 4) //1/4 chance to get given traitor, or if last player (4th) assign to be traitor
             {
-                CharacterInteraction interactor  = player.GetComponent<CharacterInteraction>();
+                CharacterInteraction interactor = player.GetComponent<CharacterInteraction>();
                 NetworkIdentity target = player.GetComponent<NetworkIdentity>();
 
                 TargetAssignTraitor(target.connectionToClient, interactor);
 
                 interactor.alignment = Alignment.Traitor;
+
+                traitorAssigned = true;
             }
         }
     }
