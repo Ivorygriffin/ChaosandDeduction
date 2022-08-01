@@ -36,7 +36,7 @@ public class CameraFollower : MonoBehaviour
         if (target != null)
             transform.position = target.position + offset;
         else
-            if(PlayerManager.Instance.localPlayer)
+            if(PlayerManager.Instance && PlayerManager.Instance.localPlayer)
             target = PlayerManager.Instance.localPlayer.transform;
     }
 

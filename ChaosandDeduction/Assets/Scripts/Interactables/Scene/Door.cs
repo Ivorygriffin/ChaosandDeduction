@@ -68,11 +68,16 @@ public class Door : Interactable
 
 
     //  Methods ---------------------------------------
-    public override bool InteractOverride(CharacterInteraction character)
+    public override void InteractOverride(CharacterInteraction character)
+    {
+        CmdToggleState();
+        //timeTaken = state ? 0 : transitionTime;
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdToggleState()
     {
         state = !state;
-        //timeTaken = state ? 0 : transitionTime;
-        return false;
     }
 
 
