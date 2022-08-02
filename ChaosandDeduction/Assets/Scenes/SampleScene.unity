@@ -7035,6 +7035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 387558486}
   - component: {fileID: 387558485}
+  - component: {fileID: 387558487}
   m_Layer: 0
   m_Name: UI manager
   m_TagString: Untagged
@@ -7054,6 +7055,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0cd9a9400793348b868a77fd7bc18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   voteScreen: {fileID: 73766461}
   winScreen: {fileID: 1993320191}
   VillagerTaskScreen: {fileID: 2067924523}
@@ -7063,7 +7066,6 @@ MonoBehaviour:
   villagerTaskScreenText: {fileID: 2077102268}
   villagerTaskScreenText2: {fileID: 441577068}
   taskNotificationText: {fileID: 558079837}
-  winner: 
   completedTask: 
   villagerCurrentTaskList: 
   traitorCurrentTaskList: 
@@ -7083,6 +7085,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &387558487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387558484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2091300494
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &402215784
 GameObject:
   m_ObjectHideFlags: 0
@@ -28325,6 +28344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568043251}
   - component: {fileID: 1568043250}
+  - component: {fileID: 1568043252}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -28344,7 +28364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ccfbe166073744989812d1fda9d619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPlayer: {fileID: 0}
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!4 &1568043251
 Transform:
   m_ObjectHideFlags: 0
@@ -28359,6 +28380,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568043252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568043249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1601712900
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1001 &1592041116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34953,6 +34991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914499665}
   - component: {fileID: 1914499666}
+  - component: {fileID: 1914499667}
   m_Layer: 0
   m_Name: Task control
   m_TagString: Untagged
@@ -34986,6 +35025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9960667d85caf48bd37afe0f6e852e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   potentialVillagerTasks:
   - {fileID: 11400000, guid: 1c9cb564ecb6c0c45b64a5279d429f81, type: 2}
   - {fileID: 11400000, guid: fc4505f2e895524499aad9c791a49627, type: 2}
@@ -34999,8 +35040,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 668af657f0937934181ccffef644ba6a, type: 2}
   - {fileID: 11400000, guid: 3db8f7fe1326fdf40b11d4a47534d2d2, type: 2}
   - {fileID: 11400000, guid: 3161256e18fff3845beba97c1c9fe747, type: 2}
-  villagerTasks: []
   uncompleteVillagerTasks: []
+  villagerTasks: []
   potentialTraitorTasks:
   - {fileID: 11400000, guid: 4be2cadd1044944439d62473fa0199b1, type: 2}
   - {fileID: 11400000, guid: 6ddee4f055a3c9b4ca7e0dfb41af8da0, type: 2}
@@ -35011,13 +35052,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b6a84252a21a0f445b5945fa58826f1c, type: 2}
   - {fileID: 11400000, guid: de2f3d8a8fe51b74ea9023a06aa73693, type: 2}
   uncompleteTraitorTasks: []
-  selectedTraitorTasks: []
+  traitorTasks: []
   numTraitorTasks: 4
+  traitorTasksComplete: 0
   numVillagerTasks: 11
   villagerTasksComplete: 0
-  traitorTasksComplete: 0
   vTaskComplete: 0
   tTaskComplete: 0
+--- !u!114 &1914499667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914499664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 719377952
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &1916256878
 GameObject:
   m_ObjectHideFlags: 0
@@ -35183,11 +35241,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  traitorDetected: 0
-  numVoted: 0
-  numTraitorVote: 0
-  numVillagerVote: 0
   voteObjects: {fileID: 1214002129}
+  taskManager: {fileID: 0}
+  timer: {fileID: 0}
 --- !u!114 &1922220678
 MonoBehaviour:
   m_ObjectHideFlags: 0
