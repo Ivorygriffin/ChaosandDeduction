@@ -55,8 +55,13 @@ public class UIManager : NetworkBehaviour
         VillagerTaskListText();
     }
 
-    [ClientRpc] //TODO: get command to call this RPC
-    public void RpcVoting(bool active)
+    [Command(requiresAuthority = false)]
+    public void CmdVoting(bool active)
+    {
+        RpcVoting(active);
+    }
+    [ClientRpc]
+    void RpcVoting(bool active)
     {
         voteScreen.SetActive(active);
     }

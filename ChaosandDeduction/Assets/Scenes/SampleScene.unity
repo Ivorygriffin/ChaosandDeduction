@@ -29648,6 +29648,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  playersJoined: 0
+  allPlayers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1568043251
 Transform:
   m_ObjectHideFlags: 0
@@ -35453,7 +35459,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 387558485}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: RpcVoting
+        m_MethodName: CmdVoting
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36462,6 +36468,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  voted: 0
+  numVoted: 00000000
   voteObjects: {fileID: 1214002129}
   taskManager: {fileID: 1914499666}
   timer: {fileID: 3488176}
@@ -38887,6 +38895,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1922220677}
+    - target: {fileID: 1777053137225739522, guid: f2235ba1e90398246b92394099925b09, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfirmPlayerVote
+      objectReference: {fileID: 0}
     - target: {fileID: 1777053137266550515, guid: f2235ba1e90398246b92394099925b09, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

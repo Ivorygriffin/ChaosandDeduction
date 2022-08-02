@@ -34,9 +34,9 @@ public class PlayerManager : NetworkBehaviour
     [SyncVar]
     bool traitorAssigned = false;
     [SyncVar]
-    int playersJoined = 0;
+    public int playersJoined = 0;
 
-    public SyncList<GameObject> allPlayers = new SyncList<GameObject>();
+    public GameObject[] allPlayers = new GameObject[4];
 
     GameObject player;
 
@@ -58,7 +58,7 @@ public class PlayerManager : NetworkBehaviour
     [Command(requiresAuthority = false)]
     void CmdAssignRole(GameObject player)
     {
-        allPlayers.Add(player);
+        allPlayers[playersJoined] = player;
         playersJoined++;
 
         if (!traitorAssigned) //if no traitor yet, and 
@@ -80,6 +80,14 @@ public class PlayerManager : NetworkBehaviour
     void TargetAssignTraitor(NetworkConnection target, CharacterInteraction player)
     {
         player.alignment = Alignment.Traitor;
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdCharacterDestroyed(Alignment alignment)
+    {
+        playersJoined--;
+        if (alignment == Alignment.Traitor)
+            traitorAssigned = false;
     }
 
     //  Event Handlers --------------------------------
