@@ -34,12 +34,7 @@ public class Morph : Interactable
     public GameObject[] stages;
 
 
-    [Header("Rewards")]
-    [Tooltip("Object that will spawn after task complete")]
-    public GameObject reward;
-    bool givenReward = false;
-    [Tooltip("Chain quest, This will be toggled on after this morph is completed")]
-    public Interactable chainInteractable;
+    [SerializeField] Reward reward;
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -50,8 +45,8 @@ public class Morph : Interactable
         }
 
 
-        if (chainInteractable)
-            chainInteractable.enabled = false;
+        if (reward.interactable)
+            reward.interactable.enabled = false;
     }
 
 
@@ -87,13 +82,8 @@ public class Morph : Interactable
         if (stage >= stages.Length - 1) //reached the conclusion
         {
             //award ingredient
-            if (reward)
-            {
-                CmdReward();
-            }
-
-            if (chainInteractable)
-                chainInteractable.enabled = true;
+            reward.localReward();
+            CmdReward();
 
             //script now serves no purpose
             this.enabled = false; //self disable? hopefully prevents issue of false exploit error
@@ -103,12 +93,15 @@ public class Morph : Interactable
     [Command(requiresAuthority = false)]
     void CmdReward()
     {
-        if (givenReward)
+        if (reward.givenServerReward)
             return;
+        reward.givenServerReward = true;
 
-        givenReward = true;
-        GameObject temp = Instantiate(reward, transform.position + Vector3.up, Quaternion.identity);
-        NetworkServer.Spawn(temp);
+        if (reward.item)
+        {
+            GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
+            NetworkServer.Spawn(temp);
+        }
     }
 
     void ChangeStage(bool increase)

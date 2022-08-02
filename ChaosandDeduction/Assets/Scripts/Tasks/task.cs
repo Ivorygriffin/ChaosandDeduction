@@ -41,6 +41,8 @@ public class task : NetworkBehaviour
     private bool hasDisplayedVillager;
     public bool vTaskComplete, tTaskComplete;
 
+    bool initialised = false;
+
     public void Start()
     {
         for (int i = 0; i < numVillagerTasks; i++)
@@ -48,12 +50,17 @@ public class task : NetworkBehaviour
         for (int i = 0; i < numTraitorTasks; i++)
             AddTraitorTask();
 
-        UpdateTraitorString();
-        UpdateVillagerString();
+
     }
 
     public void Update()
     {
+        if (UIManager.Instance && !initialised) //just run this whenever the instance is set up
+        {
+            initialised = true;
+            UpdateTraitorString();
+            UpdateVillagerString();
+        }
         //ConvertTraitorToString();
         //ConvertVillagerToString();
 

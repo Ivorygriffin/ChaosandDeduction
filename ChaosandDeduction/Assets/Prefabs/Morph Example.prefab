@@ -359,7 +359,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7527197187841872695}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.24, y: 0.97, z: 1.25}
@@ -388,8 +388,11 @@ MonoBehaviour:
   - {fileID: 7527197188132948299}
   - {fileID: 7527197188914340262}
   - {fileID: 7527197188766443581}
-  reward: {fileID: 8334217430156678873, guid: a319136b15b319d41a713a6e5d51ab98, type: 3}
-  chainInteractable: {fileID: 530360405}
+  reward:
+    item: {fileID: 0}
+    task: {fileID: 0}
+    interactable: {fileID: 530360405}
+    givenServerReward: 0
 --- !u!114 &530360405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,8 +417,11 @@ MonoBehaviour:
   - {fileID: 7527197188830368431}
   - {fileID: 7527197187400776209}
   - {fileID: 7527197188150832378}
-  reward: {fileID: 0}
-  chainInteractable: {fileID: 0}
+  reward:
+    item: {fileID: 0}
+    task: {fileID: 0}
+    interactable: {fileID: 0}
+    givenServerReward: 0
 --- !u!1 &7527197187906424625
 GameObject:
   m_ObjectHideFlags: 0
