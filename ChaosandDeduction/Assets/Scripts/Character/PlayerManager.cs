@@ -82,13 +82,8 @@ public class PlayerManager : NetworkBehaviour
         player.alignment = Alignment.Traitor;
     }
 
+    [Server]
     public void playerLeft(Alignment alignment)
-    {
-        CmdCharacterDestroyed(alignment);
-    }
-
-    [Command(requiresAuthority = false)]
-    void CmdCharacterDestroyed(Alignment alignment)
     {
         playersJoined--;
         if (alignment == Alignment.Traitor)

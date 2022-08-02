@@ -13,7 +13,7 @@ public class CustomNetworkManager : NetworkManager
     {
         base.OnServerDisconnect(conn);
         CharacterInteraction interactor = null;
-        foreach (NetworkIdentity networkIdentity in conn.clientOwnedObjects)
+        foreach (NetworkIdentity networkIdentity in conn.clientOwnedObjects) //TODO: this does not work since player's object gets deleted too fast?
         {
             CharacterInteraction temp = networkIdentity.GetComponent<CharacterInteraction>();
             if (temp)
@@ -21,8 +21,8 @@ public class CustomNetworkManager : NetworkManager
                 interactor = temp;
             }
         }
-        if (interactor)
-            onLeave.Invoke(interactor.alignment);
+        //if (interactor)
+            onLeave.Invoke(Alignment.Traitor);
         //player has disconnected
     }
     public override void OnStartHost()
