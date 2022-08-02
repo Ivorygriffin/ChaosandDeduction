@@ -71,7 +71,7 @@ public class votingSystem : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdConfirmPlayerVote(int select) //TODO: add effects to indicate a player has locked in, to other players
+    void CmdConfirmPlayerVote(int select) //TODO: add effects to indicate a player has locked in, to other players
     {
         if (select == -1)
             return;
