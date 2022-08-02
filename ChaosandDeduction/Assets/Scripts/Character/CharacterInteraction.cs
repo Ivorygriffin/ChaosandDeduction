@@ -65,11 +65,6 @@ public class CharacterInteraction : NetworkBehaviour
     }
 #endif
 
-    private void OnDestroy() //TODO: not sufficent to try tell the server after client has disconnected
-    {
-        PlayerManager.Instance.CmdCharacterDestroyed(alignment);
-    }
-
     //  Methods ---------------------------------------
     public void Interact()
     {

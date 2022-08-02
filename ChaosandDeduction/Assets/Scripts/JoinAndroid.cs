@@ -15,7 +15,7 @@ public class JoinAndroid : MonoBehaviour
         NetworkManager.singleton.StartClient();
     }
 
-    private void DestroySelf()
+    public void DestroySelf()
     {
         Destroy(gameObject);
     }

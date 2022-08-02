@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1774231056137513509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774231056137513505}
+  - component: {fileID: 6699251884137739553}
+  - component: {fileID: 1741555620992216932}
+  - component: {fileID: 5715483329356986543}
+  m_Layer: 0
+  m_Name: NetworkManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1774231056137513505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774231056137513509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.015991092, y: -0.23650455, z: -5.922603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6699251884137739553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774231056137513509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f050f0e5a1794f48aaae5f3d95db509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  runInBackground: 1
+  autoStartServerBuild: 1
+  serverTickRate: 30
+  offlineScene: Assets/Scenes/MainMenu.unity
+  onlineScene: Assets/Scenes/SampleScene.unity
+  transport: {fileID: 1741555620992216932}
+  networkAddress: 192.168.126.131
+  maxConnections: 100
+  authenticator: {fileID: 0}
+  playerPrefab: {fileID: 3718973189240868519, guid: 77bda3f8ca6708241964cdd1c5736b76, type: 3}
+  autoCreatePlayer: 1
+  playerSpawnMethod: 0
+  spawnPrefabs:
+  - {fileID: 7440373404683699614, guid: 90d8c10904bfcda4dbaf47e5aa1df844, type: 3}
+  - {fileID: 5217701372137115883, guid: 53bcf0232276ff3428c3b95777de9e56, type: 3}
+  - {fileID: 2746626822302082199, guid: f02b6aca8da8db54d85434fa0cad2934, type: 3}
+  - {fileID: 5126371716455464651, guid: aa2d0bc9d6c5764419c57ed1add64e29, type: 3}
+  - {fileID: 5224082096062782042, guid: 4da6b98e599c5694994db594023ba9ef, type: 3}
+  - {fileID: 5678525774097957203, guid: 9cf80b9f4275669488e9ad68d1840056, type: 3}
+  - {fileID: 7548376660128630850, guid: d2b567c65320c4d45b9980ffca7c27ea, type: 3}
+  - {fileID: 2282267914846765700, guid: 5c5f82225f08ca941a17f469d66adbbe, type: 3}
+  - {fileID: 3367809906776230678, guid: 04ced7d101c1313449bcd5716dcd8c23, type: 3}
+  - {fileID: 29623571399537463, guid: 3fa28ef44063418449c0348941459d94, type: 3}
+  - {fileID: 8415270610601022071, guid: c50edc09f58075d49a9e37e9f34d3fa1, type: 3}
+  - {fileID: 1554040604072253052, guid: 2bbd3fa9c2651d14e856c2d838967c75, type: 3}
+  - {fileID: 4664923831651064217, guid: ae451c358025c5c41a1133b3bbc04179, type: 3}
+  - {fileID: 9077416916727162149, guid: 11a34cb8fdbfee34ab7f2855e6d7ea3a, type: 3}
+  - {fileID: 2417641985910925405, guid: df9ab7922fc3f164ebd694a1af905e50, type: 3}
+  - {fileID: 6753871882676321832, guid: 3a470e4fb77bb094287fbcaaf1ee4d30, type: 3}
+  - {fileID: 7777282313125324196, guid: cf7afb8bd61b9634d8a8f956784d94df, type: 3}
+--- !u!114 &1741555620992216932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774231056137513509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Port: 7777
+  DualMode: 1
+  NoDelay: 1
+  Interval: 10
+  Timeout: 10000
+  FastResend: 2
+  CongestionWindow: 0
+  SendWindowSize: 4096
+  ReceiveWindowSize: 4096
+  MaxRetransmit: 40
+  NonAlloc: 1
+  MaximizeSendReceiveBuffersToOSLimit: 1
+  ReliableMaxMessageSize: 298449
+  UnreliableMaxMessageSize: 1199
+  debugLog: 0
+  statisticsGUI: 0
+  statisticsLog: 0
+--- !u!114 &5715483329356986543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774231056137513509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetX: 0
+  offsetY: 0
