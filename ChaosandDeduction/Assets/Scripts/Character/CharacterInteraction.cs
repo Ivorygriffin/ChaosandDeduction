@@ -50,12 +50,12 @@ public class CharacterInteraction : NetworkBehaviour
         else if (PlayerManager.Instance && !PlayerManager.Instance.localPlayer)
             PlayerManager.Instance.localPlayer = gameObject;
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         if (Keyboard.current[Key.E].wasReleasedThisFrame)
         {
             Interact();
         }
-        #endif
+#endif
     }
 
 #if UNITY_EDITOR
@@ -65,6 +65,10 @@ public class CharacterInteraction : NetworkBehaviour
     }
 #endif
 
+    private void OnDestroy() //TODO: not sufficent to try tell the server after client has disconnected
+    {
+        PlayerManager.Instance.CmdCharacterDestroyed(alignment);
+    }
 
     //  Methods ---------------------------------------
     public void Interact()

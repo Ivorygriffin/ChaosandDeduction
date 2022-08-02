@@ -5,15 +5,15 @@ using Mirror;
 
 public class votingSystem : NetworkBehaviour
 {
-    //bool 
-    [SyncVar]
+    //bool
+    [SyncVar(hook = "Results")]
     bool traitorDetected;
-    bool voted;
+    bool voted = false;
 
 
     //int
 
-    byte[] numVoted = new byte[4];
+    public byte[] numVoted = new byte[4];
 
     //Gameobjects
     int selectedPlayer = -1;
@@ -28,9 +28,9 @@ public class votingSystem : NetworkBehaviour
     }
 
 
-    [ClientRpc]
-    void RpcResults()
+    void Results(bool oldVal, bool newVal)
     {
+        traitorDetected = newVal;
         if (traitorDetected && ((taskManager.vTaskComplete == true) || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
             UIManager.Instance.winScreenText.text = "The Villagers Win";
@@ -46,12 +46,12 @@ public class votingSystem : NetworkBehaviour
             UIManager.Instance.winScreenText.text = "The Game Has Beaten you all";
             UIManager.Instance.WinScreen();
         }
-        UIManager.Instance.RpcVoting(false);
+        UIManager.Instance.CmdVoting(false);
     }
 
     public void SelectPlayer(int playerIndex)
     {
-        if (PlayerManager.Instance.allPlayers.Count < 4) //if not 4 players, stop
+        if (PlayerManager.Instance.playersJoined < 4) //if not 4 players, stop
             return;
 
         Debug.Log("selected");
@@ -62,33 +62,33 @@ public class votingSystem : NetworkBehaviour
 
     public void ConfirmPlayerVote()
     {
-        if (voted)
+        if (voted || selectedPlayer == -1)
             return;
 
         voted = true;
         voteObjects.SetActive(false);
-        CmdConfirmPlayerVote(); 
+        CmdConfirmPlayerVote(selectedPlayer);
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdConfirmPlayerVote() //TODO: add effects to indicate a player has locked in, to other players
+    public void CmdConfirmPlayerVote(int select) //TODO: add effects to indicate a player has locked in, to other players
     {
-        if (selectedPlayer == -1)
+        if (select == -1)
             return;
 
-        numVoted[selectedPlayer]++;
+        numVoted[select]++;
 
         TallyVotes(); //check if voting is complete
-        //TODO: handle spread out votes (I.E. no definitive target of the vote)
+                      //TODO: handle spread out votes (I.E. no definitive target of the vote)
 
-        
+
     }
 
     [Server]
     void TallyVotes()
     {
         int votes = 0;
-        for(int i = 0; i < numVoted.Length; i++)
+        for (int i = 0; i < numVoted.Length; i++)
         {
             votes += numVoted[i];
         }
@@ -111,7 +111,6 @@ public class votingSystem : NetworkBehaviour
                         traitorDetected = true;
                         break;
                 }
-                RpcResults();
                 return; //Halt rest of script (as the rest will handle what happens if draw / spread out votes
             }
         }
