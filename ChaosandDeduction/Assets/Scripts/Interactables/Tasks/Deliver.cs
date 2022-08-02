@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 //  Namespace Properties ------------------------------
 
@@ -36,7 +39,9 @@ public class Deliver : PickUp
     public float resetMaxTimer = 5;
     float resetTimer = 0;
 
+    public bool destroyOnArrival = true;
 
+    [SerializeField] Reward reward;
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -58,29 +63,57 @@ public class Deliver : PickUp
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(deliverPoint, deliverRadius);
+        if (Selection.activeGameObject == gameObject)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(deliverPoint, deliverRadius);
+        }
     }
 #endif
 
     //  Methods ---------------------------------------
-    public override void PickedUp(Transform character) //These will be RPCed from base pickup's interact
+    public override void PickedUp(Transform character) //These will be RPCed from base pickup class's interact
     {
         base.PickedUp(character);
 
         resetTimer = -1;
     }
 
-    public override void Dropped(Transform character) //These will be RPCed from base pickup's interact
+    public override void Dropped(Transform character) //These will be RPCed from base pickup class's interact
     {
         base.Dropped(character);
 
         if (Vector3.Distance(transform.position, deliverPoint) < deliverRadius)
-            NetworkServer.Destroy(gameObject); //TODO: create ingredient class that ondestroy adds point
-                                               //Destroy(gameObject); 
+        {
+            StartCoroutine(DelayDestroy());
+            //Destroy(gameObject); 
+            reward.localReward();
+            CmdReward();
+        }
 
         resetTimer = resetMaxTimer;
     }
 
+
+    [Command(requiresAuthority = false)]
+    void CmdReward()
+    {
+        if (reward.givenServerReward)
+            return;
+
+        reward.givenServerReward = true;
+        if (reward.item)
+        {
+            GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
+            NetworkServer.Spawn(temp);
+            NetworkServer.Destroy(gameObject);
+        }
+    }
+
+    IEnumerator DelayDestroy()
+    {
+        yield return new WaitForSeconds(5);
+    }
 
     //  Event Handlers --------------------------------
 }
