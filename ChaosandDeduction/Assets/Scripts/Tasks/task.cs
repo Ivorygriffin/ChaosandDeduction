@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-public class task : MonoBehaviour
+public class task : NetworkBehaviour
 {
 
     // STILL NEED TO MAKE ALL OF THIS WORK WITH MULTIPLAYER CONSIDERATIONS
@@ -11,11 +11,12 @@ public class task : MonoBehaviour
     //string lists
 
     public List<TaskScriptableObject> potentialVillagerTasks;//use if extra tasks made and we want to randomise
-    public List<TaskScriptableObject> villagerTasks;//list of selected tasks for the round
     public List<TaskScriptableObject> uncompleteVillagerTasks; //tasks seen of task screen, whatever isnt complete
+    public List<TaskScriptableObject> villagerTasks;//list of selected tasks for the round
+
     public List<TaskScriptableObject> potentialTraitorTasks; //ones to pick from
     public List<TaskScriptableObject> uncompleteTraitorTasks; //the uncomplete ones
-    public List<TaskScriptableObject> selectedTraitorTasks; //the picked ones
+    public List<TaskScriptableObject> traitorTasks; //the picked ones
 
     //Strings
 
@@ -24,170 +25,131 @@ public class task : MonoBehaviour
 
     //ints
 
-    private int currentTaskNum;
+    [Header("Traitor Counts")]
+    private int currentTraitorTaskNum;
     public int numTraitorTasks;
+    public int traitorTasksComplete;
+
+    [Header("Villager Counts")]
     private int currentVillagerTaskNum;
     public int numVillagerTasks;
     public int villagerTasksComplete;
-    public int traitorTasksComplete;
 
     //bools
 
-    private bool hasDisplayed;
+    private bool hasDisplayedTraitor;
     private bool hasDisplayedVillager;
-    public  bool vTaskComplete, tTaskComplete;
-    
+    public bool vTaskComplete, tTaskComplete;
 
- 
+    public void Start()
+    {
+        for (int i = 0; i < numVillagerTasks; i++)
+            AddVillagerTask();
+        for (int i = 0; i < numTraitorTasks; i++)
+            AddTraitorTask();
+
+        UpdateTraitorString();
+        UpdateVillagerString();
+    }
+
     public void Update()
     {
-        ChangeTraitorTaskList();
-        ConvertTraitorToString();
-        ChangeVillagerTaskList();
-        ConvertVillagerToString();
+        //ConvertTraitorToString();
+        //ConvertVillagerToString();
+
         CheckTaskComplete();
-        ConvertVillagerToString();
-        ChangeVillagerTaskList();
 
         //gotta move outta update to allow for network behaviour
-        
-    }
-    public void ChangeVillagerTaskList()
-    {
-        if (currentVillagerTaskNum != numVillagerTasks)
-        {
-            int numTasksSelected = Random.Range(0, potentialVillagerTasks.Count);
-            randomVTask = potentialVillagerTasks[numTasksSelected];
 
-            villagerTasks.Add(randomVTask);
-            potentialVillagerTasks.RemoveAt(numTasksSelected);
-            currentVillagerTaskNum += 1;
-            Debug.Log(currentVillagerTaskNum);
-            Debug.Log(randomVTask);
-            AddVSelectedTaskToUncompleteList();
-        }
+    }
+    public void AddVillagerTask() //Adds one random task from potential task list to the todo task list
+    {
+        int numTasksSelected = Random.Range(0, potentialVillagerTasks.Count);
+        TaskScriptableObject temp = potentialVillagerTasks[numTasksSelected];
+        temp.isComplete = false;
+
+        villagerTasks.Add(temp);
+        potentialVillagerTasks.RemoveAt(numTasksSelected);
+        currentVillagerTaskNum += 1;
+
+        //AddVSelectedTaskToUncompleteList();
     }
 
-    public void ChangeTraitorTaskList()
+    public void AddTraitorTask() //Adds one random task from potential task list to the todo task list
     {
-        if(currentTaskNum != numTraitorTasks)
-        {
-            int numTaskSelected = Random.Range(0, potentialTraitorTasks.Count);
-            randomTask = potentialTraitorTasks[numTaskSelected];
+        int numTaskSelected = Random.Range(0, potentialTraitorTasks.Count);
+        TaskScriptableObject temp = potentialTraitorTasks[numTaskSelected];
+        temp.isComplete = false;
 
-            selectedTraitorTasks.Add(randomTask);
-            potentialTraitorTasks.RemoveAt(numTaskSelected);
-            currentTaskNum += 1;
-            Debug.Log(currentTaskNum);
-            Debug.Log(randomTask);
-            AddSelectedTaskToUncompleteList();
-        }
-      
+        traitorTasks.Add(temp);
+        potentialTraitorTasks.RemoveAt(numTaskSelected);
+        currentTraitorTaskNum += 1;
+
+        //AddSelectedTaskToUncompleteList();
     }
-    public void AddVSelectedTaskToUncompleteList()//adding 10???
-    {
 
-        foreach(TaskScriptableObject listItem in villagerTasks)
-        {
-            uncompleteVillagerTasks.Add(listItem);
-            villagerTasks.Remove(listItem);
-        }
-    }
-    public void AddSelectedTaskToUncompleteList()//adding 10???
+    public void UpdateTraitorString()
     {
-
-        foreach(TaskScriptableObject listItem in selectedTraitorTasks)
+        if (!hasDisplayedTraitor)
         {
-            uncompleteTraitorTasks.Add(listItem);
-            selectedTraitorTasks.Remove(listItem);
-        }
-    }
-    
+            UIManager.Instance.traitorCurrentTaskList = ""; //clear the UI text
 
-    public void ConvertTraitorToString()
-    {
-        if (currentTaskNum == numTraitorTasks && hasDisplayed == false)
-        {
-            for (int i = 0; i < uncompleteTraitorTasks.Count; i++)
+            for (int i = 0; i < traitorTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
             {
-                string par = uncompleteTraitorTasks[i].description;
-                UIManager.Instance.traitorCurrentTaskList += (uncompleteTraitorTasks[i].description + "\n" + "\n");
+                string par = traitorTasks[i].description;
+                UIManager.Instance.traitorCurrentTaskList += (traitorTasks[i].description + "\n" + "\n");
                 Debug.Log(UIManager.Instance.traitorCurrentTaskList);
-                hasDisplayed = true;
-                
+
+                //hasDisplayedTraitor = true;
             }
         }
-    }    
-    public void ConvertVillagerToString()
+    }
+    public void UpdateVillagerString()
     {
-        if (currentVillagerTaskNum == numVillagerTasks && hasDisplayedVillager == false)
+        if (!hasDisplayedVillager)
         {
-            
-            for (int i = 0; i < uncompleteVillagerTasks.Count; i++)
+            UIManager.Instance.villagerCurrentTaskList = "";  //clear the UI text
+
+            for (int i = 0; i < villagerTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
             {
-            
-                string task = uncompleteVillagerTasks[i].description;
-                UIManager.Instance.villagerCurrentTaskList += (uncompleteVillagerTasks[i].description + "\n"+ "\n");
+                string task = villagerTasks[i].description;
+                UIManager.Instance.villagerCurrentTaskList += (villagerTasks[i].description + "\n" + "\n");
                 Debug.Log(UIManager.Instance.villagerCurrentTaskList);
 
-                hasDisplayedVillager = true;
+                //hasDisplayedVillager = true;
             }
-           
-
-
         }
-       
     }
 
-    public void CheckTaskComplete() //run upon task completion
+    public void CheckTaskComplete() // TODO: move from update to only run upon task completion
     {
-        uncompleteVillagerTasks.Clear();
-        foreach(TaskScriptableObject task in villagerTasks)
+        for (int i = 0; i < villagerTasks.Count; i++)
         {
 
-            if (task.isComplete != true)
+            if (villagerTasks[i].isComplete)
             {
-                uncompleteVillagerTasks.Add(task);
-                ConvertVillagerToString();
-            }
-            if(task.isComplete == true)
-            {
+                villagerTasks.RemoveAt(i);
+                i--;
                 villagerTasksComplete += 1;
+                UpdateVillagerString();
             }
         }
-        uncompleteTraitorTasks.Clear();
-        foreach(TaskScriptableObject tasks in uncompleteTraitorTasks)
+
+        for (int i = 0; i < traitorTasks.Count; i++)
         {
-            if (tasks.isComplete != true)
+
+            if (traitorTasks[i].isComplete)
             {
-                uncompleteTraitorTasks.Add(tasks);
-                ConvertTraitorToString();
-            }
-            if(tasks.isComplete == true)
-            {
+                traitorTasks.RemoveAt(i);
+                i--;
                 traitorTasksComplete += 1;
+                UpdateTraitorString();
             }
         }
-        if(traitorTasksComplete == selectedTraitorTasks.Count)
-        {
+
+        if (traitorTasks.Count <= 0)
             tTaskComplete = true;
-        }
-        if(villagerTasksComplete == villagerTasks.Count)
-        {
+        if (villagerTasks.Count <= 0)
             vTaskComplete = true;
-        }
     }
-    
-  
 }
-
-
-
-
-
-
-
-
-
-
-

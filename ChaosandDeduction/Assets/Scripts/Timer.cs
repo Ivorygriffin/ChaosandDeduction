@@ -15,29 +15,12 @@ public class Timer : MonoBehaviour
     
     void Update()
     {
-        TimerStart();
-        UpdateTimerText();
-        CheckTime();
-    }
-
-    public void TimerStart()
-    {
         timeRemaining -= Time.deltaTime;
-    }
-    public void UpdateTimerText()
-    {
-        timerText.text = timeRemaining.ToString("F0");
-    }
-
-    public void CheckTime()
-    {
-        if(timeRemaining <= 0)
+        if (timeRemaining <= 0)
         {
-            TimerEnd();
+            UIManager.Instance.RpcVoting(true);
         }
-    }
-    public void TimerEnd()
-    {
-        UIManager.Instance.Voting();
+
+        timerText.text = timeRemaining.ToString("F0");
     }
 }

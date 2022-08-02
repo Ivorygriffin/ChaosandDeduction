@@ -27,10 +27,13 @@ public class PickUp : Interactable
 
 
     //  Fields ----------------------------------------
-    [SyncVar]
-    bool pickedUp = false;
-    Rigidbody rb;
+    //[SyncVar]
+    public bool pickedUp = false;
     float holdDistance = 1;
+    Rigidbody rb;
+
+    [SyncVar]
+    CharacterInteraction currentOwner;
 
     //Grab points for objects
     [Header("Empty game objects")]
@@ -73,27 +76,28 @@ public class PickUp : Interactable
 #endif
 
     //  Methods ---------------------------------------
-    public override bool InteractOverride(CharacterInteraction character)
+    public override void InteractOverride(CharacterInteraction character)
     {
-        pickedUp = !pickedUp;
-        if (pickedUp)
+        if (!pickedUp)
         {
-            CmdPickedUp(character.transform);
+            CmdPickedUp(character);
+            character.currentInteraction = this;
         }
-        else
+        else //if(character == currentOwner)
         {
-            CmdDropped(character.transform);
-        }
+            CmdDropped(character);
+            character.currentInteraction = null;
 
-        return pickedUp;
+        }
     }
 
 
 
     [Command(requiresAuthority = false)]
-    void CmdPickedUp(Transform character)
+    void CmdPickedUp(CharacterInteraction character)
     {
-        RpcPickedUp(character);
+        RpcPickedUp(character.transform);
+        currentOwner = character;
     }
     [ClientRpc]
     void RpcPickedUp(Transform character)
@@ -102,6 +106,8 @@ public class PickUp : Interactable
     }
     public virtual void PickedUp(Transform character)
     {
+        pickedUp = true;
+
         float closestPoint = float.MaxValue;
         int closestIndex = 0;
         for (int i = 0; i < grabPoints.Length; i++)
@@ -134,17 +140,21 @@ public class PickUp : Interactable
 
 
     [Command(requiresAuthority = false)]
-    void CmdDropped(Transform character)
+    void CmdDropped(CharacterInteraction character)
     {
-        RpcDropped(character);
+        RpcDropped(character.transform);
+        //currentOwner = null; //TODO: determine if not setting null will upset anywhere, can not implement here due to delay between RPC and setting null
     }
     [ClientRpc]
     void RpcDropped(Transform character)
     {
         Dropped(character);
+        currentOwner.currentInteraction = null; //double jeapody or something (just ensuring a second player wasnt the cause of dropping the item)
     }
     public virtual void Dropped(Transform character)
     {
+        pickedUp = false;
+
         transform.parent = null;
 
         if (rb != null)

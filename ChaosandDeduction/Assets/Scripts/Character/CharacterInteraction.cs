@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
 using UnityEngine.InputSystem;
-//#endif
+#endif
 
 //  Namespace Properties ------------------------------
 public enum Alignment
@@ -32,14 +32,14 @@ public class CharacterInteraction : NetworkBehaviour
 
     //  Fields ----------------------------------------
     public float interactionRadius = 1;
-    Interactable currentInteraction = null;
+    public Interactable currentInteraction = null;
     public Alignment alignment = Alignment.Villager; //TOOD: distribute roles
 
     //  Unity Methods ---------------------------------
     protected void Start()
     {
-        if (isLocalPlayer)
-            PlayerManager.Instance.localPlayer = gameObject;
+        //if (isLocalPlayer)
+        //    PlayerManager.Instance.localPlayer = gameObject;
     }
 
 
@@ -47,13 +47,15 @@ public class CharacterInteraction : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
+        else if (PlayerManager.Instance && !PlayerManager.Instance.localPlayer)
+            PlayerManager.Instance.localPlayer = gameObject;
 
-        //#if UNITY_EDITOR
+        #if UNITY_EDITOR
         if (Keyboard.current[Key.E].wasReleasedThisFrame)
         {
             Interact();
         }
-        //#endif
+        #endif
     }
 
 #if UNITY_EDITOR
@@ -82,27 +84,25 @@ public class CharacterInteraction : NetworkBehaviour
                 float distance = Vector3.Distance(transform.position + transform.forward, Results[i].transform.position); //calculate distance from grab point to object
                 Interactable[] interactables = Results[i].GetComponents<Interactable>();
 
-                for(int j = 0; j < interactables.Length; j++)
-                if (Results[i] != null && interactables[j] != null && interactables[j].enabled && distance < closestDistance) //record the closest object
-                {
-                    closestDistance = distance;
-                    interactable = interactables[j];
-                }
+                for (int j = 0; j < interactables.Length; j++)
+                    if (Results[i] != null && interactables[j] != null && interactables[j].enabled && distance < closestDistance) //record the closest object
+                    {
+                        closestDistance = distance;
+                        interactable = interactables[j];
+                    }
             }
 
 
             // Interactable interactable = Results[closestIndex].GetComponent<Interactable>();
             if (interactable != null)
             {
-                if (interactable.Interact(this)) //if is only used for checking if the interaction should be kept, it will be interacted with either way here
-                    currentInteraction = interactable;
+                interactable.Interact(this);
             }
 
         }
         else
         {
-            if (!currentInteraction.Interact(this)) // check if we can forget about the object
-                currentInteraction = null;
+            currentInteraction.Interact(this);
         }
     }
 
