@@ -59,7 +59,7 @@ public class DoubleDoor : Door
 
     //  Methods ---------------------------------------
   
-
+    //TODO: implement reset specific for double doors
 
     //  Event Handlers --------------------------------
 }

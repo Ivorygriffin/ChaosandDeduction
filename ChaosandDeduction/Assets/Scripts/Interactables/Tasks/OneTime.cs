@@ -12,7 +12,7 @@ using Mirror;
 /// <summary>
 /// Replace with comments...
 /// </summary>
-public class Morph : Interactable
+public class OneTime : Interactable
 {
     //  Events ----------------------------------------
 
@@ -22,48 +22,17 @@ public class Morph : Interactable
 
 
     //  Fields ----------------------------------------
-
-    [Header("Regression")]
-    [Tooltip("If the morph should go backwards with inaction")]
-    public bool regressOverTime = false;
-    public float regressMaxTimer = 1;
-    float regressTimer = 0;
-
-    int stage = 0;
-    [Tooltip("Only one stage will be active at each time")]
-    public GameObject[] stages;
-
-
     [SerializeField] Reward reward;
+
+
 
     //  Unity Methods ---------------------------------
     protected void Start()
     {
         base.Start();
-        for (int i = 0; i < stages.Length; i++)
-        {
-            stages[i].SetActive(stage == i);
-        }
-
 
         if (reward.interactable)
-        {
             reward.interactable.enabled = false;
-            reward.interactable.Start();
-        }
-    }
-
-
-    protected void Update()
-    {
-        if (regressOverTime && stage > 0)
-        {
-            regressTimer += Time.deltaTime;
-            if (regressTimer > regressMaxTimer)
-            {
-                ChangeStage(false);
-            }
-        }
     }
 
 
@@ -82,16 +51,12 @@ public class Morph : Interactable
     [ClientRpc]
     void RpcInteract()
     {
-        ChangeStage(true);
-        if (stage >= stages.Length - 1) //reached the conclusion
-        {
-            //award ingredient
-            reward.LocalReward();
-            CmdReward();
+        //award ingredient
+        reward.LocalReward();
+        CmdReward();
 
-            //script now serves no purpose
-            this.enabled = false; //self disable? hopefully prevents issue of false exploit error
-        }
+        //this script now serves no purpose
+        this.enabled = false; //self disable? hopefully prevents issue of false exploit error
     }
 
     [Command(requiresAuthority = false)]
@@ -108,26 +73,11 @@ public class Morph : Interactable
         }
     }
 
-    void ChangeStage(bool increase)
-    {
-        if (stage >= stages.Length - 1)
-            return;
-
-        stages[stage].SetActive(false);
-        stage += increase ? 1 : -1;
-        stages[stage].SetActive(true);
-
-        regressTimer = 0;
-    }
-
     public override void ResetInteractable()
     {
         base.ResetInteractable();
-
-        regressTimer = 0;
-        stage = 0;
-        Start();
         reward.Reset();
+
     }
 
 

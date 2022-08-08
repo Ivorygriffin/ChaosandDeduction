@@ -41,6 +41,7 @@ public class Door : Interactable
     //  Unity Methods ---------------------------------
     protected void Start()
     {
+        base.Start();
         doorAxis += transform.position;
     }
 
@@ -78,6 +79,14 @@ public class Door : Interactable
     void CmdToggleState()
     {
         state = !state;
+    }
+
+    public override void ResetInteractable()
+    {
+        base.ResetInteractable();
+
+        timeTaken = 0;
+        state = false;
     }
 
 

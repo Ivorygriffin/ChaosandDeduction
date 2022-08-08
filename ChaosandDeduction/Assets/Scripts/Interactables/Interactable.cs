@@ -17,15 +17,25 @@ public class Reward
     bool givenLocalReward = false;
     public bool givenServerReward = false;
 
-    public void localReward()
+    public void LocalReward() //only allowed to hold local reward here, server reward has to be given out by the script due to networking TODO: figure out if this is true
     {
-        if(givenLocalReward)
+        if (givenLocalReward)
+            return;
 
         givenLocalReward = true;
         if (task)
             task.isComplete = true;
         if (interactable)
+        {
             interactable.enabled = true;
+            interactable.ResetInteractable();
+        }
+    }
+
+    public void Reset()
+    {
+        givenLocalReward = false;
+        givenServerReward = false;
     }
 }
 
@@ -48,9 +58,15 @@ public abstract class Interactable : NetworkBehaviour
     [Tooltip("What alignement is required to interact with this script, Neutral means any")]
     public Alignment requiredAlignment = Alignment.Neutral; //Neutral means any
 
+    protected Vector3 startPos;
+    protected Quaternion startAngle;
 
     //  Unity Methods ---------------------------------
-
+    public void Start()
+    {
+        startPos = transform.position;
+        startAngle = transform.rotation;
+    }
 
 
     //  Methods ---------------------------------------
@@ -65,6 +81,10 @@ public abstract class Interactable : NetworkBehaviour
     }
     public abstract void InteractOverride(CharacterInteraction character);
 
-
+    public virtual void ResetInteractable()
+    {
+        transform.position = startPos;
+        transform.rotation = startAngle;
+    }
     //  Event Handlers --------------------------------
 }

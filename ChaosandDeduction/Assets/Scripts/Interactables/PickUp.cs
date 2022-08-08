@@ -47,6 +47,7 @@ public class PickUp : Interactable
     //  Unity Methods ---------------------------------
     protected void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -159,6 +160,12 @@ public class PickUp : Interactable
 
         if (rb != null)
             rb.isKinematic = false;
+    }
+
+    public override void ResetInteractable()
+    {
+        base.ResetInteractable();
+        //pickups should not need reseting? unless we wish to store their start point
     }
 
     //  Event Handlers --------------------------------

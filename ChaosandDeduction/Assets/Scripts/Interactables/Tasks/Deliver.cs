@@ -30,7 +30,6 @@ public class Deliver : PickUp
 
 
     //  Fields ----------------------------------------
-    Vector3 startPos;
     public Vector3 deliverPoint = Vector3.zero;
     public float deliverRadius = 5;
 
@@ -47,7 +46,6 @@ public class Deliver : PickUp
     protected void Start()
     {
         base.Start();
-        startPos = transform.position;
     }
 
 
@@ -87,7 +85,7 @@ public class Deliver : PickUp
         {
             StartCoroutine(DelayDestroy());
             //Destroy(gameObject); 
-            reward.localReward();
+            reward.LocalReward();
             CmdReward();
         }
 
@@ -106,13 +104,21 @@ public class Deliver : PickUp
         {
             GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
             NetworkServer.Spawn(temp);
-            NetworkServer.Destroy(gameObject);
         }
+        if (destroyOnArrival)
+            NetworkServer.Destroy(gameObject);
     }
 
     IEnumerator DelayDestroy()
     {
         yield return new WaitForSeconds(5);
+    }
+    public override void ResetInteractable()
+    {
+        base.ResetInteractable();
+
+        resetTimer = 0;
+        reward.Reset();
     }
 
     //  Event Handlers --------------------------------
