@@ -59,6 +59,7 @@ public class PlayerManager : NetworkBehaviour
     void CmdAssignRole(GameObject player)
     {
         allPlayers[playersJoined] = player;
+        player.transform.GetChild(playersJoined).gameObject.SetActive(true);
         playersJoined++;
 
         if (!traitorAssigned) //if no traitor yet, and 

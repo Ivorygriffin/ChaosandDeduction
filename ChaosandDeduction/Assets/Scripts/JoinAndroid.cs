@@ -13,6 +13,8 @@ public class JoinAndroid : MonoBehaviour
     {
         NetworkManager.singleton.networkAddress = "192.168.126.131";
         NetworkManager.singleton.StartClient();
+
+        DestroySelf();
     }
 
     public void DestroySelf()
