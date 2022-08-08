@@ -40,10 +40,7 @@ public class Morph : Interactable
     protected void Start()
     {
         base.Start();
-        for (int i = 0; i < stages.Length; i++)
-        {
-            stages[i].SetActive(stage == i);
-        }
+        //ResetStages();
 
 
         if (reward.interactable)
@@ -51,6 +48,16 @@ public class Morph : Interactable
             reward.interactable.enabled = false;
             reward.interactable.Start();
         }
+    }
+
+    private void OnEnable()
+    {
+        ResetStages();
+    }
+
+    private void OnDisable()
+    {
+        ResetStages();
     }
 
 
@@ -120,13 +127,23 @@ public class Morph : Interactable
         regressTimer = 0;
     }
 
+    public void ResetStages()
+    {
+        for (int i = 0; i < stages.Length; i++)
+        {
+            stages[i].SetActive(stage == i);
+        }
+    }
+
     public override void ResetInteractable()
     {
         base.ResetInteractable();
 
         regressTimer = 0;
         stage = 0;
-        Start();
+        ResetStages();
+        if (reward.interactable)
+            reward.interactable.enabled = false;
         reward.Reset();
     }
 

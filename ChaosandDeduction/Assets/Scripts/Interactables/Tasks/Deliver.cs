@@ -46,6 +46,12 @@ public class Deliver : PickUp
     protected void Start()
     {
         base.Start();
+
+        if (reward.interactable)
+        {
+            reward.interactable.enabled = false;
+            reward.interactable.Start();
+        }
     }
 
 
