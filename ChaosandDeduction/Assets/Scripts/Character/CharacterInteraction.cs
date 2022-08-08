@@ -34,10 +34,13 @@ public class CharacterInteraction : NetworkBehaviour
     public float interactionRadius = 1;
     public Interactable currentInteraction = null;
     public Alignment alignment = Alignment.Villager; //TOOD: distribute roles
+    [SyncVar(hook = "ChangeModel")]
+    public int modelIndex = 0;
 
     //  Unity Methods ---------------------------------
     protected void Start()
     {
+        transform.GetChild(modelIndex).gameObject.SetActive(true);
         //if (isLocalPlayer)
         //    PlayerManager.Instance.localPlayer = gameObject;
     }
@@ -104,7 +107,11 @@ public class CharacterInteraction : NetworkBehaviour
             currentInteraction.Interact(this);
         }
     }
-
+    protected void ChangeModel(int oldVar, int newVar)
+    {
+        transform.GetChild(oldVar).gameObject.SetActive(false);
+        transform.GetChild(newVar).gameObject.SetActive(true);
+    }
 
     //  Event Handlers --------------------------------
 }

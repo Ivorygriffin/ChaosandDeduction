@@ -58,7 +58,7 @@ public class PickUp : Interactable
     }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    protected void OnDrawGizmos()
     {
         for (int i = 0; i < grabPoints.Length; i++)
         {

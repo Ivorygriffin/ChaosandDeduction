@@ -67,6 +67,7 @@ public class Deliver : PickUp
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        base.OnDrawGizmos();
         if (Selection.activeGameObject == gameObject)
         {
             Gizmos.color = Color.yellow;
