@@ -22,11 +22,16 @@ public class HiddenMorph : Morph
 
 
     //  Fields ----------------------------------------
+    public bool hideInitial = true;
+    public bool hideFinal = true;
 
 
     //  Unity Methods ---------------------------------
     private void OnDisable()
     {
+        if ((stage <= 0 && !hideInitial) || (stage >= (stages.Length - 1) && !hideFinal)) //ignore the hide effect if its at the start or end and the relevant bool is false
+            return;
+
         for (int i = 0; i < stages.Length; i++)
         {
             stages[i].SetActive(false);

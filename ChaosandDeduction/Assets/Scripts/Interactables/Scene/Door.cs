@@ -69,7 +69,7 @@ public class Door : Interactable
 
 
     //  Methods ---------------------------------------
-    public override void InteractOverride(CharacterInteraction character)
+    protected override void InteractOverride(CharacterInteraction character)
     {
         CmdToggleState();
         //timeTaken = state ? 0 : transitionTime;

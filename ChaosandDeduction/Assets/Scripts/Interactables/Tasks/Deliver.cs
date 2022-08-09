@@ -90,7 +90,7 @@ public class Deliver : PickUp
 
         if (Vector3.Distance(transform.position, deliverPoint) < deliverRadius)
         {
-            StartCoroutine(DelayDestroy());
+            //StartCoroutine(DelayDestroy());
             //Destroy(gameObject); 
             reward.LocalReward();
             CmdReward();

@@ -77,7 +77,7 @@ public class PickUp : Interactable
 #endif
 
     //  Methods ---------------------------------------
-    public override void InteractOverride(CharacterInteraction character)
+    protected override void InteractOverride(CharacterInteraction character)
     {
         if (!pickedUp)
         {
@@ -162,11 +162,6 @@ public class PickUp : Interactable
             rb.isKinematic = false;
     }
 
-    public override void ResetInteractable()
-    {
-        base.ResetInteractable();
-        //pickups should not need reseting? unless we wish to store their start point
-    }
 
     //  Event Handlers --------------------------------
 }
