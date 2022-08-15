@@ -79,7 +79,7 @@ public abstract class Interactable : NetworkBehaviour
 
         InteractOverride(character);
     }
-    public abstract void InteractOverride(CharacterInteraction character);
+    protected abstract void InteractOverride(CharacterInteraction character);
 
     public virtual void ResetInteractable()
     {

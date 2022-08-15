@@ -37,7 +37,7 @@ public class OneTime : Interactable
 
 
     //  Methods ---------------------------------------
-    public override void InteractOverride(CharacterInteraction character)
+    protected override void InteractOverride(CharacterInteraction character)
     {
         CmdInteract();
     }

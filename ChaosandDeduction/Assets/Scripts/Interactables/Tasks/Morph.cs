@@ -29,7 +29,7 @@ public class Morph : Interactable
     public float regressMaxTimer = 1;
     float regressTimer = 0;
 
-    int stage = 0;
+    protected int stage = 0;
     [Tooltip("Only one stage will be active at each time")]
     public GameObject[] stages;
 
@@ -75,7 +75,7 @@ public class Morph : Interactable
 
 
     //  Methods ---------------------------------------
-    public override void InteractOverride(CharacterInteraction character)
+    protected override void InteractOverride(CharacterInteraction character)
     {
         CmdInteract();
     }

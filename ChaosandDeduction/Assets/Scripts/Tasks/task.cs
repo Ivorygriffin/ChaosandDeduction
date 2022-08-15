@@ -55,7 +55,7 @@ public class task : NetworkBehaviour
 
     public void Update()
     {
-        if (UIManager.Instance && !initialised) //just run this whenever the instance is set up
+        if (UIManager.Instance && !initialised) //just run this whenever the instance is set up (only runs once)
         {
             initialised = true;
             UpdateTraitorString();
