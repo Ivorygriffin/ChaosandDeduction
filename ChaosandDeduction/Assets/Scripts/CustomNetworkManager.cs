@@ -7,6 +7,7 @@ using Mirror;
 public class CustomNetworkManager : NetworkManager
 {
     public UnityEvent<Alignment> onLeave = new UnityEvent<Alignment>();
+    public UnityEvent<NetworkConnectionToClient> onJoin = new UnityEvent<NetworkConnectionToClient>();
     public UnityEvent onHost = new UnityEvent();
 
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
@@ -24,6 +25,12 @@ public class CustomNetworkManager : NetworkManager
         //if (interactor)
             onLeave.Invoke(Alignment.Traitor);
         //player has disconnected
+    }
+    public override void OnServerConnect(NetworkConnectionToClient conn)
+    {
+        base.OnServerConnect(conn);
+        onJoin.Invoke(conn);
+        //player has joined
     }
     public override void OnStartHost()
     {

@@ -9,6 +9,8 @@ public class Timer : NetworkBehaviour
     [SyncVar]
     public float timeRemaining, startTime;
     public TMP_Text timerText;
+
+    public AudioSource gameplayMusic;
     void Start()
     {
         timeRemaining = startTime;
@@ -26,5 +28,21 @@ public class Timer : NetworkBehaviour
         }
 
         timerText.text = timeRemaining.ToString("F0");
+    }
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        CmdStartMusic();
+    }
+    [Command(requiresAuthority = false)]
+    public void CmdStartMusic(NetworkConnectionToClient conn = null) //round about way of forcing the client to sync music?
+    {
+        TargetStartMusic(conn, timeRemaining);
+    }
+    [TargetRpc]
+    void TargetStartMusic(NetworkConnection conn, float time)
+    {
+        gameplayMusic.Play();
+        gameplayMusic.time = (startTime - time);
     }
 }
