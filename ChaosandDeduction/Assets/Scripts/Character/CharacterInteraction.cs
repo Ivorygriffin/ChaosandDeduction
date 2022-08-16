@@ -43,6 +43,12 @@ public class CharacterInteraction : NetworkBehaviour
         transform.GetChild(modelIndex).gameObject.SetActive(true);
         //if (isLocalPlayer)
         //    PlayerManager.Instance.localPlayer = gameObject;
+        if (isServer) //server does not gain the effects of changing model, thus assume the first model is theirs
+        {
+            Animator animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+            //animator.speed = 0.5f;
+            GetComponent<CharacterMovement>().animator = animator;
+        }
     }
 
 
@@ -110,7 +116,12 @@ public class CharacterInteraction : NetworkBehaviour
     protected void ChangeModel(int oldVar, int newVar)
     {
         transform.GetChild(oldVar).gameObject.SetActive(false);
-        transform.GetChild(newVar).gameObject.SetActive(true);
+        GameObject newModel = transform.GetChild(newVar).gameObject;
+        newModel.SetActive(true);
+
+        Animator animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        //animator.speed = 0.5f;
+        GetComponent<CharacterMovement>().animator = animator;
     }
 
     //  Event Handlers --------------------------------

@@ -24,8 +24,10 @@ public class CharacterMovement : NetworkBehaviour
     CharacterController character;
 
     public float moveSpeed = 5;
+    public float animationMultiplier = 0.8f;
 
     Vector3 playerVelocity;
+    public Animator animator;
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -53,6 +55,8 @@ public class CharacterMovement : NetworkBehaviour
             gameObject.transform.forward = playerVelocity;
 
         character.SimpleMove(playerVelocity); //* Time.deltaTime
+        if (animator)
+            animator.SetFloat("Speed", playerVelocity.magnitude);
 
         //groundedPlayer = character.isGrounded;
     }
