@@ -10,6 +10,8 @@ public class Timer : NetworkBehaviour
     public float timeRemaining, startTime;
     public TMP_Text timerText;
 
+    bool revealedVotingScreen = false; //has the server revealed the voting screen yet? TODO: turn this on when early vote is called?
+
     public AudioSource gameplayMusic;
     void Start()
     {
@@ -21,8 +23,9 @@ public class Timer : NetworkBehaviour
         if (isServer) //only crunch the numbers on the server
         {
             timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 0)
+            if (timeRemaining <= 0 && !revealedVotingScreen)
             {
+                revealedVotingScreen = true;
                 UIManager.Instance.CmdVoting(true);
             }
         }

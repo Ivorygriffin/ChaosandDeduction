@@ -7,6 +7,7 @@ public class votingSystem : NetworkBehaviour
 {
     //bool
     bool voted = false;
+    bool finishedVoting = false; //used server only to determine if the voting has been finished
 
 
     //int
@@ -84,6 +85,9 @@ public class votingSystem : NetworkBehaviour
     [Server]
     void TallyVotes()
     {
+        if (finishedVoting)
+            return;
+
         int votes = 0;
         for (int i = 0; i < numVoted.Length; i++)
         {
@@ -97,6 +101,7 @@ public class votingSystem : NetworkBehaviour
         {
             if (numVoted[i] >= 3) //if 3 or more votes on any one player, consider game ended
             {
+                finishedVoting = true;
                 switch (PlayerManager.Instance.allPlayers[selectedPlayer].GetComponent<CharacterInteraction>().alignment)
                 {
                     case Alignment.Villager:
@@ -106,6 +111,9 @@ public class votingSystem : NetworkBehaviour
                     case Alignment.Traitor:
                         //win
                         RpcResults(true);
+                        break;
+                    default:
+                        //RpcResults(false);
                         break;
                 }
                 return; //Halt rest of script (as the rest will handle what happens if draw / spread out votes
