@@ -27,6 +27,7 @@ public class CharacterMovement : NetworkBehaviour
     public float animationMultiplier = 0.8f;
 
     Vector3 playerVelocity;
+    Vector3 lastFramePos = Vector3.zero;
     public Animator animator;
 
     //  Unity Methods ---------------------------------
@@ -40,7 +41,17 @@ public class CharacterMovement : NetworkBehaviour
     protected void Update()
     {
         if (!isLocalPlayer)
+        {
+            if (animator)
+            {
+                animator.SetFloat("Speed", Vector3.Distance(lastFramePos, transform.position) / (Time.deltaTime));
+                lastFramePos = transform.position;
+            }
+            else
+                animator = transform.GetChild(GetComponent<CharacterInteraction>().modelIndex).gameObject.GetComponent<Animator>();
+
             return;
+        }
 
         playerVelocity = Vector3.zero;
 

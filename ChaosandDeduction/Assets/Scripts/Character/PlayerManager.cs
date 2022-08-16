@@ -23,9 +23,11 @@ public class PlayerManager : NetworkBehaviour
         set
         {
             player = value;
+            localAlignment = Alignment.Villager;
             CmdAssignRole(value);
         }
     }
+    public Alignment localAlignment;
 
 
     //  Fields ----------------------------------------
@@ -82,6 +84,7 @@ public class PlayerManager : NetworkBehaviour
     void TargetAssignTraitor(NetworkConnection target, CharacterInteraction player)
     {
         player.alignment = Alignment.Traitor;
+        localAlignment = Alignment.Traitor; ;
     }
 
     [Server]
