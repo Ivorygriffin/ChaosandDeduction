@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 
 
@@ -34,91 +35,92 @@ public class prefabthingo : ScriptableWizard
 {
 
 
-	public bool copyValues = true;
+    public bool copyValues = true;
 
 
-	public GameObject NewType;
+    public GameObject NewType;
 
 
-	public GameObject[] OldObjects;
-
-
-
-
-
-	[MenuItem("Custom/Replace GameObjects")]
-
-
-	static void CreateWizard()
-
-
-	{
-
-
-		var replaceGameObjects = ScriptableWizard.DisplayWizard<prefabthingo>("Replace GameObjects", "Replace");
-
-
-		replaceGameObjects.OldObjects = Selection.gameObjects;
-
-
-	}
+    public GameObject[] OldObjects;
 
 
 
 
 
-	void OnWizardCreate()
+    [MenuItem("Custom/Replace GameObjects")]
 
 
-	{
+    static void CreateWizard()
 
 
-		//Transform[] Replaces;
+    {
 
 
-		//Replaces = Replace.GetComponentsInChildren<Transform>();
+        var replaceGameObjects = ScriptableWizard.DisplayWizard<prefabthingo>("Replace GameObjects", "Replace");
 
 
+        replaceGameObjects.OldObjects = Selection.gameObjects;
 
 
-
-		foreach (GameObject go in OldObjects)
-
-
-		{
-
-
-			GameObject newObject;
-
-
-			newObject = (GameObject)EditorUtility.InstantiatePrefab(NewType);
-
-
-			newObject.transform.parent = go.transform.parent;
-
-
-			newObject.transform.localPosition = go.transform.localPosition;
-
-
-			newObject.transform.localRotation = go.transform.localRotation;
-
-
-			newObject.transform.localScale = go.transform.localScale;
+    }
 
 
 
 
 
-			DestroyImmediate(go);
+    void OnWizardCreate()
 
 
-		}
+    {
 
 
-	}
+        //Transform[] Replaces;
+
+
+        //Replaces = Replace.GetComponentsInChildren<Transform>();
+
+
+
+
+
+        foreach (GameObject go in OldObjects)
+
+
+        {
+
+
+            GameObject newObject;
+
+
+            newObject = (GameObject)EditorUtility.InstantiatePrefab(NewType);
+
+
+            newObject.transform.parent = go.transform.parent;
+
+
+            newObject.transform.localPosition = go.transform.localPosition;
+
+
+            newObject.transform.localRotation = go.transform.localRotation;
+
+
+            newObject.transform.localScale = go.transform.localScale;
+
+
+
+
+
+            DestroyImmediate(go);
+
+
+        }
+
+
+    }
 
 
 
 
 
 }
+#endif

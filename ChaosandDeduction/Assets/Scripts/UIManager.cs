@@ -32,8 +32,8 @@ public class UIManager : NetworkBehaviour
 
     //need variable to differenciate between villager or traitor interaction with UI,if the traitor clicks on the task list then traitor task list will open
     //for the sake of getting rid of compile errors variable
-    public bool villager;
-    public bool traitor;
+    //public bool villager;
+    //public bool traitor;
     
     void Start()
     {
@@ -77,11 +77,11 @@ public class UIManager : NetworkBehaviour
     }
     public void OpenTaskList()
     {
-        if (villager)
+        if (PlayerManager.Instance.localAlignment == Alignment.Villager)
         {
             VillagerTaskScreen.SetActive(true);
         }
-        if (traitor)
+        if (PlayerManager.Instance.localAlignment == Alignment.Traitor)
         {
             TraitorTaskScreen.SetActive(true);
         }
@@ -89,11 +89,11 @@ public class UIManager : NetworkBehaviour
     }
     public void CloseTaskList()
     {
-        if (villager)
+        if (PlayerManager.Instance.localAlignment == Alignment.Villager)
         {
             VillagerTaskScreen.SetActive(false);
         }
-        if (traitor)
+        if (PlayerManager.Instance.localAlignment == Alignment.Traitor)
         {
             TraitorTaskScreen.SetActive(false);
         }

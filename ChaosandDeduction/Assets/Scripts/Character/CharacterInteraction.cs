@@ -119,7 +119,7 @@ public class CharacterInteraction : NetworkBehaviour
         GameObject newModel = transform.GetChild(newVar).gameObject;
         newModel.SetActive(true);
 
-        Animator animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        Animator animator = transform.GetChild(newVar).gameObject.GetComponent<Animator>();
         //animator.speed = 0.5f;
         GetComponent<CharacterMovement>().animator = animator;
     }

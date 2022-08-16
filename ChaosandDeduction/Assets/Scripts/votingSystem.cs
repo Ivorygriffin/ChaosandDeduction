@@ -6,8 +6,6 @@ using Mirror;
 public class votingSystem : NetworkBehaviour
 {
     //bool
-    [SyncVar(hook = "Results")]
-    bool traitorDetected;
     bool voted = false;
 
 
@@ -27,16 +25,15 @@ public class votingSystem : NetworkBehaviour
         //RpcConfirmVote();
     }
 
-
-    void Results(bool oldVal, bool newVal)
+    [ClientRpc]
+    void RpcResults(bool traitor)
     {
-        traitorDetected = newVal;
-        if (traitorDetected && ((taskManager.vTaskComplete == true) || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
+        if (traitor && ((taskManager.vTaskComplete == true) || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
             UIManager.Instance.winScreenText.text = "The Villagers Win";
             UIManager.Instance.WinScreen();
         }
-        else if (!traitorDetected && ((taskManager.tTaskComplete == true) || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
+        else if (!traitor && ((taskManager.tTaskComplete == true) || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
             UIManager.Instance.winScreenText.text = "The Traitor Wins";
             UIManager.Instance.WinScreen();
@@ -104,17 +101,21 @@ public class votingSystem : NetworkBehaviour
                 {
                     case Alignment.Villager:
                         //lost
-                        traitorDetected = false;
+                        RpcResults(false);
                         break;
                     case Alignment.Traitor:
                         //win
-                        traitorDetected = true;
+                        RpcResults(true);
                         break;
                 }
                 return; //Halt rest of script (as the rest will handle what happens if draw / spread out votes
             }
         }
 
+        numVoted[0] = 0;
+        numVoted[1] = 0;
+        numVoted[2] = 0;
+        numVoted[3] = 0;
         RpcResetVote();
     }
 
@@ -122,7 +123,7 @@ public class votingSystem : NetworkBehaviour
     void RpcResetVote()
     {
         voted = false;
-        voteObjects.SetActive(false);
+        voteObjects.SetActive(true);
         selectedPlayer = -1;
     }
 }

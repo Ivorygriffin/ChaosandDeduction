@@ -52,7 +52,7 @@ MonoBehaviour:
   offlineScene: Assets/Scenes/MainMenu.unity
   onlineScene: Assets/Scenes/SampleScene.unity
   transport: {fileID: 1741555620992216932}
-  networkAddress: 192.168.126.131
+  networkAddress: 192.168.203.8
   maxConnections: 100
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 3718973189240868519, guid: 77bda3f8ca6708241964cdd1c5736b76, type: 3}
@@ -76,6 +76,39 @@ MonoBehaviour:
   - {fileID: 2417641985910925405, guid: df9ab7922fc3f164ebd694a1af905e50, type: 3}
   - {fileID: 6753871882676321832, guid: 3a470e4fb77bb094287fbcaaf1ee4d30, type: 3}
   - {fileID: 7777282313125324196, guid: cf7afb8bd61b9634d8a8f956784d94df, type: 3}
+  onLeave:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: playerLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onJoin:
+    m_PersistentCalls:
+      m_Calls: []
+  onHost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: JoinAndroid, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1741555620992216932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,4 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetX: 0
-  offsetY: 0
+  offsetY: 180
