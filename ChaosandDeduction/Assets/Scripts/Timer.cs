@@ -12,7 +12,8 @@ public class Timer : NetworkBehaviour
 
     bool revealedVotingScreen = false; //has the server revealed the voting screen yet? TODO: turn this on when early vote is called?
 
-    public AudioSource gameplayMusic;
+    public AudioSource gameplayMusic; 
+    public AudioSource VotingMusic;
     void Start()
     {
         timeRemaining = startTime;
@@ -27,6 +28,7 @@ public class Timer : NetworkBehaviour
             {
                 revealedVotingScreen = true;
                 UIManager.Instance.CmdVoting(true);
+                VotingMusic.Play();
             }
         }
 
