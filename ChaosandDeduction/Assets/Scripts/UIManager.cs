@@ -26,8 +26,10 @@ public class UIManager : NetworkBehaviour
     //public string winner; // this string will change upon voting/or timer end
     public string completedTask;// will change depending on which task a player has completed
     [TextArea]
+    [SyncVar]
     public string villagerCurrentTaskList;
     [TextArea]
+    [SyncVar]
     public string traitorCurrentTaskList;
 
     //need variable to differenciate between villager or traitor interaction with UI,if the traitor clicks on the task list then traitor task list will open

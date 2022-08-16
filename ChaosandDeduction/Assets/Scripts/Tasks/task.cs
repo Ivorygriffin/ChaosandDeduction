@@ -45,16 +45,20 @@ public class task : NetworkBehaviour
 
     public void Start()
     {
-        for (int i = 0; i < numVillagerTasks; i++)
-            AddVillagerTask();
-        for (int i = 0; i < numTraitorTasks; i++)
-            AddTraitorTask();
-
+        if (isServer)
+        {
+            for (int i = 0; i < numVillagerTasks; i++)
+                AddVillagerTask();
+            for (int i = 0; i < numTraitorTasks; i++)
+                AddTraitorTask();
+        }
 
     }
 
     public void Update()
     {
+        if (!isServer)
+            return;
         if (UIManager.Instance && !initialised) //just run this whenever the instance is set up (only runs once)
         {
             initialised = true;
@@ -63,7 +67,6 @@ public class task : NetworkBehaviour
         }
         //ConvertTraitorToString();
         //ConvertVillagerToString();
-
         CheckTaskComplete();
 
         //gotta move outta update to allow for network behaviour
