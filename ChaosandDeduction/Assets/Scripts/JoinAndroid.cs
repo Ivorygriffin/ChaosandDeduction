@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Mirror.Discovery;
 
 public class JoinAndroid : MonoBehaviour
 {
+    public NetworkDiscoveryHUD networkDiscovery;
     private void Start()
     {
         //NetworkManager.singleton.on
@@ -14,7 +16,8 @@ public class JoinAndroid : MonoBehaviour
     }
     public void ButtonDown()
     {
-        NetworkManager.singleton.StartClient();
+        //NetworkManager.singleton.StartClient();
+        networkDiscovery.Discover();
 
         DestroySelf();
     }

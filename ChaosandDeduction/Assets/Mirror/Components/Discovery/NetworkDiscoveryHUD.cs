@@ -81,6 +81,11 @@ namespace Mirror.Discovery
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
+        public void Discover()
+        {
+            discoveredServers.Clear();
+            networkDiscovery.StartDiscovery();
+        }
 
         void StopButtons()
         {
@@ -127,6 +132,7 @@ namespace Mirror.Discovery
         {
             // Note that you can check the versioning to decide if you can connect to the server or not using this method
             discoveredServers[info.serverId] = info;
+            Connect(info);
         }
     }
 }

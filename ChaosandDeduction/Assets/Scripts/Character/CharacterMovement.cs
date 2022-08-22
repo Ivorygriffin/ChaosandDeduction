@@ -42,9 +42,9 @@ public class CharacterMovement : NetworkBehaviour
     {
         if (!isLocalPlayer)
         {
-            if (animator)
+            if (animator) //TODO: determine if this is most efficent way to do this? currently if not calculating speed we just get the distance per frame
             {
-                animator.SetFloat("Speed", Vector3.Distance(lastFramePos, transform.position) / (Time.deltaTime));
+                animator.SetFloat("Blend", Vector3.Distance(lastFramePos, transform.position) / (Time.deltaTime));
                 lastFramePos = transform.position;
             }
             else
@@ -67,7 +67,7 @@ public class CharacterMovement : NetworkBehaviour
 
         character.SimpleMove(playerVelocity); //* Time.deltaTime
         if (animator)
-            animator.SetFloat("Speed", playerVelocity.magnitude);
+            animator.SetFloat("Blend", playerVelocity.magnitude);
 
         //groundedPlayer = character.isGrounded;
     }
