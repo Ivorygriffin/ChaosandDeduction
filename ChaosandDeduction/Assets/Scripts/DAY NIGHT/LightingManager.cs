@@ -7,26 +7,30 @@ public class LightingManager : MonoBehaviour
 {
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
-    [SerializeField, Range(0, 24)] private float TimeOfDay;
+    [SerializeField, Range(0, 180)] private float TimeOfDay;
 
     private void Update()
     {
         
-        if (Preset == null)
-            return;
-        if (Application.isPlaying)
-        {
-            TimeOfDay += Time.deltaTime;
-            Debug.Log(TimeOfDay);
-            TimeOfDay %= 24;
-            UpdateLighting(TimeOfDay / 24f);
-           
-        }
-        else
-        {
-            UpdateLighting(TimeOfDay/24f);
-            
-        }
+        
+            if (Preset == null)
+                return;
+            if (Application.isPlaying)
+            {
+                TimeOfDay += Time.deltaTime;
+                Debug.Log(TimeOfDay);
+                TimeOfDay %= 180;
+                UpdateLighting(TimeOfDay / 180f);
+
+            }
+            else
+            {
+                UpdateLighting(TimeOfDay / 180f);
+
+            }
+        
+        
+        
     }
     private void UpdateLighting(float timePercent)
     {
@@ -37,7 +41,7 @@ public class LightingManager : MonoBehaviour
         if(DirectionalLight != null)
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
-            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 180f) + 90f, 170f, 0));
+            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 100f) + 90f, 170, 0));
         }
     }
     private void OnValidate()
