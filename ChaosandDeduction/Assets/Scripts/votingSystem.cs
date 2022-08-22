@@ -27,14 +27,14 @@ public class votingSystem : NetworkBehaviour
     }
 
     [ClientRpc]
-    void RpcResults(bool traitor)
+    void RpcResults(bool traitor, bool vTaskComp, bool tTaskComp)
     {
-        if (traitor && ((taskManager.vTaskComplete == true) || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
+        if (traitor && (vTaskComp || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
             UIManager.Instance.winScreenText.text = "The Villagers Win";
             UIManager.Instance.WinScreen();
         }
-        else if (!traitor && ((taskManager.tTaskComplete == true) || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
+        else if (!traitor && (tTaskComp || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
             UIManager.Instance.winScreenText.text = "The Traitor Wins";
             UIManager.Instance.WinScreen();
@@ -106,11 +106,11 @@ public class votingSystem : NetworkBehaviour
                 {
                     case Alignment.Villager:
                         //lost
-                        RpcResults(false);
+                        RpcResults(false, taskManager.vTaskComplete, taskManager.tTaskComplete);
                         break;
                     case Alignment.Traitor:
                         //win
-                        RpcResults(true);
+                        RpcResults(true, taskManager.vTaskComplete, taskManager.tTaskComplete);
                         break;
                     default:
                         //RpcResults(false);
