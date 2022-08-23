@@ -31,7 +31,7 @@ public class votingSystem : NetworkBehaviour
     {
         if (traitor && (vTaskComp || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
-            UIManager.Instance.winScreenText.text = "The Villagers Win";
+            UIManager.Instance.winScreenText.text = "The Witches Win";
             UIManager.Instance.WinScreen();
         }
         else if (!traitor && (tTaskComp || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
