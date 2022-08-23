@@ -13,6 +13,7 @@ public class UIManager : NetworkBehaviour
     public GameObject winScreen;
     public GameObject VillagerTaskScreen;
     public GameObject TraitorTaskScreen;
+    public GameObject InitialMap;
 
 
     //Texts
@@ -71,6 +72,11 @@ public class UIManager : NetworkBehaviour
     public void WinScreen()
     {
         winScreen.SetActive(true);
+    }
+
+    public void ShowMap()
+    {
+        InitialMap.SetActive(true);
     }
 
     public void TaskNotifications()
