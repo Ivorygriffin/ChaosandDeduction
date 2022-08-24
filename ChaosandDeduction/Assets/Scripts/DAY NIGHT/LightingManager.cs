@@ -1,39 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 [ExecuteAlways]
-public class LightingManager : MonoBehaviour
+public class LightingManager : NetworkBehaviour
 {
+
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
+
+    [SyncVar]
     [SerializeField, Range(0, 180)] private float TimeOfDay;
+    private float StartTime;
 
     private void Update()
     {
-        
+       
         
             if (Preset == null)
                 return;
-            if (Application.isPlaying)
-            {
-                TimeOfDay += Time.deltaTime;
-                Debug.Log(TimeOfDay);
-                TimeOfDay %= 180;
-                UpdateLighting(TimeOfDay / 180f);
+        if (Application.isPlaying)
+        {
+            TimeOfDay += Time.deltaTime;
+            //Debug.Log(TimeOfDay);
+            TimeOfDay %= 180;
+            RpcUpdateLighting(TimeOfDay / 180f);
 
-            }
-            else
-            {
-                UpdateLighting(TimeOfDay / 180f);
+        }
+        else
+        {
+            RpcUpdateLighting(TimeOfDay / 180f);
 
-            }
+        }
+        
+        
+          
         
         
         
     }
-    private void UpdateLighting(float timePercent)
+
+    public override void OnStartClient()
     {
+        base.OnStartClient();
+    
+        CmdStartLighting();
+    }
+    [Command(requiresAuthority = false)]
+    public void CmdStartLighting() 
+    {
+        RpcUpdateLighting(TimeOfDay);
+    } 
+
+    [ClientRpc]
+    private void RpcUpdateLighting(float timePercent)
+    {
+     
         
         RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
         RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
