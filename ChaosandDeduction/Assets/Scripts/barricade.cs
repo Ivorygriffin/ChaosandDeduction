@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class barricade : MonoBehaviour
+public class barricade : NetworkBehaviour
 {
     public Material newMaterial;
     public Material oldMaterial;
@@ -10,6 +11,7 @@ public class barricade : MonoBehaviour
     public bool barricade2;
     public List<GameObject> set1;
     public List<GameObject> set2;
+
 
     public void Barricade()
     {
@@ -31,6 +33,7 @@ public class barricade : MonoBehaviour
         }
         //not working
     }
+
     public void SwitchB()
     {
         if (barricade1 == true)
@@ -59,6 +62,8 @@ public class barricade : MonoBehaviour
             barricade2 = false;
         }
     }
+
+
     public void B1True()
     {
         barricade1 = true;

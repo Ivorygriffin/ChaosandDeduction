@@ -9,12 +9,14 @@ public class Timer : NetworkBehaviour
     [SyncVar]
     public float timeRemaining, startTime;
     public TMP_Text timerText;
+   
 
     bool revealedVotingScreen = false; //has the server revealed the voting screen yet? TODO: turn this on when early vote is called?
 
     public AudioSource gameplayMusic; 
     public AudioSource VotingMusic;
-    public GameObject set1,set2;
+    public GameObject set1, set2;
+
     void Start()
     {
         timeRemaining = startTime;
@@ -33,8 +35,8 @@ public class Timer : NetworkBehaviour
             }
             if(timeRemaining <= 90)
             {
-                set1.SetActive(true);
-                set2.SetActive(true);
+                RpcShowB();
+            
             }
         }
 
@@ -44,6 +46,7 @@ public class Timer : NetworkBehaviour
     {
         base.OnStartClient();
         CmdStartMusic();
+
     }
     [Command(requiresAuthority = false)]
     public void CmdStartMusic(NetworkConnectionToClient conn = null) //round about way of forcing the client to sync music?
@@ -55,5 +58,12 @@ public class Timer : NetworkBehaviour
     {
         gameplayMusic.Play();
         gameplayMusic.time = (startTime - time);
+    }
+
+    [ClientRpc]
+    public void RpcShowB()
+    {
+        set1.SetActive(true);
+        set2.SetActive(true);
     }
 }
