@@ -14,6 +14,7 @@ public class Timer : NetworkBehaviour
 
     public AudioSource gameplayMusic; 
     public AudioSource VotingMusic;
+    public GameObject set1,set2;
     void Start()
     {
         timeRemaining = startTime;
@@ -29,6 +30,11 @@ public class Timer : NetworkBehaviour
                 revealedVotingScreen = true;
                 UIManager.Instance.CmdVoting(true);
                 VotingMusic.Play();
+            }
+            if(timeRemaining <= 90)
+            {
+                set1.SetActive(true);
+                set2.SetActive(true);
             }
         }
 
