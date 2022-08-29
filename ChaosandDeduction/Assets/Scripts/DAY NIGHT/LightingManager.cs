@@ -64,7 +64,7 @@ public class LightingManager : NetworkBehaviour
         if(DirectionalLight != null)
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
-            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 100f) + 90f, 170, 0));
+            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 100f) + 90f, 200, 0));
         }
     }
     private void OnValidate()
