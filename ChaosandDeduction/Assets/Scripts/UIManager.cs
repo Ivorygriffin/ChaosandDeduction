@@ -14,6 +14,7 @@ public class UIManager : NetworkBehaviour
     public GameObject VillagerTaskScreen;
     public GameObject TraitorTaskScreen;
     public GameObject InitialMap;
+    public GameObject InteractCanvas;
 
 
     //Texts
@@ -62,36 +63,43 @@ public class UIManager : NetworkBehaviour
     public void CmdVoting(bool active)
     {
         RpcVoting(active);
+        
     }
     [ClientRpc]
     void RpcVoting(bool active)
     {
         voteScreen.SetActive(active);
+        InteractCanvas.SetActive(!active);
     }
     
     public void WinScreen()
     {
         winScreen.SetActive(true);
+        InteractCanvas.SetActive(false);
     }
 
     public void ShowMap()
     {
         InitialMap.SetActive(true);
+        InteractCanvas.SetActive(false);
     }
 
     public void TaskNotifications()
     {
         taskNotificationText.text = completedTask;
+
     }
     public void OpenTaskList()
     {
         if (PlayerManager.Instance.localAlignment == Alignment.Villager)
         {
             VillagerTaskScreen.SetActive(true);
+            InteractCanvas.SetActive(false);
         }
         if (PlayerManager.Instance.localAlignment == Alignment.Traitor)
         {
             TraitorTaskScreen.SetActive(true);
+            InteractCanvas.SetActive(false);
         }
 
     }
@@ -100,10 +108,12 @@ public class UIManager : NetworkBehaviour
         if (PlayerManager.Instance.localAlignment == Alignment.Villager)
         {
             VillagerTaskScreen.SetActive(false);
+            InteractCanvas.SetActive(true);
         }
         if (PlayerManager.Instance.localAlignment == Alignment.Traitor)
         {
             TraitorTaskScreen.SetActive(false);
+            InteractCanvas.SetActive(true);
         }
     }
     public void TraitorTaskListText()
