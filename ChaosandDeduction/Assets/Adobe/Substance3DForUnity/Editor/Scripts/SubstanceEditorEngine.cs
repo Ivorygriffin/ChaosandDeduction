@@ -335,6 +335,7 @@ namespace Adobe.SubstanceEditor
 
             if (!_activeSubstanceDictionary.TryGetValue(substanceInstance.GUID, out SubstanceNativeHandler _))
             {
+                MonoBehaviour.print("SubstanceInstancePath: " + substanceInstance.AssetPath);
                 var substanceArchive = Engine.OpenFile(substanceInstance.AssetPath);
                 _activeSubstanceDictionary.Add(substanceInstance.GUID, substanceArchive);
             }
