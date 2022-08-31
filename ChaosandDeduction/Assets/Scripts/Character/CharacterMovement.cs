@@ -20,7 +20,6 @@ public class CharacterMovement : NetworkBehaviour
 
 
     //  Fields ----------------------------------------
-    public Joystick joystick;
     CharacterController character;
 
     public float moveSpeed = 5;
@@ -34,7 +33,6 @@ public class CharacterMovement : NetworkBehaviour
     protected void Start()
     {
         character = GetComponent<CharacterController>();
-        joystick = Joystick.Instance;
     }
 
 
@@ -59,8 +57,8 @@ public class CharacterMovement : NetworkBehaviour
         //{
         //    playerVelocity.y = 0f;
         //}
-
-        playerVelocity += new Vector3(joystick.inputVector.x, 0, joystick.inputVector.y) * moveSpeed;
+        if (Joystick.Instance)
+            playerVelocity += new Vector3(Joystick.Instance.inputVector.x, 0, Joystick.Instance.inputVector.y) * moveSpeed;
         //playerVelocity.y += gravityValue * Time.deltaTime;
         if (playerVelocity != Vector3.zero)
             gameObject.transform.forward = playerVelocity;
