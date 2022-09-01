@@ -34,21 +34,21 @@ public class CharacterInteraction : NetworkBehaviour
     public float interactionRadius = 1;
     public Interactable currentInteraction = null;
     public Alignment alignment = Alignment.Villager; //TOOD: distribute roles
-    [SyncVar(hook = "ChangeModel")]
-    public int modelIndex = 0;
+    [SyncVar]
+    public int modelIndex = -1;
 
     //  Unity Methods ---------------------------------
     protected void Start()
     {
-        transform.GetChild(modelIndex).gameObject.SetActive(true);
+        //transform.GetChild(modelIndex).gameObject.SetActive(true);
         //if (isLocalPlayer)
         //    PlayerManager.Instance.localPlayer = gameObject;
         if (isServer) //server does not gain the effects of changing model, thus assume the first model is theirs
         {
-            Animator animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
-            //animator.speed = 0.5f;
-            GetComponent<CharacterMovement>().animator = animator;
+            CmdChangeModel(0); //if server host, assume index 0
         }
+        else if (modelIndex != -1)
+            ChangeModel(modelIndex);
     }
 
 
@@ -56,9 +56,15 @@ public class CharacterInteraction : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-        else if (PlayerManager.Instance && !PlayerManager.Instance.localPlayer)
-            PlayerManager.Instance.localPlayer = gameObject;
+        else if (PlayerManager.Instance)
+        {
+            if (!PlayerManager.Instance.localPlayer) //late assign local player as this object
+                PlayerManager.Instance.localPlayer = gameObject;
 
+            //Check if modelIndex wasnt assigned yet and localPlayerData has been assigned
+            if (modelIndex != PlayerManager.Instance.localPlayerData.modelIndex)
+                CmdChangeModel(PlayerManager.Instance.localPlayerData.modelIndex);
+        }
 #if UNITY_EDITOR
         if (Keyboard.current[Key.E].wasReleasedThisFrame)
         {
@@ -113,13 +119,26 @@ public class CharacterInteraction : NetworkBehaviour
             currentInteraction.Interact(this);
         }
     }
-    protected void ChangeModel(int oldVar, int newVar)
+    [Command]
+    void CmdChangeModel(int index)
     {
-        transform.GetChild(oldVar).gameObject.SetActive(false);
-        GameObject newModel = transform.GetChild(newVar).gameObject;
+        modelIndex = index;
+        RpcChangeModel(index);
+    }
+
+    [ClientRpc]
+    protected void RpcChangeModel(int index)
+    {
+        ChangeModel(index);
+    }
+
+    void ChangeModel(int index)
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        GameObject newModel = transform.GetChild(index).gameObject;
         newModel.SetActive(true);
 
-        Animator animator = transform.GetChild(newVar).gameObject.GetComponent<Animator>();
+        Animator animator = newModel.GetComponent<Animator>();
         //animator.speed = 0.5f;
         GetComponent<CharacterMovement>().animator = animator;
     }

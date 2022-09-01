@@ -91,12 +91,12 @@ public class UIManager : NetworkBehaviour
     }
     public void OpenTaskList()
     {
-        if (PlayerManager.Instance.localAlignment == Alignment.Villager)
+        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Villager)
         {
             VillagerTaskScreen.SetActive(true);
             InteractCanvas.SetActive(false);
         }
-        if (PlayerManager.Instance.localAlignment == Alignment.Traitor)
+        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
         {
             TraitorTaskScreen.SetActive(true);
             InteractCanvas.SetActive(false);
@@ -105,12 +105,12 @@ public class UIManager : NetworkBehaviour
     }
     public void CloseTaskList()
     {
-        if (PlayerManager.Instance.localAlignment == Alignment.Villager)
+        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Villager)
         {
             VillagerTaskScreen.SetActive(false);
             InteractCanvas.SetActive(true);
         }
-        if (PlayerManager.Instance.localAlignment == Alignment.Traitor)
+        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
         {
             TraitorTaskScreen.SetActive(false);
             InteractCanvas.SetActive(true);

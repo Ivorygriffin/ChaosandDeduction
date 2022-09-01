@@ -45,8 +45,8 @@ public class CharacterMovement : NetworkBehaviour
                 animator.SetFloat("Blend", Vector3.Distance(lastFramePos, transform.position) / (Time.deltaTime));
                 lastFramePos = transform.position;
             }
-            else
-                animator = transform.GetChild(GetComponent<CharacterInteraction>().modelIndex).gameObject.GetComponent<Animator>();
+          //  else
+          //      animator = transform.GetChild(GetComponent<CharacterInteraction>().modelIndex).gameObject.GetComponent<Animator>();
 
             return;
         }

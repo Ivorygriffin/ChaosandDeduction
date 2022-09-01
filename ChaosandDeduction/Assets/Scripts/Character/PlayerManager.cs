@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 //  Namespace Properties ------------------------------
-
+[System.Serializable]
+public struct PlayerData
+{
+    public Alignment alignment;
+    public int modelIndex;
+}
 
 //  Class Attributes ----------------------------------
 
@@ -23,12 +28,11 @@ public class PlayerManager : NetworkBehaviour
         set
         {
             player = value;
-            localAlignment = Alignment.Villager;
-            CmdAssignRole(value);
+            //localAlignment = Alignment.Villager;
+            //CmdAssignRole(value);
         }
     }
-    public Alignment localAlignment;
-
+    public PlayerData localPlayerData;
 
     //  Fields ----------------------------------------
     public static PlayerManager Instance;
@@ -38,7 +42,7 @@ public class PlayerManager : NetworkBehaviour
     [SyncVar]
     public int playersJoined = 0;
 
-    public GameObject[] allPlayers = new GameObject[4];
+    //public GameObject[] allPlayers = new GameObject[4];
 
     GameObject player;
 
@@ -53,38 +57,29 @@ public class PlayerManager : NetworkBehaviour
         }
         else
             Destroy(gameObject);
+
+
+        CmdGetData();
+        //localPlayerData = CustomNetworkManager.singleton;
     }
 
 
     //  Methods ---------------------------------------
     [Command(requiresAuthority = false)]
-    void CmdAssignRole(GameObject player)
+    void CmdGetData(NetworkConnectionToClient connection = null)
     {
-        CharacterInteraction interactor = player.GetComponent<CharacterInteraction>();
-        interactor.modelIndex = playersJoined;
+        PlayerData data;
 
-        allPlayers[playersJoined] = player;
-        playersJoined++;
+        CustomNetworkManager temp = (CustomNetworkManager)CustomNetworkManager.singleton;
+        temp.playersData.TryGetValue(connection, out data);
 
-        if (!traitorAssigned) //if no traitor yet, and 
-        {
-            if (Random.Range(0, 4) == 0 || playersJoined >= 4) //1/4 chance to get given traitor, or if last player (4th) assign to be traitor
-            {
-                NetworkIdentity target = player.GetComponent<NetworkIdentity>();
-
-                TargetAssignTraitor(target.connectionToClient, interactor);
-
-                interactor.alignment = Alignment.Traitor;
-
-                traitorAssigned = true;
-            }
-        }
+        TargetAssignData(connection, data);
     }
     [TargetRpc]
-    void TargetAssignTraitor(NetworkConnection target, CharacterInteraction player)
+    void TargetAssignData(NetworkConnection target, PlayerData data)
     {
-        player.alignment = Alignment.Traitor;
-        localAlignment = Alignment.Traitor; ;
+        //player.alignment = Alignment.Traitor;
+        localPlayerData = data;
     }
 
     [Server]
