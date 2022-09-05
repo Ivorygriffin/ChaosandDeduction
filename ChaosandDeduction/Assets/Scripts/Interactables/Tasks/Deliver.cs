@@ -35,6 +35,7 @@ public class Deliver : PickUp
 
 
     public bool useResetTimer = false;
+    public bool disabledTimer = false;
     public float resetMaxTimer = 5;
     float resetTimer = 0;
 
@@ -57,7 +58,7 @@ public class Deliver : PickUp
 
     protected void Update()
     {
-        if (useResetTimer && resetTimer > 0)
+        if (useResetTimer && !disabledTimer && resetTimer > 0)
         {
             resetTimer -= Time.deltaTime;
             if (resetTimer < 0)

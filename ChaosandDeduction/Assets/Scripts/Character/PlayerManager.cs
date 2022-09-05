@@ -53,7 +53,7 @@ public class PlayerManager : NetworkBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
             Destroy(gameObject);
@@ -61,6 +61,12 @@ public class PlayerManager : NetworkBehaviour
 
         CmdGetData();
         //localPlayerData = CustomNetworkManager.singleton;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
 
