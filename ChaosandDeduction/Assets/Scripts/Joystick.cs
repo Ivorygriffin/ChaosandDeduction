@@ -63,9 +63,9 @@ public class Joystick : MonoBehaviour
 
     protected void OnDestroy()
     {
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnFingerDown;
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove += OnMoveFinger;
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp += OnFingerUp;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown -= OnFingerDown;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove -= OnMoveFinger;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp -= OnFingerUp;
 
         if (Instance == this)
             Instance = null;

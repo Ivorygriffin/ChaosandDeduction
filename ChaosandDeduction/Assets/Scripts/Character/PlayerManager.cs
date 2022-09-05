@@ -68,11 +68,15 @@ public class PlayerManager : NetworkBehaviour
     [Command(requiresAuthority = false)]
     void CmdGetData(NetworkConnectionToClient connection = null)
     {
-        PlayerData data;
-
         CustomNetworkManager temp = (CustomNetworkManager)CustomNetworkManager.singleton;
-        temp.playersData.TryGetValue(connection, out data);
 
+        int index = -1;
+        temp.playersIndex.TryGetValue(connection, out index);
+
+        PlayerData data;
+        data = temp.playerArray[index];
+
+        //connectionToClient;
         TargetAssignData(connection, data);
     }
     [TargetRpc]
