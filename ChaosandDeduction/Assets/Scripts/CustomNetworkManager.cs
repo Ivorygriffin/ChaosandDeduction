@@ -8,9 +8,9 @@ using Mirror;
 
 public class CustomNetworkManager : NetworkManager
 {
-    public UnityEvent<Alignment> onLeave = new UnityEvent<Alignment>();
-    public UnityEvent<NetworkConnectionToClient> onJoin = new UnityEvent<NetworkConnectionToClient>();
-    public UnityEvent onHost = new UnityEvent();
+    //public UnityEvent<Alignment> onLeave = new UnityEvent<Alignment>();
+    //public UnityEvent<NetworkConnectionToClient> onJoin = new UnityEvent<NetworkConnectionToClient>();
+    //public UnityEvent onHost = new UnityEvent();
 
     public Dictionary<NetworkConnection, int> playersIndex = new Dictionary<NetworkConnection, int>();
     public PlayerData[] playerArray = new PlayerData[4];
@@ -34,7 +34,7 @@ public class CustomNetworkManager : NetworkManager
         int index = -1;
         if (playersIndex.TryGetValue(conn, out index)) //attempt to call out the alignment of the player that has left
         {
-            onLeave.Invoke(playerArray[index].alignment);
+            //onLeave.Invoke(playerArray[index].alignment);
 
             //clean up
             playerArray[index] = new PlayerData();
@@ -45,7 +45,7 @@ public class CustomNetworkManager : NetworkManager
     public override void OnServerConnect(NetworkConnectionToClient conn)
     {
         base.OnServerConnect(conn);
-        onJoin.Invoke(conn);
+        //onJoin.Invoke(conn);
         //player has joined
 
         //TODO: assign traitor on playerManager start?
@@ -77,13 +77,13 @@ public class CustomNetworkManager : NetworkManager
 
         connectedPlayers++;
 
-        if (connectedPlayers == 4)
-            ChangeScene();
+        //if (connectedPlayers == 4)
+        //    ChangeScene();
     }
     public override void OnStartHost()
     {
         base.OnStartHost();
-        onHost.Invoke();
+        //onHost.Invoke();
         //started hosting
         playersIndex.Clear(); //empty dictionary of player data
         playerArray = new PlayerData[4];
