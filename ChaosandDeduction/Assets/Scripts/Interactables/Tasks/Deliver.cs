@@ -35,11 +35,11 @@ public class Deliver : PickUp
 
 
     public bool useResetTimer = false;
-    public bool disabledTimer = false;
     public float resetMaxTimer = 5;
     float resetTimer = 0;
 
     public bool destroyOnArrival = true;
+    public bool disabledTimer = false;
 
     [SerializeField] Reward reward;
 
