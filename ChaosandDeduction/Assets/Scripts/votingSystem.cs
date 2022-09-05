@@ -102,8 +102,10 @@ public class votingSystem : NetworkBehaviour
             if (numVoted[i] >= 3) //if 3 or more votes on any one player, consider game ended
             {
                 finishedVoting = true;
+                CustomNetworkManager customNetworkManager = (CustomNetworkManager)NetworkManager.singleton;
                 //PlayerManager.Instance.allPlayers[selectedPlayer].GetComponent<CharacterInteraction>().alignment
-                switch (Alignment.Villager)
+
+                switch (customNetworkManager.playerArray[i].alignment)
                 {
                     case Alignment.Villager:
                         //lost

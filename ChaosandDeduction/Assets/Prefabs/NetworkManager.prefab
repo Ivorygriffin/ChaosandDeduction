@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1774231056137513505}
   - component: {fileID: 6699251884137739553}
   - component: {fileID: 1741555620992216932}
-  - component: {fileID: 5715483329356986543}
   - component: {fileID: 1851933656}
   - component: {fileID: 1851933657}
   m_Layer: 0
@@ -51,8 +50,8 @@ MonoBehaviour:
   runInBackground: 1
   autoStartServerBuild: 1
   serverTickRate: 30
-  offlineScene: Assets/Scenes/MainMenu.unity
-  onlineScene: Assets/Scenes/SampleScene.unity
+  offlineScene: Assets/Scenes/Game/PlayerScreen.unity
+  onlineScene: Assets/Scenes/Game/Lobby.unity
   transport: {fileID: 1741555620992216932}
   networkAddress: 192.168.203.8
   maxConnections: 100
@@ -80,37 +79,22 @@ MonoBehaviour:
   - {fileID: 7777282313125324196, guid: cf7afb8bd61b9634d8a8f956784d94df, type: 3}
   onLeave:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
-        m_MethodName: playerLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onJoin:
     m_PersistentCalls:
       m_Calls: []
   onHost:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: JoinAndroid, Assembly-CSharp
-        m_MethodName: DestroySelf
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  playerArray:
+  - alignment: 0
+    modelIndex: 0
+  - alignment: 0
+    modelIndex: 0
+  - alignment: 0
+    modelIndex: 0
+  - alignment: 0
+    modelIndex: 0
 --- !u!114 &1741555620992216932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,20 +124,6 @@ MonoBehaviour:
   debugLog: 0
   statisticsGUI: 0
   statisticsLog: 0
---- !u!114 &5715483329356986543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774231056137513509}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetX: 0
-  offsetY: 180
 --- !u!114 &1851933656
 MonoBehaviour:
   m_ObjectHideFlags: 0

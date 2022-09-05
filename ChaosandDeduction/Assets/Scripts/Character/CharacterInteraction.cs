@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 //  Namespace Properties ------------------------------
 public enum Alignment
 {
+    Undefined,
     Neutral,
     Villager,
     Traitor
@@ -43,7 +44,7 @@ public class CharacterInteraction : NetworkBehaviour
         //transform.GetChild(modelIndex).gameObject.SetActive(true);
         //if (isLocalPlayer)
         //    PlayerManager.Instance.localPlayer = gameObject;
-        if (isServer) //server does not gain the effects of changing model, thus assume the first model is theirs
+        if (isServer) //server does not gain the effects of changing "ChangeModel" being called, thus assume the first model is theirs
         {
             CmdChangeModel(0); //if server host, assume index 0
         }
@@ -119,7 +120,7 @@ public class CharacterInteraction : NetworkBehaviour
             currentInteraction.Interact(this);
         }
     }
-    [Command]
+    [Command(requiresAuthority = false)]
     void CmdChangeModel(int index)
     {
         modelIndex = index;

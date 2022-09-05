@@ -66,6 +66,9 @@ public abstract class Interactable : NetworkBehaviour
     {
         startPos = transform.position;
         startAngle = transform.rotation;
+
+        if (requiredAlignment == Alignment.Undefined)
+            Debug.LogWarning("Alignment on this task has not yet been defined: " + gameObject.name, gameObject);
     }
 
 
