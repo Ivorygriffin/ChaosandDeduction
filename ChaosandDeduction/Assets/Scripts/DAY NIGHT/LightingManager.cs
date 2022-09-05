@@ -16,10 +16,10 @@ public class LightingManager : NetworkBehaviour
 
     private void Update()
     {
-       
-        
-            if (Preset == null)
-                return;
+
+
+        if (Preset == null || !isServer)
+            return;
         if (Application.isPlaying)
         {
             TimeOfDay += Time.deltaTime;
@@ -33,40 +33,33 @@ public class LightingManager : NetworkBehaviour
             RpcUpdateLighting(TimeOfDay / 180f);
 
         }
-        
-        
-          
-        
-        
-        
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-    
+
         CmdStartLighting();
     }
     [Command(requiresAuthority = false)]
-    public void CmdStartLighting() 
+    public void CmdStartLighting()
     {
         RpcUpdateLighting(TimeOfDay);
-    } 
+    }
 
     [ClientRpc]
     private void RpcUpdateLighting(float timePercent)
     {
-     
-        
         RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
         RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
 
-        if(DirectionalLight != null)
+        if (DirectionalLight != null)
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
             DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 100f) + 90f, 200, 0));
         }
     }
+
     private void OnValidate()
     {
         if (DirectionalLight != null)
@@ -78,15 +71,15 @@ public class LightingManager : NetworkBehaviour
         else
         {
             Light[] lights = GameObject.FindObjectsOfType<Light>();
-            foreach(Light light in lights)
+            foreach (Light light in lights)
             {
-                if(light.type == LightType.Directional)
+                if (light.type == LightType.Directional)
                 {
                     DirectionalLight = light;
-                        return;
+                    return;
                 }
             }
         }
-       
+
     }
 }

@@ -49,8 +49,8 @@ public class votingSystem : NetworkBehaviour
 
     public void SelectPlayer(int playerIndex)
     {
-        if (PlayerManager.Instance.playersJoined < 4) //if not 4 players, stop
-            return;
+        //if (PlayerManager.Instance.playersJoined < 4) //if not 4 players, stop
+        //    return;
 
         Debug.Log("selected");
         selectedPlayer = playerIndex;
