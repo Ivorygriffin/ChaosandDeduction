@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Mirror;
-public class task : NetworkBehaviour
+public class Task : NetworkBehaviour
 {
 
     // STILL NEED TO MAKE ALL OF THIS WORK WITH MULTIPLAYER CONSIDERATIONS
 
+
+    public static Task instance;
 
     //string lists
 
@@ -41,12 +44,19 @@ public class task : NetworkBehaviour
     private bool hasDisplayedVillager;
     public bool vTaskComplete, tTaskComplete;
 
+    public UnityEvent TaskUpdate;
+
     bool initialised = false;
 
     public void Start()
     {
         if (isServer)
         {
+            if (!instance)
+                instance = this;
+            else
+                Destroy(this);
+
             for (int i = 0; i < numVillagerTasks; i++)
                 AddVillagerTask();
             for (int i = 0; i < numTraitorTasks; i++)
@@ -64,10 +74,10 @@ public class task : NetworkBehaviour
             initialised = true;
             UpdateTraitorString();
             UpdateVillagerString();
+            CheckTaskComplete();
         }
         //ConvertTraitorToString();
         //ConvertVillagerToString();
-        CheckTaskComplete();
 
         //gotta move outta update to allow for network behaviour
 
@@ -131,7 +141,8 @@ public class task : NetworkBehaviour
         }
     }
 
-    public void CheckTaskComplete() // TODO: move from update to only run upon task completion
+    //Should only get called when a task is completed TODO: ensure this is correct by checking all tasks
+    public void CheckTaskComplete()
     {
         for (int i = 0; i < villagerTasks.Count; i++)
         {
@@ -161,5 +172,13 @@ public class task : NetworkBehaviour
             tTaskComplete = true;
         if (villagerTasks.Count <= 0)
             vTaskComplete = true;
+
+        TaskUpdate.Invoke();
+    }
+
+
+    public bool RequiredVillagerTask(TaskScriptableObject task)
+    {
+        return villagerTasks.Contains(task);
     }
 }

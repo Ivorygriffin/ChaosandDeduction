@@ -25,6 +25,9 @@ namespace Mirror.Discovery
             }
         }
 #endif
+
+
+
         //Not used in new custom hud
         //void OnGUI()
         //{

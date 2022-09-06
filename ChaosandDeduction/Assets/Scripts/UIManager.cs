@@ -19,9 +19,9 @@ public class UIManager : NetworkBehaviour
 
     //Texts
     public TMP_Text winScreenText;
-    public TMP_Text taskScreenText;
-    public TMP_Text villagerTaskScreenText;  
-    public TMP_Text villagerTaskScreenText2;
+    //public TMP_Text taskScreenText;
+    //public TMP_Text villagerTaskScreenText;  
+    //public TMP_Text villagerTaskScreenText2;
     public TMP_Text taskNotificationText;
 
     //Strings
@@ -55,8 +55,8 @@ public class UIManager : NetworkBehaviour
 
     private void Update()
     {
-        TraitorTaskListText();
-        VillagerTaskListText();
+        //TraitorTaskListText();
+        //VillagerTaskListText();
     }
 
     [Command(requiresAuthority = false)]
@@ -116,16 +116,16 @@ public class UIManager : NetworkBehaviour
             InteractCanvas.SetActive(true);
         }
     }
-    public void TraitorTaskListText()
-    {
-        taskScreenText.text = traitorCurrentTaskList;
-    }  
-    public void VillagerTaskListText()
-    {
-        villagerTaskScreenText.text = villagerCurrentTaskList;
-        villagerTaskScreenText2.text = villagerCurrentTaskList;
+    //public void TraitorTaskListText()
+    //{
+    //    //taskScreenText.text = traitorCurrentTaskList;
+    //}  
+    //public void VillagerTaskListText()
+    //{
+    //    //villagerTaskScreenText.text = villagerCurrentTaskList;
+    //    //villagerTaskScreenText2.text = villagerCurrentTaskList;
         
 
-    }
+    //}
 
 }

@@ -24,7 +24,10 @@ public class Reward
 
         givenLocalReward = true;
         if (task)
+        {
             task.isComplete = true;
+            Task.instance.CheckTaskComplete();
+        }
         if (interactable)
         {
             interactable.enabled = true;

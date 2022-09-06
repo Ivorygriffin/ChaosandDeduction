@@ -18,7 +18,7 @@ public class LightingManager : NetworkBehaviour
     {
 
 
-        if (Preset == null || !isServer)
+        if (Preset || !isServer)
             return;
         if (Application.isPlaying)
         {

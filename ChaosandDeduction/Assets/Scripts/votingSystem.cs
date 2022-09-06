@@ -17,7 +17,6 @@ public class votingSystem : NetworkBehaviour
     //Gameobjects
     int selectedPlayer = -1;
     public GameObject voteObjects;
-    public task taskManager;
     public Timer timer;
 
     [ServerCallback]
@@ -109,11 +108,11 @@ public class votingSystem : NetworkBehaviour
                 {
                     case Alignment.Villager:
                         //lost
-                        RpcResults(false, taskManager.vTaskComplete, taskManager.tTaskComplete);
+                        RpcResults(false, Task.instance.vTaskComplete, Task.instance.tTaskComplete);
                         break;
                     case Alignment.Traitor:
                         //win
-                        RpcResults(true, taskManager.vTaskComplete, taskManager.tTaskComplete);
+                        RpcResults(true, Task.instance.vTaskComplete, Task.instance.tTaskComplete);
                         break;
                     default:
                         //RpcResults(false);
