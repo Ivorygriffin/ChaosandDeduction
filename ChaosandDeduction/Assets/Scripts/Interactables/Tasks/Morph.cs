@@ -113,6 +113,11 @@ public class Morph : Interactable
             GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
             NetworkServer.Spawn(temp);
         }
+        if (reward.task)
+        {
+            reward.task.isComplete = true;
+            Task.instance.CheckTaskComplete();
+        }
     }
 
     void ChangeStage(bool increase)
