@@ -71,6 +71,11 @@ public class OneTime : Interactable
             GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
             NetworkServer.Spawn(temp);
         }
+        if (reward.task)
+        {
+            reward.task.isComplete = true;
+            Task.instance.CheckTaskComplete();
+        }
     }
 
     public override void ResetInteractable()

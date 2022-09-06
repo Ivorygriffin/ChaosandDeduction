@@ -113,6 +113,11 @@ public class Deliver : PickUp
             GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
             NetworkServer.Spawn(temp);
         }
+        if (reward.task)
+        {
+            reward.task.isComplete = true;
+            Task.instance.CheckTaskComplete();
+        }
         if (destroyOnArrival)
             NetworkServer.Destroy(gameObject);
     }
