@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589245, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -246,7 +246,7 @@ MonoBehaviour:
   syncInterval: 0.1
   timeRemaining: 0
   startTime: 180
-  timerText: {fileID: 0}
+  timerText: {fileID: 37067816}
   gameplayMusic: {fileID: 1106727312}
   VotingMusic: {fileID: 296437639}
   set1: {fileID: 30063080}
@@ -897,6 +897,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interact canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2077694168120277069, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.246338
+      objectReference: {fileID: 0}
     - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -907,6 +911,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+--- !u!114 &37067816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1728340933096068059, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+  m_PrefabInstance: {fileID: 37067815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &44598430
 GameObject:
   m_ObjectHideFlags: 0
@@ -24187,6 +24202,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9960667d85caf48bd37afe0f6e852e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  potentialVillagerTasks:
+  - {fileID: 11400000, guid: a0a096064d14ca542b33b98b1063a3d3, type: 2}
+  - {fileID: 11400000, guid: 3161256e18fff3845beba97c1c9fe747, type: 2}
+  - {fileID: 11400000, guid: 1c9cb564ecb6c0c45b64a5279d429f81, type: 2}
+  - {fileID: 11400000, guid: fc4505f2e895524499aad9c791a49627, type: 2}
+  - {fileID: 11400000, guid: becf6bbde18a58a46a63b3bd8ed4fab2, type: 2}
+  - {fileID: 11400000, guid: 1c6b552c86dddf04b993dcfa7fac9180, type: 2}
+  - {fileID: 11400000, guid: 87f3869ad4d8dc1429689edc0777386d, type: 2}
+  - {fileID: 11400000, guid: 441791468f8af4346ba699aa9c075098, type: 2}
+  - {fileID: 11400000, guid: 9a000a9ad9461b54a8dc4d5f0943d06c, type: 2}
+  - {fileID: 11400000, guid: d7ec78b2fecfa1a47b883803da9c87a6, type: 2}
+  - {fileID: 11400000, guid: 331ebfc6a5ff9874488e755c1bdd883c, type: 2}
+  - {fileID: 11400000, guid: 521f22cdb21188745b59ca118a556b56, type: 2}
+  - {fileID: 11400000, guid: 668af657f0937934181ccffef644ba6a, type: 2}
+  villagerTasks: []
+  potentialTraitorTasks:
+  - {fileID: 11400000, guid: 4be2cadd1044944439d62473fa0199b1, type: 2}
+  - {fileID: 11400000, guid: 6ddee4f055a3c9b4ca7e0dfb41af8da0, type: 2}
+  - {fileID: 11400000, guid: 5315fb01d3f426c4dbd5cb7caa8723c5, type: 2}
+  - {fileID: 11400000, guid: d00894dd1bb38824d89cd5ee9846825e, type: 2}
+  - {fileID: 11400000, guid: 8259114c7e44d6d4ea909d625aabdfc4, type: 2}
+  - {fileID: 11400000, guid: 891964b0673661c48b9ce54905772930, type: 2}
+  - {fileID: 11400000, guid: b6a84252a21a0f445b5945fa58826f1c, type: 2}
+  - {fileID: 11400000, guid: de2f3d8a8fe51b74ea9023a06aa73693, type: 2}
+  - {fileID: 11400000, guid: b69861b5dfd18c1438713225a51a089b, type: 2}
+  traitorTasks: []
+  numTraitorTasks: 4
+  traitorTasksComplete: 0
+  numVillagerTasks: 9
+  villagerTasksComplete: 0
+  vTaskComplete: 0
+  tTaskComplete: 0
+  TaskUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1777053137438372786}
+        m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
+        m_MethodName: CmdGetActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1914499667
 MonoBehaviour:
   m_ObjectHideFlags: 0

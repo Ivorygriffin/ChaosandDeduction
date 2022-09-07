@@ -61,6 +61,7 @@ public class CustomNetworkManager : NetworkManager
                         break;
                     }
                 }
+                //TODO: find out why there is sometimes a 2nd traitor?
                 //Declare villager if there already exists a traitor, otherwise roll from 0-4, if it lands 4 (or are the last to join), declare traitor, otherwise villager
                 Alignment alignment = traitorMade ? Alignment.Villager : ((Random.Range(0, 5) == 0 || i == 3) ? Alignment.Traitor : Alignment.Villager);
 

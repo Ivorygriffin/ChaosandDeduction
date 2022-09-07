@@ -14,11 +14,11 @@ public class TaskManager : NetworkBehaviour
     //string lists
 
     public List<TaskScriptableObject> potentialVillagerTasks;//use if extra tasks made and we want to randomise
-    public List<TaskScriptableObject> uncompleteVillagerTasks; //tasks seen of task screen, whatever isnt complete
+   // public List<TaskScriptableObject> uncompleteVillagerTasks; //tasks seen of task screen, whatever isnt complete
     public List<TaskScriptableObject> villagerTasks;//list of selected tasks for the round
 
     public List<TaskScriptableObject> potentialTraitorTasks; //ones to pick from
-    public List<TaskScriptableObject> uncompleteTraitorTasks; //the uncomplete ones
+   // public List<TaskScriptableObject> uncompleteTraitorTasks; //the uncomplete ones
     public List<TaskScriptableObject> traitorTasks; //the picked ones
 
     //Strings
@@ -72,8 +72,8 @@ public class TaskManager : NetworkBehaviour
         if (UIManager.Instance && !initialised) //just run this whenever the instance is set up (only runs once)
         {
             initialised = true;
-            UpdateTraitorString();
-            UpdateVillagerString();
+            //UpdateTraitorString();
+            //UpdateVillagerString();
             CheckTaskComplete();
         }
         //ConvertTraitorToString();
@@ -108,38 +108,38 @@ public class TaskManager : NetworkBehaviour
         //AddSelectedTaskToUncompleteList();
     }
 
-    public void UpdateTraitorString()
-    {
-        if (!hasDisplayedTraitor)
-        {
-            UIManager.Instance.traitorCurrentTaskList = ""; //clear the UI text
+    //public void UpdateTraitorString()
+    //{
+    //    if (!hasDisplayedTraitor)
+    //    {
+    //        UIManager.Instance.traitorCurrentTaskList = ""; //clear the UI text
 
-            for (int i = 0; i < traitorTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
-            {
-                string par = traitorTasks[i].description;
-                UIManager.Instance.traitorCurrentTaskList += (traitorTasks[i].description + "\n" + "\n");
-                Debug.Log(UIManager.Instance.traitorCurrentTaskList);
+    //        for (int i = 0; i < traitorTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
+    //        {
+    //            string par = traitorTasks[i].description;
+    //            UIManager.Instance.traitorCurrentTaskList += (traitorTasks[i].description + "\n" + "\n");
+    //            Debug.Log(UIManager.Instance.traitorCurrentTaskList);
 
-                //hasDisplayedTraitor = true;
-            }
-        }
-    }
-    public void UpdateVillagerString()
-    {
-        if (!hasDisplayedVillager)
-        {
-            UIManager.Instance.villagerCurrentTaskList = "";  //clear the UI text
+    //            //hasDisplayedTraitor = true;
+    //        }
+    //    }
+    //}
+    //public void UpdateVillagerString()
+    //{
+    //    if (!hasDisplayedVillager)
+    //    {
+    //        UIManager.Instance.villagerCurrentTaskList = "";  //clear the UI text
 
-            for (int i = 0; i < villagerTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
-            {
-                string task = villagerTasks[i].description;
-                UIManager.Instance.villagerCurrentTaskList += (villagerTasks[i].description + "\n" + "\n");
-                Debug.Log(UIManager.Instance.villagerCurrentTaskList);
+    //        for (int i = 0; i < villagerTasks.Count; i++) //Iterate through all current tasks and add them as a string to the UI
+    //        {
+    //            string task = villagerTasks[i].description;
+    //            UIManager.Instance.villagerCurrentTaskList += (villagerTasks[i].description + "\n" + "\n");
+    //            Debug.Log(UIManager.Instance.villagerCurrentTaskList);
 
-                //hasDisplayedVillager = true;
-            }
-        }
-    }
+    //            //hasDisplayedVillager = true;
+    //        }
+    //    }
+    //}
 
     //Should only get called when a task is completed TODO: ensure this is correct by checking all tasks
     public void CheckTaskComplete()
@@ -152,7 +152,7 @@ public class TaskManager : NetworkBehaviour
                 villagerTasks.RemoveAt(i);
                 i--;
                 villagerTasksComplete += 1;
-                UpdateVillagerString();
+                //UpdateVillagerString();
             }
         }
 
@@ -164,7 +164,7 @@ public class TaskManager : NetworkBehaviour
                 traitorTasks.RemoveAt(i);
                 i--;
                 traitorTasksComplete += 1;
-                UpdateTraitorString();
+                //UpdateTraitorString();
             }
         }
 
