@@ -108,11 +108,11 @@ public class votingSystem : NetworkBehaviour
                 {
                     case Alignment.Villager:
                         //lost
-                        RpcResults(false, Task.instance.vTaskComplete, Task.instance.tTaskComplete);
+                        RpcResults(false, TaskManager.instance.vTaskComplete, TaskManager.instance.tTaskComplete);
                         break;
                     case Alignment.Traitor:
                         //win
-                        RpcResults(true, Task.instance.vTaskComplete, Task.instance.tTaskComplete);
+                        RpcResults(true, TaskManager.instance.vTaskComplete, TaskManager.instance.tTaskComplete);
                         break;
                     default:
                         //RpcResults(false);

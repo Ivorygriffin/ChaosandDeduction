@@ -26,7 +26,7 @@ public class Reward
         if (task)
         {
             task.isComplete = true;
-            //Task.instance.CheckTaskComplete();
+            //TaskManager.instance.CheckTaskComplete();
         }
         if (interactable)
         {

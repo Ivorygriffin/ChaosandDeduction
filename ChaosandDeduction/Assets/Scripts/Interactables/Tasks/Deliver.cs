@@ -116,7 +116,7 @@ public class Deliver : PickUp
         if (reward.task)
         {
             reward.task.isComplete = true;
-            Task.instance.CheckTaskComplete();
+            TaskManager.instance.CheckTaskComplete();
         }
         if (destroyOnArrival)
             NetworkServer.Destroy(gameObject);

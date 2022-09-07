@@ -31,7 +31,7 @@ public class TaskList : NetworkBehaviour
                 int count = 0;
                 for (int i = 0; i < pages.Length; i++)
                 {
-                    if (Task.instance)
+                    if (TaskManager.instance)
                     {
                         if (!pages[i].task.isComplete)
                             count++;
@@ -75,9 +75,9 @@ public class TaskList : NetworkBehaviour
         bool[] ribbonActive = new bool[pages.Length];
         for (int i = 0; i < pages.Length; i++)
         {
-            if (Task.instance)
+            if (TaskManager.instance)
             {
-                bool active = Task.instance.RequiredVillagerTask(pages[i].task);
+                bool active = TaskManager.instance.RequiredVillagerTask(pages[i].task);
                 index[i] = i;
                 buttonActive[i] = active;
                 ribbonActive[i] = pages[i].task.isComplete;

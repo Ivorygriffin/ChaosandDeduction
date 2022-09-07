@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Mirror;
-public class Task : NetworkBehaviour
+public class TaskManager : NetworkBehaviour
 {
 
     // STILL NEED TO MAKE ALL OF THIS WORK WITH MULTIPLAYER CONSIDERATIONS
 
 
-    public static Task instance;
+    public static TaskManager instance;
 
     //string lists
 

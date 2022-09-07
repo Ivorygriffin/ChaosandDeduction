@@ -116,7 +116,7 @@ public class Morph : Interactable
         if (reward.task)
         {
             reward.task.isComplete = true;
-            Task.instance.CheckTaskComplete();
+            TaskManager.instance.CheckTaskComplete();
         }
     }
 

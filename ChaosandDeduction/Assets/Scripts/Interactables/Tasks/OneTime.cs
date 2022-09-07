@@ -74,7 +74,7 @@ public class OneTime : Interactable
         if (reward.task)
         {
             reward.task.isComplete = true;
-            Task.instance.CheckTaskComplete();
+            TaskManager.instance.CheckTaskComplete();
         }
     }
 
