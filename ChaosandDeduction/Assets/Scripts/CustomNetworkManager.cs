@@ -40,6 +40,7 @@ public class CustomNetworkManager : NetworkManager
             playerArray[index] = new PlayerData();
             playersIndex.Remove(conn);
         }
+        connectedPlayers--;
         //player has disconnected
     }
     public override void OnServerConnect(NetworkConnectionToClient conn)
@@ -53,7 +54,7 @@ public class CustomNetworkManager : NetworkManager
             if (playerArray[i].alignment == Alignment.Undefined)
             {
                 bool traitorMade = false;
-                for (int j = 0; j < 1; j++)
+                for (int j = 0; j < maxConnections; j++)
                 {
                     if (playerArray[j].alignment == Alignment.Traitor)
                     {
@@ -63,7 +64,7 @@ public class CustomNetworkManager : NetworkManager
                 }
                 //TODO: find out why there is sometimes a 2nd traitor?
                 //Declare villager if there already exists a traitor, otherwise roll from 0-4, if it lands 4 (or are the last to join), declare traitor, otherwise villager
-                Alignment alignment = traitorMade ? Alignment.Villager : ((Random.Range(0, 5) == 0 || i == 3) ? Alignment.Traitor : Alignment.Villager);
+                Alignment alignment = traitorMade ? Alignment.Villager : ((Random.Range(0, (maxConnections + 1)) == 0 || i == (maxConnections - 1)) ? Alignment.Traitor : Alignment.Villager);
 
                 PlayerData temp = new PlayerData
                 {
