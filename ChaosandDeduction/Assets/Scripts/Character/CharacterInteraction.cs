@@ -34,7 +34,7 @@ public class CharacterInteraction : NetworkBehaviour
     //  Fields ----------------------------------------
     public float interactionRadius = 1;
     public Interactable currentInteraction = null;
-    public Alignment alignment = Alignment.Villager; //TOOD: distribute roles
+    //public Alignment alignment = Alignment.Villager; //TOOD: distribute roles
     [SyncVar]
     public int modelIndex = -1;
 
@@ -64,7 +64,10 @@ public class CharacterInteraction : NetworkBehaviour
 
             //Check if modelIndex wasnt assigned yet and localPlayerData has been assigned
             if (modelIndex != PlayerManager.Instance.localPlayerData.modelIndex)
+            {
                 CmdChangeModel(PlayerManager.Instance.localPlayerData.modelIndex);
+                //alignment = PlayerManager.Instance.localPlayerData.alignment;
+            }
         }
 #if UNITY_EDITOR
         if (Keyboard.current[Key.E].wasReleasedThisFrame)
