@@ -9,12 +9,13 @@ public class UIManager : NetworkBehaviour
     public static UIManager Instance;
 
     //UI Screens
-    public GameObject voteScreen;
-    public GameObject winScreen;
+    public Canvas voteScreen;
+    public Canvas winScreen;
+    public Canvas settingsCanvas;
     public GameObject VillagerTaskScreen;
     public GameObject TraitorTaskScreen;
-    public GameObject InitialMap;
-    public GameObject InteractCanvas;
+    public Canvas InitialMap;
+    public Canvas InteractCanvas;
 
 
     //Texts
@@ -38,7 +39,7 @@ public class UIManager : NetworkBehaviour
     //for the sake of getting rid of compile errors variable
     //public bool villager;
     //public bool traitor;
-    
+
     void Start()
     {
         if (Instance == null)
@@ -50,7 +51,6 @@ public class UIManager : NetworkBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     private void Update()
@@ -63,25 +63,31 @@ public class UIManager : NetworkBehaviour
     public void CmdVoting(bool active)
     {
         RpcVoting(active);
-        
+
     }
     [ClientRpc]
     void RpcVoting(bool active)
     {
-        voteScreen.SetActive(active);
-        InteractCanvas.SetActive(!active);
-    }
-    
-    public void WinScreen()
-    {
-        winScreen.SetActive(true);
-        InteractCanvas.SetActive(false);
+        voteScreen.enabled = active;
+        InteractCanvas.enabled = !active;
     }
 
-    public void ShowMap()
+    public void WinScreen()
     {
-        InitialMap.SetActive(true);
-        InteractCanvas.SetActive(false);
+        winScreen.enabled = true;
+        InteractCanvas.enabled = false;
+    }
+
+    public void Map(bool show)
+    {
+        InitialMap.enabled = show;
+        InteractCanvas.enabled = !show;
+    }
+
+    public void Settings(bool show)
+    {
+        settingsCanvas.enabled = show;
+        InteractCanvas.enabled = !show;
     }
 
     public void TaskNotifications()
@@ -89,32 +95,19 @@ public class UIManager : NetworkBehaviour
         taskNotificationText.text = completedTask;
 
     }
-    public void OpenTaskList()
+    public void TaskList(bool show)
     {
         if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Villager)
         {
-            VillagerTaskScreen.SetActive(true);
-            InteractCanvas.SetActive(false);
+            VillagerTaskScreen.SetActive(show);
+            InteractCanvas.enabled = !show;
         }
         if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
         {
-            TraitorTaskScreen.SetActive(true);
-            InteractCanvas.SetActive(false);
+            TraitorTaskScreen.SetActive(show);
+            InteractCanvas.enabled = !show;
         }
 
-    }
-    public void CloseTaskList()
-    {
-        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Villager)
-        {
-            VillagerTaskScreen.SetActive(false);
-            InteractCanvas.SetActive(true);
-        }
-        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
-        {
-            TraitorTaskScreen.SetActive(false);
-            InteractCanvas.SetActive(true);
-        }
     }
     //public void TraitorTaskListText()
     //{
@@ -124,7 +117,7 @@ public class UIManager : NetworkBehaviour
     //{
     //    //villagerTaskScreenText.text = villagerCurrentTaskList;
     //    //villagerTaskScreenText2.text = villagerCurrentTaskList;
-        
+
 
     //}
 
