@@ -26,6 +26,7 @@ public class TaskList : NetworkBehaviour
         {
             int x = i;
             pages[i].button.GetComponent<Button>().onClick.AddListener(() => Select(x));
+            pages[i].ribbon = pages[i].button.transform.GetChild(0).gameObject;
         }
     }
 
@@ -127,4 +128,15 @@ public class TaskList : NetworkBehaviour
 
         // CmdGetActive(); //check current active, just incase?
     }
+#if UNITY_EDITOR
+
+    private void OnValidate()
+    {
+        for (int i = 0; i < pages.Length; i++)
+        {
+            if (pages[i].ribbon == null && pages[i].button != null)
+                pages[i].ribbon = pages[i].button.transform.GetChild(0).gameObject;
+        }
+    }
+#endif
 }
