@@ -72,6 +72,11 @@ public class Joystick : MonoBehaviour
     }
 
 
+    private void OnDisable()
+    {
+        OnFingerUp(legalFinger); //remove active finger from play
+    }
+
     protected void Update()
     {
 #if UNITY_EDITOR
@@ -103,7 +108,7 @@ public class Joystick : MonoBehaviour
     //  Methods ---------------------------------------
     public void OnFingerDown(Finger finger)
     {
-        if (legalFinger != null) //if joystick already engaged, ignore extra fingers
+        if (legalFinger != null || gameObject.activeInHierarchy) //if joystick already engaged, ignore extra fingers
             return;
 
 
