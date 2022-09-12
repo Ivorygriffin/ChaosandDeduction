@@ -79,7 +79,7 @@ public abstract class Interactable : NetworkBehaviour
     public void Interact(CharacterInteraction character)
     {
         //Gate keep from characters not aligned with this object
-        if ((requiredAlignment != Alignment.Neutral && requiredAlignment != character.alignment))
+        if ((requiredAlignment != Alignment.Neutral && requiredAlignment != PlayerManager.Instance.localPlayerData.alignment))
             return;
         //  || Vector3.Distance(character.transform.position, transform.position) > character.interactionRadius * 2 //TODO: Implement check against interacting too far away
 

@@ -14,11 +14,11 @@ public class TaskManager : NetworkBehaviour
     //string lists
 
     public List<TaskScriptableObject> potentialVillagerTasks;//use if extra tasks made and we want to randomise
-   // public List<TaskScriptableObject> uncompleteVillagerTasks; //tasks seen of task screen, whatever isnt complete
+                                                             // public List<TaskScriptableObject> uncompleteVillagerTasks; //tasks seen of task screen, whatever isnt complete
     public List<TaskScriptableObject> villagerTasks;//list of selected tasks for the round
 
     public List<TaskScriptableObject> potentialTraitorTasks; //ones to pick from
-   // public List<TaskScriptableObject> uncompleteTraitorTasks; //the uncomplete ones
+                                                             // public List<TaskScriptableObject> uncompleteTraitorTasks; //the uncomplete ones
     public List<TaskScriptableObject> traitorTasks; //the picked ones
 
     //Strings
@@ -31,12 +31,10 @@ public class TaskManager : NetworkBehaviour
     [Header("Traitor Counts")]
     private int currentTraitorTaskNum;
     public int numTraitorTasks;
-    public int traitorTasksComplete;
 
     [Header("Villager Counts")]
     private int currentVillagerTaskNum;
     public int numVillagerTasks;
-    public int villagerTasksComplete;
 
     //bools
 
@@ -144,33 +142,35 @@ public class TaskManager : NetworkBehaviour
     //Should only get called when a task is completed TODO: ensure this is correct by checking all tasks
     public void CheckTaskComplete()
     {
+        int villagerTasksComplete = 0;
         for (int i = 0; i < villagerTasks.Count; i++)
         {
 
             if (villagerTasks[i].isComplete)
             {
-                villagerTasks.RemoveAt(i);
-                i--;
-                villagerTasksComplete += 1;
+                //villagerTasks.RemoveAt(i);
+                //i--;
+                villagerTasksComplete++;
                 //UpdateVillagerString();
             }
         }
 
+        int traitorTasksComplete = 0;
         for (int i = 0; i < traitorTasks.Count; i++)
         {
 
             if (traitorTasks[i].isComplete)
             {
-                traitorTasks.RemoveAt(i);
-                i--;
-                traitorTasksComplete += 1;
+                //traitorTasks.RemoveAt(i);
+                //i--;
+                traitorTasksComplete++;
                 //UpdateTraitorString();
             }
         }
 
-        if (traitorTasks.Count <= 0)
+        if (traitorTasks.Count <= traitorTasksComplete)
             tTaskComplete = true;
-        if (villagerTasks.Count <= 0)
+        if (villagerTasks.Count <= villagerTasksComplete)
             vTaskComplete = true;
 
         TaskUpdate.Invoke();

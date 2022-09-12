@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -5315,7 +5315,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -6505,7 +6505,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -8984,7 +8984,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -9008,6 +9008,8 @@ GameObject:
   - component: {fileID: 583207061}
   - component: {fileID: 583207060}
   - component: {fileID: 583207059}
+  - component: {fileID: 583207063}
+  - component: {fileID: 583207062}
   m_Layer: 5
   m_Name: Task Canvas
   m_TagString: Untagged
@@ -9097,6 +9099,110 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &583207062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583207057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260a0e9ae833a7940becb1459608897d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  pages:
+  - page: {fileID: 1423299546}
+    button: {fileID: 963951599}
+    active: 0
+    ribbon: {fileID: 54333329}
+    complete: 0
+    task: {fileID: 11400000, guid: 521f22cdb21188745b59ca118a556b56, type: 2}
+  - page: {fileID: 2111832995}
+    button: {fileID: 595341928}
+    active: 0
+    ribbon: {fileID: 2119481261}
+    complete: 0
+    task: {fileID: 11400000, guid: 441791468f8af4346ba699aa9c075098, type: 2}
+  - page: {fileID: 1688219610}
+    button: {fileID: 332822073}
+    active: 0
+    ribbon: {fileID: 373959221}
+    complete: 0
+    task: {fileID: 11400000, guid: d7ec78b2fecfa1a47b883803da9c87a6, type: 2}
+  - page: {fileID: 1533785943}
+    button: {fileID: 1595285814}
+    active: 0
+    ribbon: {fileID: 1182609755}
+    complete: 0
+    task: {fileID: 11400000, guid: becf6bbde18a58a46a63b3bd8ed4fab2, type: 2}
+  - page: {fileID: 968555494}
+    button: {fileID: 79154977}
+    active: 0
+    ribbon: {fileID: 861403819}
+    complete: 0
+    task: {fileID: 11400000, guid: 9a000a9ad9461b54a8dc4d5f0943d06c, type: 2}
+  - page: {fileID: 1908191332}
+    button: {fileID: 1649045874}
+    active: 0
+    ribbon: {fileID: 1329205608}
+    complete: 0
+    task: {fileID: 11400000, guid: 3161256e18fff3845beba97c1c9fe747, type: 2}
+  - page: {fileID: 1015853981}
+    button: {fileID: 1971525967}
+    active: 0
+    ribbon: {fileID: 2043556780}
+    complete: 0
+    task: {fileID: 11400000, guid: fc4505f2e895524499aad9c791a49627, type: 2}
+  - page: {fileID: 1727627541}
+    button: {fileID: 1892712783}
+    active: 0
+    ribbon: {fileID: 886991349}
+    complete: 0
+    task: {fileID: 11400000, guid: 1c6b552c86dddf04b993dcfa7fac9180, type: 2}
+  - page: {fileID: 1036051826}
+    button: {fileID: 1945260988}
+    active: 0
+    ribbon: {fileID: 1761012645}
+    complete: 0
+    task: {fileID: 11400000, guid: a0a096064d14ca542b33b98b1063a3d3, type: 2}
+  - page: {fileID: 2026928382}
+    button: {fileID: 582455686}
+    active: 0
+    ribbon: {fileID: 1008194687}
+    complete: 0
+    task: {fileID: 11400000, guid: 331ebfc6a5ff9874488e755c1bdd883c, type: 2}
+  - page: {fileID: 475594150}
+    button: {fileID: 761623307}
+    active: 0
+    ribbon: {fileID: 1091605636}
+    complete: 0
+    task: {fileID: 11400000, guid: 668af657f0937934181ccffef644ba6a, type: 2}
+  - page: {fileID: 1150672983}
+    button: {fileID: 421364394}
+    active: 0
+    ribbon: {fileID: 283357533}
+    complete: 0
+    task: {fileID: 11400000, guid: 1c9cb564ecb6c0c45b64a5279d429f81, type: 2}
+--- !u!114 &583207063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583207057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2949730034
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &583544985
 GameObject:
   m_ObjectHideFlags: 0
@@ -9465,7 +9571,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -11510,7 +11616,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -14593,7 +14699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -23377,7 +23483,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -24418,7 +24524,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -27485,7 +27591,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -27920,7 +28026,7 @@ MonoBehaviour:
   TaskUpdate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: CmdGetActive
         m_Mode: 1
@@ -28479,7 +28585,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -28975,7 +29081,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777053137438372786}
+      - m_Target: {fileID: 583207062}
         m_TargetAssemblyTypeName: TaskList, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
@@ -35184,8 +35290,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777053137438372790}
-  - component: {fileID: 1777053137438372786}
-  - component: {fileID: 1777053137438372787}
   m_Layer: 5
   m_Name: 'villager Task List '
   m_TagString: Untagged
@@ -35193,86 +35297,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1777053137438372786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777053137438372785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 260a0e9ae833a7940becb1459608897d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  pages:
-  - page: {fileID: 1423299546}
-    button: {fileID: 963951599}
-    ribbon: {fileID: 54333329}
-    task: {fileID: 11400000, guid: 521f22cdb21188745b59ca118a556b56, type: 2}
-  - page: {fileID: 2111832995}
-    button: {fileID: 595341928}
-    ribbon: {fileID: 2119481261}
-    task: {fileID: 11400000, guid: 441791468f8af4346ba699aa9c075098, type: 2}
-  - page: {fileID: 1688219610}
-    button: {fileID: 332822073}
-    ribbon: {fileID: 373959221}
-    task: {fileID: 11400000, guid: d7ec78b2fecfa1a47b883803da9c87a6, type: 2}
-  - page: {fileID: 1533785943}
-    button: {fileID: 1595285814}
-    ribbon: {fileID: 1182609755}
-    task: {fileID: 11400000, guid: becf6bbde18a58a46a63b3bd8ed4fab2, type: 2}
-  - page: {fileID: 968555494}
-    button: {fileID: 79154977}
-    ribbon: {fileID: 861403819}
-    task: {fileID: 11400000, guid: 9a000a9ad9461b54a8dc4d5f0943d06c, type: 2}
-  - page: {fileID: 1908191332}
-    button: {fileID: 1649045874}
-    ribbon: {fileID: 1329205608}
-    task: {fileID: 11400000, guid: 3161256e18fff3845beba97c1c9fe747, type: 2}
-  - page: {fileID: 1015853981}
-    button: {fileID: 1971525967}
-    ribbon: {fileID: 2043556780}
-    task: {fileID: 11400000, guid: fc4505f2e895524499aad9c791a49627, type: 2}
-  - page: {fileID: 1727627541}
-    button: {fileID: 1892712783}
-    ribbon: {fileID: 886991349}
-    task: {fileID: 11400000, guid: 1c6b552c86dddf04b993dcfa7fac9180, type: 2}
-  - page: {fileID: 1036051826}
-    button: {fileID: 1945260988}
-    ribbon: {fileID: 1761012645}
-    task: {fileID: 11400000, guid: a0a096064d14ca542b33b98b1063a3d3, type: 2}
-  - page: {fileID: 2026928382}
-    button: {fileID: 582455686}
-    ribbon: {fileID: 1008194687}
-    task: {fileID: 11400000, guid: 331ebfc6a5ff9874488e755c1bdd883c, type: 2}
-  - page: {fileID: 475594150}
-    button: {fileID: 761623307}
-    ribbon: {fileID: 1091605636}
-    task: {fileID: 11400000, guid: 668af657f0937934181ccffef644ba6a, type: 2}
-  - page: {fileID: 1150672983}
-    button: {fileID: 421364394}
-    ribbon: {fileID: 283357533}
-    task: {fileID: 11400000, guid: 1c9cb564ecb6c0c45b64a5279d429f81, type: 2}
---- !u!114 &1777053137438372787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777053137438372785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 3316739771
-  serverOnly: 0
-  visible: 0
-  m_AssetId: 
-  hasSpawned: 0
 --- !u!224 &1777053137438372790
 RectTransform:
   m_ObjectHideFlags: 0

@@ -11,7 +11,9 @@ public class TaskList : NetworkBehaviour
     {
         public GameObject page;
         public GameObject button;
+        public bool active;
         public GameObject ribbon;
+        public bool complete;
         public TaskScriptableObject task;
         //public bool initialised;
     }
@@ -22,6 +24,15 @@ public class TaskList : NetworkBehaviour
     {
 
     }
+
+    private void OnEnable()
+    {
+        if (initialised)
+        {
+           // SetActive();
+        }
+    }
+
     private void Update()
     {
         if (!initialised)//TODO: determine when this can be disabled after retreving information
@@ -38,24 +49,40 @@ public class TaskList : NetworkBehaviour
                     }
                 }
                 if (count >= pages.Length)
+                {
                     initialised = true;
+                    //gameObject.SetActive(false);
+                }
             }
             else
                 CmdGetActive(); //Might be able to just use this instead?
         }
     }
-    void SetActive(int index, bool buttonActive, bool ribbonActive)
+    void SetActive()
     {
-        pages[index].button.SetActive(buttonActive);
-        pages[index].ribbon.SetActive(ribbonActive);
+        for (int i = 0; i < pages.Length; i++)
+        {
+            pages[i].button.SetActive(pages[i].active);
+            pages[i].ribbon.SetActive(pages[i].complete);
+        }
     }
 
-    [ClientRpc]
-    void RpcSetActive(int[] index, bool[] buttonActive, bool[] ribbonActive, bool finished)
+    void SetValues(int index, bool buttonActive, bool ribbonActive)
     {
+        pages[index].active = buttonActive;
+        pages[index].complete = ribbonActive;
+    }
+    [ClientRpc]
+    void RpcSetValues(int[] index, bool[] buttonActive, bool[] ribbonActive, bool finished)
+    {
+       // if (!initialised)
+       //     gameObject.SetActive(false);
         initialised = finished;
         for (int i = 0; i < index.Length && i < buttonActive.Length && i < ribbonActive.Length; i++)
-            SetActive(index[i], buttonActive[i], ribbonActive[i]);
+            SetValues(index[i], buttonActive[i], ribbonActive[i]);
+
+        SetActive();
+
     }
 
     //[TargetRpc] //Most likely unable to use target as this is unowned
@@ -84,16 +111,15 @@ public class TaskList : NetworkBehaviour
             }
         }
 
-        RpcSetActive(index, buttonActive, ribbonActive, initialised);
+        RpcSetValues(index, buttonActive, ribbonActive, initialised);
     }
 
 
-    // Update is called once per frame
     public void Select(int index)
     {
         for (int i = 0; i < pages.Length; i++)
             pages[i].page.SetActive(i == index);
 
-       // CmdGetActive(); //check current active, just incase?
+        // CmdGetActive(); //check current active, just incase?
     }
 }
