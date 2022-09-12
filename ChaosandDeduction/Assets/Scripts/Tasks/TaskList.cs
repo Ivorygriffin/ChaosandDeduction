@@ -22,14 +22,18 @@ public class TaskList : NetworkBehaviour
     bool initialised = false;
     private void Start()
     {
-
+        for (int i = 0; i < pages.Length; i++)
+        {
+            int x = i;
+            pages[i].button.GetComponent<Button>().onClick.AddListener(() => Select(x));
+        }
     }
 
     private void OnEnable()
     {
         if (initialised)
         {
-           // SetActive();
+            // SetActive();
         }
     }
 
@@ -69,18 +73,19 @@ public class TaskList : NetworkBehaviour
 
     void SetValues(int index, bool buttonActive, bool ribbonActive)
     {
+        //Button temp = pages[index].button.GetComponent<Button>();
         pages[index].active = buttonActive;
         pages[index].complete = ribbonActive;
     }
     [ClientRpc]
     void RpcSetValues(int[] index, bool[] buttonActive, bool[] ribbonActive, bool finished)
     {
-       // if (!initialised)
-       //     gameObject.SetActive(false);
-        initialised = finished;
+        // if (!initialised)
+        //     gameObject.SetActive(false);
         for (int i = 0; i < index.Length && i < buttonActive.Length && i < ribbonActive.Length; i++)
             SetValues(index[i], buttonActive[i], ribbonActive[i]);
 
+        initialised = finished;
         SetActive();
 
     }
@@ -104,7 +109,7 @@ public class TaskList : NetworkBehaviour
         {
             if (TaskManager.instance)
             {
-                bool active = TaskManager.instance.RequiredVillagerTask(pages[i].task);
+                bool active = TaskManager.instance.RequiredTask(pages[i].task);
                 index[i] = i;
                 buttonActive[i] = active;
                 ribbonActive[i] = pages[i].task.isComplete;
