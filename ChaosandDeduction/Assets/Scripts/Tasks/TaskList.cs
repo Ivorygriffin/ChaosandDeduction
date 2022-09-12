@@ -26,7 +26,7 @@ public class TaskList : NetworkBehaviour
         {
             int x = i;
             pages[i].button.GetComponent<Button>().onClick.AddListener(() => Select(x));
-            pages[i].ribbon = pages[i].button.transform.GetChild(0).gameObject;
+            //pages[i].ribbon = pages[i].button.transform.GetChild(0).gameObject;
         }
     }
 

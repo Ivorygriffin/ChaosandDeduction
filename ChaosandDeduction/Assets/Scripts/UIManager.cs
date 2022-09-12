@@ -59,7 +59,7 @@ public class UIManager : NetworkBehaviour
 
     private void Update()
     {
-        if (!initalised && PlayerManager.Instance)
+        if (!initalised && PlayerManager.Instance && PlayerManager.Instance.localPlayerData.alignment != Alignment.Undefined)
         {
             if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
                 TraitorTaskTab.SetActive(true);
