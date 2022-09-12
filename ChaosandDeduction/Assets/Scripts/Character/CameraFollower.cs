@@ -36,7 +36,7 @@ public class CameraFollower : MonoBehaviour
         if (target != null)
             transform.position = target.position + offset;
         else
-            if(PlayerManager.Instance && PlayerManager.Instance.localPlayer)
+            if (PlayerManager.Instance && PlayerManager.Instance.localPlayer)
             target = PlayerManager.Instance.localPlayer.transform;
     }
 
@@ -49,6 +49,8 @@ public class CameraFollower : MonoBehaviour
             Gizmos.DrawCube(target.position + offset, Vector3.one * 0.25f);
             Gizmos.color = Color.red;
             Gizmos.DrawRay(target.position + offset, transform.forward * 3);
+            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
+            Gizmos.DrawFrustum(target.position + offset, 60, 1000, 0.3f, 16.0f / 9.0f);
         }
     }
 #endif
