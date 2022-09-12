@@ -12,8 +12,10 @@ public class UIManager : NetworkBehaviour
     public Canvas voteScreen;
     public Canvas winScreen;
     public Canvas settingsCanvas;
+    public Canvas taskCanvas;
     public GameObject VillagerTaskScreen;
     public GameObject TraitorTaskScreen;
+    public GameObject TraitorTaskTab;
     public Canvas InitialMap;
     public Canvas InteractCanvas;
 
@@ -40,6 +42,8 @@ public class UIManager : NetworkBehaviour
     //public bool villager;
     //public bool traitor;
 
+    bool initalised = false;
+
     void Start()
     {
         if (Instance == null)
@@ -55,6 +59,14 @@ public class UIManager : NetworkBehaviour
 
     private void Update()
     {
+        if (!initalised && PlayerManager.Instance)
+        {
+            if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
+                TraitorTaskTab.SetActive(true);
+            else
+                TraitorTaskTab.SetActive(false);
+            initalised = true;
+        }
         //TraitorTaskListText();
         //VillagerTaskListText();
     }
@@ -97,17 +109,13 @@ public class UIManager : NetworkBehaviour
     }
     public void TaskList(bool show)
     {
-        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Villager)
-        {
-            VillagerTaskScreen.SetActive(show);
-            InteractCanvas.enabled = !show;
-        }
-        if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
-        {
-            TraitorTaskScreen.SetActive(show);
-            InteractCanvas.enabled = !show;
-        }
-
+        taskCanvas.enabled = show;
+        InteractCanvas.enabled = !show;
+    }
+    public void SwitchList(bool villager)
+    {
+        VillagerTaskScreen.SetActive(villager);
+        TraitorTaskScreen.SetActive(!villager);
     }
     //public void TraitorTaskListText()
     //{

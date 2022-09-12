@@ -177,8 +177,8 @@ public class TaskManager : NetworkBehaviour
     }
 
 
-    public bool RequiredVillagerTask(TaskScriptableObject task)
+    public bool RequiredTask(TaskScriptableObject task)
     {
-        return villagerTasks.Contains(task);
+        return villagerTasks.Contains(task) || traitorTasks.Contains(task);
     }
 }
