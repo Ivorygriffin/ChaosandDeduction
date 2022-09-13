@@ -21,9 +21,11 @@ public class UIManager : NetworkBehaviour
 
     public Canvas roleRevealCanvas;
     public TMP_Text roleText;
-    float timer;
-    const float maxTime = 5;
+    float roleTimer = 1;
+    const float roleMaxTime = 5;
 
+    float replayTimer = -1;
+    const float replayMaxTime = 15;
 
     //Texts
     public TMP_Text winScreenText;
@@ -96,15 +98,25 @@ public class UIManager : NetworkBehaviour
             }
 
             initalised = true;
-            timer = maxTime;
+            roleTimer = roleMaxTime;
         }
-        else if (timer > 0)
+
+        if (roleTimer > 0)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            roleTimer -= Time.deltaTime;
+            if (roleTimer <= 0)
             {
                 roleRevealCanvas.enabled = false;
                 InteractCanvas.enabled = true;
+            }
+        }
+
+        if (replayTimer > 0)
+        {
+            replayTimer -= Time.deltaTime;
+            if (replayTimer <= 0)
+            {
+                NetworkManager.singleton.ServerChangeScene("Lobby");
             }
         }
         //TraitorTaskListText();
@@ -129,6 +141,8 @@ public class UIManager : NetworkBehaviour
         winScreen.enabled = true;
         voteScreen.enabled = false;
         InteractCanvas.enabled = false;
+
+        replayTimer = replayMaxTime;
     }
 
     public void Map(bool show)
