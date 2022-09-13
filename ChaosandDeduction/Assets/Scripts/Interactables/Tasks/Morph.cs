@@ -50,7 +50,7 @@ public class Morph : Interactable
         //}
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         if (useable)
             ResetStages();
