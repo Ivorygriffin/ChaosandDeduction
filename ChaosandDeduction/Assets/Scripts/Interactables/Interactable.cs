@@ -63,6 +63,7 @@ public abstract class Interactable : NetworkBehaviour
 
     protected Vector3 startPos;
     protected Quaternion startAngle;
+    public bool useable = true;
 
     //  Unity Methods ---------------------------------
     public void Start()
@@ -79,7 +80,7 @@ public abstract class Interactable : NetworkBehaviour
     public void Interact(CharacterInteraction character)
     {
         //Gate keep from characters not aligned with this object
-        if ((requiredAlignment != Alignment.Neutral && requiredAlignment != PlayerManager.Instance.localPlayerData.alignment))
+        if ((requiredAlignment != Alignment.Neutral && requiredAlignment != PlayerManager.Instance.localPlayerData.alignment) || !useable)
             return;
         //  || Vector3.Distance(character.transform.position, transform.position) > character.interactionRadius * 2 //TODO: Implement check against interacting too far away
 

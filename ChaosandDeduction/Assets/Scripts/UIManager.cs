@@ -19,6 +19,9 @@ public class UIManager : NetworkBehaviour
     public Canvas InitialMap;
     public Canvas InteractCanvas;
 
+    public Canvas roleRevealCanvas;
+    public TMP_Text roleText;
+
 
     //Texts
     public TMP_Text winScreenText;
@@ -50,6 +53,18 @@ public class UIManager : NetworkBehaviour
         {
             Instance = this;
             //DontDestroyOnLoad(gameObject);
+
+
+            voteScreen.enabled = false;
+            winScreen.enabled = false;
+            settingsCanvas.enabled = false;
+            taskCanvas.enabled = false;
+            VillagerTaskScreen.SetActive(true);
+            TraitorTaskScreen.SetActive(false);
+            InitialMap.enabled = false;
+            InteractCanvas.enabled = false;
+
+            roleRevealCanvas.enabled = false;
         }
         else
         {
@@ -61,10 +76,23 @@ public class UIManager : NetworkBehaviour
     {
         if (!initalised && PlayerManager.Instance && PlayerManager.Instance.localPlayerData.alignment != Alignment.Undefined)
         {
-            if (PlayerManager.Instance.localPlayerData.alignment == Alignment.Traitor)
-                TraitorTaskTab.SetActive(true);
-            else
-                TraitorTaskTab.SetActive(false);
+            roleRevealCanvas.enabled = true;
+            switch (PlayerManager.Instance.localPlayerData.alignment)
+            {
+                case Alignment.Traitor:
+                    TraitorTaskTab.SetActive(true);
+                    roleText.text = "You are the traitor!";
+                    break;
+                case Alignment.Villager:
+                    TraitorTaskTab.SetActive(false);
+                    roleText.text = "You are a villager.";
+                    break;
+
+                default:
+                    roleText.text = "Broken: localPlayerData not assigned properly";
+                    break;
+            }
+
             initalised = true;
         }
         //TraitorTaskListText();
