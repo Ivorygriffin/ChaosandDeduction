@@ -27,8 +27,10 @@ public class HiddenMorph : Morph
 
 
     //  Unity Methods ---------------------------------
-    private void OnDisable()
+    private void OnEnable()
     {
+        base.OnEnable();
+
         if ((stage <= 0 && !hideInitial) || (stage >= (stages.Length - 1) && !hideFinal)) //ignore the hide effect if its at the start or end and the relevant bool is false
             return;
 

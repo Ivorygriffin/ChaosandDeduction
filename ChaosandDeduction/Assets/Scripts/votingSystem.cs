@@ -43,7 +43,7 @@ public class votingSystem : NetworkBehaviour
             UIManager.Instance.winScreenText.text = "The Game Has Beaten you all";
             UIManager.Instance.WinScreen();
         }
-        UIManager.Instance.CmdVoting(false);
+        UIManager.Instance.WinScreen();
     }
 
     public void SelectPlayer(int playerIndex)
