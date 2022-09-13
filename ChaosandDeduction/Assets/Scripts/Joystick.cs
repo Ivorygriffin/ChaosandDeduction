@@ -78,7 +78,7 @@ public class Joystick : MonoBehaviour
 
     protected void Update()
     {
-        if (!gameObject.activeInHierarchy && inputVector != Vector2.zero)
+        if (!canvas.enabled && inputVector != Vector2.zero)
         {
             if (legalFinger != null)
                 OnFingerUp(legalFinger); //remove active finger from play
@@ -106,7 +106,10 @@ public class Joystick : MonoBehaviour
 
         if (usingDebugControls)
         {
-            inputVector = fingerPos.normalized;
+            if (canvas.enabled)
+                inputVector = fingerPos.normalized;
+            else
+                inputVector = Vector2.zero;
         }
 #endif
     }
@@ -115,7 +118,7 @@ public class Joystick : MonoBehaviour
     //  Methods ---------------------------------------
     public void OnFingerDown(Finger finger)
     {
-        if (legalFinger != null || !gameObject.activeInHierarchy) //if joystick already engaged, ignore extra fingers
+        if (legalFinger != null || !canvas.enabled) //if joystick already engaged, ignore extra fingers
             return;
 
 
