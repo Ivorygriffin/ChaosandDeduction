@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BasicDoor : MonoBehaviour
 {
-    public Quaternion closedAngle;
-    public Quaternion openAngle;
+    public Quaternion closedAngle = new Quaternion();
+    public Quaternion openAngle = new Quaternion();
     public float maxTime = 1;
-    float timer;
+    float timer = 0;
     bool state = true;
 
     private void Start()
