@@ -127,6 +127,7 @@ public class UIManager : NetworkBehaviour
     public void WinScreen()
     {
         winScreen.enabled = true;
+        voteScreen.enabled = false;
         InteractCanvas.enabled = false;
     }
 
