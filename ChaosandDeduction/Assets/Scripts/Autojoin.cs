@@ -15,6 +15,9 @@ public class Autojoin : MonoBehaviour
 #if UNITY_EDITOR
     private void Start()
     {
+        if (discovery == null) //just for editor so performance doesnt matter too much
+            discovery = FindObjectOfType<NetworkDiscoveryHUD>();
+
         if (ClonesManager.IsClone())
         {
             discovery.Join();
