@@ -22,9 +22,10 @@ public class LightingManager : NetworkBehaviour
             return;
         if (Application.isPlaying)
         {
-            TimeOfDay += Time.deltaTime;
+            if (TimeOfDay < 180)
+                TimeOfDay += Time.deltaTime;
             //Debug.Log(TimeOfDay);
-            TimeOfDay %= 180;
+            //TimeOfDay %= 180;
             RpcUpdateLighting(TimeOfDay / 180f);
 
         }

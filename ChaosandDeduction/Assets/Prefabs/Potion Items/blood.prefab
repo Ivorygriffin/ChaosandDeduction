@@ -37,6 +37,7 @@ Transform:
   - {fileID: 6201969082134998493}
   - {fileID: 1912682035441602412}
   - {fileID: 618830605339666014}
+  - {fileID: 1314247465291574851}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,6 +151,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   requiredAlignment: 1
+  useable: 1
   pickedUp: 0
   grabPoints:
   - {fileID: 244263310809947876}
@@ -159,10 +161,14 @@ MonoBehaviour:
   useResetTimer: 1
   resetMaxTimer: 3
   destroyOnArrival: 1
+  disabledTimer: 0
   reward:
     item: {fileID: 0}
     task: {fileID: 11400000, guid: 3161256e18fff3845beba97c1c9fe747, type: 2}
     interactable: {fileID: 0}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
     givenServerReward: 0
 --- !u!1 &5965908933419356562
 GameObject:
@@ -188,7 +194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5965908933419356562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.044, y: 0.02, z: 0.648}
+  m_LocalPosition: {x: -0.044, y: 0.02, z: 0.306}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6282514725618781749}
@@ -218,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7775737234934623743}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.000000104308114}
-  m_LocalPosition: {x: -0.016, y: 0.114, z: -0.622}
+  m_LocalPosition: {x: -0.016, y: -0.006, z: -0.312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6282514725618781749}
@@ -231,6 +237,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6282514725618781749}
     m_Modifications:
+    - target: {fileID: 3225805953420330140, guid: 090402855cd6ad540a128a24844d1e82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4018513910651561289, guid: 090402855cd6ad540a128a24844d1e82, type: 3}
       propertyPath: m_Name
       value: BloodJar
@@ -285,6 +295,80 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4363831567960408051, guid: 090402855cd6ad540a128a24844d1e82, type: 3}
   m_PrefabInstance: {fileID: 2739393215821967519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6192902869548553579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6282514725618781749}
+    m_Modifications:
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.348
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514492743602758034, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+      propertyPath: m_Name
+      value: BloodJar (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+--- !u!4 &1314247465291574851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5173713766945733416, guid: 665a38fcb97a94f4eb8c828c5e7a7ea3, type: 3}
+  m_PrefabInstance: {fileID: 6192902869548553579}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7996019984996928200
 PrefabInstance:
