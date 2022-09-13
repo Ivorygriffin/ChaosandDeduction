@@ -544,6 +544,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   requiredAlignment: 3
+  useable: 1
   regressOverTime: 0
   regressMaxTimer: 1
   stages:
@@ -554,6 +555,9 @@ MonoBehaviour:
     item: {fileID: 0}
     task: {fileID: 11400000, guid: de2f3d8a8fe51b74ea9023a06aa73693, type: 2}
     interactable: {fileID: 0}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
     givenServerReward: 0
 --- !u!114 &7339885419656946123
 MonoBehaviour:
@@ -1180,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2934907648566385938, guid: 2f3de304ea3c17f4d8c757c4622bfd89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.119
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 2934907648566385938, guid: 2f3de304ea3c17f4d8c757c4622bfd89, type: 3}
       propertyPath: m_LocalRotation.w
