@@ -95,27 +95,28 @@ public class CharacterInteraction : NetworkBehaviour
                 return;
 
             float closestDistance = float.MaxValue;
-            Interactable interactable = null;
+            Interactable[] interactable = null;
 
             for (int i = 0; i < Results.Length; i++)
             {
                 float distance = Vector3.Distance(transform.position + transform.forward, Results[i].transform.position); //calculate distance from grab point to object
                 Interactable[] interactables = Results[i].GetComponents<Interactable>();
 
-                for (int j = 0; j < interactables.Length; j++)
-                    if (Results[i] != null && interactables[j] != null && interactables[j].enabled && distance < closestDistance) //record the closest object
-                    {
-                        closestDistance = distance;
-                        interactable = interactables[j];
-                    }
+                //for (int j = 0; j < interactables.Length; j++)
+                if (Results[i] != null && interactables != null && interactables.Length > 0 && distance < closestDistance) //record the closest object
+                {
+                    closestDistance = distance;
+                    interactable = interactables;
+                }
             }
 
 
             // Interactable interactable = Results[closestIndex].GetComponent<Interactable>();
-            if (interactable != null)
-            {
-                interactable.Interact(this);
-            }
+
+            if (interactable!= null)
+                for (int i = 0; i < interactable.Length; i++)
+                if (interactable[i] != null)
+                    interactable[i].Interact(this);
 
         }
         else

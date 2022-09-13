@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Mirror;
 //  Namespace Properties ------------------------------
 [System.Serializable]
@@ -13,6 +14,7 @@ public class Reward
     public TaskScriptableObject task;
     [Tooltip("Chain quest, This will be toggled on after this morph is completed")]
     public Interactable interactable;
+    public UnityEvent onComplete;
 
     bool givenLocalReward = false;
     public bool givenServerReward = false;
@@ -29,10 +31,8 @@ public class Reward
             //TaskManager.instance.CheckTaskComplete();
         }
         if (interactable)
-        {
-            interactable.enabled = true;
-            interactable.ResetInteractable();
-        }
+            interactable.Useable();
+        onComplete.Invoke();
     }
 
     public void Reset()
@@ -92,6 +92,12 @@ public abstract class Interactable : NetworkBehaviour
     {
         transform.position = startPos;
         transform.rotation = startAngle;
+    }
+
+    public virtual void Useable()
+    {
+        useable = true;
+        ResetInteractable();
     }
     //  Event Handlers --------------------------------
 }

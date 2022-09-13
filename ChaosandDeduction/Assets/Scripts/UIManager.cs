@@ -21,6 +21,8 @@ public class UIManager : NetworkBehaviour
 
     public Canvas roleRevealCanvas;
     public TMP_Text roleText;
+    float timer;
+    const float maxTime = 5;
 
 
     //Texts
@@ -94,6 +96,16 @@ public class UIManager : NetworkBehaviour
             }
 
             initalised = true;
+            timer = maxTime;
+        }
+        else if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                roleRevealCanvas.enabled = false;
+                InteractCanvas.enabled = true;
+            }
         }
         //TraitorTaskListText();
         //VillagerTaskListText();

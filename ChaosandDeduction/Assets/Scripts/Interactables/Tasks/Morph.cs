@@ -43,21 +43,23 @@ public class Morph : Interactable
         //ResetStages();
 
 
-        if (reward.interactable)
-        {
-            reward.interactable.enabled = false;
-            reward.interactable.Start();
-        }
+        //if (reward.interactable)
+        //{
+        //    reward.interactable.enabled = false;
+        //    reward.interactable.Start();
+        //}
     }
 
     private void OnEnable()
     {
-        ResetStages();
+        if (useable)
+            ResetStages();
     }
 
     private void OnDisable()
     {
-        ResetStages();
+        if (useable)
+            ResetStages();
     }
 
 
@@ -97,7 +99,7 @@ public class Morph : Interactable
             CmdReward();
 
             //script now serves no purpose
-            this.enabled = false; //self disable? hopefully prevents issue of false exploit error
+            useable = false;
         }
     }
 
@@ -147,8 +149,8 @@ public class Morph : Interactable
         regressTimer = 0;
         stage = 0;
         ResetStages();
-        if (reward.interactable)
-            reward.interactable.enabled = false;
+        //if (reward.interactable)
+        //    reward.interactable.enabled = false;
         reward.Reset();
     }
 

@@ -31,8 +31,8 @@ public class OneTime : Interactable
     {
         base.Start();
 
-        if (reward.interactable)
-            reward.interactable.enabled = false;
+        //if (reward.interactable)
+        //    reward.interactable.enabled = false;
     }
 
 
@@ -53,10 +53,11 @@ public class OneTime : Interactable
     {
         //award ingredient
         reward.LocalReward();
+        useable = false;
         CmdReward();
 
         //this script now serves no purpose
-        this.enabled = false; //self disable? hopefully prevents issue of false exploit error
+        useable = false;
     }
 
     [Command(requiresAuthority = false)]

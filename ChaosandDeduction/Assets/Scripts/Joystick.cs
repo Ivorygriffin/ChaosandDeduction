@@ -111,7 +111,7 @@ public class Joystick : MonoBehaviour
     //  Methods ---------------------------------------
     public void OnFingerDown(Finger finger)
     {
-        if (legalFinger != null || !isActiveAndEnabled) //if joystick already engaged, ignore extra fingers
+        if (legalFinger != null || !gameObject.activeInHierarchy) //if joystick already engaged, ignore extra fingers
             return;
 
 

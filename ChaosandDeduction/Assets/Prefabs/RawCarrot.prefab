@@ -203,21 +203,38 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   requiredAlignment: 1
+  useable: 1
   pickedUp: 0
   grabPoints:
   - {fileID: 6063360705682097261}
   - {fileID: 2977211786651044403}
   - {fileID: 632693608410739909}
   - {fileID: 8728380529389560165}
-  deliverPoint: {x: -11.5, y: 0, z: -12.37}
-  deliverRadius: 1.8
+  deliverPoint: {x: -35.52, y: 0, z: -6.3}
+  deliverRadius: 2
   useResetTimer: 1
   resetMaxTimer: 3
   destroyOnArrival: 1
+  disabledTimer: 0
   reward:
     item: {fileID: 0}
     task: {fileID: 0}
     interactable: {fileID: 0}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+          m_MethodName: Useable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     givenServerReward: 0
 --- !u!114 &-2576083876960450940
 MonoBehaviour:
@@ -234,7 +251,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 44d47d7f3feda614886142b168829128
+  m_AssetId: 3e5ba3de101bcf34685162a694baf3f8
   hasSpawned: 0
 --- !u!1001 &973277869456301803
 PrefabInstance:

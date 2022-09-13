@@ -596,7 +596,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113013459182017528}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -47.14, y: 24.62, z: -42.34}
   m_LocalScale: {x: 4.0852, y: 4.0852, z: 4.0852}
   m_Children:
@@ -641,15 +641,19 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   requiredAlignment: 1
+  useable: 1
   regressOverTime: 0
   regressMaxTimer: 1
   stages:
   - {fileID: 3680032869629954522}
   - {fileID: 4710690272454957919}
   reward:
-    item: {fileID: 0}
+    item: {fileID: 5224082096062782042, guid: 4da6b98e599c5694994db594023ba9ef, type: 3}
     task: {fileID: 0}
     interactable: {fileID: 0}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
     givenServerReward: 0
 --- !u!114 &59283893512043014
 MonoBehaviour:

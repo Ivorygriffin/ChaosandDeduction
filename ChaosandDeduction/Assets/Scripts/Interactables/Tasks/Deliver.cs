@@ -48,11 +48,11 @@ public class Deliver : PickUp
     {
         base.Start();
 
-        if (reward.interactable)
-        {
-            reward.interactable.enabled = false;
-            reward.interactable.Start();
-        }
+        //if (reward.interactable)
+        //{
+        //    reward.interactable.enabled = false;
+        //    reward.interactable.Start();
+        //}
     }
 
 
@@ -94,6 +94,7 @@ public class Deliver : PickUp
             //StartCoroutine(DelayDestroy());
             //Destroy(gameObject); 
             reward.LocalReward();
+            useable = false;
             CmdReward();
         }
 
