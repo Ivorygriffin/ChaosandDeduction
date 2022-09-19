@@ -35,7 +35,7 @@ public class Timer : NetworkBehaviour
                 revealedVotingScreen = true;
                 UIManager.Instance.CmdVoting(true);
                 //VotingMusic.Play(); //TODO: determine if host needs to call the voting music themselves or are they included in clientRPC
-                RpcStartMusic(VotingMusic, 0);
+                RpcStartMusic(1, 0);
             }
             if (timeRemaining <= 90 && !barricadesShown)
             {
@@ -53,22 +53,46 @@ public class Timer : NetworkBehaviour
 
     }
     [Command(requiresAuthority = false)]
-    public void CmdStartMusic(NetworkConnectionToClient conn = null) //round about way of forcing the client to sync music?
+    public void CmdStartMusic(NetworkConnectionToClient conn = null)  //round about way of forcing the client to sync music?
     {
-        TargetStartMusic(conn, gameplayMusic, timeRemaining);
+        TargetStartMusic(conn, 0, timeRemaining);
     }
     [TargetRpc]
-    void TargetStartMusic(NetworkConnection conn, AudioSource audio, float time)
+    void TargetStartMusic(NetworkConnection conn, int audio, float time)
     {
-        audio.Play();
-        audio.time = (startTime - time);
+        AudioSource audioSource = null;
+
+        switch (audio)
+        {
+            case 0:
+                audioSource = gameplayMusic;
+                break;
+            case 1:
+                audioSource = VotingMusic;
+                break;
+
+        }
+        audioSource.Play();
+        audioSource.time = (startTime - time);
     }
 
     [ClientRpc]
-    void RpcStartMusic(AudioSource audio, float time)
+    void RpcStartMusic(int audio, float time)
     {
-        audio.Play();
-        audio.time = (startTime - time);
+        AudioSource audioSource = null;
+
+        switch (audio)
+        {
+            case 0:
+                audioSource = gameplayMusic;
+                break;
+            case 1:
+                audioSource = VotingMusic;
+                break;
+
+        }
+        audioSource.Play();
+        audioSource.time = (startTime - time);
     }
 
     [ClientRpc]
