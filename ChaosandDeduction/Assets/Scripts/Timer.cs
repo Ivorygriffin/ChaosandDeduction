@@ -9,13 +9,14 @@ public class Timer : NetworkBehaviour
     [SyncVar]
     public float timeRemaining, startTime;
     public TMP_Text timerText;
-   
+
 
     bool revealedVotingScreen = false; //has the server revealed the voting screen yet? TODO: turn this on when early vote is called?
 
-    public AudioSource gameplayMusic; 
+    public AudioSource gameplayMusic;
     public AudioSource VotingMusic;
     public GameObject set1, set2;
+    bool barricadesShown = false;
 
     void Start()
     {
@@ -33,10 +34,10 @@ public class Timer : NetworkBehaviour
                 UIManager.Instance.CmdVoting(true);
                 VotingMusic.Play();
             }
-            if(timeRemaining <= 90)
+            if (timeRemaining <= 90 && !barricadesShown)
             {
+                barricadesShown = true;
                 RpcShowB();
-            
             }
         }
 

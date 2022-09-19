@@ -9,30 +9,27 @@ public class LightingManager : NetworkBehaviour
 
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
+    public Timer timer;
 
-    [SyncVar]
-    [SerializeField, Range(0, 180)] private float TimeOfDay;
+    //[SyncVar]
+    //[SerializeField, Range(0, 180)] private float TimeOfDay;
     private float StartTime;
 
     private void Update()
     {
+        float TimeOfDay = timer.startTime - timer.timeRemaining;
+        TimeOfDay /= 180;
+        if (TimeOfDay > 1)
+            TimeOfDay = 1;
 
 
-        if (!isServer)
-            return;
-        if (Application.isPlaying)
+        RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(TimeOfDay);
+        RenderSettings.fogColor = Preset.FogColor.Evaluate(TimeOfDay);
+
+        if (DirectionalLight != null)
         {
-            if (TimeOfDay < 180)
-                TimeOfDay += Time.deltaTime;
-            //Debug.Log(TimeOfDay);
-            //TimeOfDay %= 180;
-            RpcUpdateLighting(TimeOfDay / 180f);
-
-        }
-        else
-        {
-            RpcUpdateLighting(TimeOfDay / 180f);
-
+            DirectionalLight.color = Preset.DirectionalColor.Evaluate(TimeOfDay);
+            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((TimeOfDay * 100f) + 90f, 200, 0));
         }
     }
 
@@ -40,26 +37,9 @@ public class LightingManager : NetworkBehaviour
     {
         base.OnStartClient();
 
-        CmdStartLighting();
-    }
-    [Command(requiresAuthority = false)]
-    public void CmdStartLighting()
-    {
-        RpcUpdateLighting(TimeOfDay);
+        //CmdStartLighting();
     }
 
-    [ClientRpc]
-    private void RpcUpdateLighting(float timePercent)
-    {
-        RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
-        RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
-
-        if (DirectionalLight != null)
-        {
-            DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
-            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 100f) + 90f, 200, 0));
-        }
-    }
 
     private void OnValidate()
     {
