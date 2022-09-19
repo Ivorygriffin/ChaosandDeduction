@@ -18,6 +18,12 @@ public class Timer : NetworkBehaviour
     public GameObject set1, set2;
     bool barricadesShown = false;
 
+    enum audioValue
+    {
+        gameplay,
+        voting
+    }
+
     void Start()
     {
         timeRemaining = startTime;
@@ -35,7 +41,7 @@ public class Timer : NetworkBehaviour
                 revealedVotingScreen = true;
                 UIManager.Instance.CmdVoting(true);
                 //VotingMusic.Play(); //TODO: determine if host needs to call the voting music themselves or are they included in clientRPC
-                RpcStartMusic(1, 0);
+                RpcStartMusic(audioValue.voting, 0);
             }
             if (timeRemaining <= 90 && !barricadesShown)
             {
@@ -52,41 +58,33 @@ public class Timer : NetworkBehaviour
         CmdStartMusic();
 
     }
+
     [Command(requiresAuthority = false)]
     public void CmdStartMusic(NetworkConnectionToClient conn = null)  //round about way of forcing the client to sync music?
     {
-        TargetStartMusic(conn, 0, timeRemaining);
+        TargetStartMusic(conn, audioValue.gameplay, timeRemaining);
     }
     [TargetRpc]
-    void TargetStartMusic(NetworkConnection conn, int audio, float time)
+    void TargetStartMusic(NetworkConnection conn, audioValue audio, float time)
     {
-        AudioSource audioSource = null;
-
-        switch (audio)
-        {
-            case 0:
-                audioSource = gameplayMusic;
-                break;
-            case 1:
-                audioSource = VotingMusic;
-                break;
-
-        }
-        audioSource.Play();
-        audioSource.time = (startTime - time);
+        PlayMusic(audio, time);
+    }
+    [ClientRpc]
+    void RpcStartMusic(audioValue audio, float time)
+    {
+        PlayMusic(audio, time);
     }
 
-    [ClientRpc]
-    void RpcStartMusic(int audio, float time)
+    void PlayMusic(audioValue audio, float time)
     {
         AudioSource audioSource = null;
 
         switch (audio)
         {
-            case 0:
+            case audioValue.gameplay:
                 audioSource = gameplayMusic;
                 break;
-            case 1:
+            case audioValue.voting:
                 audioSource = VotingMusic;
                 break;
 
