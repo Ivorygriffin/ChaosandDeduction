@@ -10,6 +10,8 @@ public class Reward
     [Header("Rewards")]
     [Tooltip("Object that will spawn after task complete")]
     public GameObject item;
+    [Tooltip("Relative to the task gameobject")]
+    public Vector3 spawnPoint;
     [Tooltip("Task object that will be set to completed upon finish")]
     public TaskScriptableObject task;
     [Tooltip("Chain quest, This will be toggled on after this morph is completed")]
@@ -35,11 +37,37 @@ public class Reward
         onComplete.Invoke();
     }
 
+    public void ServerReward(Transform transform)
+    {
+        if (givenServerReward)
+            return;
+        givenServerReward = true;
+
+        if (item)
+        {
+            GameObject temp = Object.Instantiate(item, transform.position + spawnPoint, Quaternion.identity);
+            NetworkServer.Spawn(temp);
+        }
+        if (task)
+        {
+            task.isComplete = true;
+            TaskManager.instance.CheckTaskComplete();
+        }
+    }
+
     public void Reset()
     {
         givenLocalReward = false;
         givenServerReward = false;
     }
+
+#if UNITY_EDITOR
+    public void drawGizmo(Transform transform)
+    {
+        if (item)
+            Gizmos.DrawCube(transform.position + spawnPoint, Vector3.one);
+    }
+#endif
 }
 
 //  Class Attributes ----------------------------------

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 public class LightingManager : NetworkBehaviour
 {
 

@@ -74,6 +74,9 @@ public class Deliver : PickUp
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(deliverPoint, deliverRadius);
         }
+
+        if (reward != null)
+            reward.drawGizmo(transform);
     }
 #endif
 
@@ -105,20 +108,8 @@ public class Deliver : PickUp
     [Command(requiresAuthority = false)]
     void CmdReward()
     {
-        if (reward.givenServerReward)
-            return;
+        reward.ServerReward(transform);
 
-        reward.givenServerReward = true;
-        if (reward.item)
-        {
-            GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
-            NetworkServer.Spawn(temp);
-        }
-        if (reward.task)
-        {
-            reward.task.isComplete = true;
-            TaskManager.instance.CheckTaskComplete();
-        }
         if (destroyOnArrival)
             NetworkServer.Destroy(gameObject);
     }

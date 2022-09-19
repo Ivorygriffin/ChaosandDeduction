@@ -106,20 +106,7 @@ public class Morph : Interactable
     [Command(requiresAuthority = false)]
     void CmdReward()
     {
-        if (reward.givenServerReward)
-            return;
-        reward.givenServerReward = true;
-
-        if (reward.item)
-        {
-            GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
-            NetworkServer.Spawn(temp);
-        }
-        if (reward.task)
-        {
-            reward.task.isComplete = true;
-            TaskManager.instance.CheckTaskComplete();
-        }
+        reward.ServerReward(transform);
     }
 
     void ChangeStage(bool increase)
@@ -153,6 +140,15 @@ public class Morph : Interactable
         //    reward.interactable.enabled = false;
         reward.Reset();
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        if (reward != null)
+            reward.drawGizmo(transform);
+    }
+#endif
 
 
     //  Event Handlers --------------------------------

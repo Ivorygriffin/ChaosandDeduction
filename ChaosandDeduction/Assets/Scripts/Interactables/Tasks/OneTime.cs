@@ -63,20 +63,7 @@ public class OneTime : Interactable
     [Command(requiresAuthority = false)]
     void CmdReward()
     {
-        if (reward.givenServerReward)
-            return;
-        reward.givenServerReward = true;
-
-        if (reward.item)
-        {
-            GameObject temp = Instantiate(reward.item, transform.position + Vector3.up, Quaternion.identity);
-            NetworkServer.Spawn(temp);
-        }
-        if (reward.task)
-        {
-            reward.task.isComplete = true;
-            TaskManager.instance.CheckTaskComplete();
-        }
+        reward.ServerReward(transform);
     }
 
     public override void ResetInteractable()
@@ -85,6 +72,15 @@ public class OneTime : Interactable
         reward.Reset();
 
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        if (reward != null)
+            reward.drawGizmo(transform);
+    }
+#endif
 
 
     //  Event Handlers --------------------------------
