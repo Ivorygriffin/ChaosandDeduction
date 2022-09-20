@@ -10,6 +10,7 @@ public class LightingManager : NetworkBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     public Timer timer;
+    public AnimationCurve timeCurve;
 
     //[SyncVar]
     //[SerializeField, Range(0, 180)] private float TimeOfDay;
@@ -17,11 +18,7 @@ public class LightingManager : NetworkBehaviour
 
     private void Update()
     {
-        float TimeOfDay = timer.startTime - timer.timeRemaining;
-        TimeOfDay /= 180;
-        if (TimeOfDay > 1)
-            TimeOfDay = 1;
-
+        float TimeOfDay = timeCurve.Evaluate(timer.timeRemaining);
 
         RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(TimeOfDay);
         RenderSettings.fogColor = Preset.FogColor.Evaluate(TimeOfDay);

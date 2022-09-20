@@ -53,7 +53,7 @@ public class Timer : NetworkBehaviour
         }
 
         timerText.text = timeRemaining.ToString("F0");
-        timerTransform.rotation = Quaternion.Euler(0, 0, (timeRemaining % dayLength) * 360);
+        timerTransform.rotation = Quaternion.Euler(0, 0, ((startTime - timeRemaining) / dayLength) * 360);
     }
     public override void OnStartClient()
     {
@@ -93,7 +93,8 @@ public class Timer : NetworkBehaviour
 
         }
         audioSource.Play();
-        audioSource.time = (startTime - time);
+        if (audio == audioValue.gameplay && (startTime - time) > 0 && (startTime - time) < audioSource.clip.length)
+            audioSource.time = (startTime - time);
     }
 
     [ClientRpc]
