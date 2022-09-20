@@ -85,13 +85,13 @@ public class UIManager : NetworkBehaviour
                     TraitorTaskTab.SetActive(true);
                     VillagerTaskScreen.SetActive(false);
                     TraitorTaskScreen.SetActive(true);
-                    roleText.text = "You are the traitor!";
+                    roleText.text = "You are the traitor";
                     break;
                 case Alignment.Villager:
                     TraitorTaskTab.SetActive(false);
                     VillagerTaskScreen.SetActive(true);
                     TraitorTaskScreen.SetActive(false);
-                    roleText.text = "You are a villager.";
+                    roleText.text = "You are a villager";
                     break;
 
                 default:

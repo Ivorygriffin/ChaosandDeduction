@@ -11,7 +11,20 @@ public class barricade : NetworkBehaviour
     public bool barricade2;
     public List<GameObject> set1;
     public List<GameObject> set2;
+    public bool buttonPressed;
 
+    IEnumerator barricadeButtonOn()
+    {
+        if (buttonPressed)
+        {
+            yield return new WaitForSeconds(3);
+            buttonPressed = false;
+        }
+    }
+    public void RunButtonPressed()
+    {
+        StartCoroutine(barricadeButtonOn());
+    }
 
     public void Barricade()
     {
@@ -36,8 +49,9 @@ public class barricade : NetworkBehaviour
 
     public void SwitchB()
     {
-        if (barricade1 == true)
+        if (barricade1 == true && buttonPressed == false)
         {
+            buttonPressed = true;
             foreach (GameObject go in set1)
             {
                 go.SetActive(false);
@@ -49,8 +63,9 @@ public class barricade : NetworkBehaviour
             barricade1 = false;
 
         }
-        if (barricade2 == true)
+        if (barricade2 == true && buttonPressed == false)
         {
+            buttonPressed = true;
             foreach (GameObject go in set2)
             {
                 go.SetActive(false);
