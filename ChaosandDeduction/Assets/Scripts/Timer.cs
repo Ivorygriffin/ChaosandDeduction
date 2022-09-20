@@ -8,7 +8,9 @@ public class Timer : NetworkBehaviour
 {
     [SyncVar]
     public float timeRemaining, startTime;
+    const float dayLength = 180 * 2;
     public TMP_Text timerText;
+    public RectTransform timerTransform;
 
 
     bool revealedVotingScreen = false; //has the server revealed the voting screen yet? TODO: turn this on when early vote is called?
@@ -51,6 +53,7 @@ public class Timer : NetworkBehaviour
         }
 
         timerText.text = timeRemaining.ToString("F0");
+        timerTransform.rotation = Quaternion.Euler(0, 0, (timeRemaining % dayLength) * 360);
     }
     public override void OnStartClient()
     {
