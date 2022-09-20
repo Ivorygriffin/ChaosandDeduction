@@ -40,7 +40,7 @@ public class ReadyUp : NetworkBehaviour
 
         //change to real game when ready
         bool start = true;
-        for (int i = 0; i < readyState.Length; i++)
+        for (int i = 0; i < 1; i++)
             if (!readyState[i])
                 start = false;
         if (start)

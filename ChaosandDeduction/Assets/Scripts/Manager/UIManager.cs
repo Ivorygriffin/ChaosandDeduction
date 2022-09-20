@@ -63,8 +63,6 @@ public class UIManager : NetworkBehaviour
             winScreen.enabled = false;
             settingsCanvas.enabled = false;
             taskCanvas.enabled = false;
-            VillagerTaskScreen.SetActive(true);
-            TraitorTaskScreen.SetActive(false);
             InitialMap.enabled = false;
             InteractCanvas.enabled = false;
 
@@ -85,10 +83,14 @@ public class UIManager : NetworkBehaviour
             {
                 case Alignment.Traitor:
                     TraitorTaskTab.SetActive(true);
+                    VillagerTaskScreen.SetActive(false);
+                    TraitorTaskScreen.SetActive(true);
                     roleText.text = "You are the traitor!";
                     break;
                 case Alignment.Villager:
                     TraitorTaskTab.SetActive(false);
+                    VillagerTaskScreen.SetActive(true);
+                    TraitorTaskScreen.SetActive(false);
                     roleText.text = "You are a villager.";
                     break;
 
