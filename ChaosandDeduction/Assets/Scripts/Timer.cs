@@ -8,7 +8,7 @@ public class Timer : NetworkBehaviour
 {
     [SyncVar]
     public float timeRemaining, startTime;
-    const float dayLength = 180 * 2;
+    public const float cycleLength = 180;
     public TMP_Text timerText;
     public RectTransform timerTransform;
 
@@ -53,7 +53,7 @@ public class Timer : NetworkBehaviour
         }
 
         timerText.text = timeRemaining.ToString("F0");
-        timerTransform.rotation = Quaternion.Euler(0, 0, ((startTime - timeRemaining) / dayLength) * 360);
+        timerTransform.rotation = Quaternion.Euler(0, 0, ((startTime - timeRemaining) / (cycleLength * 2)) * 360);
     }
     public override void OnStartClient()
     {

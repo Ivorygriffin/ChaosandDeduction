@@ -3,30 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-//[ExecuteAlways]
+[ExecuteAlways]
 public class LightingManager : NetworkBehaviour
 {
 
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     public Timer timer;
-    public AnimationCurve timeCurve;
 
     //[SyncVar]
     //[SerializeField, Range(0, 180)] private float TimeOfDay;
-    private float StartTime;
+    //private float StartTime;
 
     private void Update()
     {
-        float TimeOfDay = timeCurve.Evaluate(timer.timeRemaining);
+        float TimeOfDay = timer.timeRemaining / Timer.cycleLength;
+
+        float magnitude = TimeOfDay / 1;
+        TimeOfDay %= 1;
+
+        if (magnitude % 2 == 0)
+            TimeOfDay = 1 - TimeOfDay;
 
         RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(TimeOfDay);
         RenderSettings.fogColor = Preset.FogColor.Evaluate(TimeOfDay);
 
+
         if (DirectionalLight != null)
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(TimeOfDay);
-            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((TimeOfDay * 100f) + 90f, 200, 0));
+
+            DirectionalLight.transform.localRotation = Quaternion.Euler(((TimeOfDay * 360) / 4) + 90, 200, 0);
         }
     }
 
