@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class audio : MonoBehaviour
 {
-    public AudioSource pickUp;
-    public AudioSource drop;
+    public AudioSource menuBack, menuConfirm, menuSelect, playerPickUp, playerItemDrop, playerItemHandOver, gameplayMusic, gameplayVoteMusic, traitorTaskCompleteStinger, villagerTaskCompleteStinger, votingVoteCast, votingNobodyWins, votingTraitorWins, votingVillagerWins;
+
     public bool itemHeld;
 
     public void Start()
@@ -17,12 +17,12 @@ public class audio : MonoBehaviour
         if (itemHeld == false)
         {
             itemHeld = true;
-            pickUp.Play();
+            playerPickUp.Play();
         }
         else if(itemHeld)
         {
             itemHeld = false;
-            drop.Play();
+            playerItemDrop.Play();
         }
        
 
