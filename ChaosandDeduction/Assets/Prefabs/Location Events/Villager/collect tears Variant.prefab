@@ -761,9 +761,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5212897468250938715}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -95.21, y: 24.62, z: -22.57}
-  m_LocalScale: {x: 4.0852, y: 4.0852, z: 4.0852}
+  m_LocalScale: {x: 4.570996, y: 4.570996, z: 4.570996}
   m_Children:
   - {fileID: 7696425241281890994}
   - {fileID: 8960446077322811120}
@@ -812,6 +812,7 @@ MonoBehaviour:
   - {fileID: 5214171229453162101}
   reward:
     item: {fileID: 2417641985910925405, guid: df9ab7922fc3f164ebd694a1af905e50, type: 3}
+    spawnPoint: {x: 0, y: 0, z: 0}
     task: {fileID: 0}
     interactable: {fileID: 0}
     onComplete:
@@ -1453,6 +1454,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5212897468250938718}
     m_Modifications:
+    - target: {fileID: 5904180094998017589, guid: 8b01f46335d8a8f46aeca74be3d44d35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7377202849790536854, guid: 8b01f46335d8a8f46aeca74be3d44d35, type: 3}
       propertyPath: m_RootOrder
       value: 5
