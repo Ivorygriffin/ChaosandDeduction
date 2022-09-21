@@ -13,6 +13,7 @@ public class barricade : NetworkBehaviour
     public List<GameObject> set2;
     public bool buttonPressed;
 
+    
     IEnumerator barricadeButtonOn()
     {
         if (buttonPressed)
@@ -21,7 +22,9 @@ public class barricade : NetworkBehaviour
             buttonPressed = false;
         }
     }
-    public void RunButtonPressed()
+
+    [ClientRpc]
+    public void RpcRunButtonPressed()
     {
         StartCoroutine(barricadeButtonOn());
     }
@@ -47,7 +50,8 @@ public class barricade : NetworkBehaviour
         //not working
     }
 
-    public void SwitchB()
+    [ClientRpc]
+    public void RpcSwitchB()
     {
         if (barricade1 == true && buttonPressed == false)
         {
@@ -78,12 +82,14 @@ public class barricade : NetworkBehaviour
         }
     }
 
-
-    public void B1True()
+    [ClientRpc]
+    public void RpcB1True()
     {
         barricade1 = true;
     }
-    public void B2True()
+
+    [ClientRpc]
+    public void RpcB2True()
     {
         barricade2 = true;
     }
