@@ -104,12 +104,13 @@ public class PickUp : Interactable
     void RpcPickedUp(Transform character)
     {
         PickedUp(character);
-        GetComponent<audio>().pickUp.Play();
+       
 
     }
     public virtual void PickedUp(Transform character)
     {
         pickedUp = true;
+      
 
         float closestPoint = float.MaxValue;
         int closestIndex = 0;
@@ -153,7 +154,7 @@ public class PickUp : Interactable
     {
         Dropped(character);
         currentOwner.currentInteraction = null; //double jeapody or something (just ensuring a second player wasnt the cause of dropping the item)
-        GetComponent<audio>().drop.Play();
+        
     }
     public virtual void Dropped(Transform character)
     {

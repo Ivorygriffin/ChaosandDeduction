@@ -664,9 +664,33 @@ PrefabInstance:
       value: Interact canvas (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1563921393}
+      objectReference: {fileID: 346502397}
+    - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InteractSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: audio, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
 --- !u!114 &37067816 stripped
@@ -985,66 +1009,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290369929670172, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
   m_PrefabInstance: {fileID: 69019354}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &74936211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 74936212}
-  m_Layer: 0
-  m_Name: cave
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &74936212
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74936211}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &77504775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 77504776}
-  m_Layer: 0
-  m_Name: blood
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &77504776
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77504775}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &96964749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2008,36 +1972,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f6c64150abd474fa4de165002514e6, type: 3}
---- !u!1 &275807617
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 275807618}
-  m_Layer: 0
-  m_Name: book fire
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &275807618
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275807617}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &296437637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,36 +2395,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290371594016972, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
   m_PrefabInstance: {fileID: 855961279}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &341433903
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 341433904}
-  m_Layer: 0
-  m_Name: tent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &341433904
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341433903}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345790205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,6 +2479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 346502396}
+  - component: {fileID: 346502397}
   m_Layer: 0
   m_Name: Sound / Music
   m_TagString: Untagged
@@ -2601,6 +2506,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &346502397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346502395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b597264a2078a48ba0707ffe0c5563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUp: {fileID: 791448482}
+  drop: {fileID: 2082382026}
 --- !u!4 &350550155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5212897468250938718, guid: a41e4ad714c0f7c409008fb3016428b8, type: 3}
@@ -3434,36 +3353,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &427108065
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 427108066}
-  m_Layer: 0
-  m_Name: eye
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &427108066
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427108065}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &436475225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3683,56 +3572,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &468698650
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 468698651}
-  m_Layer: 0
-  m_Name: stickers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &468698651
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468698650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1296.0388, y: 506.6416, z: 253.54114}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 832081663}
-  - {fileID: 427108066}
-  - {fileID: 1358336614}
-  - {fileID: 544137557}
-  - {fileID: 984881414}
-  - {fileID: 77504776}
-  - {fileID: 1474274753}
-  - {fileID: 620488065}
-  - {fileID: 957734114}
-  - {fileID: 1136282748}
-  - {fileID: 1536690650}
-  - {fileID: 1376208949}
-  - {fileID: 667222670}
-  - {fileID: 74936212}
-  - {fileID: 1757508079}
-  - {fileID: 572097692}
-  - {fileID: 1314621433}
-  - {fileID: 2112605752}
-  - {fileID: 341433904}
-  - {fileID: 275807618}
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &470537152
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -4162,66 +4001,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3145626797363597269, guid: a2ec0de9ec43fbb45a78130c3b2b5696, type: 3}
   m_PrefabInstance: {fileID: 305137199}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &544137556
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 544137557}
-  m_Layer: 0
-  m_Name: water
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &544137557
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544137556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &572097691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 572097692}
-  m_Layer: 0
-  m_Name: laugh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &572097692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572097691}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &573873811 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290369929670172, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
@@ -4502,6 +4281,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &607889173
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 23649890557842518, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_Name
+      value: stickers (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23649890557842519, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 36f415746a7c7b040a1f9750b66663ae, type: 3}
 --- !u!1 &615207410
 GameObject:
   m_ObjectHideFlags: 0
@@ -4587,36 +4423,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290371594016972, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
   m_PrefabInstance: {fileID: 399661095}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &620488064
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 620488065}
-  m_Layer: 0
-  m_Name: mosss
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &620488065
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620488064}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &626544591 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290369929670172, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
@@ -4780,36 +4586,6 @@ Transform:
   - {fileID: 296437638}
   m_Father: {fileID: 346502396}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &667222669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 667222670}
-  m_Layer: 0
-  m_Name: box
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &667222670
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667222669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673945082
 GameObject:
@@ -5531,36 +5307,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &832081662
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 832081663}
-  m_Layer: 0
-  m_Name: frog
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &832081663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832081662}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &855961279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6313,36 +6059,6 @@ Transform:
   m_Father: {fileID: 1070559579}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &957734113
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 957734114}
-  m_Layer: 0
-  m_Name: crystal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &957734114
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957734113}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982595903
 GameObject:
   m_ObjectHideFlags: 0
@@ -6470,36 +6186,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &984881413
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 984881414}
-  m_Layer: 0
-  m_Name: ash
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &984881414
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984881413}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1027152977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290369929670172, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
@@ -7371,36 +7057,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1136282747
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1136282748}
-  m_Layer: 0
-  m_Name: tooth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1136282748
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136282747}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1137297684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290371594016972, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
@@ -8559,36 +8215,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &1314621432
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1314621433}
-  m_Layer: 0
-  m_Name: statue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1314621433
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314621432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1331378087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5401923557846091376, guid: a4b89fb51d963b34fabce834cf659e30, type: 3}
@@ -8709,36 +8335,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354965998}
   m_CullTransparentMesh: 1
---- !u!1 &1358336613
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1358336614}
-  m_Layer: 0
-  m_Name: leaf
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1358336614
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358336613}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1364235702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9135,36 +8731,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31d12a7712b85d541af3699d96a4162c, type: 3}
---- !u!1 &1376208948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1376208949}
-  m_Layer: 0
-  m_Name: tear
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1376208949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376208948}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396850371
 GameObject:
   m_ObjectHideFlags: 0
@@ -9829,36 +9395,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465950525}
   m_CullTransparentMesh: 1
---- !u!1 &1474274752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1474274753}
-  m_Layer: 0
-  m_Name: birefly
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1474274753
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474274752}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1474600819 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3185290371594016972, guid: 9251703f46e0f0d42b164ff1999707d9, type: 3}
@@ -10178,36 +9714,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1536690649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1536690650}
-  m_Layer: 0
-  m_Name: carrot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1536690650
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536690649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563921391
 GameObject:
   m_ObjectHideFlags: 0
@@ -11210,36 +10716,6 @@ Transform:
   m_Father: {fileID: 1421666006}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 30}
---- !u!1 &1757508078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1757508079}
-  m_Layer: 0
-  m_Name: well
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1757508079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757508078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1773047988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13474,36 +12950,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103541189}
   m_CullTransparentMesh: 1
---- !u!1 &2112605751
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2112605752}
-  m_Layer: 0
-  m_Name: tree
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2112605752
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112605751}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 468698651}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2121273645 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1728340932437134663, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
@@ -23930,1283 +23376,1283 @@ PrefabInstance:
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 201493476, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 356752410, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 392991880, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 447623313, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 538054757, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 619049948, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 1376002656, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 1384253586, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 2095821383, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 1104475051353226167, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 1755522397655078892, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 2647284844924936202, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 3888119474656452777, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 3892226756661677270, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 5308452836529540109, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 5316439928482313401, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 5588519260975723753, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -25606,323 +25052,323 @@ PrefabInstance:
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 6758402296931202774, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 7888969916763269188, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 8317892773351874953, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: ash
       value: 
-      objectReference: {fileID: 984881413}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: eye
       value: 
-      objectReference: {fileID: 427108065}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: frog
       value: 
-      objectReference: {fileID: 832081662}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: leaf
       value: 
-      objectReference: {fileID: 1358336613}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: moss
       value: 
-      objectReference: {fileID: 620488064}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 77504775}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tears
       value: 
-      objectReference: {fileID: 1376208948}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: tooth
       value: 
-      objectReference: {fileID: 1136282747}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: water
       value: 
-      objectReference: {fileID: 544137556}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carrot
       value: 
-      objectReference: {fileID: 1536690649}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: crystal
       value: 
-      objectReference: {fileID: 957734113}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: firefly
       value: 
-      objectReference: {fileID: 1474274752}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: bookfire
       value: 
-      objectReference: {fileID: 275807617}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: boxstomp
       value: 
-      objectReference: {fileID: 667222669}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: wellpush
       value: 
-      objectReference: {fileID: 1757508078}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: carvetree
       value: 
-      objectReference: {fileID: 2112605751}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: cavescare
       value: 
-      objectReference: {fileID: 74936211}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: laughgrave
       value: 
-      objectReference: {fileID: 572097691}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: breakstatue
       value: 
-      objectReference: {fileID: 1314621432}
+      objectReference: {fileID: 0}
     - target: {fileID: 8320696475074331568, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
       propertyPath: destroytent
       value: 
-      objectReference: {fileID: 341433903}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166f9b0cb5c140d46ad5f225d3e2e4d5, type: 3}
 --- !u!1 &6417638435162124534 stripped
