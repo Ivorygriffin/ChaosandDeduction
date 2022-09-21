@@ -23,8 +23,8 @@ public class barricade : NetworkBehaviour
         }
     }
 
-    [ClientRpc]
-    public void RpcRunButtonPressed()
+    [Command(requiresAuthority = false)]
+    public void CmdRunButtonPressed()
     {
         StartCoroutine(barricadeButtonOn());
     }
@@ -50,8 +50,8 @@ public class barricade : NetworkBehaviour
         //not working
     }
 
-    [ClientRpc]
-    public void RpcSwitchB()
+    [Command(requiresAuthority = false)]
+    public void CmdSwitchB()
     {
         if (barricade1 == true && buttonPressed == false)
         {
