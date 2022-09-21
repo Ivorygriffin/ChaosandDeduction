@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class audio : MonoBehaviour
 {
-    public AudioSource pickUp;
-    public AudioSource drop;
+    public AudioSource menuBack, menuConfirm, menuSelect, playerPickUp, playerItemDrop, playerItemHandOver, gameplayMusic, gameplayVoteMusic, traitorTaskCompleteStinger, villagerTaskCompleteStinger, votingVoteCast, votingNobodyWins, votingTraitorWins, votingTraitorWins;
+
     public bool itemHeld;
 
     public void Start()
