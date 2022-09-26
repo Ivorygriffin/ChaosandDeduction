@@ -79,6 +79,8 @@ public class PickUp : Interactable
     //  Methods ---------------------------------------
     protected override void InteractOverride(CharacterInteraction character)
     {
+        UIManager.Instance.ResetWandProgress();
+
         if (!pickedUp)
         {
             CmdPickedUp(character);

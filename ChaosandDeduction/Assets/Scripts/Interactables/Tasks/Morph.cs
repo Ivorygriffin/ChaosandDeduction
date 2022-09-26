@@ -79,6 +79,11 @@ public class Morph : Interactable
     //  Methods ---------------------------------------
     protected override void InteractOverride(CharacterInteraction character)
     {
+        if (stage < stages.Length - 1)
+            UIManager.Instance.SetWandProgress(stage + 1);
+        else
+            UIManager.Instance.ResetWandProgress();
+
         CmdInteract();
     }
 
@@ -100,6 +105,8 @@ public class Morph : Interactable
 
             //script now serves no purpose
             useable = false;
+
+            //TODO: determine ways to remove this component to save resources
         }
     }
 
