@@ -45,11 +45,11 @@ public class Timer : NetworkBehaviour
                 //VotingMusic.Play(); //TODO: determine if host needs to call the voting music themselves or are they included in clientRPC
                 RpcStartMusic(audioValue.voting, 0);
             }
-            
+
         }
 
         timerText.text = timeRemaining.ToString("F0");
-        timerTransform.rotation = Quaternion.Euler(0, 0, ((startTime - timeRemaining) / (cycleLength * 2)) * 360);
+        timerTransform.rotation = Quaternion.Euler(0, 0, ((startTime - timeRemaining) / (cycleLength)) * 360);
     }
     public override void OnStartClient()
     {
