@@ -27,6 +27,9 @@ public class UIManager : NetworkBehaviour
     float replayTimer = -1;
     const float replayMaxTime = 15;
 
+    [SerializeField] GameObject[] wandProgress;
+    int wandProgressIndex;
+
     //Texts
     public TMP_Text winScreenText;
     //public TMP_Text taskScreenText;
@@ -36,18 +39,7 @@ public class UIManager : NetworkBehaviour
 
     //Strings
     //public string winner; // this string will change upon voting/or timer end
-    public string completedTask;// will change depending on which task a player has completed
-    [TextArea]
-    [SyncVar]
-    public string villagerCurrentTaskList;
-    [TextArea]
-    [SyncVar]
-    public string traitorCurrentTaskList;
-
-    //need variable to differenciate between villager or traitor interaction with UI,if the traitor clicks on the task list then traitor task list will open
-    //for the sake of getting rid of compile errors variable
-    //public bool villager;
-    //public bool traitor;
+    //public string completedTask;// will change depending on which task a player has completed
 
     bool initalised = false;
 
@@ -56,8 +48,6 @@ public class UIManager : NetworkBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
-
 
             voteScreen.enabled = false;
             winScreen.enabled = false;
@@ -72,6 +62,9 @@ public class UIManager : NetworkBehaviour
         {
             Destroy(gameObject);
         }
+
+
+        ResetWandProgress();
     }
 
     private void Update()
@@ -161,7 +154,7 @@ public class UIManager : NetworkBehaviour
 
     public void TaskNotifications()
     {
-        taskNotificationText.text = completedTask;
+        //taskNotificationText.text = completedTask;
 
     }
     public void TaskList(bool show)
@@ -173,6 +166,22 @@ public class UIManager : NetworkBehaviour
     {
         VillagerTaskScreen.SetActive(villager);
         TraitorTaskScreen.SetActive(!villager);
+    }
+
+
+    public void SetWandProgress(int index)
+    {
+        for (int i = 0; i < wandProgress.Length; i++)
+            wandProgress[i].SetActive(i < index);
+    }
+
+    [ContextMenu("Reset Wand")]
+    public void ResetWandProgress()
+    {
+        for (int i = 0; i < wandProgress.Length; i++)
+            wandProgress[i].SetActive(false);
+
+        wandProgressIndex = 0;
     }
     //public void TraitorTaskListText()
     //{
