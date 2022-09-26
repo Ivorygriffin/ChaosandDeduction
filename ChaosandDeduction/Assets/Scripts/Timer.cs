@@ -8,7 +8,7 @@ public class Timer : NetworkBehaviour
 {
     [SyncVar]
     public float timeRemaining, startTime;
-    public const float cycleLength = 180;
+    public const float cycleLength = 360;
     public TMP_Text timerText;
     public RectTransform timerTransform;
 
@@ -45,11 +45,7 @@ public class Timer : NetworkBehaviour
                 //VotingMusic.Play(); //TODO: determine if host needs to call the voting music themselves or are they included in clientRPC
                 RpcStartMusic(audioValue.voting, 0);
             }
-            if (timeRemaining <= 90 && !barricadesShown)
-            {
-                barricadesShown = true;
-                RpcShowB();
-            }
+            
         }
 
         timerText.text = timeRemaining.ToString("F0");

@@ -19,21 +19,27 @@ public class LightingManager : NetworkBehaviour
     {
         float TimeOfDay = timer.timeRemaining / Timer.cycleLength;
 
-        float magnitude = TimeOfDay / 1;
         TimeOfDay %= 1;
+        TimeOfDay = 1 - TimeOfDay;
 
-        if (magnitude % 2 == 0)
-            TimeOfDay = 1 - TimeOfDay;
+        UpdateLight(TimeOfDay);
+    }
 
-        RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(TimeOfDay);
-        RenderSettings.fogColor = Preset.FogColor.Evaluate(TimeOfDay);
+    private void UpdateLight(float time)
+    {
+        //time = debug1;
+        float gradiant = 1 - time * 2;
+        if (gradiant < 0) //reverse the time gradient
+            gradiant = (time * 2) - 1;
+
+        RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(gradiant);
+        RenderSettings.fogColor = Preset.FogColor.Evaluate(gradiant);
 
 
         if (DirectionalLight != null)
         {
-            DirectionalLight.color = Preset.DirectionalColor.Evaluate(TimeOfDay);
-
-            DirectionalLight.transform.localRotation = Quaternion.Euler(((TimeOfDay * 360) / 4) + 90, 200, 0);
+            DirectionalLight.color = Preset.DirectionalColor.Evaluate(gradiant);
+            DirectionalLight.transform.localRotation = Quaternion.Euler(Preset.directionalLightAngle.Evaluate(time), 200, 0);//Quaternion.Euler(((time * 360)) - 90, 200, 0);
         }
     }
 
