@@ -8,7 +8,7 @@ public class Timer : NetworkBehaviour
 {
     [SyncVar]
     public float timeRemaining, startTime;
-    public const float cycleLength = 180;
+    public const float cycleLength = 360;
     public TMP_Text timerText;
     public RectTransform timerTransform;
 
