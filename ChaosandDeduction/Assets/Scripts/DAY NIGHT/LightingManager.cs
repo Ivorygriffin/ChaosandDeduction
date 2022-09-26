@@ -11,10 +11,6 @@ public class LightingManager : NetworkBehaviour
     [SerializeField] private LightingPreset Preset;
     public Timer timer;
 
-    [Range(0, 1)]
-    public float debug1;
-    public float debug2;
-
     //[SyncVar]
     //[SerializeField, Range(0, 180)] private float TimeOfDay;
     //private float StartTime;
@@ -35,8 +31,6 @@ public class LightingManager : NetworkBehaviour
         float gradiant = 1 - time * 2;
         if (gradiant < 0) //reverse the time gradient
             gradiant = (time * 2) - 1;
-        //debug1 = time;
-        debug2 = gradiant;
 
         RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(gradiant);
         RenderSettings.fogColor = Preset.FogColor.Evaluate(gradiant);

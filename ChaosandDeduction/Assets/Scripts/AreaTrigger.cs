@@ -8,8 +8,8 @@ public class AreaTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")// && PlayerManager.Instance.localPlayer == other.gameObject)
-            MapManager.instance.SetPlayerLocation(area, PlayerManager.Instance.localPlayerData.modelIndex);
+        if (other.tag == "Player" && PlayerManager.Instance.localPlayer == other.gameObject)
+            MapManager.instance.CmdSetPlayerLocation(area, PlayerManager.Instance.localPlayerData.modelIndex);
     }
 
     private void OnDrawGizmos()
