@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Mirror;
 
 public class votingSystem : NetworkBehaviour
@@ -9,39 +10,58 @@ public class votingSystem : NetworkBehaviour
     bool voted = false;
     bool finishedVoting = false; //used server only to determine if the voting has been finished
 
+    bool confirmTimer = false; //server only
 
     //int
-
-    public byte[] numVoted = new byte[4];
+    public SyncList<byte> numVoted = new SyncList<byte>();
 
     //Gameobjects
     int selectedPlayer = -1;
     public GameObject voteObjects;
-    public Timer timer;
+    //public Timer timer;
+    public TMP_Text timerText;
 
-    [ServerCallback]
+    [SyncVar]
+    float voteTimer = 5;
+    const float maxVoteTime = 5;
+
+    private void Start()
+    {
+        if (isServer)
+            numVoted.AddRange(new byte[4]);
+    }
+
     void Update()
     {
         //RpcConfirmVote();
+
+        if (confirmTimer && isServer) //have a delay until tallying the votes
+        {
+            voteTimer -= Time.deltaTime;
+            if (voteTimer < 0)
+                TallyVotes();
+        }
+
+        timerText.text = voteTimer.ToString();
     }
 
     [ClientRpc]
     void RpcResults(bool traitor, bool vTaskComp, bool tTaskComp)
     {
-        if (traitor && (vTaskComp || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
+        if (traitor && vTaskComp) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
             UIManager.Instance.winScreenText.text = "The Witches Win";
-            UIManager.Instance.WinScreen();
+            //UIManager.Instance.WinScreen();
         }
-        else if (!traitor && (tTaskComp || timer.timeRemaining > 0)) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
+        else if (!traitor && tTaskComp) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
         {
             UIManager.Instance.winScreenText.text = "The Traitor Wins";
-            UIManager.Instance.WinScreen();
+            //UIManager.Instance.WinScreen();
         }
         else
         {
             UIManager.Instance.winScreenText.text = "The Game Has Beaten you all";
-            UIManager.Instance.WinScreen();
+            //UIManager.Instance.WinScreen();
         }
         UIManager.Instance.WinScreen();
     }
@@ -51,34 +71,32 @@ public class votingSystem : NetworkBehaviour
         //if (PlayerManager.Instance.playersJoined < 4) //if not 4 players, stop
         //    return;
 
-        Debug.Log("selected");
+        CmdSelect(selectedPlayer, playerIndex);
+
         selectedPlayer = playerIndex;
         //TODO: UI stuff to indicate player is selected
     }
 
-
-    public void ConfirmPlayerVote()
-    {
-        if (voted || selectedPlayer == -1)
-            return;
-
-        voted = true;
-        voteObjects.SetActive(false);
-        CmdConfirmPlayerVote(selectedPlayer);
-    }
-
     [Command(requiresAuthority = false)]
-    void CmdConfirmPlayerVote(int select) //TODO: add effects to indicate a player has locked in, to other players
+    public void CmdSelect(int previous, int current)
     {
-        if (select == -1)
-            return;
+        //Debug.Log("Client has selected");
 
-        numVoted[select]++;
+        if (previous != -1)
+            numVoted[previous]--;
+        numVoted[current]++;
 
-        TallyVotes(); //check if voting is complete
-                      //TODO: handle spread out votes (I.E. no definitive target of the vote)
+        for (int i = 0; i < numVoted.Count; i++)
+        {
+            if (numVoted[i] >= 3)
+            {
+                confirmTimer = true;
+                return;
+            }
+        }
 
-
+        confirmTimer = false;
+        voteTimer = maxVoteTime;
     }
 
     [Server]
@@ -88,7 +106,7 @@ public class votingSystem : NetworkBehaviour
             return;
 
         int votes = 0;
-        for (int i = 0; i < numVoted.Length; i++)
+        for (int i = 0; i < numVoted.Count; i++)
         {
             votes += numVoted[i];
         }
@@ -96,7 +114,7 @@ public class votingSystem : NetworkBehaviour
         if (votes < 4) //if not enough votes yet
             return;
 
-        for (int i = 0; i < numVoted.Length; i++)
+        for (int i = 0; i < numVoted.Count; i++)
         {
             if (numVoted[i] >= 3) //if 3 or more votes on any one player, consider game ended
             {
