@@ -38,11 +38,11 @@ public class votingSystem : NetworkBehaviour
         if (confirmTimer && isServer) //have a delay until tallying the votes
         {
             voteTimer -= Time.deltaTime;
-            if (voteTimer < 0)
+            if (voteTimer <= 0)
                 TallyVotes();
         }
 
-        timerText.text = voteTimer.ToString();
+        timerText.text = ((int)voteTimer).ToString();
     }
 
     [ClientRpc]
@@ -103,15 +103,6 @@ public class votingSystem : NetworkBehaviour
     void TallyVotes()
     {
         if (finishedVoting)
-            return;
-
-        int votes = 0;
-        for (int i = 0; i < numVoted.Count; i++)
-        {
-            votes += numVoted[i];
-        }
-
-        if (votes < 4) //if not enough votes yet
             return;
 
         for (int i = 0; i < numVoted.Count; i++)
