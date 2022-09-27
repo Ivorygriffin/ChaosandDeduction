@@ -79,7 +79,7 @@ public class Morph : Interactable
     //  Methods ---------------------------------------
     protected override void InteractOverride(CharacterInteraction character)
     {
-        if (stage < stages.Length - 1)
+        if (stage < stages.Length - 1 && stages.Length == 4)
             UIManager.Instance.SetWandProgress(stage + 1);
         else
             UIManager.Instance.ResetWandProgress();
