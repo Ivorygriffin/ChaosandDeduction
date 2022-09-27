@@ -61,9 +61,11 @@ public class Deliver : PickUp
         if (useResetTimer && !disabledTimer && resetTimer > 0)
         {
             resetTimer -= Time.deltaTime;
-            if (resetTimer < 0)
+            if (resetTimer <= 0)
                 transform.position = startPos;
         }
+        else if (Vector3.Distance(transform.position, startPos) > 3 && resetTimer <= 0)
+            resetTimer = resetMaxTimer;
     }
 #if UNITY_EDITOR
     private void OnDrawGizmos()
