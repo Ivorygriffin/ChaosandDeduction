@@ -27,8 +27,6 @@ public class Timer : NetworkBehaviour
     void Start()
     {
         timeRemaining = startTime;
-        if (isServer)
-            gameplayMusic.Play();
     }
     void Update()
     {
@@ -59,6 +57,9 @@ public class Timer : NetworkBehaviour
     public void CmdStartMusic(NetworkConnectionToClient conn = null)  //round about way of forcing the client to sync music?
     {
         TargetStartMusic(conn, audioValue.gameplay, timeRemaining);
+
+        gameplayMusic.Play();
+        gameplayMusic.time = (startTime - timeRemaining);
     }
     [TargetRpc]
     void TargetStartMusic(NetworkConnection conn, audioValue audio, float time)
