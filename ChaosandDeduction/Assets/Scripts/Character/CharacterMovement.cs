@@ -27,7 +27,10 @@ public class CharacterMovement : NetworkBehaviour
 
     Vector3 playerVelocity;
     Vector3 lastFramePos = Vector3.zero;
+    //public NetworkAnimator animator;
     public Animator animator;
+    const float requiredFootstepSpeed = 0.2f;
+    public AudioPlayer footsteps;
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -42,11 +45,16 @@ public class CharacterMovement : NetworkBehaviour
         {
             if (animator) //TODO: determine if this is most efficent way to do this? currently if not calculating speed we just get the distance per frame
             {
-                animator.SetFloat("Blend", Vector3.Distance(lastFramePos, transform.position) / (Time.deltaTime));
+                float speed = Vector3.Distance(lastFramePos, transform.position) / (Time.deltaTime);
+                animator.SetFloat("Blend", speed);
+
+                if (speed > requiredFootstepSpeed && footsteps)
+                    footsteps.TryPlay();
+
                 lastFramePos = transform.position;
             }
-          //  else
-          //      animator = transform.GetChild(GetComponent<CharacterInteraction>().modelIndex).gameObject.GetComponent<Animator>();
+            //  else
+            //      animator = transform.GetChild(GetComponent<CharacterInteraction>().modelIndex).gameObject.GetComponent<Animator>();
 
             return;
         }
@@ -66,6 +74,9 @@ public class CharacterMovement : NetworkBehaviour
         character.SimpleMove(playerVelocity); //* Time.deltaTime
         if (animator)
             animator.SetFloat("Blend", playerVelocity.magnitude);
+
+        if (playerVelocity.magnitude > requiredFootstepSpeed && footsteps)
+            footsteps.TryPlay();
 
         //groundedPlayer = character.isGrounded;
     }

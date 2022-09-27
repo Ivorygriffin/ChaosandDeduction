@@ -17,8 +17,6 @@ public class Timer : NetworkBehaviour
 
     public AudioSource gameplayMusic;
     public AudioSource VotingMusic;
-    public GameObject set1, set2;
-    bool barricadesShown = false;
 
     enum audioValue
     {
@@ -32,7 +30,6 @@ public class Timer : NetworkBehaviour
         if (isServer)
             gameplayMusic.Play();
     }
-
     void Update()
     {
         if (isServer) //only crunch the numbers on the server
@@ -49,7 +46,7 @@ public class Timer : NetworkBehaviour
         }
 
         timerText.text = timeRemaining.ToString("F0");
-        timerTransform.rotation = Quaternion.Euler(0, 0, ((startTime - timeRemaining) / (cycleLength)) * 360);
+        timerTransform.rotation = Quaternion.Euler(0, 0, (timeRemaining / cycleLength * -360) + 180);
     }
     public override void OnStartClient()
     {
@@ -91,12 +88,5 @@ public class Timer : NetworkBehaviour
         audioSource.Play();
         if (audio == audioValue.gameplay && (startTime - time) > 0 && (startTime - time) < audioSource.clip.length)
             audioSource.time = (startTime - time);
-    }
-
-    [ClientRpc]
-    public void RpcShowB()
-    {
-        set1.SetActive(true);
-        set2.SetActive(true);
     }
 }
