@@ -173,6 +173,10 @@ public class UIManager : NetworkBehaviour
     {
         for (int i = 0; i < wandProgress.Length; i++)
             wandProgress[i].SetActive(i < index);
+
+        StopCoroutine(delayResetWand());
+        if (index == 2) //if its completed progress, wait set amount then reset
+            StartCoroutine(delayResetWand());
     }
 
     [ContextMenu("Reset Wand")]
@@ -183,6 +187,12 @@ public class UIManager : NetworkBehaviour
 
         wandProgressIndex = 0;
     }
+    IEnumerator delayResetWand()
+    {
+        yield return new WaitForSeconds(2);
+        ResetWandProgress();
+    }
+
     //public void TraitorTaskListText()
     //{
     //    //taskScreenText.text = traitorCurrentTaskList;

@@ -113,10 +113,10 @@ public class CharacterInteraction : NetworkBehaviour
 
             // Interactable interactable = Results[closestIndex].GetComponent<Interactable>();
 
-            if (interactable!= null)
+            if (interactable != null)
                 for (int i = 0; i < interactable.Length; i++)
-                if (interactable[i] != null)
-                    interactable[i].Interact(this);
+                    if (interactable[i] != null)
+                        interactable[i].Interact(this);
 
         }
         else
@@ -143,9 +143,12 @@ public class CharacterInteraction : NetworkBehaviour
         GameObject newModel = transform.GetChild(index).gameObject;
         newModel.SetActive(true);
 
-        Animator animator = newModel.GetComponent<Animator>();
         //animator.speed = 0.5f;
-        GetComponent<CharacterMovement>().animator = animator;
+        CharacterMovement mover = GetComponent<CharacterMovement>();
+
+        //mover.animator.animator = newModel.GetComponent<Animator>();
+        mover.animator = newModel.GetComponent<Animator>();
+        mover.footsteps = newModel.GetComponent<AudioPlayer>();
     }
 
     //  Event Handlers --------------------------------
