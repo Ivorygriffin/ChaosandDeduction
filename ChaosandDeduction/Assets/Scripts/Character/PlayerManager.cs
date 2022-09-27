@@ -7,7 +7,7 @@ using Mirror;
 public struct PlayerData
 {
     public Alignment alignment;
-    public int modelIndex;
+    public byte modelIndex;
 }
 
 //  Class Attributes ----------------------------------

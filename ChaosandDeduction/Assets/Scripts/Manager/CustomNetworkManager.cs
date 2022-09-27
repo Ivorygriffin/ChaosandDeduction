@@ -16,6 +16,9 @@ public class CustomNetworkManager : NetworkManager
     public PlayerData[] playerArray = new PlayerData[4];
     int connectedPlayers = 0;
 
+    public UnityEvent onJoin;
+    public UnityEvent onLeave;
+
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
         base.OnServerDisconnect(conn);
@@ -41,6 +44,8 @@ public class CustomNetworkManager : NetworkManager
             playersIndex.Remove(conn);
         }
         connectedPlayers--;
+
+        onLeave.Invoke();
         //player has disconnected
     }
     public override void OnServerConnect(NetworkConnectionToClient conn)
@@ -62,14 +67,41 @@ public class CustomNetworkManager : NetworkManager
                         break;
                     }
                 }
+
                 //TODO: find out why there is sometimes a 2nd traitor?
                 //Declare villager if there already exists a traitor, otherwise roll from 0-4, if it lands 4 (or are the last to join), declare traitor, otherwise villager
-                Alignment alignment = traitorMade ? Alignment.Villager : ((Random.Range(0, (maxConnections + 1)) == 0 || i == (maxConnections - 1)) ? Alignment.Traitor : Alignment.Villager);
+                Alignment alignment;
+                //traitorMade ? Alignment.Villager : ((Random.Range(0, (maxConnections + 1)) == 0 || i == (maxConnections - 1)) ? Alignment.Traitor : Alignment.Villager);
+
+                if (traitorMade) //if a traitor is already assigned, always set as villager
+                    alignment = Alignment.Villager;
+                else if (Random.Range(0, maxConnections) == 0 || i == maxConnections - 1) // 1 in 4 chance to be assigned traitor, or if no other people are traitor and you are the 4th player, become traitor
+                    alignment = Alignment.Traitor;
+                else //if not assigned traitor, become villager
+                    alignment = Alignment.Villager;
+
+
+                int modelID = -1;
+                while (modelID == -1)
+                {
+                    int tempID = Random.Range(0, 4); //TODO: get max number of model IDs (if the max is less than the number of players, it will crash :p)
+
+                    for (int j = 0; j < maxConnections; j++) //keep sorting through the array to find if the random ID is already used
+                    {
+                        if (playerArray[j].modelIndex == tempID && playerArray[j].alignment != Alignment.Undefined)
+                        {
+                            tempID = -1;
+                            break;
+                        }
+                    }
+
+                    modelID = tempID;
+                }
 
                 PlayerData temp = new PlayerData
                 {
                     alignment = alignment,
-                    modelIndex = i,
+                    modelIndex = (byte)modelID,
                 };
                 playerArray[i] = temp;
                 playersIndex.Add(conn, i);
@@ -79,6 +111,7 @@ public class CustomNetworkManager : NetworkManager
 
         connectedPlayers++;
 
+        onJoin.Invoke();
         //if (connectedPlayers == 4)
         //    ChangeScene();
     }

@@ -8,16 +8,16 @@ public class villagerwalk : MonoBehaviour
     public float moveSpeed = 2f;
 
 
-    public enum State { Loop,PingPong, OneWay}
+    public enum State { Loop, PingPong, OneWay }
     public State state = State.OneWay;
 
-    public enum Direction { Forwards,Backwards};
+    public enum Direction { Forwards, Backwards };
     public Direction direction = Direction.Forwards;
 
     public bool spawnAtStart = false; //if true, when level loads then spawns at first transform
 
     public Transform[] paths;
-   
+
 
     public bool ReachedEnd { get; private set; }
     public bool ReachedStart { get; private set; }
@@ -33,6 +33,9 @@ public class villagerwalk : MonoBehaviour
         {
             //transform.position = GetCurrentTransform().position;
         }
+
+        if (paths.Length == 0)
+            Destroy(this);
     }
     private void Update()
     {
@@ -43,47 +46,57 @@ public class villagerwalk : MonoBehaviour
 
     private void Move()
     {
-        if(currentIndex <= paths.Length -1 && ReachedEnd == false)
+        transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, paths[currentIndex].transform.position) < 0.2)
         {
-            transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
+            if ((currentIndex + 1 >= paths.Length && !hasRotated) || (currentIndex - 1 < 0 && hasRotated))
+                hasRotated = true;
+            else
+                currentIndex += hasRotated ? -1 : 1;
         }
-        if(transform.position == paths[0].transform.position && runOnce == true && hasRotated ==false)
-        {
-            transform.Rotate(0, 180, 0);
-            hasRotated = true;
-        }
-       if (transform.position == paths[currentIndex].transform.position && ReachedEnd == false)
-        {
-            currentIndex += 1;
-            hasRotated = false;
-            runOnce = true;
-        }
-       if(currentIndex == paths.Length)
-        {
-            ReachedEnd = true;
-            //idle animation switch here
-            //wait for 2 seconds
-            transform.Rotate(0, 180, 0);
-            //swich animation back
-            currentIndex -= 1;
-        }
-        if (ReachedEnd)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
-        }
-        if(ReachedEnd && transform.position == paths[currentIndex].transform.position)
-        {
-            currentIndex -= 1;
-        }
-        if (currentIndex == 0)
-        {
-            ReachedEnd = false;
-        }
+
+
+        //if (currentIndex <= paths.Length - 1 && ReachedEnd == false)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
+        //}
+        //if (transform.position == paths[0].transform.position && runOnce == true && hasRotated == false)
+        //{
+        //    transform.Rotate(0, 180, 0);
+        //    hasRotated = true;
+        //}
+        //if (transform.position == paths[currentIndex].transform.position && ReachedEnd == false)
+        //{
+        //    currentIndex += 1;
+        //    hasRotated = false;
+        //    runOnce = true;
+        //}
+        //if (currentIndex == paths.Length)
+        //{
+        //    ReachedEnd = true;
+        //    //idle animation switch here
+        //    //wait for 2 seconds
+        //    transform.Rotate(0, 180, 0);
+        //    //swich animation back
+        //    currentIndex -= 1;
+        //}
+        //if (ReachedEnd)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
+        //}
+        //if (ReachedEnd && transform.position == paths[currentIndex].transform.position)
+        //{
+        //    currentIndex -= 1;
+        //}
+        //if (currentIndex == 0)
+        //{
+        //    ReachedEnd = false;
+        //}
     }
-    
-    
-    
-    
+
+
+
+
     //public Transform GetCurrentTransform()
     //{
     //    return paths[currentIndex];
