@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7335923234014037164}
   - component: {fileID: 5936224542471883529}
   - component: {fileID: 8468248946990317507}
-  - component: {fileID: 7827642678056809002}
+  - component: {fileID: 6380995533094704758}
   m_Layer: 0
   m_Name: Scenery_Hedge_Clay_1
   m_TagString: Untagged
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7827642678056809002
-BoxCollider:
+--- !u!64 &6380995533094704758
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,6 +92,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25542116, y: 0.14909458, z: 0.16136982}
-  m_Center: {x: -0.004385848, y: 0.07109462, z: 0.00012513997}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4629662132500662136, guid: a2f63d3bfc6674446a6d67cee69dd5c8, type: 3}
