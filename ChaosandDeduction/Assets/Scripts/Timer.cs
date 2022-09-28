@@ -11,6 +11,7 @@ public class Timer : NetworkBehaviour
     public const float cycleLength = 360;
     public TMP_Text timerText;
     public RectTransform timerTransform;
+    public GameObject[] nightlights;
 
 
     bool revealedVotingScreen = false; //has the server revealed the voting screen yet? TODO: turn this on when early vote is called?
@@ -40,7 +41,13 @@ public class Timer : NetworkBehaviour
                 //VotingMusic.Play(); //TODO: determine if host needs to call the voting music themselves or are they included in clientRPC
                 RpcStartMusic(audioValue.voting, 0);
             }
-
+            if(timeRemaining <= startTime/2)
+            {
+                foreach (GameObject obj in nightlights)
+                {
+                    obj.SetActive(true);
+                }
+            }
         }
 
         timerText.text = timeRemaining.ToString("F0");
