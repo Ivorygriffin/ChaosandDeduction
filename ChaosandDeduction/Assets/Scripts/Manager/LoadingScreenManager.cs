@@ -43,7 +43,6 @@ public class LoadingScreenManager : MonoBehaviour
     public void LoadMainScene()
     {
         networkManager.ChangeScene();
-        LoadScreen();
     }
 
     public void LoadScreen()

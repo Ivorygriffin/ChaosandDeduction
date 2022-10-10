@@ -34,7 +34,6 @@ public class Autojoin : MonoBehaviour
             // Automatically start server if this is the original editor
         }
         joining = true;
-        LoadingScreenManager.instance.LoadScreen();
     }
 #endif
     //[UnityEditor.Callbacks.DidReloadScripts]
