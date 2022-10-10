@@ -12,6 +12,11 @@ public class BasicDoor : MonoBehaviour
 
     private void Start()
     {
+        if(closedAngle == null)
+            closedAngle = Quaternion.identity;
+        if(openAngle == null)
+            openAngle = Quaternion.identity;
+
         transform.rotation = state ? openAngle : closedAngle;
     }
     // Update is called once per frame

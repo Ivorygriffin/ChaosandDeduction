@@ -13,10 +13,15 @@ public class Autojoin : MonoBehaviour
 {
     public NetworkDiscoveryHUD discovery;
 #if UNITY_EDITOR
-    private void Start()
+    public bool joining = false;
+    private void Update()
     {
+        if (!LoadingScreenManager.instance || joining)
+            return;
+
         if (discovery == null) //just for editor so performance doesnt matter too much
             discovery = FindObjectOfType<NetworkDiscoveryHUD>();
+
 
         if (ClonesManager.IsClone())
         {
@@ -28,6 +33,8 @@ public class Autojoin : MonoBehaviour
             discovery.Host();
             // Automatically start server if this is the original editor
         }
+        joining = true;
+        LoadingScreenManager.instance.LoadScreen();
     }
 #endif
     //[UnityEditor.Callbacks.DidReloadScripts]
