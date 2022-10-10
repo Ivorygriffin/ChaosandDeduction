@@ -173,8 +173,6 @@ MonoBehaviour:
   startTime: 185
   timerText: {fileID: 37067816}
   timerTransform: {fileID: 37067818}
-  nightlights:
-  - {fileID: 343582798}
   gameplayMusic: {fileID: 1106727312}
   VotingMusic: {fileID: 296437639}
 --- !u!114 &3488177
@@ -398,6 +396,18 @@ PrefabInstance:
     - target: {fileID: 5401923557846091381, guid: a4b89fb51d963b34fabce834cf659e30, type: 3}
       propertyPath: m_Name
       value: Leaf picking Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401923557846091382, guid: a4b89fb51d963b34fabce834cf659e30, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: -26.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401923557846091382, guid: a4b89fb51d963b34fabce834cf659e30, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -6.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401923557846091382, guid: a4b89fb51d963b34fabce834cf659e30, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: -13.2
       objectReference: {fileID: 0}
     - target: {fileID: 5401923557846091383, guid: a4b89fb51d963b34fabce834cf659e30, type: 3}
       propertyPath: m_Size.x
@@ -2992,6 +3002,18 @@ PrefabInstance:
       propertyPath: sceneId
       value: 830204501
       objectReference: {fileID: 0}
+    - target: {fileID: 2271232441041148627, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: -36.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271232441041148627, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -6.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271232441041148627, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: 6.63
+      objectReference: {fileID: 0}
     - target: {fileID: 2272158744159635155, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3116,6 +3138,18 @@ PrefabInstance:
       propertyPath: deliverPoint.z
       value: -13.4
       objectReference: {fileID: 0}
+    - target: {fileID: 3622600292805881958, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: 27.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622600292805881958, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -6.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622600292805881958, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: -12.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3653308661746979971, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3167,6 +3201,18 @@ PrefabInstance:
     - target: {fileID: 4147810039911515011, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
       propertyPath: deliverPoint.z
       value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147810039911515011, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: 4.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147810039911515011, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -6.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147810039911515011, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: 9.29
       objectReference: {fileID: 0}
     - target: {fileID: 4414372325030337983, guid: b55ed8244c7c9f64ca63a8caf3b88b6e, type: 3}
       propertyPath: m_IsActive
@@ -7654,7 +7700,9 @@ MonoBehaviour:
   syncInterval: 0.1
   DirectionalLight: {fileID: 1748458076}
   Preset: {fileID: 11400000, guid: b0e09d7736e72f849b4c4348714d64bc, type: 2}
+  nightlights: []
   timer: {fileID: 3488176}
+  lightsEnabled: 0
 --- !u!114 &523238314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11170,6 +11218,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Worship Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2113013459182017531, guid: 54568b1ab414e26498a87cc6e890de4d, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: 7.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113013459182017531, guid: 54568b1ab414e26498a87cc6e890de4d, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113013459182017531, guid: 54568b1ab414e26498a87cc6e890de4d, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: -3.28
+      objectReference: {fileID: 0}
     - target: {fileID: 2113013459182017533, guid: 54568b1ab414e26498a87cc6e890de4d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -12458,7 +12518,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1985128895654664904, guid: 7565c072adf7ebe4db2f6f1f6ae001c0, type: 3}
       propertyPath: deliverPoint.x
-      value: -48.7
+      value: -48.52
       objectReference: {fileID: 0}
     - target: {fileID: 1985128895654664904, guid: 7565c072adf7ebe4db2f6f1f6ae001c0, type: 3}
       propertyPath: deliverPoint.y
@@ -12470,15 +12530,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1985128895654664904, guid: 7565c072adf7ebe4db2f6f1f6ae001c0, type: 3}
       propertyPath: reward.spawnPoint.x
-      value: -13.55
+      value: -44.7
       objectReference: {fileID: 0}
     - target: {fileID: 1985128895654664904, guid: 7565c072adf7ebe4db2f6f1f6ae001c0, type: 3}
       propertyPath: reward.spawnPoint.y
-      value: 0.32
+      value: -6.3
       objectReference: {fileID: 0}
     - target: {fileID: 1985128895654664904, guid: 7565c072adf7ebe4db2f6f1f6ae001c0, type: 3}
       propertyPath: reward.spawnPoint.z
-      value: 4.24
+      value: -17.94
       objectReference: {fileID: 0}
     - target: {fileID: 4145381217664368068, guid: 7565c072adf7ebe4db2f6f1f6ae001c0, type: 3}
       propertyPath: m_RootOrder
@@ -12713,6 +12773,18 @@ PrefabInstance:
     - target: {fileID: 1284329498353285741, guid: f57cbd62ab8a6f44f98f892d12956c81, type: 3}
       propertyPath: stages.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284329498353285741, guid: f57cbd62ab8a6f44f98f892d12956c81, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: -22.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284329498353285741, guid: f57cbd62ab8a6f44f98f892d12956c81, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -5.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284329498353285741, guid: f57cbd62ab8a6f44f98f892d12956c81, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 1284329498353285741, guid: f57cbd62ab8a6f44f98f892d12956c81, type: 3}
       propertyPath: stages.Array.data[0]
@@ -19823,6 +19895,18 @@ PrefabInstance:
     - target: {fileID: 4393025651333274225, guid: a41e4ad714c0f7c409008fb3016428b8, type: 3}
       propertyPath: sceneId
       value: 3961171873
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212897468250938712, guid: a41e4ad714c0f7c409008fb3016428b8, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: 32.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212897468250938712, guid: a41e4ad714c0f7c409008fb3016428b8, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -6.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212897468250938712, guid: a41e4ad714c0f7c409008fb3016428b8, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: 9.9
       objectReference: {fileID: 0}
     - target: {fileID: 5212897468250938715, guid: a41e4ad714c0f7c409008fb3016428b8, type: 3}
       propertyPath: m_Name
@@ -28523,6 +28607,18 @@ PrefabInstance:
       propertyPath: reward.item
       value: 
       objectReference: {fileID: 3367809906776230678, guid: 04ced7d101c1313449bcd5716dcd8c23, type: 3}
+    - target: {fileID: 8061290554808339332, guid: 5f6970e90b146544ba004c79507b6a29, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: -26.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8061290554808339332, guid: 5f6970e90b146544ba004c79507b6a29, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -6.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8061290554808339332, guid: 5f6970e90b146544ba004c79507b6a29, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: -1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8061290554808339335, guid: 5f6970e90b146544ba004c79507b6a29, type: 3}
       propertyPath: m_Name
       value: flower picking Variant
@@ -29020,15 +29116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8975432518127242671, guid: 0959ceeba3b213349835191e8fa8c6dd, type: 3}
       propertyPath: reward.spawnPoint.x
-      value: 0.16
+      value: 6.21
       objectReference: {fileID: 0}
     - target: {fileID: 8975432518127242671, guid: 0959ceeba3b213349835191e8fa8c6dd, type: 3}
       propertyPath: reward.spawnPoint.y
-      value: -0.38
+      value: -6.59
       objectReference: {fileID: 0}
     - target: {fileID: 8975432518127242671, guid: 0959ceeba3b213349835191e8fa8c6dd, type: 3}
       propertyPath: reward.spawnPoint.z
-      value: -1.64
+      value: -16.36
       objectReference: {fileID: 0}
     - target: {fileID: 8975432518127242671, guid: 0959ceeba3b213349835191e8fa8c6dd, type: 3}
       propertyPath: reward.onComplete.m_PersistentCalls.m_Calls.Array.size
@@ -31206,6 +31302,10 @@ PrefabInstance:
     - target: {fileID: 1892503369737186776, guid: ac801776ac5ba2b498824f9945feff33, type: 3}
       propertyPath: reward.onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457534393461138366, guid: ac801776ac5ba2b498824f9945feff33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4940424306261522674, guid: ac801776ac5ba2b498824f9945feff33, type: 3}
       propertyPath: m_RootOrder
@@ -42471,7 +42571,7 @@ MonoBehaviour:
   disabledTimer: 0
   reward:
     item: {fileID: 7548376660128630850, guid: d2b567c65320c4d45b9980ffca7c27ea, type: 3}
-    spawnPoint: {x: 0, y: 0, z: 0}
+    spawnPoint: {x: 8.65, y: -6.8, z: -17}
     task: {fileID: 0}
     interactable: {fileID: 0}
     onComplete:
@@ -42763,11 +42863,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7288378897201140524, guid: aa2d0bc9d6c5764419c57ed1add64e29, type: 3}
       propertyPath: deliverPoint.y
-      value: -7.2
+      value: -6.66
       objectReference: {fileID: 0}
     - target: {fileID: 7288378897201140524, guid: aa2d0bc9d6c5764419c57ed1add64e29, type: 3}
       propertyPath: deliverPoint.z
       value: 15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288378897201140524, guid: aa2d0bc9d6c5764419c57ed1add64e29, type: 3}
+      propertyPath: reward.spawnPoint.x
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288378897201140524, guid: aa2d0bc9d6c5764419c57ed1add64e29, type: 3}
+      propertyPath: reward.spawnPoint.y
+      value: -7.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288378897201140524, guid: aa2d0bc9d6c5764419c57ed1add64e29, type: 3}
+      propertyPath: reward.spawnPoint.z
+      value: 12.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2d0bc9d6c5764419c57ed1add64e29, type: 3}

@@ -45,7 +45,7 @@ public class Reward
 
         if (item)
         {
-            GameObject temp = Object.Instantiate(item, transform.position + spawnPoint, Quaternion.identity);
+            GameObject temp = Object.Instantiate(item, spawnPoint, Quaternion.identity);
             NetworkServer.Spawn(temp);
         }
         if (task)
@@ -65,7 +65,7 @@ public class Reward
     public void drawGizmo(Transform transform)
     {
         if (item)
-            Gizmos.DrawCube(transform.position + spawnPoint, Vector3.one);
+            Gizmos.DrawCube(spawnPoint, Vector3.one);
     }
 #endif
 }
