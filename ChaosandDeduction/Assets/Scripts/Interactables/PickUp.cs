@@ -31,7 +31,7 @@ public class PickUp : Interactable
     public bool pickedUp = false;
     float holdDistance = 1;
     Rigidbody rb;
-    
+
     [SyncVar]
     CharacterInteraction currentOwner;
 
@@ -42,7 +42,7 @@ public class PickUp : Interactable
     int lastGrabbed = -1;
     int secondLastGrabbed = -1;
 #endif
-
+    [Header("Pickup Sounds")]
     public AudioClip pickupSound;
     public AudioClip dropSound;
 
@@ -115,13 +115,13 @@ public class PickUp : Interactable
     void RpcPickedUp(Transform character)
     {
         PickedUp(character);
-       
+
 
     }
     public virtual void PickedUp(Transform character)
     {
         pickedUp = true;
-      
+
 
         float closestPoint = float.MaxValue;
         int closestIndex = 0;
@@ -165,7 +165,7 @@ public class PickUp : Interactable
     {
         Dropped(character);
         currentOwner.currentInteraction = null; //double jeapody or something (just ensuring a second player wasnt the cause of dropping the item)
-        
+
     }
     public virtual void Dropped(Transform character)
     {

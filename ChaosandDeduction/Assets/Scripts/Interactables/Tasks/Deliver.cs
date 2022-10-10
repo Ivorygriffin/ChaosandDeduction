@@ -32,6 +32,7 @@ public class Deliver : PickUp
     //  Fields ----------------------------------------
     public AudioClip deliverSound;
 
+    [Header("Delivery settings")]
     public Vector3 deliverPoint = Vector3.zero;
     public float deliverRadius = 5;
 
@@ -133,6 +134,5 @@ public class Deliver : PickUp
         resetTimer = 0;
         reward.Reset();
     }
-
     //  Event Handlers --------------------------------
 }
