@@ -93,6 +93,10 @@ public abstract class Interactable : NetworkBehaviour
     protected Quaternion startAngle;
     public bool useable = true;
 
+    [Header("Base Sound settings")]
+    public AudioSource audioSource;
+    public AudioClip interactSound;
+
     //  Unity Methods ---------------------------------
     public void Start()
     {
@@ -101,8 +105,18 @@ public abstract class Interactable : NetworkBehaviour
 
         if (requiredAlignment == Alignment.Undefined)
             Debug.LogWarning("Alignment on this task has not yet been defined: " + gameObject.name, gameObject);
+
+        if (interactSound)
+            audioSource.PlayOneShot(interactSound);
     }
 
+#if UNITY_EDITOR
+    protected void OnValidate()
+    {
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+    }
+#endif
 
     //  Methods ---------------------------------------
     public void Interact(CharacterInteraction character)
@@ -127,5 +141,6 @@ public abstract class Interactable : NetworkBehaviour
         useable = true;
         ResetInteractable();
     }
+
     //  Event Handlers --------------------------------
 }

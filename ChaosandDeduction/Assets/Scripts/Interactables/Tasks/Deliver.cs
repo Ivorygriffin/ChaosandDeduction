@@ -30,6 +30,9 @@ public class Deliver : PickUp
 
 
     //  Fields ----------------------------------------
+    public AudioClip deliverSound;
+
+    [Header("Delivery settings")]
     public Vector3 deliverPoint = Vector3.zero;
     public float deliverRadius = 5;
 
@@ -96,8 +99,12 @@ public class Deliver : PickUp
 
         if (Vector3.Distance(transform.position, deliverPoint) < deliverRadius)
         {
+            if (deliverSound)
+                audioSource.PlayOneShot(deliverSound);
+
             //StartCoroutine(DelayDestroy());
             //Destroy(gameObject); 
+
             reward.LocalReward();
             useable = false;
             CmdReward();
@@ -127,6 +134,5 @@ public class Deliver : PickUp
         resetTimer = 0;
         reward.Reset();
     }
-
     //  Event Handlers --------------------------------
 }
