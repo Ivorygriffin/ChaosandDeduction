@@ -7,7 +7,7 @@ public class ReadyUp : NetworkBehaviour
 {
     public bool[] readyState = new bool[4];
     CustomNetworkManager networkManager;
-   public bool state = false;
+    public bool state = false;
 
     public GameObject readyButton;
     public GameObject unreadyButton;
@@ -43,9 +43,11 @@ public class ReadyUp : NetworkBehaviour
         for (int i = 0; i < 1; i++)
             if (!readyState[i])
                 start = false;
+
         if (start)
-            networkManager.ChangeScene();
+            LoadingScreenManager.instance.LoadMainScene();
     }
+
     [TargetRpc]
     void TargetReady(NetworkConnection conn, bool ready)
     {
