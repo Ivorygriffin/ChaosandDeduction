@@ -43,6 +43,11 @@ public class PickUp : Interactable
     int secondLastGrabbed = -1;
 #endif
 
+    public AudioClip pickupSound;
+    public AudioClip dropSound;
+
+
+
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -85,11 +90,15 @@ public class PickUp : Interactable
         {
             CmdPickedUp(character);
             character.currentInteraction = this;
+
+            audioSource.PlayOneShot(pickupSound);
         }
         else //if(character == currentOwner)
         {
             CmdDropped(character);
             character.currentInteraction = null;
+
+            audioSource.PlayOneShot(dropSound);
 
         }
     }

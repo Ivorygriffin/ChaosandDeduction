@@ -93,6 +93,9 @@ public abstract class Interactable : NetworkBehaviour
     protected Quaternion startAngle;
     public bool useable = true;
 
+    public AudioSource audioSource;
+    public AudioClip interactSound;
+
     //  Unity Methods ---------------------------------
     public void Start()
     {
@@ -101,6 +104,9 @@ public abstract class Interactable : NetworkBehaviour
 
         if (requiredAlignment == Alignment.Undefined)
             Debug.LogWarning("Alignment on this task has not yet been defined: " + gameObject.name, gameObject);
+
+        if(interactSound)
+            audioSource.PlayOneShot(interactSound);
     }
 
 

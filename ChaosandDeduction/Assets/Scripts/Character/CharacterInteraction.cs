@@ -38,6 +38,9 @@ public class CharacterInteraction : NetworkBehaviour
     [SyncVar]
     public int modelIndex = -1;
 
+    public AudioSource AudioSource;
+    public AudioClip NoInteractable;
+
     //  Unity Methods ---------------------------------
     protected void Start()
     {
