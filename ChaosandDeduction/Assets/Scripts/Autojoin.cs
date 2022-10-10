@@ -11,17 +11,24 @@ using Mirror.Discovery;
 
 public class Autojoin : MonoBehaviour
 {
+    public CustomNetworkManager networkManager;
     public NetworkDiscoveryHUD discovery;
+
+    private void Start()
+    {
+        if (networkManager == null) //just for editor so performance doesnt matter too much
+            networkManager = (CustomNetworkManager)NetworkManager.singleton;
+        if (discovery == null) //just for editor so performance doesnt matter too much
+            discovery = networkManager.gameObject.GetComponent<NetworkDiscoveryHUD>();
+    }
+
 #if UNITY_EDITOR
+    public bool doAuto = true;
     public bool joining = false;
     private void Update()
     {
-        if (!LoadingScreenManager.instance || joining)
+        if (!LoadingScreenManager.instance || joining || !doAuto)
             return;
-
-        if (discovery == null) //just for editor so performance doesnt matter too much
-            discovery = FindObjectOfType<NetworkDiscoveryHUD>();
-
 
         if (ClonesManager.IsClone())
         {
@@ -36,6 +43,15 @@ public class Autojoin : MonoBehaviour
         joining = true;
     }
 #endif
+
+    public void Join()
+    {
+        discovery.Join();
+    }
+    public void Host()
+    {
+        discovery.Host();
+    }
     //[UnityEditor.Callbacks.DidReloadScripts]
     //private static void OnScriptsReloaded()
     //{
