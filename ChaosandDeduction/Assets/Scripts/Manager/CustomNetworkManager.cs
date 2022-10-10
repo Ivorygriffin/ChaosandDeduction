@@ -129,10 +129,13 @@ public class CustomNetworkManager : NetworkManager
     {
         ServerChangeScene("SampleScene");
     }
-    public override void OnServerChangeScene(string newSceneName)
+
+    public override void OnSceneBeginLoad()
     {
-        base.OnServerChangeScene(newSceneName);
+        base.OnSceneBeginLoad();
+
         if (LoadingScreenManager.instance)
             LoadingScreenManager.instance.LoadScreen();
     }
+
 }
