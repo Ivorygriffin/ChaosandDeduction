@@ -45,7 +45,7 @@ public class LoadingScreenManager : MonoBehaviour
         networkManager.ChangeScene();
     }
 
-    public void LoadScreen()
+    public void LoadScreen() //TODO: determine how to call this function after the loadingSceneAsync has been declared (both on server and client)
     {
         foreach (Canvas c in canvas)
             c.enabled = false;
@@ -59,12 +59,12 @@ public class LoadingScreenManager : MonoBehaviour
         StartCoroutine(LoadAsyncScene());
     }
 
-
     AsyncOperation asyncLoad;
     IEnumerator LoadAsyncScene()
     {
         asyncLoad = NetworkManager.loadingSceneAsync;
         asyncLoad.allowSceneActivation = false;
+
         //wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
@@ -76,6 +76,9 @@ public class LoadingScreenManager : MonoBehaviour
             {
                 asyncLoad.allowSceneActivation = true;
             }
+            else
+                asyncLoad.allowSceneActivation = false;
+
             yield return null;
         }
     }
