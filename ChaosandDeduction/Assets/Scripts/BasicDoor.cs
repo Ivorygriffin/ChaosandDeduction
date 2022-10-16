@@ -12,10 +12,8 @@ public class BasicDoor : MonoBehaviour
 
     private void Start()
     {
-        if(closedAngle == null)
-            closedAngle = Quaternion.identity;
-        if(openAngle == null)
-            openAngle = Quaternion.identity;
+        closedAngle.Normalize(); // ensure neither quanternion is invalid
+        openAngle.Normalize();
 
         transform.rotation = state ? openAngle : closedAngle;
     }

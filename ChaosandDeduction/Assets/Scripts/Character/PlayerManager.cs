@@ -42,6 +42,8 @@ public class PlayerManager : NetworkBehaviour
     [SyncVar]
     public int playersJoined = 0;
 
+    public Vector3[] spawnPoints;
+
     //public GameObject[] allPlayers = new GameObject[4];
 
     GameObject player;
@@ -69,6 +71,31 @@ public class PlayerManager : NetworkBehaviour
             Instance = null;
     }
 
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    Gizmos.color = Color.red;
+                    break;
+                case 1:
+                    Gizmos.color = Color.magenta;
+                    break;
+                case 2:
+                    Gizmos.color = Color.blue;
+                    break;
+                case 3:
+                    Gizmos.color = Color.yellow;
+                    break;
+                default:
+                    Gizmos.color = Color.white;
+                    break;
+            }
+            Gizmos.DrawSphere(spawnPoints[i], 0.2f);
+        }
+    }
 
     //  Methods ---------------------------------------
     [Command(requiresAuthority = false)]
@@ -99,6 +126,7 @@ public class PlayerManager : NetworkBehaviour
         if (alignment == Alignment.Traitor)
             traitorAssigned = false;
     }
+
 
     //  Event Handlers --------------------------------
 }
