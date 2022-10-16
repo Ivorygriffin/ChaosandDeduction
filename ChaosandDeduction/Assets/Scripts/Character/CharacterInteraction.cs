@@ -60,7 +60,7 @@ public class CharacterInteraction : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-        else if (PlayerManager.Instance)
+        else if (PlayerManager.Instance) //TODO: move this to a custom player spawn message
         {
             if (!PlayerManager.Instance.localPlayer) //late assign local player as this object
                 PlayerManager.Instance.localPlayer = gameObject;
@@ -148,6 +148,9 @@ public class CharacterInteraction : NetworkBehaviour
 
         //animator.speed = 0.5f;
         CharacterMovement mover = GetComponent<CharacterMovement>();
+
+        if (PlayerManager.Instance) //TODO: move this? somewhere?
+            mover.Teleport(PlayerManager.Instance.spawnPoints[index]);
 
         //mover.animator.animator = newModel.GetComponent<Animator>();
         mover.animator = newModel.GetComponent<Animator>();

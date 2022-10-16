@@ -81,6 +81,12 @@ public class CharacterMovement : NetworkBehaviour
         //groundedPlayer = character.isGrounded;
     }
 
+    public void Teleport(Vector3 point)
+    {
+        character.enabled = false;
+        transform.position = point;
+        character.enabled = true;
+    }
 
     //  Methods ---------------------------------------
 
