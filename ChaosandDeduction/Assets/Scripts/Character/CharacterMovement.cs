@@ -20,7 +20,7 @@ public class CharacterMovement : NetworkBehaviour
 
 
     //  Fields ----------------------------------------
-    CharacterController character;
+    public CharacterController character;
 
     public float moveSpeed = 5;
     public float animationMultiplier = 0.8f;
@@ -35,7 +35,7 @@ public class CharacterMovement : NetworkBehaviour
     //  Unity Methods ---------------------------------
     protected void Start()
     {
-        character = GetComponent<CharacterController>();
+        //character = GetComponent<CharacterController>();
     }
 
 

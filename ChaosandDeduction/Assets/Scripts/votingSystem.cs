@@ -6,6 +6,7 @@ using Mirror;
 
 public class votingSystem : NetworkBehaviour
 {
+    public static votingSystem instance;
     //bool
     bool voted = false;
     bool finishedVoting = false; //used server only to determine if the voting has been finished
@@ -15,6 +16,8 @@ public class votingSystem : NetworkBehaviour
     //int
     public SyncList<byte> numVoted = new SyncList<byte>();
 
+    public GameObject[] playerIconFrames;
+    public GameObject[] playerIconPrefabs;
     //Gameobjects
     int selectedPlayer = -1;
     public GameObject voteObjects;
@@ -27,8 +30,19 @@ public class votingSystem : NetworkBehaviour
 
     private void Start()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         if (isServer)
             numVoted.AddRange(new byte[4]);
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+            instance = null;
     }
 
     void Update()
@@ -144,5 +158,26 @@ public class votingSystem : NetworkBehaviour
         voted = false;
         voteObjects.SetActive(true);
         selectedPlayer = -1;
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdGetIcons(NetworkConnectionToClient conn = null)
+    {
+        CustomNetworkManager customNetworkManager = (CustomNetworkManager)NetworkManager.singleton;
+
+        byte[] data = new byte[customNetworkManager.playerArray.Length]; //using short rather than byte to support -1 as undefined
+        for (int i = 0; i < data.Length; i++)
+        {
+            if (customNetworkManager.playerArray[i].alignment != Alignment.Undefined)
+                data[i] = customNetworkManager.playerArray[i].modelIndex;
+        }
+
+        TargetGetIcons(conn, data);
+    }
+    [TargetRpc]
+    void TargetGetIcons(NetworkConnection conn, byte[] models)
+    {
+        for (int i = 0; i < 4; i++)
+            Instantiate(playerIconPrefabs[models[i]], playerIconFrames[i].transform).transform.SetSiblingIndex(1); //spawn icon and set as just above picture frame
     }
 }
