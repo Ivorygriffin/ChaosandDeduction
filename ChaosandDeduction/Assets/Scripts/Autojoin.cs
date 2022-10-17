@@ -52,6 +52,8 @@ public class Autojoin : MonoBehaviour
     {
         discovery.Host();
     }
+
+    
     //[UnityEditor.Callbacks.DidReloadScripts]
     //private static void OnScriptsReloaded()
     //{
