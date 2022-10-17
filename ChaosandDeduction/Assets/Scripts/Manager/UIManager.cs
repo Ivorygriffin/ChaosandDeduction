@@ -128,6 +128,7 @@ public class UIManager : NetworkBehaviour
     void RpcVoting(bool active)
     {
         voteScreen.enabled = active;
+        votingSystem.instance.CmdGetIcons();
         InteractCanvas.enabled = !active;
     }
 

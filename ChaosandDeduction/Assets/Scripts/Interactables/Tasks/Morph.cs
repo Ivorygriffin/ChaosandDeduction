@@ -29,10 +29,13 @@ public class Morph : Interactable
     public float regressMaxTimer = 1;
     float regressTimer = 0;
 
+
+
     protected int stage = 0;
     [Tooltip("Only one stage will be active at each time")]
     public GameObject[] stages;
-
+    public float[] stageCooldowns;
+    float cooldown = 0;
 
     [SerializeField] Reward reward;
 
@@ -40,6 +43,12 @@ public class Morph : Interactable
     protected void Start()
     {
         base.Start();
+
+#if UNITY_EDITOR
+        if (stages.Length != stageCooldowns.Length)
+            Debug.LogError("Morph does not have correct number of cooldowns");
+#endif
+
         //ResetStages();
 
 
@@ -73,12 +82,17 @@ public class Morph : Interactable
                 ChangeStage(false);
             }
         }
+        if (cooldown > 0)
+            cooldown -= Time.deltaTime;
     }
 
 
     //  Methods ---------------------------------------
     protected override void InteractOverride(CharacterInteraction character)
     {
+        if (cooldown > 0)
+            return;
+
         if (stage < stages.Length - 1 && stages.Length == 4)
             UIManager.Instance.SetWandProgress(stage + 1);
         else
@@ -120,10 +134,13 @@ public class Morph : Interactable
     {
         if (stage >= stages.Length - 1)
             return;
+        if (stageCooldowns.Length > stage)
+            cooldown = stageCooldowns[stage];
 
         stages[stage].SetActive(false);
         stage += increase ? 1 : -1;
         stages[stage].SetActive(true);
+
 
         regressTimer = 0;
     }
