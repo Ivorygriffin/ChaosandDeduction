@@ -23,6 +23,9 @@ public class CameraFollower : MonoBehaviour
     public Transform target;
     public Vector3 offset;
 
+    Vector3 velocity = Vector3.zero;
+
+    bool thirdPerson = true;
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -34,7 +37,12 @@ public class CameraFollower : MonoBehaviour
     protected void Update()
     {
         if (target != null)
-            transform.position = target.position + offset;
+        {
+            if (thirdPerson)
+                transform.position = Vector3.SmoothDamp(transform.position, target.position + offset, ref velocity, 0.1f);
+            else
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref velocity, 0.1f);
+        }
         else
             if (PlayerManager.Instance && PlayerManager.Instance.localPlayer)
             target = PlayerManager.Instance.localPlayer.transform;
@@ -57,7 +65,36 @@ public class CameraFollower : MonoBehaviour
 
 
     //  Methods ---------------------------------------
+#if UNITY_EDITOR
+    [ContextMenu("ThirdPerson")]
+    public void SetThird()
+    { SetView(true); }
+    [ContextMenu("FirstPerson")]
+    public void SetFirst()
+    { SetView(false); }
+#endif
 
+    public void SetView()
+    {
+        SetView(!thirdPerson);
+    }
+    public void SetView(bool third)
+    {
+        thirdPerson = third;
+        if (thirdPerson)
+        {
+            transform.SetParent(null);
+
+            //transform.position = target.position + offset;
+            transform.rotation = Quaternion.Euler(54, 0, 0);
+        }
+        else
+        {
+            transform.SetParent(target.transform);
+
+            transform.localRotation = Quaternion.identity;
+        }
+    }
 
     //  Event Handlers --------------------------------
 

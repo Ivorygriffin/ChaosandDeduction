@@ -26,6 +26,7 @@ public class Timer : NetworkBehaviour
 
     void Start()
     {
+        startTime = (DifficultyManager.instance.GetTime() * cycleLength) + 5;
         timeRemaining = startTime;
     }
     void Update()
