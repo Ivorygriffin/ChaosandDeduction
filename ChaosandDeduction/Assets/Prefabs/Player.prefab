@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3718973189240868518}
   - component: {fileID: 7186047302196620715}
   - component: {fileID: 5138467581710703228}
+  - component: {fileID: 7230920082616949708}
   - component: {fileID: 4677543795425201802}
   m_Layer: 0
   m_Name: Player
@@ -128,6 +129,7 @@ MonoBehaviour:
   animationMultiplier: 1
   animator: {fileID: 0}
   footsteps: {fileID: 0}
+  thirdPerson: 1
 --- !u!114 &5138467581710703228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +149,21 @@ MonoBehaviour:
   modelIndex: 0
   AudioSource: {fileID: 4677543795425201802}
   NoInteractable: {fileID: 8300000, guid: c2dc48acf65dd9141ba1b7c2d6fa95f1, type: 3}
+--- !u!114 &7230920082616949708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718973189240868519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd1a2100cde6c249837ca44db57617b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  loadedSpell: {fileID: 11400000, guid: f6f8babeb59714a47ac5049cfdad77b4, type: 2}
 --- !u!82 &4677543795425201802
 AudioSource:
   m_ObjectHideFlags: 0

@@ -32,6 +32,9 @@ public class CharacterMovement : NetworkBehaviour
     const float requiredFootstepSpeed = 0.2f;
     public AudioPlayer footsteps;
 
+    public bool thirdPerson = true;
+    float lookSpeed = 90;
+
     //  Unity Methods ---------------------------------
     protected void Start()
     {
@@ -65,14 +68,28 @@ public class CharacterMovement : NetworkBehaviour
         //{
         //    playerVelocity.y = 0f;
         //}
+        Vector3 inputVector = Vector3.zero;
+
         if (Joystick.Instance)
-            playerVelocity += new Vector3(Joystick.Instance.inputVector.x, 0, Joystick.Instance.inputVector.y) * moveSpeed;
+        {
+            inputVector = new Vector3(Joystick.Instance.inputVector.x, 0, Joystick.Instance.inputVector.y);
+            if (thirdPerson)
+                playerVelocity += inputVector * moveSpeed;
+            else
+                playerVelocity = inputVector.z * transform.forward * moveSpeed;
+        }
         //playerVelocity.y += gravityValue * Time.deltaTime;
 
-       // playerVelocity = transform.TransformDirection(playerVelocity);
+        // playerVelocity = transform.TransformDirection(playerVelocity);
 
-        if (playerVelocity != Vector3.zero)
-            gameObject.transform.forward = playerVelocity;
+        if (inputVector != Vector3.zero)
+        {
+            if (thirdPerson)
+                gameObject.transform.forward = playerVelocity;
+            else
+                transform.Rotate(0, inputVector.x * Time.deltaTime * lookSpeed, 0);
+
+        }
 
 
         character.SimpleMove(playerVelocity); //* Time.deltaTime

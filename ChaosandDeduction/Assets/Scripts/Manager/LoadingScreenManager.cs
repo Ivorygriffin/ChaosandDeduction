@@ -62,6 +62,7 @@ public class LoadingScreenManager : MonoBehaviour
     AsyncOperation asyncLoad;
     IEnumerator LoadAsyncScene()
     {
+        progressSlider.value = 0;
         yield return new WaitUntil(() => NetworkManager.loadingSceneAsync != null);
 
         asyncLoad = NetworkManager.loadingSceneAsync;

@@ -947,6 +947,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2035503820}
     m_Modifications:
+    - target: {fileID: 760934522399016089, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 37067817}
+    - target: {fileID: 760934522399016089, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: buttonTransform
+      value: 
+      objectReference: {fileID: 533478171}
     - target: {fileID: 1104807434677154612, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1059,14 +1067,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interact canvas (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2772070373927738187, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 386803851}
     - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 346502397}
+    - target: {fileID: 8379697708087236107, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 386803851}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
 --- !u!114 &37067816 stripped
@@ -8108,6 +8116,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532303441}
   m_CullTransparentMesh: 1
+--- !u!224 &533478171 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5501982003714207343, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+  m_PrefabInstance: {fileID: 37067815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &537380050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3145626797363597269, guid: a2ec0de9ec43fbb45a78130c3b2b5696, type: 3}
@@ -18761,7 +18774,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264381573}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}

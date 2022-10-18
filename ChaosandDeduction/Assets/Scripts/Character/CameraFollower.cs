@@ -80,7 +80,9 @@ public class CameraFollower : MonoBehaviour
     }
     public void SetView(bool third)
     {
-        thirdPerson = third;
+        thirdPerson = third; 
+        PlayerManager.Instance.localPlayer.GetComponent<CharacterMovement>().thirdPerson = thirdPerson;
+
         if (thirdPerson)
         {
             transform.SetParent(null);
