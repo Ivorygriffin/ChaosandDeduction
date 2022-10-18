@@ -15,4 +15,17 @@ public class DifficultyObject : ScriptableObject
         villagerTasks = difficulty.villagerTasks;
         traitorTasks = difficulty.traitorTasks;
     }
+
+    public void UpdateNumDays(string value)
+    {
+        numDays = float.Parse(value);
+    }
+    public void UpdateVTasks(string value)
+    {
+        villagerTasks = int.Parse(value);
+    }
+    public void UpdateTTasks(string value)
+    {
+        traitorTasks = int.Parse(value);
+    }
 }
