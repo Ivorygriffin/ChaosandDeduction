@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class pinManager : MonoBehaviour
 {
   
-    public bool nothingpinned;
+    public bool on;
     public string taskName;
 
     
@@ -21,8 +21,8 @@ public class pinManager : MonoBehaviour
 
     public void Pin()
     {
-  
-      
+
+        
       
             foreach(GameObject map in everymap)
             {
@@ -41,110 +41,105 @@ public class pinManager : MonoBehaviour
             {
                 case "frog":
                     frog.SetActive(true); 
-                frogm.SetActive(true); 
-                    
+                frogm.SetActive(true);
+                
                     break;
                 case "eye":
                     eye.SetActive(true); 
                 eyem.SetActive(true);
-             
-                    break;
+                
+                break;
                 case "leaf":
                     leaf.SetActive(true); 
                 leafm.SetActive(true);
-              
-                    break;
+               
+                break;
                 case "water":
                     water.SetActive(true);     
                 waterm.SetActive(true);
-              
-                    break;
+                
+                break;
                 case "ash":
                     ash.SetActive(true);  
                 ashm.SetActive(true);
-                 
-                    break;
+                
+                break;
                 case "blood":
                     blood.SetActive(true);       
                 bloodm.SetActive(true);
-                   
-                    break;
+                
+                break;
                 case "firefly":
                     firefly.SetActive(true);           
                 fireflym.SetActive(true);
-                  
-                    break;
+                
+                break;
                 case "moss":
                     moss.SetActive(true);   
                 mossm.SetActive(true);
-
-                    break;
+               
+                break;
                 case "crystal":
                     crystal.SetActive(true);  
                 crystalm.SetActive(true);
-         
-                    break;
+                
+                break;
                 case "tooth":
                     tooth.SetActive(true); 
                 toothm.SetActive(true);
-                
-                    break;
+               
+                break;
                 case "carrot":
                     carrot.SetActive(true); 
                 carrotm.SetActive(true);
-          
-                    break;
+               
+                break;
                 case "tears":
                     tears.SetActive(true);   
                 tearsm.SetActive(true);
-                   
-                    break;
+                
+                break;
                 case "boxstomp":
                     boxstomp.SetActive(true);   
                 boxstompm.SetActive(true);
-               
-                    break;
+                
+                break;
                 case "cavescare":
                     cavescare.SetActive(true);   
                 cavescarem.SetActive(true);
-               
-                    break;
+                
+                break;
                 case "wellpush":
                     wellpush.SetActive(true);     
                 wellpushm.SetActive(true);
-                   
-                    break;
+                
+                break;
                 case "laughgrave":
                     laughgrave.SetActive(true);  
                 laughgravem.SetActive(true);
-               
-                    break;
+                
+                break;
                 case "breakstatue":
                     breakstatue.SetActive(true);   
                 breakstatuem.SetActive(true);
-                   
-                    break;
+                
+                break;
                 case "carvetree":
                     carvetree.SetActive(true); 
                 carvetreem.SetActive(true);
                 
-                    break;
+                break;
                 case "destroytent":
                     destroytent.SetActive(true);  
                 destroytentm.SetActive(true);
-             
-                    break;
+                
+                break;
                 case "bookfire":
                     bookfire.SetActive(true);
                     bookfirem.SetActive(true);
-               
-                    break;
+                
+                break;
                 default:
-                taskName = string.Empty;
-                foreach (GameObject sticker in everysticker)
-                {
-                    sticker.SetActive(false);
-                }
                 initialMap.SetActive(true);
                 break;
             }
@@ -154,7 +149,7 @@ public class pinManager : MonoBehaviour
 
     }
     
-        
+   
        
 
 
