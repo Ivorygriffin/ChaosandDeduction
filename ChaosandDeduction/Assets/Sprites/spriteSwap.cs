@@ -9,30 +9,45 @@ public class spriteSwap : MonoBehaviour
     public string taskName;
     public Button button;
     public Sprite added, add;
-    public bool T, NP;
+    public int clickTimes;
     public pinManager pinManager;
-
-    public void Start()
-    {
-        T = pinManager.tracking;
-        NP = pinManager.nothingpinned;
-    }
+    public bool pin;
+    
+    
     public void setTaskName()
     {
+        pinManager.taskName = string.Empty;
         pinManager.taskName = taskName;
+        Debug.Log(taskName);
     }
 
     public void SpriteSwap()
     {
-        if (T && NP)
+        if (!pin)
         {
+            clickTimes -=1;
+            pin = true;
             button.GetComponent<Image>().sprite = added;
-            T = false;
+            
         }
-        else if (!T)
+        else if (pin)
         {
-            button.GetComponent<Image>().sprite = add;
-            T = true;
+            clickTimes += 1;
+            pin = false;
+            button.GetComponent<Image>().sprite = add;     
+        }
+        if (clickTimes == -1)
+        {
+            Debug.Log("-1");
+            foreach (GameObject go in pinManager.everymap)
+            {
+                Debug.Log("turnoffallmap");
+                go.SetActive(false);
+            }
+            pinManager.initialMap.SetActive(true);
+
         }
     }
+
+   
 }
