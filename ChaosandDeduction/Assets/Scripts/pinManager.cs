@@ -6,200 +6,156 @@ using UnityEngine.UI;
 public class pinManager : MonoBehaviour
 {
   
-    public bool tracking, nothingpinned;
+    public bool nothingpinned;
     public string taskName;
 
-
+    
     public GameObject frog, eye, leaf, water, ash, blood, firefly, moss, crystal, tooth, carrot, tears, boxstomp, cavescare, wellpush, laughgrave, breakstatue, carvetree, destroytent, bookfire;
-
-   
-    public void Pinned()
-    {
-        nothingpinned = false;
-    }
-    public void UnPinned()
-    {
-        nothingpinned=true;
-    }
-
-    public void Stickers()
-    {
-        if (tracking && nothingpinned)
-        {
-            Pin();
-        }
-        if (!tracking && !nothingpinned)
-        {
-            UnPin();
-        }
-    }
-
+    public GameObject frogm, eyem, leafm, waterm, ashm, bloodm, fireflym, mossm, crystalm, toothm, carrotm, tearsm, boxstompm, cavescarem, wellpushm, laughgravem, breakstatuem, carvetreem, destroytentm, bookfirem;
+  
+    public GameObject[] everysticker;
+    public Button[] everyPin;
+    public GameObject[] everymap;
+    public GameObject initialMap;
+    public spriteSwap ss;
 
     public void Pin()
     {
-        if (nothingpinned)
-        {
+  
+      
+      
+            foreach(GameObject map in everymap)
+            {
+                map.SetActive(false);
+            }
+            foreach(Button btn in everyPin)
+            {
+                btn.GetComponent<Image>().sprite = ss.added;
+            }
+            foreach(GameObject sticker in everysticker)
+            {
+                sticker.SetActive(false);
+            }
+            Debug.Log("unpin run");
             switch (taskName)
             {
                 case "frog":
-                    frog.SetActive(true);
-
+                    frog.SetActive(true); 
+                frogm.SetActive(true); 
+                    
                     break;
                 case "eye":
-                    eye.SetActive(true);
-
+                    eye.SetActive(true); 
+                eyem.SetActive(true);
+             
                     break;
                 case "leaf":
-                    leaf.SetActive(true);
-
+                    leaf.SetActive(true); 
+                leafm.SetActive(true);
+              
                     break;
                 case "water":
-                    water.SetActive(true);
-
+                    water.SetActive(true);     
+                waterm.SetActive(true);
+              
                     break;
                 case "ash":
-                    ash.SetActive(true);
-
+                    ash.SetActive(true);  
+                ashm.SetActive(true);
+                 
                     break;
                 case "blood":
-                    blood.SetActive(true);
-
+                    blood.SetActive(true);       
+                bloodm.SetActive(true);
+                   
                     break;
                 case "firefly":
-                    firefly.SetActive(true);
-
+                    firefly.SetActive(true);           
+                fireflym.SetActive(true);
+                  
                     break;
                 case "moss":
-                    moss.SetActive(true);
+                    moss.SetActive(true);   
+                mossm.SetActive(true);
 
                     break;
                 case "crystal":
-                    crystal.SetActive(true);
-
+                    crystal.SetActive(true);  
+                crystalm.SetActive(true);
+         
                     break;
                 case "tooth":
-                    tooth.SetActive(true);
-
+                    tooth.SetActive(true); 
+                toothm.SetActive(true);
+                
                     break;
                 case "carrot":
-                    carrot.SetActive(true);
-
+                    carrot.SetActive(true); 
+                carrotm.SetActive(true);
+          
                     break;
                 case "tears":
-                    tears.SetActive(true);
-
+                    tears.SetActive(true);   
+                tearsm.SetActive(true);
+                   
                     break;
                 case "boxstomp":
-                    boxstomp.SetActive(true);
-
+                    boxstomp.SetActive(true);   
+                boxstompm.SetActive(true);
+               
                     break;
                 case "cavescare":
-                    cavescare.SetActive(true);
-
+                    cavescare.SetActive(true);   
+                cavescarem.SetActive(true);
+               
                     break;
                 case "wellpush":
-                    wellpush.SetActive(true);
-
+                    wellpush.SetActive(true);     
+                wellpushm.SetActive(true);
+                   
                     break;
                 case "laughgrave":
-                    laughgrave.SetActive(true);
-
+                    laughgrave.SetActive(true);  
+                laughgravem.SetActive(true);
+               
                     break;
-                case  "breakstatue":
-                    breakstatue.SetActive(true);
-
+                case "breakstatue":
+                    breakstatue.SetActive(true);   
+                breakstatuem.SetActive(true);
+                   
                     break;
                 case "carvetree":
-                    carvetree.SetActive(true);
-
+                    carvetree.SetActive(true); 
+                carvetreem.SetActive(true);
+                
                     break;
                 case "destroytent":
-                    destroytent.SetActive(true);
-
+                    destroytent.SetActive(true);  
+                destroytentm.SetActive(true);
+             
                     break;
                 case "bookfire":
                     bookfire.SetActive(true);
-
+                    bookfirem.SetActive(true);
+               
                     break;
                 default:
-                    
-                    break;
+                taskName = string.Empty;
+                foreach (GameObject sticker in everysticker)
+                {
+                    sticker.SetActive(false);
+                }
+                initialMap.SetActive(true);
+                break;
             }
+        
+        
 
-        }
-
-    }
-    public void UnPin()
-    {
-
-        switch (taskName)
-        {
-            case "frog":
-                frog.SetActive(false);
-                break;
-            case "eye":
-                eye.SetActive(false);
-                break;
-            case "leaf":
-                leaf.SetActive(false);
-                break;
-            case "water":
-                water.SetActive(false);
-                break;
-            case "ash":
-                ash.SetActive(false);
-                break;
-            case "blood":
-                blood.SetActive(false);
-                break;
-            case "firefly":
-                firefly.SetActive(false);
-                break;
-            case "moss":
-                moss.SetActive(false);
-                break;
-            case "crystal":
-                crystal.SetActive(false);
-                break;
-            case "tooth":
-                tooth.SetActive(false);
-                break;
-            case "carrot":
-                carrot.SetActive(false);
-                break;
-            case "tears":
-                tears.SetActive(false);
-                break;
-            case "boxstomp":
-                boxstomp.SetActive(false);
-                break;
-            case "cavescare":
-                cavescare.SetActive(false);
-                break;
-            case "wellpush":
-                wellpush.SetActive(false);
-                break;
-            case "laughgrave":
-                laughgrave.SetActive(false);
-                break;
-            case "breakstatue":
-                breakstatue.SetActive(false);
-                break;
-            case "carvetree":
-                carvetree.SetActive(false);
-                break;
-            case "destroytent":
-                destroytent.SetActive(false);
-                break;
-            case "bookfire":
-                bookfire.SetActive(false);
-                break;
-            default:
-                
-                break;
-        }
 
     }
+    
+        
+       
 
 
 }
