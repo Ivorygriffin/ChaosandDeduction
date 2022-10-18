@@ -30,11 +30,9 @@ public class TaskManager : NetworkBehaviour
 
     [Header("Traitor Counts")]
     private int currentTraitorTaskNum;
-    public int numTraitorTasks;
 
     [Header("Villager Counts")]
     private int currentVillagerTaskNum;
-    public int numVillagerTasks;
 
     //bools
 
@@ -54,6 +52,9 @@ public class TaskManager : NetworkBehaviour
                 instance = this;
             else
                 Destroy(this);
+
+            int numVillagerTasks = DifficultyManager.instance.GetVTasks();
+            int numTraitorTasks = DifficultyManager.instance.GetTTasks();
 
             for (int i = 0; i < numVillagerTasks; i++)
                 AddVillagerTask();

@@ -40,7 +40,7 @@ public class LobbyCharacter : NetworkBehaviour
     //}
 
     [Command(requiresAuthority = false)]
-    void CmdUpdateModel()
+    public void CmdUpdateModel()
     {
         //pass all the data to player (the network manager keeps all playerdata on the host only)
 
