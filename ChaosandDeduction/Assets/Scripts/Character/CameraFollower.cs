@@ -23,6 +23,7 @@ public class CameraFollower : MonoBehaviour
     public Transform target;
     public Vector3 offset;
 
+    Vector3 velocity = Vector3.zero;
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -34,7 +35,7 @@ public class CameraFollower : MonoBehaviour
     protected void Update()
     {
         if (target != null)
-            transform.position = target.position + offset;
+            transform.position = Vector3.SmoothDamp(transform.position, target.position + offset, ref velocity, 0.1f);
         else
             if (PlayerManager.Instance && PlayerManager.Instance.localPlayer)
             target = PlayerManager.Instance.localPlayer.transform;

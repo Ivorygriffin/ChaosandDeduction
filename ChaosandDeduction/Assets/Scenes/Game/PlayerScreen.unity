@@ -468,6 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a439e15337e48c34fafe9720e6c0bbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkManager: {fileID: 0}
+  discovery: {fileID: 0}
   doAuto: 0
   joining: 0
 --- !u!4 &112152799
@@ -892,6 +894,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185662285}
   m_CullTransparentMesh: 1
+--- !u!1 &197359120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197359122}
+  - component: {fileID: 197359121}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &197359121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197359120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd3b04a5775aaa47a68efe114ba8eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDifficulty: {fileID: 11400000, guid: 040162b6d616f814c817fc5565601b75, type: 2}
+--- !u!4 &197359122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197359120}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.461864, y: 15.87725, z: -18.56809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &233002766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4966446527095494960, guid: a967b487eb9001c4d8bbcf28c3b438c2, type: 3}
@@ -4834,6 +4880,63 @@ RectTransform:
   m_AnchoredPosition: {x: 457, y: -22}
   m_SizeDelta: {x: -2460, y: -1146}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1443475429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.015991092
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.23650455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.922603
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513505, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774231056137513509, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
+      propertyPath: m_Name
+      value: NetworkManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4551018f91a7d894698cae4d8d8b4036, type: 3}
 --- !u!1 &1447892706
 GameObject:
   m_ObjectHideFlags: 0
@@ -10831,7 +10934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &4573984787872400284
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19997,6 +20100,7 @@ GameObject:
   - component: {fileID: 8058976570167011399}
   - component: {fileID: 8058976570167011398}
   - component: {fileID: 8058976570167011397}
+  - component: {fileID: 8058976570167011400}
   m_Layer: 5
   m_Name: Skilled Button
   m_TagString: Untagged
@@ -20128,6 +20232,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8058976570167011400}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8058976570167011398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20166,6 +20282,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058976570167011395}
   m_CullTransparentMesh: 1
+--- !u!114 &8058976570167011400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058976570167011395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1178ba4eee4c228488d5ac9851308d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDifficulty: {fileID: 11400000, guid: 92c2d570f2cf6d24ba028f9ba79ae2b0, type: 2}
 --- !u!1 &8058976570327567441
 GameObject:
   m_ObjectHideFlags: 0
@@ -20399,6 +20528,7 @@ GameObject:
   - component: {fileID: 8058976570912948320}
   - component: {fileID: 8058976570912948319}
   - component: {fileID: 8058976570912948318}
+  - component: {fileID: 8058976570912948321}
   m_Layer: 5
   m_Name: Suggested Button
   m_TagString: Untagged
@@ -20530,6 +20660,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8058976570912948321}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8058976570912948319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20568,6 +20710,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058976570912948316}
   m_CullTransparentMesh: 1
+--- !u!114 &8058976570912948321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058976570912948316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1178ba4eee4c228488d5ac9851308d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDifficulty: {fileID: 11400000, guid: 040162b6d616f814c817fc5565601b75, type: 2}
 --- !u!1 &8058976570935116153
 GameObject:
   m_ObjectHideFlags: 0
@@ -20738,6 +20893,7 @@ GameObject:
   - component: {fileID: 8058976571388347377}
   - component: {fileID: 8058976571388347376}
   - component: {fileID: 8058976571388347375}
+  - component: {fileID: 8058976571388347378}
   m_Layer: 5
   m_Name: Novice Button
   m_TagString: Untagged
@@ -20869,6 +21025,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8058976571388347378}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8058976571388347376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20907,6 +21075,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058976571388347373}
   m_CullTransparentMesh: 1
+--- !u!114 &8058976571388347378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058976571388347373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1178ba4eee4c228488d5ac9851308d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDifficulty: {fileID: 11400000, guid: f5dc03119b6227f478a01085d765bc4f, type: 2}
 --- !u!1 &8058976571618592221
 GameObject:
   m_ObjectHideFlags: 0
@@ -21073,6 +21254,7 @@ GameObject:
   - component: {fileID: 8058976572051340745}
   - component: {fileID: 8058976572051340744}
   - component: {fileID: 8058976572051340743}
+  - component: {fileID: 8058976572051340746}
   m_Layer: 5
   m_Name: Nightmare Button
   m_TagString: Untagged
@@ -21204,6 +21386,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8058976572051340746}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8058976572051340744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21242,6 +21436,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058976572051340741}
   m_CullTransparentMesh: 1
+--- !u!114 &8058976572051340746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058976572051340741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1178ba4eee4c228488d5ac9851308d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDifficulty: {fileID: 11400000, guid: 2a9fcc403cfef3b4d8e3b870e222542d, type: 2}
 --- !u!1 &8058976572052770365
 GameObject:
   m_ObjectHideFlags: 0
@@ -21254,6 +21461,7 @@ GameObject:
   - component: {fileID: 8058976572052770369}
   - component: {fileID: 8058976572052770368}
   - component: {fileID: 8058976572052770367}
+  - component: {fileID: 8058976572052770370}
   m_Layer: 5
   m_Name: Custom Button
   m_TagString: Untagged
@@ -21385,6 +21593,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 8058976572052770370}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &8058976572052770368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21423,6 +21643,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058976572052770365}
   m_CullTransparentMesh: 1
+--- !u!114 &8058976572052770370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058976572052770365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1178ba4eee4c228488d5ac9851308d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDifficulty: {fileID: 0}
 --- !u!1 &8058976572094442797
 GameObject:
   m_ObjectHideFlags: 0
