@@ -68,8 +68,12 @@ public class CharacterMovement : NetworkBehaviour
         if (Joystick.Instance)
             playerVelocity += new Vector3(Joystick.Instance.inputVector.x, 0, Joystick.Instance.inputVector.y) * moveSpeed;
         //playerVelocity.y += gravityValue * Time.deltaTime;
+
+       // playerVelocity = transform.TransformDirection(playerVelocity);
+
         if (playerVelocity != Vector3.zero)
             gameObject.transform.forward = playerVelocity;
+
 
         character.SimpleMove(playerVelocity); //* Time.deltaTime
         if (animator)

@@ -40,6 +40,8 @@ public class CameraFollower : MonoBehaviour
         {
             if (thirdPerson)
                 transform.position = Vector3.SmoothDamp(transform.position, target.position + offset, ref velocity, 0.1f);
+            else
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref velocity, 0.1f);
         }
         else
             if (PlayerManager.Instance && PlayerManager.Instance.localPlayer)
@@ -81,14 +83,15 @@ public class CameraFollower : MonoBehaviour
         thirdPerson = third;
         if (thirdPerson)
         {
-            transform.position = target.position + offset;
-            transform.localRotation = Quaternion.Euler(54, 0,0);
             transform.SetParent(null);
+
+            //transform.position = target.position + offset;
+            transform.rotation = Quaternion.Euler(54, 0, 0);
         }
         else
         {
             transform.SetParent(target.transform);
-            transform.localPosition = Vector3.zero;
+
             transform.localRotation = Quaternion.identity;
         }
     }
