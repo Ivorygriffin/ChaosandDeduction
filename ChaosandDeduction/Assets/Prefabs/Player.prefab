@@ -164,6 +164,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   loadedSpell: {fileID: 11400000, guid: f6f8babeb59714a47ac5049cfdad77b4, type: 2}
+  spellBook: {fileID: 2538706163746221231}
 --- !u!82 &4677543795425201802
 AudioSource:
   m_ObjectHideFlags: 0
@@ -479,9 +480,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3718973189240868514}
     m_Modifications:
+    - target: {fileID: 2770144236761632609, guid: 03ca85ddea367434f988eea80e0f13d8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7079787802006255150, guid: 03ca85ddea367434f988eea80e0f13d8, type: 3}
       propertyPath: m_Name
       value: Spellbook
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079787802006255150, guid: 03ca85ddea367434f988eea80e0f13d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7891505884112795031, guid: 03ca85ddea367434f988eea80e0f13d8, type: 3}
       propertyPath: m_RootOrder
@@ -529,6 +538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03ca85ddea367434f988eea80e0f13d8, type: 3}
+--- !u!1 &2538706163746221231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7079787802006255150, guid: 03ca85ddea367434f988eea80e0f13d8, type: 3}
+  m_PrefabInstance: {fileID: 4718433964405676673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3242447122808401686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7891505884112795031, guid: 03ca85ddea367434f988eea80e0f13d8, type: 3}

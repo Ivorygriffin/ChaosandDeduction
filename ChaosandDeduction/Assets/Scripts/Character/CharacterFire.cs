@@ -23,12 +23,14 @@ public class CharacterFire : NetworkBehaviour
 
     //  Properties ------------------------------------
     public SpellObject loadedSpell;
+    public GameObject spellBook;
 
     //  Fields ----------------------------------------
 
     //  Unity Methods ---------------------------------
     protected void Start()
     {
+        UIManager.Instance.spellBook = spellBook;
         if (loadedSpell)
             loadedSpell.Start();
     }

@@ -9,6 +9,7 @@ public class UIManager : NetworkBehaviour
     public static UIManager Instance;
 
     //UI Screens
+    [Header("Canvases")]
     public Canvas voteScreen;
     public Canvas winScreen;
     public Canvas settingsCanvas;
@@ -19,6 +20,7 @@ public class UIManager : NetworkBehaviour
     public Canvas InitialMap;
     public Canvas InteractCanvas;
 
+    [Header("Role Stuff")]
     public Canvas roleRevealCanvas;
     public TMP_Text roleText;
     float roleTimer = 1;
@@ -27,7 +29,9 @@ public class UIManager : NetworkBehaviour
     float replayTimer = -1;
     const float replayMaxTime = 15;
 
+    [Header("FPS Stuff")]
     public GameObject fireButton;
+    public GameObject spellBook;
 
     [SerializeField] GameObject[] wandProgress;
     int wandProgressIndex;
@@ -147,6 +151,7 @@ public class UIManager : NetworkBehaviour
     public void ThirdPerson(bool show)
     {
         fireButton.SetActive(!show);
+        spellBook.SetActive(!show);
     }
 
     public void Map(bool show)
