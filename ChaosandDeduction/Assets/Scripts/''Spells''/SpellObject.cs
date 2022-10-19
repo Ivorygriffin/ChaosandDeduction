@@ -13,6 +13,8 @@ public class SpellObject : ScriptableObject
     public float reloadTime;
     float reloadTimer;
 
+    public bool automatic;
+
     public GameObject prefab;
 
     public void Start()

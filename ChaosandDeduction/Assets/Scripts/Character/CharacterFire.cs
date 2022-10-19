@@ -41,8 +41,12 @@ public class CharacterFire : NetworkBehaviour
 
         if (loadedSpell)
             loadedSpell.Update();
-        if (FireButton.instance && FireButton.instance.pressed)
-            Fire();
+
+        if (FireButton.instance && loadedSpell)
+        {
+            if ((FireButton.instance.pressedFrame && !loadedSpell.automatic) || (FireButton.instance.pressed && loadedSpell.automatic))
+                Fire();
+        }
     }
 
 #if UNITY_EDITOR
@@ -55,7 +59,7 @@ public class CharacterFire : NetworkBehaviour
     public void Fire()
     {
         if (loadedSpell)
-            loadedSpell.Fire(transform.position + transform.forward * 0.5f, transform.rotation);
+            loadedSpell.Fire(transform.position + transform.forward * 0.5f - transform.up * 0.25f, transform.rotation);
     }
 
     //  Event Handlers --------------------------------

@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8003158286615340684}
+  - component: {fileID: 4889689314060069235}
   - component: {fileID: 1217358134722574145}
-  - component: {fileID: 1548307554650921092}
   - component: {fileID: 5714756889830064054}
+  - component: {fileID: 1548307554650921092}
   m_Layer: 0
   m_Name: Goblin_LowPoly
   m_TagString: Untagged
@@ -34,6 +35,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4889689314060069235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231442499567238198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7a5482b732a38428090e5f0b0a37a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1217358134722574145}
+  footsteps: {fileID: 5714756889830064054}
 --- !u!95 &1217358134722574145
 Animator:
   serializedVersion: 3
@@ -53,6 +68,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5714756889830064054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231442499567238198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6def36a9536472440a030aa9751398d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: c4f99ebab043371489d737169d91bbcd, type: 3}
+  - {fileID: 8300000, guid: 509b881a665e2c149ba80ab9591a7c94, type: 3}
+  - {fileID: 8300000, guid: 50a749d59b7329b49910221b586b8cb7, type: 3}
+  - {fileID: 8300000, guid: d3207bbe1c4ef6d4b96c1228d25f7679, type: 3}
+  - {fileID: 8300000, guid: 68ebcb1448858eb46bc3723d609d832d, type: 3}
+  - {fileID: 8300000, guid: b5b8ff91e78d1d2459129bc9ddd0822a, type: 3}
+  - {fileID: 8300000, guid: 7600a93e31b2ab142b2bb302357b11c5, type: 3}
+  source: {fileID: 1548307554650921092}
 --- !u!82 &1548307554650921092
 AudioSource:
   m_ObjectHideFlags: 0
@@ -149,27 +185,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5714756889830064054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231442499567238198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6def36a9536472440a030aa9751398d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: c4f99ebab043371489d737169d91bbcd, type: 3}
-  - {fileID: 8300000, guid: 509b881a665e2c149ba80ab9591a7c94, type: 3}
-  - {fileID: 8300000, guid: 50a749d59b7329b49910221b586b8cb7, type: 3}
-  - {fileID: 8300000, guid: d3207bbe1c4ef6d4b96c1228d25f7679, type: 3}
-  - {fileID: 8300000, guid: 68ebcb1448858eb46bc3723d609d832d, type: 3}
-  - {fileID: 8300000, guid: b5b8ff91e78d1d2459129bc9ddd0822a, type: 3}
-  - {fileID: 8300000, guid: 7600a93e31b2ab142b2bb302357b11c5, type: 3}
-  source: {fileID: 1548307554650921092}
 --- !u!1001 &8210772596338211280
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -152,9 +152,7 @@ public class CharacterInteraction : NetworkBehaviour
         if (PlayerManager.Instance) //TODO: move this? somewhere?
             mover.Teleport(PlayerManager.Instance.spawnPoints[index]);
 
-        //mover.animator.animator = newModel.GetComponent<Animator>();
-        mover.animator = newModel.GetComponent<Animator>();
-        mover.footsteps = newModel.GetComponent<AudioPlayer>();
+        mover.character = newModel.GetComponent<Character>();
     }
 
     //  Event Handlers --------------------------------

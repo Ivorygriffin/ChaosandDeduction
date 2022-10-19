@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589245, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1604,14 +1604,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interact canvas (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2772070373927738187, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 386803851}
     - target: {fileID: 5501982003714207342, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 346502397}
+    - target: {fileID: 8379697708087236107, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 386803851}
+    - target: {fileID: 8379697708087236107, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetView
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
 --- !u!114 &37067816 stripped
@@ -1648,6 +1652,11 @@ GameObject:
 --- !u!1 &37067821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3771297623154711515, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
+  m_PrefabInstance: {fileID: 37067815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &37067822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6303366354796259651, guid: 4026746a9958d194b97c8d60ed87dc27, type: 3}
   m_PrefabInstance: {fileID: 37067815}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &37917604
@@ -10225,6 +10234,7 @@ MonoBehaviour:
   InteractCanvas: {fileID: 37067817}
   roleRevealCanvas: {fileID: 2162081714200415060}
   roleText: {fileID: 2162081714200415059}
+  fireButton: {fileID: 37067822}
   wandProgress:
   - {fileID: 37067821}
   - {fileID: 37067820}

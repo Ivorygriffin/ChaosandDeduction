@@ -18,6 +18,7 @@ public class FireButton : MonoBehaviour
 
     public bool pressed { get; private set; }
     public bool pressedFrame { get; private set; }
+    bool frameBuffer = false;
 
 #if UNITY_EDITOR
     bool usingDebugControls = true;
@@ -46,7 +47,11 @@ public class FireButton : MonoBehaviour
     }
     void Update()
     {
-        // pressedFrame = false;
+        if (!frameBuffer) //give pressedFrame an extra frame before being disabled?
+            pressedFrame = false;
+        else
+            frameBuffer = false;
+
 #if UNITY_EDITOR
         if (usingDebugControls)
         {
@@ -72,15 +77,18 @@ public class FireButton : MonoBehaviour
 
         Vector2 fingerPos = finger.screenPosition;
 
+        fingerPos -= (Vector2)buttonTransform.position;
         fingerPos /= canvas.scaleFactor;
 
-        Vector2 localFingerPos = fingerPos - buttonTransform.anchoredPosition; //check if within button's bounds
-        if (localFingerPos.x > buttonTransform.sizeDelta.x || localFingerPos.x < -buttonTransform.sizeDelta.x || localFingerPos.y > buttonTransform.sizeDelta.y || localFingerPos.x < -buttonTransform.sizeDelta.y)
+
+        //check if within button's bounds
+        if (fingerPos.x > buttonTransform.sizeDelta.x / 2 || fingerPos.x < -buttonTransform.sizeDelta.x / 2 || fingerPos.y > buttonTransform.sizeDelta.y / 2 || fingerPos.x < -buttonTransform.sizeDelta.y / 2)
             return;
 
         legalFinger = finger;
 
         pressedFrame = true;
+        frameBuffer = true;
         pressed = true;
 #if UNITY_EDITOR
         usingDebugControls = false;

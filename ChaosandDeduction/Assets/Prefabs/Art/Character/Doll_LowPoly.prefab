@@ -1945,9 +1945,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8089699614105637550}
+  - component: {fileID: 8566784732695097171}
   - component: {fileID: 6471135330562524180}
-  - component: {fileID: 6031690514421342961}
   - component: {fileID: 4875387701894978282}
+  - component: {fileID: 6031690514421342961}
   m_Layer: 0
   m_Name: Doll_LowPoly
   m_TagString: Untagged
@@ -1972,6 +1973,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8566784732695097171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867502301750872084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7a5482b732a38428090e5f0b0a37a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6471135330562524180}
+  footsteps: {fileID: 4875387701894978282}
 --- !u!95 &6471135330562524180
 Animator:
   serializedVersion: 3
@@ -1991,6 +2006,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4875387701894978282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867502301750872084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6def36a9536472440a030aa9751398d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: c4f99ebab043371489d737169d91bbcd, type: 3}
+  - {fileID: 8300000, guid: 509b881a665e2c149ba80ab9591a7c94, type: 3}
+  - {fileID: 8300000, guid: 50a749d59b7329b49910221b586b8cb7, type: 3}
+  - {fileID: 8300000, guid: d3207bbe1c4ef6d4b96c1228d25f7679, type: 3}
+  - {fileID: 8300000, guid: 68ebcb1448858eb46bc3723d609d832d, type: 3}
+  - {fileID: 8300000, guid: b5b8ff91e78d1d2459129bc9ddd0822a, type: 3}
+  - {fileID: 8300000, guid: 7600a93e31b2ab142b2bb302357b11c5, type: 3}
+  source: {fileID: 6031690514421342961}
 --- !u!82 &6031690514421342961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2087,27 +2123,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4875387701894978282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8867502301750872084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6def36a9536472440a030aa9751398d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: c4f99ebab043371489d737169d91bbcd, type: 3}
-  - {fileID: 8300000, guid: 509b881a665e2c149ba80ab9591a7c94, type: 3}
-  - {fileID: 8300000, guid: 50a749d59b7329b49910221b586b8cb7, type: 3}
-  - {fileID: 8300000, guid: d3207bbe1c4ef6d4b96c1228d25f7679, type: 3}
-  - {fileID: 8300000, guid: 68ebcb1448858eb46bc3723d609d832d, type: 3}
-  - {fileID: 8300000, guid: b5b8ff91e78d1d2459129bc9ddd0822a, type: 3}
-  - {fileID: 8300000, guid: 7600a93e31b2ab142b2bb302357b11c5, type: 3}
-  source: {fileID: 6031690514421342961}
 --- !u!1 &8952681699531213904
 GameObject:
   m_ObjectHideFlags: 0

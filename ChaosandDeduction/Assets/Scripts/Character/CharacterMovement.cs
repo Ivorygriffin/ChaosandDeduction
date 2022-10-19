@@ -20,20 +20,17 @@ public class CharacterMovement : NetworkBehaviour
 
 
     //  Fields ----------------------------------------
-    public CharacterController character;
+    public CharacterController characterController;
 
     public float moveSpeed = 5;
     public float animationMultiplier = 0.8f;
 
     Vector3 playerVelocity;
-    Vector3 lastFramePos = Vector3.zero;
     //public NetworkAnimator animator;
-    public Animator animator;
-    const float requiredFootstepSpeed = 0.2f;
-    public AudioPlayer footsteps;
+    public Character character;
 
     public bool thirdPerson = true;
-    float lookSpeed = 90;
+    float lookSpeed = 120;
 
     //  Unity Methods ---------------------------------
     protected void Start()
@@ -46,16 +43,8 @@ public class CharacterMovement : NetworkBehaviour
     {
         if (!isLocalPlayer)
         {
-            if (animator) //TODO: determine if this is most efficent way to do this? currently if not calculating speed we just get the distance per frame
-            {
-                float speed = Vector3.Distance(lastFramePos, transform.position) / (Time.deltaTime);
-                animator.SetFloat("Blend", speed);
-
-                if (speed > requiredFootstepSpeed && footsteps)
-                    footsteps.TryPlay();
-
-                lastFramePos = transform.position;
-            }
+            if (character) //TODO: determine if this is most efficent way to do this? currently if not calculating speed we just get the distance per frame
+                character.RemoteUpdate();
             //  else
             //      animator = transform.GetChild(GetComponent<CharacterInteraction>().modelIndex).gameObject.GetComponent<Animator>();
 
@@ -92,21 +81,18 @@ public class CharacterMovement : NetworkBehaviour
         }
 
 
-        character.SimpleMove(playerVelocity); //* Time.deltaTime
-        if (animator)
-            animator.SetFloat("Blend", playerVelocity.magnitude);
-
-        if (playerVelocity.magnitude > requiredFootstepSpeed && footsteps)
-            footsteps.TryPlay();
+        characterController.SimpleMove(playerVelocity); //* Time.deltaTime
+        if (character) //TODO: determine if this is most efficent way to do this? currently if not calculating speed we just get the distance per frame
+            character.LocalUpdate(playerVelocity);
 
         //groundedPlayer = character.isGrounded;
     }
 
     public void Teleport(Vector3 point)
     {
-        character.enabled = false;
+        characterController.enabled = false;
         transform.position = point;
-        character.enabled = true;
+        characterController.enabled = true;
     }
 
     //  Methods ---------------------------------------

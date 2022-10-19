@@ -27,6 +27,8 @@ public class UIManager : NetworkBehaviour
     float replayTimer = -1;
     const float replayMaxTime = 15;
 
+    public GameObject fireButton;
+
     [SerializeField] GameObject[] wandProgress;
     int wandProgressIndex;
 
@@ -57,6 +59,7 @@ public class UIManager : NetworkBehaviour
             InteractCanvas.enabled = false;
 
             roleRevealCanvas.enabled = false;
+            fireButton.SetActive(false);
         }
         else
         {
@@ -139,6 +142,11 @@ public class UIManager : NetworkBehaviour
         InteractCanvas.enabled = false;
 
         replayTimer = replayMaxTime;
+    }
+
+    public void ThirdPerson(bool show)
+    {
+        fireButton.SetActive(!show);
     }
 
     public void Map(bool show)

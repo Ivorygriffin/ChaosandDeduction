@@ -27,11 +27,17 @@ public class PlayerManager : NetworkBehaviour
         get { return player; }
         set
         {
-            player = value;
+            player = value; 
+            characterMovement = player.GetComponent<CharacterMovement>();
+            characterInteraction = player.GetComponent<CharacterInteraction>();
             //localAlignment = Alignment.Villager;
             //CmdAssignRole(value);
         }
     }
+    public CharacterMovement characterMovement { get; private set; }
+    public CharacterInteraction characterInteraction { get; private set; }
+
+
     public PlayerData localPlayerData;
 
     //  Fields ----------------------------------------

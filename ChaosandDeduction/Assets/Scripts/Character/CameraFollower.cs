@@ -65,14 +65,6 @@ public class CameraFollower : MonoBehaviour
 
 
     //  Methods ---------------------------------------
-#if UNITY_EDITOR
-    [ContextMenu("ThirdPerson")]
-    public void SetThird()
-    { SetView(true); }
-    [ContextMenu("FirstPerson")]
-    public void SetFirst()
-    { SetView(false); }
-#endif
 
     public void SetView()
     {
@@ -81,7 +73,8 @@ public class CameraFollower : MonoBehaviour
     public void SetView(bool third)
     {
         thirdPerson = third; 
-        PlayerManager.Instance.localPlayer.GetComponent<CharacterMovement>().thirdPerson = thirdPerson;
+        PlayerManager.Instance.characterMovement.thirdPerson = thirdPerson;
+        UIManager.Instance.ThirdPerson(third);
 
         if (thirdPerson)
         {
