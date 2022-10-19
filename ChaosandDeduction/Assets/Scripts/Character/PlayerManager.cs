@@ -30,12 +30,14 @@ public class PlayerManager : NetworkBehaviour
             player = value; 
             characterMovement = player.GetComponent<CharacterMovement>();
             characterInteraction = player.GetComponent<CharacterInteraction>();
+            characterFire = player.GetComponent<CharacterFire>();
             //localAlignment = Alignment.Villager;
             //CmdAssignRole(value);
         }
     }
     public CharacterMovement characterMovement { get; private set; }
     public CharacterInteraction characterInteraction { get; private set; }
+    public CharacterFire characterFire { get; private set; }
 
 
     public PlayerData localPlayerData;

@@ -54,4 +54,9 @@ public class SpellObject : ScriptableObject
                 ammo = maxAmmo;
         }
     }
+
+    public float GetAmmoCount()
+    {
+        return (float)ammo / maxAmmo;
+    }
 }
