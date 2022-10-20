@@ -8,16 +8,17 @@ public class ProjectileBehaviour : MonoBehaviour
     public float damage;
     public float aliveTime;
 
-    public bool gravity;
+    public Rigidbody body;
     // Start is called before the first frame update
     void Start()
     {
+        body.velocity = transform.forward * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + transform.forward * speed * Time.deltaTime;
+        //transform.position = transform.position + transform.forward * speed * Time.deltaTime;
 
         aliveTime -= Time.deltaTime;
         if (aliveTime <= 0)

@@ -30,7 +30,8 @@ public class CharacterFire : NetworkBehaviour
     //  Unity Methods ---------------------------------
     protected void Start()
     {
-        UIManager.Instance.spellBook = spellBook;
+        if (UIManager.Instance) //TODO: ensure this goes after UIManager gets initialised
+            UIManager.Instance.spellBook = spellBook;
         if (loadedSpell)
             loadedSpell.Start();
     }

@@ -24,22 +24,22 @@ public class SpellObject : ScriptableObject
         fireTimer = 0;
     }
 
-    public void Fire(Vector3 position, Quaternion rotation)
+    public GameObject Fire(Vector3 position, Quaternion rotation)
     {
         if (fireTimer > 0 || reloadTimer > 0)
-            return;
+            return null;
+
+        fireTimer = (1 / fireRate);
+        ammo--;
+        if (ammo <= 0)
+            reloadTimer = reloadTime;
 
         Vector3 aimSpread = new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
         aimSpread.Normalize();
 
-        Instantiate(prefab, position,
-            rotation * Quaternion.Euler(aimSpread));
-
-        fireTimer = (1 / fireRate);
-
-        ammo--;
-        if (ammo <= 0)
-            reloadTimer = reloadTime;
+        //pass out the GameObject to be spawned across the network
+        return Instantiate(prefab, position,
+             rotation * Quaternion.Euler(aimSpread));
     }
 
     public void Update()
