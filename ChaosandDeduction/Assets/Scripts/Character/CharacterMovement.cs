@@ -22,7 +22,9 @@ public class CharacterMovement : NetworkBehaviour
     //  Fields ----------------------------------------
     public CharacterController characterController;
 
-    public float moveSpeed = 5;
+    float moveSpeed = 5;
+    public const float fullMoveSpeed = 5;
+    public float glueMoveSpeed = 2.5f;
     public float animationMultiplier = 0.8f;
 
     Vector3 playerVelocity;
@@ -97,7 +99,10 @@ public class CharacterMovement : NetworkBehaviour
 
     //  Methods ---------------------------------------
 
-
+    public void TriggerGlue(bool slow)
+    {
+        moveSpeed = slow ? glueMoveSpeed : fullMoveSpeed;
+    }
 
     //  Event Handlers --------------------------------
 }
