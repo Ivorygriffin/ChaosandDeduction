@@ -90,6 +90,7 @@ public class Deliver : PickUp
     {
         base.PickedUp(character);
 
+        NavManager.instance.target = deliverPoint;
         resetTimer = -1;
     }
 
