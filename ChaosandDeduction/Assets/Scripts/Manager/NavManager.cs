@@ -10,10 +10,12 @@ public class NavManager : MonoBehaviour
         get { return targetPos; }
         set
         {
-            targetPos = value;
-            NavMesh.CalculatePath(PlayerManager.Instance.localPlayer.transform.position, value, NavMesh.AllAreas, currentPath);
-            lineRenderer.positionCount = currentPath.corners.Length;
-            lineRenderer.SetPositions(currentPath.corners);
+            NavMeshHit hit = new NavMeshHit();
+            NavMesh.SamplePosition(value, out hit, Mathf.Infinity, NavMesh.AllAreas);
+            targetPos = hit.position;
+
+            if (!NavMesh.CalculatePath(PlayerManager.Instance.localPlayer.transform.position, targetPos, NavMesh.AllAreas, currentPath))
+                Debug.LogWarning("Path could not be made!");
         }
     }
     Vector3 targetPos;
@@ -41,5 +43,14 @@ public class NavManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentPath.status == NavMeshPathStatus.PathComplete && currentPath.corners.Length > 0)
+        {
+            lineRenderer.positionCount = currentPath.corners.Length;
+
+            for (int i = 0; i < currentPath.corners.Length; i++)
+                lineRenderer.SetPosition(i, currentPath.corners[i] + Vector3.up * 0.2f);
+
+            currentPath.ClearCorners();
+        }
     }
 }
