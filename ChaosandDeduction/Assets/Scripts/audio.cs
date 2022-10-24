@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class audio : MonoBehaviour
 {
-    public AudioSource menuBack, menuConfirm, menuSelect, playerPickUp, playerItemDrop, playerItemHandOver, gameplayMusic, gameplayVoteMusic, traitorTaskCompleteStinger, villagerTaskCompleteStinger, votingVoteCast, votingNobodyWins, votingTraitorWins, votingVillagerWins;
+    public AudioSource menuBack, menuConfirm, menuSelect, playerPickUp, playerItemDrop, playerItemHandOver, playerItemCantInteract, lobbyMusic, mainMenuMusic, gameplayMusic, gameplayVoteMusic, traitorTaskComplete, villagerTaskComplete, votingVoteCast, votingNobodyWins, votingTraitorWins, votingVillagerWins, glueSpurt, pinJar, magicOn, magicOff, taskCompleteStep1, taskCompleteStep2, taskCompleteStep3, traitorCaveScare, traitorGraveLaughMale, traitorGraveLaughFemale, traitorLibraryBurn, traitorPackagingStomp, traitorTreeEtch, traitorWellNPCGrab, traitorWellNPCFall;
 
     public bool itemHeld;
 
