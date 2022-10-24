@@ -22,7 +22,7 @@ public class UIManager : NetworkBehaviour
 
     [Header("Role Stuff")]
     public Canvas roleRevealCanvas;
-    public TMP_Text roleText;
+    public TMP_Text roleText, roleText2;
     float roleTimer = 1;
     const float roleMaxTime = 5;
 
@@ -86,12 +86,14 @@ public class UIManager : NetworkBehaviour
                     VillagerTaskScreen.SetActive(false);
                     TraitorTaskScreen.SetActive(true);
                     roleText.text = "You are the traitor";
+                    roleText2.text = "LIE \n MISLEAD \n BLAME \n do your tasks without being detected";
                     break;
                 case Alignment.Villager:
                     TraitorTaskTab.SetActive(false);
                     VillagerTaskScreen.SetActive(true);
                     TraitorTaskScreen.SetActive(false);
                     roleText.text = "You are a villager";
+                    roleText2.text = "COMMUNICATE\n WORK TOGETHER\n AVOID BEING FRAMED \n complete your tasks";
                     break;
 
                 default:
