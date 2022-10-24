@@ -92,6 +92,7 @@ public class Morph : Interactable
     {
         if (cooldown > 0)
             return;
+        cooldown = stageCooldowns[stage]; //temp set cooldown (will be set after network RPC)
 
         if (stage < stages.Length - 1 && stages.Length == 4)
             UIManager.Instance.SetWandProgress(stage + 1);
