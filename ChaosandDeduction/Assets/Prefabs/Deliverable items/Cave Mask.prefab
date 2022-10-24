@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3211200175011771549}
   - component: {fileID: 1096565490757185466}
   - component: {fileID: 1884462215029763080}
-  - component: {fileID: 2845804535427702174}
+  - component: {fileID: 1274215508}
   m_Layer: 0
   m_Name: Cave Mask
   m_TagString: Untagged
@@ -266,16 +266,16 @@ MonoBehaviour:
   syncInterval: 0.1
   requiredAlignment: 3
   useable: 1
-  audioSource: {fileID: 2845804535427702174}
+  audioSource: {fileID: 1274215508}
   interactSound: {fileID: 0}
   pickedUp: 0
   grabPoints:
   - {fileID: 3931476691303781522}
   pickupSound: {fileID: 8300000, guid: bf3b8e70d1a14bd43981aae358e58d3b, type: 3}
   dropSound: {fileID: 8300000, guid: 7ab9de94b3cd49b4fa7d63e87e849706, type: 3}
-  deliverSound: {fileID: 0}
-  deliverPoint: {x: 11.75, y: 0, z: -44.4}
-  deliverRadius: 2.2
+  deliverSound: {fileID: 8300000, guid: 2d5cba2ed82e0f4489079d3ad7ea7f9e, type: 3}
+  deliverPoint: {x: 11.21, y: -6.33, z: -18.2}
+  deliverRadius: 1.98
   useResetTimer: 1
   resetMaxTimer: 5
   destroyOnArrival: 1
@@ -287,7 +287,31 @@ MonoBehaviour:
     interactable: {fileID: 0}
     onComplete:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     givenServerReward: 0
   stages:
   - {fileID: 0}
@@ -321,7 +345,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &2845804535427702174
+--- !u!82 &1274215508
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -332,7 +356,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

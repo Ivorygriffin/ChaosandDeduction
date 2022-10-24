@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4484657295552122329}
   - component: {fileID: 1628239354178923351}
   - component: {fileID: 6915405324730730690}
-  - component: {fileID: 4134943027964958198}
+  - component: {fileID: -7620697855680040095}
   m_Layer: 0
   m_Name: School Book
   m_TagString: Untagged
@@ -322,7 +322,7 @@ MonoBehaviour:
   syncInterval: 0.1
   requiredAlignment: 1
   useable: 1
-  audioSource: {fileID: 4134943027964958198}
+  audioSource: {fileID: -7620697855680040095}
   interactSound: {fileID: 0}
   pickedUp: 0
   grabPoints:
@@ -330,7 +330,7 @@ MonoBehaviour:
   - {fileID: 9054736952654983526}
   pickupSound: {fileID: 8300000, guid: bf3b8e70d1a14bd43981aae358e58d3b, type: 3}
   dropSound: {fileID: 8300000, guid: 7ab9de94b3cd49b4fa7d63e87e849706, type: 3}
-  deliverSound: {fileID: 0}
+  deliverSound: {fileID: 8300000, guid: 2d5cba2ed82e0f4489079d3ad7ea7f9e, type: 3}
   deliverPoint: {x: 18.4, y: 0, z: 19.1}
   deliverRadius: 6
   useResetTimer: 1
@@ -346,7 +346,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     givenServerReward: 0
---- !u!82 &4134943027964958198
+--- !u!82 &-7620697855680040095
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,7 +357,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

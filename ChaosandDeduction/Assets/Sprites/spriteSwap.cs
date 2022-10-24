@@ -12,7 +12,7 @@ public class spriteSwap : MonoBehaviour
     public int clickTimes;
     public pinManager pinManager;
     public bool pin;
-    
+    public GameObject pinOn, pinOff;
     
     public void setTaskName()
     {
@@ -28,13 +28,15 @@ public class spriteSwap : MonoBehaviour
             clickTimes -=1;
             pin = true;
             button.GetComponent<Image>().sprite = added;
+            pinOn.SetActive(true);
             
         }
         else if (pin)
         {
             clickTimes += 1;
             pin = false;
-            button.GetComponent<Image>().sprite = add;     
+            button.GetComponent<Image>().sprite = add;
+            pinOff.SetActive(true);
         }
         if (clickTimes == -1)
         {
