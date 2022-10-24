@@ -271,15 +271,23 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   requiredAlignment: 3
+  useable: 1
+  audioSource: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: 2d5cba2ed82e0f4489079d3ad7ea7f9e, type: 3}
   regressOverTime: 0
   regressMaxTimer: 1
   stages:
   - {fileID: 6752084187614372117}
   - {fileID: 7893614597261625031}
+  stageCooldowns: []
   reward:
     item: {fileID: 0}
+    spawnPoint: {x: 0, y: 0, z: 0}
     task: {fileID: 11400000, guid: 8259114c7e44d6d4ea909d625aabdfc4, type: 2}
     interactable: {fileID: 0}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
     givenServerReward: 0
 --- !u!1 &5523807238151344799
 GameObject:
