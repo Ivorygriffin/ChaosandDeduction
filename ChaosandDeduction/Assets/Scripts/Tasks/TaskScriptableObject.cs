@@ -8,4 +8,7 @@ public class TaskScriptableObject : ScriptableObject
     public string description;
     public bool isComplete;
     public GameObject tasksticker;
+
+    [Header("Waypoint Stuff")]
+    public Vector3 firstPoint;
 }
