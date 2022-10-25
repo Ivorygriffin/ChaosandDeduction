@@ -568,7 +568,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100010, guid: efe9381559c516743bd05cef82f39ebb, type: 3}
+  - {fileID: 2100000, guid: a599b8a1b25dbb842bd6c979f6b68713, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -633,7 +633,7 @@ Transform:
   m_GameObject: {fileID: 4940424306261522679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.78, y: 24.405376, z: -19.67}
-  m_LocalScale: {x: 4.0852, y: 4.0852, z: 4.0852}
+  m_LocalScale: {x: 3.2655451, y: 3.2655451, z: 3.2655451}
   m_Children:
   - {fileID: 102212248311292208}
   - {fileID: 8874567293786561669}
@@ -682,6 +682,7 @@ MonoBehaviour:
   stages:
   - {fileID: 7916479982003459886}
   - {fileID: 3522172685684404480}
+  stageCooldowns: []
   reward:
     item: {fileID: 0}
     spawnPoint: {x: 0, y: 0, z: 0}
@@ -694,6 +695,18 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: BasicDoor, Assembly-CSharp
           m_MethodName: SetState
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -726,6 +739,7 @@ MonoBehaviour:
   stages:
   - {fileID: 3522172685684404480}
   - {fileID: 7916479982003459886}
+  stageCooldowns: []
   reward:
     item: {fileID: 0}
     spawnPoint: {x: 0, y: 0, z: 0}
@@ -738,6 +752,18 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: BasicDoor, Assembly-CSharp
           m_MethodName: SetState
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -762,7 +788,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 9cafdeafc7f8a4147b8a62af3c61d1e8
+  m_AssetId: 3f5cd01c4c8981749a486a85c12d5c31
   hasSpawned: 0
 --- !u!1 &4940424306619483962
 GameObject:
@@ -1646,6 +1672,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2980394265672872261, guid: ff798d31a35c5ef42811144b6c73b161, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 501a2d7fbdbd638499593c161fabe4c5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff798d31a35c5ef42811144b6c73b161, type: 3}
 --- !u!1 &9125481655608435264 stripped
@@ -1741,10 +1771,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2317180774468566982, guid: b577bd00a6da83f43b0434f5d7549e11, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c660462231a7e37499ad715e7012ad6d, type: 2}
+    - target: {fileID: 8675533688102102, guid: b577bd00a6da83f43b0434f5d7549e11, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 501a2d7fbdbd638499593c161fabe4c5, type: 2}
+    - target: {fileID: 329729360555760731, guid: b577bd00a6da83f43b0434f5d7549e11, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70e8bf557874c4b4989551ec03c6b184, type: 2}
     - target: {fileID: 919132149155446097, guid: b577bd00a6da83f43b0434f5d7549e11, type: 3}
       propertyPath: m_Name
       value: CrystalBallOn
       objectReference: {fileID: 0}
+    - target: {fileID: 3002463640486371936, guid: b577bd00a6da83f43b0434f5d7549e11, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70e8bf557874c4b4989551ec03c6b184, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b577bd00a6da83f43b0434f5d7549e11, type: 3}
 --- !u!1 &660474011366471989 stripped
