@@ -86,10 +86,10 @@ public class Deliver : PickUp
 #endif
 
     //  Methods ---------------------------------------
-    public override void InteractOverride()
+    protected override void InteractOverride(CharacterInteraction character)
     {
         NavManager.instance.target = deliverPoint;
-        base.InteractOverride();
+        base.InteractOverride(character);
     }
 
     public override void PickedUp(Transform character) //These will be RPCed from base pickup class's interact
