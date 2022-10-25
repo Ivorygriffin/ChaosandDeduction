@@ -128,6 +128,13 @@ public class Morph : Interactable
     [Command(requiresAuthority = false)]
     void CmdReward()
     {
+        StartCoroutine(DelayedServerRewards(transform));
+    }
+
+    IEnumerator DelayedServerRewards(Transform transform)
+    {
+        yield return new WaitForSeconds(stageCooldowns[stageCooldowns.Length - 1]);
+
         reward.ServerReward(transform);
     }
 
