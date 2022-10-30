@@ -46,7 +46,7 @@ public class Morph : Interactable
 
 #if UNITY_EDITOR
         if (stages.Length != stageCooldowns.Length)
-            Debug.LogError("Morph does not have correct number of cooldowns");
+            Debug.LogWarning("Morph does not have correct number of cooldowns");
 #endif
 
         //ResetStages();

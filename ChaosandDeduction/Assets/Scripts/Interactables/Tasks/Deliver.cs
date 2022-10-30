@@ -65,7 +65,7 @@ public class Deliver : PickUp
         {
             resetTimer -= Time.deltaTime;
             if (resetTimer <= 0)
-                transform.position = startPos;
+                ResetInteractable();
         }
         else if (Vector3.Distance(transform.position, startPos) > 3 && !disabledTimer && !pickedUp && resetTimer <= 0)
             resetTimer = resetMaxTimer;
@@ -80,7 +80,7 @@ public class Deliver : PickUp
             Gizmos.DrawSphere(deliverPoint, deliverRadius);
         }
 
-        if (reward != null)
+        if (reward != null) 
             reward.drawGizmo(transform);
     }
 #endif
