@@ -49,7 +49,7 @@ public class TaskList : NetworkBehaviour
                 {
                     if (TaskManager.instance)
                     {
-                        if (!pages[i].task.isComplete)
+                        if (!pages[i].task.isComplete[pages[i].task.isComplete.Length])
                             count++;
                     }
                 }
@@ -113,7 +113,7 @@ public class TaskList : NetworkBehaviour
                 bool active = TaskManager.instance.RequiredTask(pages[i].task);
                 index[i] = i;
                 buttonActive[i] = active;
-                ribbonActive[i] = pages[i].task.isComplete;
+                ribbonActive[i] = pages[i].task.isComplete[pages[i].task.isComplete.Length - 1]; //check last stage completeness
             }
         }
 

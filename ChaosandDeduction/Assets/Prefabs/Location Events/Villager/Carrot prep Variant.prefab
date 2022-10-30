@@ -575,6 +575,8 @@ MonoBehaviour:
   syncInterval: 0.1
   requiredAlignment: 1
   useable: 1
+  audioSource: {fileID: 0}
+  interactSound: {fileID: 0}
   regressOverTime: 0
   regressMaxTimer: 1
   stages:
@@ -586,9 +588,12 @@ MonoBehaviour:
   - {fileID: 5670255695275322908}
   - {fileID: 2644373794224621970}
   - {fileID: 1936888945572197534}
+  stageCooldowns: []
   reward:
     item: {fileID: 0}
-    task: {fileID: 0}
+    spawnPoint: {x: 0, y: 0, z: 0}
+    task: {fileID: 11400000, guid: fc4505f2e895524499aad9c791a49627, type: 2}
+    taskStage: 2
     interactable: {fileID: 0}
     onComplete:
       m_PersistentCalls:

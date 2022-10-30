@@ -9,11 +9,16 @@ public class Reward
 {
     [Header("Rewards")]
     [Tooltip("Object that will spawn after task complete")]
+    [Header("Item")]
     public GameObject item;
     [Tooltip("Relative to the task gameobject")]
     public Vector3 spawnPoint;
     [Tooltip("Task object that will be set to completed upon finish")]
+    [Header("Task")]
     public TaskScriptableObject task;
+    [Tooltip("The stage of the task completed")]
+    public int taskStage;
+    [Header("Misc")]
     [Tooltip("Chain quest, This will be toggled on after this morph is completed")]
     public Interactable interactable;
     public UnityEvent onComplete;
@@ -21,7 +26,7 @@ public class Reward
     bool givenLocalReward = false;
     public bool givenServerReward = false;
 
-    public void LocalReward() //only allowed to hold local reward here, server reward has to be given out by the script due to networking TODO: figure out if this is true
+    public void LocalReward()
     {
         if (givenLocalReward)
             return;
@@ -29,7 +34,7 @@ public class Reward
         givenLocalReward = true;
         if (task)
         {
-            task.isComplete = true;
+            task.isComplete[taskStage] = true;
             //TaskManager.instance.CheckTaskComplete();
         }
         if (interactable)
@@ -50,7 +55,7 @@ public class Reward
         }
         if (task)
         {
-            task.isComplete = true;
+            task.isComplete[taskStage] = true;
             TaskManager.instance.CheckTaskComplete();
         }
     }

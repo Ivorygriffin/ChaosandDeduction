@@ -177,6 +177,12 @@ public class PickUp : Interactable
             rb.isKinematic = false;
     }
 
+    public override void ResetInteractable()
+    {
+        base.ResetInteractable();
+
+        rb.velocity = Vector3.zero;
+    }
 
     //  Event Handlers --------------------------------
 }

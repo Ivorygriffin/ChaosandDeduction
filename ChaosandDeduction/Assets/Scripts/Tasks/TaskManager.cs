@@ -85,7 +85,8 @@ public class TaskManager : NetworkBehaviour
     {
         int numTasksSelected = Random.Range(0, potentialVillagerTasks.Count);
         TaskScriptableObject temp = potentialVillagerTasks[numTasksSelected];
-        temp.isComplete = false;
+        for (int i = 0; i < temp.isComplete.Length; i++) //reset stage completions
+            temp.isComplete[i] = false;
 
         villagerTasks.Add(temp);
         potentialVillagerTasks.RemoveAt(numTasksSelected);
@@ -98,7 +99,8 @@ public class TaskManager : NetworkBehaviour
     {
         int numTaskSelected = Random.Range(0, potentialTraitorTasks.Count);
         TaskScriptableObject temp = potentialTraitorTasks[numTaskSelected];
-        temp.isComplete = false;
+        for (int i = 0; i < temp.isComplete.Length; i++) //reset stage completions
+            temp.isComplete[i] = false;
 
         traitorTasks.Add(temp);
         potentialTraitorTasks.RemoveAt(numTaskSelected);
@@ -147,7 +149,7 @@ public class TaskManager : NetworkBehaviour
         for (int i = 0; i < villagerTasks.Count; i++)
         {
 
-            if (villagerTasks[i].isComplete)
+            if (villagerTasks[i].isComplete[villagerTasks[i].isComplete.Length])
             {
                 //villagerTasks.RemoveAt(i);
                 //i--;
@@ -160,7 +162,7 @@ public class TaskManager : NetworkBehaviour
         for (int i = 0; i < traitorTasks.Count; i++)
         {
 
-            if (traitorTasks[i].isComplete)
+            if (traitorTasks[i].isComplete[villagerTasks[i].isComplete.Length])
             {
                 //traitorTasks.RemoveAt(i);
                 //i--;
