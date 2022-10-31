@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+#if UNITY_EDITOR
+using System;
+#endif
 
 //  Namespace Properties ------------------------------
 
@@ -85,6 +88,24 @@ public class Morph : Interactable
         if (cooldown > 0)
             cooldown -= Time.deltaTime;
     }
+#if UNITY_EDITOR
+
+    private void OnValidate()
+    {
+        base.OnValidate();
+        try
+        {
+            if (reward.task != null)
+                reward.task.points[reward.taskStage] = transform.position;
+        }
+        catch (InvalidCastException e)
+        {
+            Debug.LogException(e);
+            Debug.LogError(this.name);
+            // recover from exception
+        }
+    }
+#endif
 
 
     //  Methods ---------------------------------------

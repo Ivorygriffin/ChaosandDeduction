@@ -80,15 +80,23 @@ public class Deliver : PickUp
             Gizmos.DrawSphere(deliverPoint, deliverRadius);
         }
 
-        if (reward != null) 
+        if (reward != null)
             reward.drawGizmo(transform);
+    }
+
+    private void OnValidate()
+    {
+        base.OnValidate();
+
+        if (reward.task != null)
+            reward.task.points[reward.taskStage] = deliverPoint;
     }
 #endif
 
     //  Methods ---------------------------------------
     protected override void InteractOverride(CharacterInteraction character)
     {
-        NavManager.instance.target = deliverPoint;
+        //NavManager.instance.target = deliverPoint;
         base.InteractOverride(character);
     }
 
