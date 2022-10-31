@@ -149,7 +149,7 @@ public class TaskManager : NetworkBehaviour
         for (int i = 0; i < villagerTasks.Count; i++)
         {
 
-            if (villagerTasks[i].isComplete[villagerTasks[i].isComplete.Length])
+            if (villagerTasks[i].isComplete[villagerTasks[i].isComplete.Length - 1])
             {
                 //villagerTasks.RemoveAt(i);
                 //i--;
@@ -162,7 +162,7 @@ public class TaskManager : NetworkBehaviour
         for (int i = 0; i < traitorTasks.Count; i++)
         {
 
-            if (traitorTasks[i].isComplete[villagerTasks[i].isComplete.Length])
+            if (traitorTasks[i].isComplete[traitorTasks[i].isComplete.Length - 1])
             {
                 //traitorTasks.RemoveAt(i);
                 //i--;
