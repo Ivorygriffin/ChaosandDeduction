@@ -49,7 +49,7 @@ public class TaskList : NetworkBehaviour
                 {
                     if (TaskManager.instance)
                     {
-                        if (!pages[i].task.isComplete[pages[i].task.isComplete.Length])
+                        if (!pages[i].task.isComplete[pages[i].task.isComplete.Length - 1])
                             count++;
                     }
                 }

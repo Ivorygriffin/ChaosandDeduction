@@ -627,8 +627,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965511747527001084}
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.039973456, y: 0, z: -0.012675194}
+  m_LocalRotation: {x: -0, y: 0.8286221, z: -0, w: 0.55980843}
+  m_LocalPosition: {x: 0.153, y: 0, z: -0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 67189614319121282}
@@ -641,7 +641,7 @@ Transform:
   - {fileID: 8310719318032649703}
   m_Father: {fileID: 8975432518127242665}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 111.915, z: 0}
 --- !u!1 &2419523853584749538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,12 +2413,17 @@ MonoBehaviour:
   - {fileID: 4246044753919261009}
   - {fileID: 1067813064404264949}
   - {fileID: 8890650718929316528}
-  stageCooldowns: []
+  stageCooldowns:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   reward:
     item: {fileID: 4664923831651064217, guid: ae451c358025c5c41a1133b3bbc04179, type: 3}
     spawnPoint: {x: 6.21, y: -6.59, z: -16.36}
     task: {fileID: 11400000, guid: 1c9cb564ecb6c0c45b64a5279d429f81, type: 2}
-    taskStage: 1
+    taskStage: 0
     interactable: {fileID: 0}
     onComplete:
       m_PersistentCalls:
