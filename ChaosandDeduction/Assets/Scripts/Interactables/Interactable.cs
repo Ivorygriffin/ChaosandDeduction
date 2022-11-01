@@ -102,6 +102,13 @@ public abstract class Interactable : NetworkBehaviour
     public AudioSource audioSource;
     public AudioClip interactSound;
 
+    public enum InteractableType
+    {
+        Interactable,
+        Pickup,
+        Morph
+    }
+
     //  Unity Methods ---------------------------------
     public void Start()
     {
@@ -145,6 +152,11 @@ public abstract class Interactable : NetworkBehaviour
     {
         useable = true;
         ResetInteractable();
+    }
+
+    public virtual InteractableType GetInteractableType()
+    {
+        return InteractableType.Interactable;
     }
 
     //  Event Handlers --------------------------------

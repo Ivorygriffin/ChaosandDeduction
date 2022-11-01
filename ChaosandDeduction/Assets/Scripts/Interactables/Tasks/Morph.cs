@@ -42,6 +42,7 @@ public class Morph : Interactable
 
     [SerializeField] Reward reward;
 
+
     //  Unity Methods ---------------------------------
     protected void Start()
     {
@@ -193,6 +194,10 @@ public class Morph : Interactable
         //    reward.interactable.enabled = false;
         reward.Reset();
     }
+    public override InteractableType GetInteractableType()
+    {
+        return InteractableType.Morph;
+    }
 
 #if UNITY_EDITOR
 
@@ -202,7 +207,6 @@ public class Morph : Interactable
             reward.drawGizmo(transform);
     }
 #endif
-
 
     //  Event Handlers --------------------------------
 }

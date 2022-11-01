@@ -34,6 +34,7 @@ public class CharacterInteraction : NetworkBehaviour
     //  Fields ----------------------------------------
     public float interactionRadius = 1;
     public Interactable currentInteraction = null;
+    CharacterMovement mover; //assigns on first model change
     //public Alignment alignment = Alignment.Villager; //TOOD: distribute roles
     [SyncVar]
     public int modelIndex = -1;
@@ -117,14 +118,33 @@ public class CharacterInteraction : NetworkBehaviour
             // Interactable interactable = Results[closestIndex].GetComponent<Interactable>();
 
             if (interactable != null)
+            {
                 for (int i = 0; i < interactable.Length; i++)
+                {
                     if (interactable[i] != null)
+                    {
                         interactable[i].Interact(this);
+                        switch (interactable[i].GetInteractableType())
+                        {
+                            case Interactable.InteractableType.Pickup:
+                                mover.character.animator.SetTrigger("Pickup");
+                                break;
+                            case Interactable.InteractableType.Morph:
+                                mover.character.animator.SetTrigger("Interact");
+                                break;
+                            case Interactable.InteractableType.Interactable:
+                                // no animation for generic interactable
+                                break;
+                        }
+                    }
+                }
+            }
 
         }
         else
         {
             currentInteraction.Interact(this);
+            mover.character.animator.SetTrigger("Drop");
         }
     }
     [Command(requiresAuthority = false)]
@@ -147,7 +167,8 @@ public class CharacterInteraction : NetworkBehaviour
         newModel.SetActive(true);
 
         //animator.speed = 0.5f;
-        CharacterMovement mover = GetComponent<CharacterMovement>();
+        if (!mover)
+            mover = GetComponent<CharacterMovement>();
 
         if (PlayerManager.Instance) //TODO: move this? somewhere?
             mover.Teleport(PlayerManager.Instance.spawnPoints[index]);

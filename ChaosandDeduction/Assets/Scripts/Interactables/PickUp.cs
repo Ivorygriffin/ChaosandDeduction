@@ -28,6 +28,7 @@ public class PickUp : Interactable
 
     //  Fields ----------------------------------------
     //[SyncVar]
+
     public bool pickedUp = false;
     float holdDistance = 1;
     Rigidbody rb;
@@ -45,7 +46,6 @@ public class PickUp : Interactable
     [Header("Pickup Sounds")]
     public AudioClip pickupSound;
     public AudioClip dropSound;
-
 
 
 
@@ -182,6 +182,10 @@ public class PickUp : Interactable
         base.ResetInteractable();
 
         rb.velocity = Vector3.zero;
+    }
+    public override InteractableType GetInteractableType()
+    {
+        return InteractableType.Pickup;
     }
 
     //  Event Handlers --------------------------------
