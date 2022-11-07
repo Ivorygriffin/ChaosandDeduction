@@ -13,6 +13,11 @@ public class NavManager : MonoBehaviour
 
     bool taskNotMade = false;
 
+    public GameObject particlePrefab;
+    List<GameObject> spawnedParticles = new List<GameObject>();
+    public float particleGap = 5;
+
+
     static public NavManager instance;
     // Start is called before the first frame update
     void Start()
@@ -47,6 +52,8 @@ public class NavManager : MonoBehaviour
                 if (pinManager.instance.pinnedTask)
                     pinManager.instance.Pin(-1);
                 lineRenderer.positionCount = 0;
+
+                DestroyPoints();
             }
             else
             {
@@ -59,10 +66,11 @@ public class NavManager : MonoBehaviour
 
         if (currentPath.status == NavMeshPathStatus.PathComplete && currentPath.corners.Length > 0)
         {
-            lineRenderer.positionCount = currentPath.corners.Length;
+            spawnPoints();
+            //lineRenderer.positionCount = currentPath.corners.Length;
 
-            for (int i = 0; i < currentPath.corners.Length; i++)
-                lineRenderer.SetPosition(i, currentPath.corners[i] + Vector3.up * 0.2f);
+            //for (int i = 0; i < currentPath.corners.Length; i++)
+            //    lineRenderer.SetPosition(i, currentPath.corners[i] + Vector3.up * 0.2f);
 
             currentPath.ClearCorners();
         }
@@ -87,5 +95,28 @@ public class NavManager : MonoBehaviour
             Debug.LogWarning("Path could not be made!");
         else
             taskNotMade = false;
+    }
+
+    void spawnPoints()
+    {
+        DestroyPoints();
+
+        for (int i = 1; i < currentPath.corners.Length; i++)
+        {
+            Vector3 direction = (currentPath.corners[i] - currentPath.corners[i - 1]).normalized;
+            float distanceMade = 0;
+            while (distanceMade < Vector3.Distance(currentPath.corners[i], currentPath.corners[i - 1]))
+            {
+                spawnedParticles.Add(Instantiate(particlePrefab, currentPath.corners[i - 1] + (direction * distanceMade), Quaternion.identity));
+                distanceMade += particleGap;
+            }
+        }
+    }
+
+    void DestroyPoints()
+    {
+        foreach (GameObject particle in spawnedParticles)
+            Destroy(particle);
+        spawnedParticles.Clear();
     }
 }
