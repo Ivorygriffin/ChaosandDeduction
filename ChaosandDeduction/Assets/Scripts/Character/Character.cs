@@ -10,6 +10,14 @@ public class Character : MonoBehaviour
 
     Vector3 lastFramePos = Vector3.zero;
 
+    public Transform[] cosmeticBones;
+
+    private void Start()
+    {
+        if (CosmeticManager.Instance)
+            EquipAll();
+    }
+
     // Update is called once per frame
     public void RemoteUpdate()
     {
@@ -28,5 +36,23 @@ public class Character : MonoBehaviour
 
         if (velocity.magnitude > requiredFootstepSpeed && footsteps)
             footsteps.TryPlay();
+    }
+
+    public void EquipAll()
+    {
+
+        int length1 = CosmeticManager.Instance.slots.Length;
+        for (int i = 0; i < length1; i++)
+        {
+            int length2 = CosmeticManager.Instance.slots[i].Count;
+            for (int j = 0; j < length2; j++)
+            {
+                EquipCosmetic(CosmeticManager.Instance.slots[i][j]);
+            }
+        }
+    }
+    public GameObject EquipCosmetic(Cosmetic cosmetic)
+    {
+        return cosmetic.Spawn(cosmeticBones[(int)cosmetic.slot]);
     }
 }

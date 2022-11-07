@@ -126,7 +126,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   characterController: {fileID: 3718973189240868518}
-  moveSpeed: 4
+  glueMoveSpeed: 2.5
   animationMultiplier: 1
   character: {fileID: 0}
   thirdPerson: 1
@@ -621,6 +621,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3718973189240868514}
     m_Modifications:
+    - target: {fileID: 4889689314060069235, guid: 969432e8fb2a62342bb822b2f79919e4, type: 3}
+      propertyPath: slots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7231442499567238198, guid: 969432e8fb2a62342bb822b2f79919e4, type: 3}
       propertyPath: m_Name
       value: Goblin_LowPoly
