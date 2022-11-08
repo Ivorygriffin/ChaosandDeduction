@@ -6,7 +6,7 @@ public class villagerwalk : MonoBehaviour
 {
     public GameObject npc;
     public float moveSpeed = 2f;
-
+    public Vector3 rValue;
 
     public enum State { Loop, PingPong, OneWay }
     public State state = State.OneWay;
@@ -40,10 +40,17 @@ public class villagerwalk : MonoBehaviour
     private void Update()
     {
         Move();
+        Rotate();
         //GetCurrentTransform();
         //CheckPath(transform);
     }
-
+    public void Rotate()
+    {
+        if (paths[currentIndex] == paths[paths.Length] && !hasRotated)
+        {
+            npc.transform.Rotate(rValue);
+        }
+    }
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
