@@ -13,7 +13,9 @@ public class Cosmetic : ScriptableObject
 
     public enum Slot
     {
-        head,
+        hat,
+        eyes,
+        mouth,
         chest
     }
 

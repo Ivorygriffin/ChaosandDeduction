@@ -72,4 +72,11 @@ public class Character : MonoBehaviour
 
         return temp;
     }
+#if UNITY_EDITOR
+
+    private void OnValidate()
+    {
+
+    } 
+#endif
 }
