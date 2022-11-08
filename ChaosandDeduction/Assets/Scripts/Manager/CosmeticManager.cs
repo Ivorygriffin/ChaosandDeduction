@@ -17,9 +17,13 @@ public class CosmeticManager : NetworkBehaviour
         else
             Destroy(gameObject);
 
-        EquipCosmetic(tempDefault);
-
         DontDestroyOnLoad(gameObject);
+
+        for (int i = 0; i < slots.Length; i++)
+            slots[i] = new List<Cosmetic>();
+
+
+        EquipCosmetic(tempDefault);
     }
     public void EquipCosmetic(Cosmetic cosmetic)
     {

@@ -10,7 +10,17 @@ public class Character : MonoBehaviour
 
     Vector3 lastFramePos = Vector3.zero;
 
-    public Transform[] cosmeticBones;
+    public Bone[] cosmeticBones;
+    [System.Serializable]
+    public struct Bone
+    {
+        public string name;
+        public Transform transform;
+
+        public Vector3 positionOffset;
+        public Quaternion rotationOffset;
+        public Vector3 scaleOffset;
+    }
 
     private void Start()
     {
@@ -53,6 +63,13 @@ public class Character : MonoBehaviour
     }
     public GameObject EquipCosmetic(Cosmetic cosmetic)
     {
-        return cosmetic.Spawn(cosmeticBones[(int)cosmetic.slot]);
+        Bone bone = cosmeticBones[(int)cosmetic.slot];
+        GameObject temp = cosmetic.Spawn(cosmeticBones[(int)cosmetic.slot].transform);
+
+        temp.transform.localPosition += bone.positionOffset;
+        temp.transform.localRotation *= bone.rotationOffset;
+        temp.transform.localScale += bone.scaleOffset;
+
+        return temp;
     }
 }

@@ -1988,8 +1988,16 @@ MonoBehaviour:
   animator: {fileID: 6471135330562524180}
   footsteps: {fileID: 4875387701894978282}
   cosmeticBones:
-  - {fileID: 1820648335621279425}
-  - {fileID: 1395129736392800790}
+  - name: Head
+    transform: {fileID: 1820648335621279425}
+    positionOffset: {x: 0, y: 0.01, z: 0.01}
+    rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+    scaleOffset: {x: 0, y: 0, z: 0}
+  - name: Body
+    transform: {fileID: 1395129736392800790}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+    scaleOffset: {x: 0, y: 0, z: 0}
 --- !u!95 &6471135330562524180
 Animator:
   serializedVersion: 3
