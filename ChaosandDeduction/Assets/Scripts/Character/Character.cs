@@ -73,10 +73,29 @@ public class Character : MonoBehaviour
         return temp;
     }
 #if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < cosmeticBones.Length; i++)
+        {
+            if (cosmeticBones[i].transform != null)
+            {
+                Vector3 point = cosmeticBones[i].transform.position + cosmeticBones[i].positionOffset;
+                Gizmos.DrawCube(point, Vector3.one * 0.1f);
+            }
+        }
+    }
 
     private void OnValidate()
     {
+        int numBones = System.Enum.GetValues(typeof(Cosmetic.Slot)).Length;
+        if (cosmeticBones.Length != numBones)
+            cosmeticBones = new Bone[numBones];
+        else return;
 
-    } 
+        for (int i = 0; i < numBones; i++)
+        {
+            cosmeticBones[i].name = ((Cosmetic.Slot)i).ToString();
+        }
+    }
 #endif
 }

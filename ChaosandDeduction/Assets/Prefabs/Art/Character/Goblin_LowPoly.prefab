@@ -50,15 +50,25 @@ MonoBehaviour:
   animator: {fileID: 1217358134722574145}
   footsteps: {fileID: 5714756889830064054}
   cosmeticBones:
-  - name: Head
-    transform: {fileID: 7865252537661201276}
-    positionOffset: {x: -0.011, y: 0, z: 0.01}
-    rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  - name: hat
+    transform: {fileID: 2555266534528839006}
+    positionOffset: {x: -0.02, y: 0, z: -0.001}
+    rotationOffset: {x: 0.1227878, y: 0.1227878, z: 0.6963642, w: 0.6963642}
     scaleOffset: {x: 0, y: 0, z: 0}
-  - name: Body
-    transform: {fileID: 8089175214920334205}
+  - name: eyes
+    transform: {fileID: 8810505180599947019}
     positionOffset: {x: 0, y: 0, z: 0}
     rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+    scaleOffset: {x: 0, y: 0, z: 0}
+  - name: mouth
+    transform: {fileID: 8810505180599947019}
+    positionOffset: {x: 0, y: 0.017, z: 0.01}
+    rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+    scaleOffset: {x: 0, y: 0, z: 0}
+  - name: chest
+    transform: {fileID: 8089175214920334205}
+    positionOffset: {x: 0, y: 0, z: -0.013}
+    rotationOffset: {x: 0.061628412, y: 0.061628412, z: 0.70441604, w: 0.70441604}
     scaleOffset: {x: 0, y: 0, z: 0}
 --- !u!95 &1217358134722574145
 Animator:
@@ -299,8 +309,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -9101770640339746131, guid: 53706090ba1580a409ec9326c4b002e3, type: 3}
   m_PrefabInstance: {fileID: 8210772596338211280}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7865252537661201276 stripped
+--- !u!4 &2555266534528839006 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2077421316860355244, guid: 53706090ba1580a409ec9326c4b002e3, type: 3}
+  m_CorrespondingSourceObject: {fileID: -3277310514555202418, guid: 53706090ba1580a409ec9326c4b002e3, type: 3}
+  m_PrefabInstance: {fileID: 8210772596338211280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8810505180599947019 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8379028588205820197, guid: 53706090ba1580a409ec9326c4b002e3, type: 3}
   m_PrefabInstance: {fileID: 8210772596338211280}
   m_PrefabAsset: {fileID: 0}
