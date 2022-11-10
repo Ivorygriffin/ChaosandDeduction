@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 351638599809406519}
   - component: {fileID: 3190055339243237561}
   - component: {fileID: 7288378897201140524}
+  - component: {fileID: 8473673582233160062}
   m_Layer: 0
   m_Name: coin
   m_TagString: Untagged
@@ -152,7 +153,7 @@ MonoBehaviour:
   syncInterval: 0.1
   requiredAlignment: 1
   useable: 1
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 8473673582233160062}
   interactSound: {fileID: 0}
   pickedUp: 0
   grabPoints:
@@ -161,15 +162,17 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: bf3b8e70d1a14bd43981aae358e58d3b, type: 3}
   dropSound: {fileID: 8300000, guid: 7ab9de94b3cd49b4fa7d63e87e849706, type: 3}
   deliverSound: {fileID: 8300000, guid: 2d5cba2ed82e0f4489079d3ad7ea7f9e, type: 3}
-  deliverPoint: {x: -23.55, y: 0, z: 2.8}
+  deliverPoint: {x: -25.1, y: -6.66, z: 15.5}
   deliverRadius: 2.13
+  heldTask: {fileID: 11400000, guid: a0a096064d14ca542b33b98b1063a3d3, type: 2}
+  heldTaskStage: 0
   useResetTimer: 1
   resetMaxTimer: 3
   destroyOnArrival: 1
   disabledTimer: 0
   reward:
     item: {fileID: 6753871882676321832, guid: abdf5928c22d01d4a90f017d24c0ee9c, type: 3}
-    spawnPoint: {x: 0, y: 0, z: 0}
+    spawnPoint: {x: -25, y: -7.11, z: 12.9}
     task: {fileID: 11400000, guid: a0a096064d14ca542b33b98b1063a3d3, type: 2}
     taskStage: 1
     interactable: {fileID: 0}
@@ -177,6 +180,102 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     givenServerReward: 0
+--- !u!82 &8473673582233160062
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126371716455464651}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6106813624429902424
 GameObject:
   m_ObjectHideFlags: 0

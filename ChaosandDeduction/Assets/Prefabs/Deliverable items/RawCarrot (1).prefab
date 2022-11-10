@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215959641817313950}
-  m_LocalRotation: {x: -0, y: -0.3160106, z: -0, w: 0.9487557}
+  m_LocalRotation: {x: 0, y: -0.3160134, z: 0, w: 0.9487548}
   m_LocalPosition: {x: 98.23746, y: 23.188448, z: -19.11527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -39,7 +39,7 @@ Transform:
   - {fileID: 4128870366692201094}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -36.844, z: 0}
 --- !u!54 &4607696231185396642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,6 +85,8 @@ MonoBehaviour:
   deliverSound: {fileID: 0}
   deliverPoint: {x: -39.47, y: -6.89, z: 8}
   deliverRadius: 2
+  heldTask: {fileID: 11400000, guid: fc4505f2e895524499aad9c791a49627, type: 2}
+  heldTaskStage: 0
   useResetTimer: 1
   resetMaxTimer: 3
   destroyOnArrival: 1
