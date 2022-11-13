@@ -40,17 +40,17 @@ public class villagerwalk : MonoBehaviour
     private void Update()
     {
         Move();
-        Rotate();
+        //Rotate();
         //GetCurrentTransform();
         //CheckPath(transform);
     }
-    public void Rotate()
-    {
-        if (paths[currentIndex] == paths[paths.Length] && !hasRotated)
-        {
-            npc.transform.Rotate(rValue);
-        }
-    }
+    //public void Rotate()
+    //{
+    //    if (paths[currentIndex] == paths[paths.Length] && !hasRotated)
+    //    {
+    //        npc.transform.Rotate(rValue);
+    //    }
+    //}
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);

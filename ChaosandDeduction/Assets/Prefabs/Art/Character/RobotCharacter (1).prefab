@@ -50,15 +50,25 @@ MonoBehaviour:
   animator: {fileID: 7376761356142681244}
   footsteps: {fileID: 7552240647611086045}
   cosmeticBones:
-  - name: Head
+  - name: hat
     transform: {fileID: 8240442378864161063}
-    positionOffset: {x: -0.008, y: 0.0106, z: 0}
+    positionOffset: {x: -0.005, y: 0.03, z: 0}
+    rotationOffset: {x: 0.49999997, y: 0.49999997, z: 0.49999997, w: 0.49999997}
+    scaleOffset: {x: 0, y: 0, z: 0}
+  - name: eyes
+    transform: {fileID: 8240442378864161063}
+    positionOffset: {x: -0.008, y: -0.01, z: 0}
     rotationOffset: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
     scaleOffset: {x: 0, y: 0, z: 0}
-  - name: Body
+  - name: mouth
+    transform: {fileID: 8240442378864161063}
+    positionOffset: {x: -0.008, y: -0.01, z: 0}
+    rotationOffset: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    scaleOffset: {x: 0, y: 0, z: 0}
+  - name: chest
     transform: {fileID: 5577099439031365530}
-    positionOffset: {x: 0, y: 0, z: 0}
-    rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+    positionOffset: {x: 0.002, y: 0, z: -0.01}
+    rotationOffset: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
     scaleOffset: {x: 0, y: 0, z: 0}
 --- !u!95 &7376761356142681244
 Animator:

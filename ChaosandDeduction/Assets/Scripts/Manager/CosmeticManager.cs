@@ -8,7 +8,7 @@ public class CosmeticManager : NetworkBehaviour
     public static CosmeticManager Instance;
 
     public List<Cosmetic>[] slots = new List<Cosmetic>[System.Enum.GetValues(typeof(Cosmetic.Slot)).Length];
-    public Cosmetic tempDefault;
+    //public Cosmetic tempDefault;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +23,10 @@ public class CosmeticManager : NetworkBehaviour
             slots[i] = new List<Cosmetic>();
 
 
-        EquipCosmetic(tempDefault);
+        //EquipCosmetic(tempDefault); //Temp example cosmetic
     }
     public void EquipCosmetic(Cosmetic cosmetic)
     {
-        if (slots[(int)cosmetic.slot] == null) //lazy initialise the slot lists?
-            slots[(int)cosmetic.slot] = new List<Cosmetic>();
-
         slots[(int)cosmetic.slot].Add(cosmetic);
     }
     public void RemoveCosmetic(Cosmetic cosmetic)

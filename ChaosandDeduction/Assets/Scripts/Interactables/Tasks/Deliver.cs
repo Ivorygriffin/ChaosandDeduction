@@ -36,7 +36,10 @@ public class Deliver : PickUp
     public Vector3 deliverPoint = Vector3.zero;
     public float deliverRadius = 5;
 
+    public TaskScriptableObject heldTask;
+    public int heldTaskStage;
 
+    [Header("Respawn")]
     public bool useResetTimer = false;
     public float resetMaxTimer = 5;
     float resetTimer = 0;
@@ -104,6 +107,9 @@ public class Deliver : PickUp
     {
         base.PickedUp(character);
 
+        if (heldTask)
+            heldTask.isComplete[heldTaskStage] = true;
+
         resetTimer = -1;
     }
 
@@ -123,6 +129,8 @@ public class Deliver : PickUp
             useable = false;
             CmdReward();
         }
+        else if (heldTask)
+            heldTask.isComplete[heldTaskStage] = false;
 
         resetTimer = resetMaxTimer;
     }
