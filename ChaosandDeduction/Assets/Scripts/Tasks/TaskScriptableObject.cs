@@ -11,16 +11,24 @@ public class TaskScriptableObject : ScriptableObject
 
     [Header("Waypoint Stuff")]
     public Vector3 firstPoint;
-    public Vector3[] points;
+    public Path[] paths;
 
-    public Vector3 currentPoint
+    [System.Serializable]
+    public struct Path
+    {
+        public Vector3 startPosition;
+        public Vector3 endPosition;
+    }
+
+
+    public Path currentPath
     {
         get
         {
             int index = currentIndex;
             if (index == -1)
-                return points[0];
-            return points[currentIndex];
+                return paths[0];
+            return paths[currentIndex];
         }
     }
 
@@ -36,4 +44,13 @@ public class TaskScriptableObject : ScriptableObject
             return -1;
         }
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        //paths = new Path[points.Length];
+        //for (int i = 0; i < points.Length; i++)
+        //    paths[i].endPosition = points[i];
+    }
+#endif
 }

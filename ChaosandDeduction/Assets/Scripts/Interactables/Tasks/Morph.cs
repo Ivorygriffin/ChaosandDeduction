@@ -97,12 +97,21 @@ public class Morph : Interactable
         try
         {
             if (reward.task != null)
-                reward.task.points[reward.taskStage] = transform.position;
+            {
+                //Debug.Log(reward.task.name + " " + reward.spawnPoint + " " + (reward.item != null).ToString() + " " + reward.task.paths.Length + " " + (reward.taskStage + 1));
+                if (reward.item != null && reward.taskStage + 1 < reward.task.paths.Length)
+                {
+                    reward.task.paths[reward.taskStage + 1].startPosition = reward.spawnPoint;
+                }
+
+                if (gameObject.scene.name != null)
+                    reward.task.paths[reward.taskStage].endPosition = transform.position;
+            }
         }
         catch (InvalidCastException e)
         {
-            Debug.LogException(e);
             Debug.LogError(this.name);
+            Debug.LogException(e);
             // recover from exception
         }
     }
