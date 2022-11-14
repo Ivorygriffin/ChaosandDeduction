@@ -47,6 +47,8 @@ public class Deliver : PickUp
     public bool destroyOnArrival = true;
     public bool disabledTimer = false;
 
+    public float cooldown = 0;
+
     [SerializeField] Reward reward;
 
     //  Unity Methods ---------------------------------
@@ -137,6 +139,7 @@ public class Deliver : PickUp
             //Destroy(gameObject); 
 
             reward.LocalReward();
+            StartCoroutine(DelayedEvent());
             useable = false;
             CmdReward();
         }
@@ -159,6 +162,13 @@ public class Deliver : PickUp
     IEnumerator DelayDestroy()
     {
         yield return new WaitForSeconds(5);
+    }
+
+    IEnumerator DelayedEvent()
+    {
+        yield return new WaitForSeconds(cooldown);
+
+        reward.onCompleteDelay.Invoke();
     }
     public override void ResetInteractable()
     {
