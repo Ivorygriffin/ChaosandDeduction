@@ -141,6 +141,7 @@ public class Deliver : PickUp
             reward.LocalReward();
             StartCoroutine(DelayedEvent());
             useable = false;
+
             CmdReward();
         }
         else if (heldTask)
@@ -155,13 +156,17 @@ public class Deliver : PickUp
     {
         reward.ServerReward(transform);
 
+        transform.position = Vector3.down * 10; //banish to the shadow realm (avoiding using setactive(false) to keep scripts from running)
+
         if (destroyOnArrival)
-            NetworkServer.Destroy(gameObject);
+            StartCoroutine(DelayDestroy());
     }
 
     IEnumerator DelayDestroy()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(cooldown + 1); //delay a second to prevent deleting before event is invoked below?
+
+        NetworkServer.Destroy(gameObject);
     }
 
     IEnumerator DelayedEvent()
