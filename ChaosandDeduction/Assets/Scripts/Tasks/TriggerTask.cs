@@ -16,6 +16,6 @@ public class TriggerTask : MonoBehaviour
     private void OnValidate()
     {
         if (task)
-            task.points[taskStage] = transform.position;
+            task.paths[taskStage].endPosition = transform.position;
     }
 }

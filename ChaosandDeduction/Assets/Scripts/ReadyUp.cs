@@ -40,10 +40,13 @@ public class ReadyUp : NetworkBehaviour
 
         //change to real game when ready
         bool start = true;
+#if UNITY_EDITOR
+        start = readyState[0]; //in editor only care if first player has readied
+#else
         for (int i = 0; i < 1; i++)
             if (!readyState[i])
                 start = false;
-
+#endif
         if (start)
             LoadingScreenManager.instance.LoadMainScene();
     }
