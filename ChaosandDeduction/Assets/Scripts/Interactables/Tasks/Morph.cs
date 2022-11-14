@@ -147,6 +147,7 @@ public class Morph : Interactable
         {
             //award ingredient
             reward.LocalReward();
+            StartCoroutine(DelayedEvent());
             CmdReward();
 
             //script now serves no purpose
@@ -167,6 +168,13 @@ public class Morph : Interactable
         yield return new WaitForSeconds(stageCooldowns[stageCooldowns.Length - 1]);
 
         reward.ServerReward(transform);
+    }
+
+    IEnumerator DelayedEvent()
+    {
+        yield return new WaitForSeconds(stageCooldowns[stageCooldowns.Length - 1]);
+        
+        reward.onCompleteDelay.Invoke();
     }
 
     void ChangeStage(bool increase)

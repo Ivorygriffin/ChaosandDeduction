@@ -83,6 +83,9 @@ public class TaskManager : NetworkBehaviour
     }
     public void AddVillagerTask() //Adds one random task from potential task list to the todo task list
     {
+        if (potentialVillagerTasks.Count == 0)
+            return; //if no tasks left, ignore
+
         int numTasksSelected = Random.Range(0, potentialVillagerTasks.Count);
         TaskScriptableObject temp = potentialVillagerTasks[numTasksSelected];
         for (int i = 0; i < temp.isComplete.Length; i++) //reset stage completions
@@ -97,6 +100,9 @@ public class TaskManager : NetworkBehaviour
 
     public void AddTraitorTask() //Adds one random task from potential task list to the todo task list
     {
+        if (potentialTraitorTasks.Count == 0)
+            return; //if no tasks left, ignore
+
         int numTaskSelected = Random.Range(0, potentialTraitorTasks.Count);
         TaskScriptableObject temp = potentialTraitorTasks[numTaskSelected];
         for (int i = 0; i < temp.isComplete.Length; i++) //reset stage completions
