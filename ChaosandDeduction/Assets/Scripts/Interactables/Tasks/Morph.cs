@@ -97,12 +97,21 @@ public class Morph : Interactable
         try
         {
             if (reward.task != null)
-                reward.task.points[reward.taskStage] = transform.position;
+            {
+                //Debug.Log(reward.task.name + " " + reward.spawnPoint + " " + (reward.item != null).ToString() + " " + reward.task.paths.Length + " " + (reward.taskStage + 1));
+                if (reward.item != null && reward.taskStage + 1 < reward.task.paths.Length)
+                {
+                    reward.task.paths[reward.taskStage + 1].startPosition = reward.spawnPoint;
+                }
+
+                if (gameObject.scene.name != null)
+                    reward.task.paths[reward.taskStage].endPosition = transform.position;
+            }
         }
         catch (InvalidCastException e)
         {
-            Debug.LogException(e);
             Debug.LogError(this.name);
+            Debug.LogException(e);
             // recover from exception
         }
     }
@@ -138,6 +147,7 @@ public class Morph : Interactable
         {
             //award ingredient
             reward.LocalReward();
+            StartCoroutine(DelayedEvent());
             CmdReward();
 
             //script now serves no purpose
@@ -158,6 +168,13 @@ public class Morph : Interactable
         yield return new WaitForSeconds(stageCooldowns[stageCooldowns.Length - 1]);
 
         reward.ServerReward(transform);
+    }
+
+    IEnumerator DelayedEvent()
+    {
+        yield return new WaitForSeconds(stageCooldowns[stageCooldowns.Length - 1]);
+        
+        reward.onCompleteDelay.Invoke();
     }
 
     void ChangeStage(bool increase)

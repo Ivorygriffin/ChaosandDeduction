@@ -22,6 +22,7 @@ public class Reward
     [Tooltip("Chain quest, This will be toggled on after this morph is completed")]
     public Interactable interactable;
     public UnityEvent onComplete;
+    public UnityEvent onCompleteDelay;
 
     bool givenLocalReward = false;
     public bool givenServerReward = false;

@@ -47,6 +47,8 @@ public class Deliver : PickUp
     public bool destroyOnArrival = true;
     public bool disabledTimer = false;
 
+    public float cooldown = 0;
+
     [SerializeField] Reward reward;
 
     //  Unity Methods ---------------------------------
@@ -91,8 +93,19 @@ public class Deliver : PickUp
     {
         base.OnValidate();
 
+        if (heldTask != null && gameObject.scene.name != null) //may not get assigned if not yet spawned?
+            heldTask.paths[heldTaskStage].endPosition = transform.position;
+
         if (reward.task != null)
-            reward.task.points[reward.taskStage] = deliverPoint;
+        {
+            reward.task.paths[reward.taskStage].endPosition = deliverPoint;
+
+            if (reward.item != null && reward.taskStage + 1 < reward.task.paths.Length)
+                reward.task.paths[reward.taskStage + 1].startPosition = reward.spawnPoint;
+
+            if (gameObject.scene.name != null) //may not get assigned if not yet spawned?
+                reward.task.paths[reward.taskStage].startPosition = transform.position;
+        }
     }
 #endif
 
@@ -126,6 +139,7 @@ public class Deliver : PickUp
             //Destroy(gameObject); 
 
             reward.LocalReward();
+            StartCoroutine(DelayedEvent());
             useable = false;
             CmdReward();
         }
@@ -148,6 +162,13 @@ public class Deliver : PickUp
     IEnumerator DelayDestroy()
     {
         yield return new WaitForSeconds(5);
+    }
+
+    IEnumerator DelayedEvent()
+    {
+        yield return new WaitForSeconds(cooldown);
+
+        reward.onCompleteDelay.Invoke();
     }
     public override void ResetInteractable()
     {
