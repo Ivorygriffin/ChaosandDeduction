@@ -98,6 +98,9 @@ public class Deliver : PickUp
         {
             reward.task.paths[reward.taskStage].endPosition = deliverPoint;
 
+            if (reward.item != null && reward.taskStage + 1 < reward.task.paths.Length)
+                reward.task.paths[reward.taskStage + 1].startPosition = reward.spawnPoint;
+
             if (gameObject.scene.name != null) //may not get assigned if not yet spawned?
                 reward.task.paths[reward.taskStage].startPosition = transform.position;
         }

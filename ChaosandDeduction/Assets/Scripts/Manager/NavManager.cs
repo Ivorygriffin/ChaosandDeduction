@@ -5,11 +5,9 @@ using UnityEngine.AI;
 
 public class NavManager : MonoBehaviour
 {
-    Vector3 targetPos;
-    TaskScriptableObject currentTask;
-    int currentTaskIndex;
-    NavMeshPath currentPath;
-    public LineRenderer lineRenderer;
+    public TaskScriptableObject currentTask;
+    public int currentTaskIndex;
+    public NavMeshPath currentPath;
 
     bool taskNotMade = false;
 
@@ -52,7 +50,6 @@ public class NavManager : MonoBehaviour
             {
                 if (pinManager.instance.pinnedTask)
                     pinManager.instance.Pin(-1);
-                lineRenderer.positionCount = 0;
 
                 DestroyPoints();
             }
@@ -97,8 +94,13 @@ public class NavManager : MonoBehaviour
         NavMeshHit hit2;//= new NavMeshHit();
         NavMesh.SamplePosition(toPoint, out hit2, Mathf.Infinity, NavMesh.AllAreas);
 
-        if (NavMesh.CalculatePath(hit1.position, hit2.position, NavMesh.AllAreas, currentPath))
+        NavMesh.CalculatePath(hit1.position, hit2.position, NavMesh.AllAreas, currentPath);
+
+        if (currentPath.status == NavMeshPathStatus.PathComplete || currentPath.status == NavMeshPathStatus.PathPartial)
+        {
             taskNotMade = false;
+            spawnPoints();
+        }
 #if UNITY_EDITOR
         else
             Debug.LogWarning("Path could not be made!");
@@ -119,6 +121,8 @@ public class NavManager : MonoBehaviour
                 distanceMade += particleGap;
             }
         }
+
+        currentPath.ClearCorners();
     }
 
     void DestroyPoints()

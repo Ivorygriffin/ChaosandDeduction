@@ -48,9 +48,12 @@ public class TaskScriptableObject : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        //paths = new Path[points.Length];
-        //for (int i = 0; i < points.Length; i++)
-        //    paths[i].endPosition = points[i];
+        //for (int i = 0; i < paths.Length; i++)
+        //{
+        //    paths[i].startPosition = Vector3.zero;
+        //    paths[i].endPosition = Vector3.zero;
+        //}
+
     }
 #endif
 }
