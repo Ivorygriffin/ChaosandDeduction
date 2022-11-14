@@ -46,14 +46,14 @@ public class TaskScriptableObject : ScriptableObject
     }
 
 #if UNITY_EDITOR
-    private void OnValidate()
+    [ContextMenu("Empty Paths")]
+    public void EmptyPaths()
     {
-        //for (int i = 0; i < paths.Length; i++)
-        //{
-        //    paths[i].startPosition = Vector3.zero;
-        //    paths[i].endPosition = Vector3.zero;
-        //}
-
+        for (int i = 0; i < paths.Length; i++)
+        {
+            paths[i].startPosition = Vector3.zero;
+            paths[i].endPosition = Vector3.zero;
+        }
     }
 #endif
 }
