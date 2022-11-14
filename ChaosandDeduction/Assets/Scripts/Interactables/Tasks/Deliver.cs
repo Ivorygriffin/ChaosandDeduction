@@ -91,8 +91,19 @@ public class Deliver : PickUp
     {
         base.OnValidate();
 
+        if (heldTask != null && gameObject.scene.name != null) //may not get assigned if not yet spawned?
+            heldTask.paths[heldTaskStage].endPosition = transform.position;
+
         if (reward.task != null)
-            reward.task.points[reward.taskStage] = deliverPoint;
+        {
+            reward.task.paths[reward.taskStage].endPosition = deliverPoint;
+
+            if (reward.item != null && reward.taskStage + 1 < reward.task.paths.Length)
+                reward.task.paths[reward.taskStage + 1].startPosition = reward.spawnPoint;
+
+            if (gameObject.scene.name != null) //may not get assigned if not yet spawned?
+                reward.task.paths[reward.taskStage].startPosition = transform.position;
+        }
     }
 #endif
 
