@@ -111,24 +111,40 @@ public class NavManager : MonoBehaviour
     {
         DestroyPoints();
 
+        int particleCounter = 0;
+
         for (int i = 1; i < currentPath.corners.Length; i++)
         {
             Vector3 direction = (currentPath.corners[i] - currentPath.corners[i - 1]).normalized;
             float distanceMade = 0;
             while (distanceMade < Vector3.Distance(currentPath.corners[i], currentPath.corners[i - 1]))
             {
-                spawnedParticles.Add(Instantiate(particlePrefab, currentPath.corners[i - 1] + (direction * distanceMade), Quaternion.identity));
+                if (spawnedParticles.Count <= particleCounter) //allow essentially lazy initialisation for particles
+                    AddPoint();
+                spawnedParticles[particleCounter].transform.position = currentPath.corners[i - 1] + (direction * distanceMade);
+                spawnedParticles[particleCounter].SetActive(true);
+
+                particleCounter++;
+
                 distanceMade += particleGap;
             }
         }
 
         currentPath.ClearCorners();
     }
+    void AddPoint()
+    {
+        spawnedParticles.Add(Instantiate(particlePrefab, transform));
+        //spawnedParticles[spawnedParticles.Count - 1].SetActive(false); //shouldnt be needed?
+    }
 
     void DestroyPoints()
     {
-        foreach (GameObject particle in spawnedParticles)
-            Destroy(particle);
-        spawnedParticles.Clear();
+        for (int i = 0; i < spawnedParticles.Count; i++)
+        {
+            spawnedParticles[i].transform.position = Vector3.down * 100;
+            spawnedParticles[i].SetActive(false);
+        }
+        //spawnedParticles.Clear();
     }
 }

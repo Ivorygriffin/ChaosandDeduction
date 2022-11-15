@@ -49,7 +49,7 @@ public class pinManager : MonoBehaviour
         foreach (Image btn in everyPin)
             btn.sprite = ss.added;
 
-        Debug.Log("unpin run");
+        //Debug.Log("unpin run");
 
         if (index < 0)
         {
