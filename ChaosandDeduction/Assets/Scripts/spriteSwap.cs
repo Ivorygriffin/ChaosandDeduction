@@ -13,7 +13,11 @@ public class spriteSwap : MonoBehaviour
     public pinManager pinManager;
     public bool pin;
     public AudioSource pinOn, pinOff;
-    
+
+    public void Start()
+    {
+        pin = true;
+    }
     public void setTaskName()
     {
         pinManager.taskName = string.Empty;
@@ -29,6 +33,7 @@ public class spriteSwap : MonoBehaviour
             pin = true;
             button.GetComponent<Image>().sprite = added;
             pinOn.Play();
+
             
         }
         else if (pin)
