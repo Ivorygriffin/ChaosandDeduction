@@ -12,8 +12,45 @@ public class NavManager : MonoBehaviour
     bool taskNotMade = false;
 
     public GameObject particlePrefab;
-    List<GameObject> spawnedParticles = new List<GameObject>();
+    List<Particle> spawnedParticles = new List<Particle>();
+    public class Particle
+    {
+        public Particle(GameObject particlePrefab, int index)
+        {
+            gameObject = Instantiate(particlePrefab, Vector3.down * 100, Quaternion.identity);
+            transform = gameObject.transform;
+            targetPos = Vector3.down * 100;
+
+            offset = index / amplitude;
+        }
+
+        public void Update()
+        {
+            transform.position = targetPos + (Vector3.up * instance.curve.Evaluate((Time.time - offset) * speed)) + (Vector3.down * 0.5f);
+        }
+
+        public bool active
+        {
+            set
+            {
+                gameObject.SetActive(value);
+                m_active = value;
+            }
+            get { return m_active; }
+        }
+        bool m_active = false;
+
+        GameObject gameObject;
+        Transform transform;
+        public Vector3 targetPos;
+
+        float offset;
+        const float speed = 1f;
+        const float amplitude = 10;
+    }
     public float particleGap = 5;
+
+    public AnimationCurve curve;
 
 
     static public NavManager instance;
@@ -72,6 +109,13 @@ public class NavManager : MonoBehaviour
 
             currentPath.ClearCorners();
         }
+
+        for (int i = 0; i < spawnedParticles.Count; i++)
+        {
+            if (!spawnedParticles[i].active)
+                break; //dont update inactive particles
+            spawnedParticles[i].Update();
+        }
     }
 
     [ContextMenu("Recalculate")]
@@ -111,24 +155,40 @@ public class NavManager : MonoBehaviour
     {
         DestroyPoints();
 
+        int particleCounter = 0;
+
         for (int i = 1; i < currentPath.corners.Length; i++)
         {
             Vector3 direction = (currentPath.corners[i] - currentPath.corners[i - 1]).normalized;
             float distanceMade = 0;
             while (distanceMade < Vector3.Distance(currentPath.corners[i], currentPath.corners[i - 1]))
             {
-                spawnedParticles.Add(Instantiate(particlePrefab, currentPath.corners[i - 1] + (direction * distanceMade), Quaternion.identity));
+                if (spawnedParticles.Count <= particleCounter) //allow essentially lazy initialisation for particles
+                    AddPoint();
+                spawnedParticles[particleCounter].targetPos = currentPath.corners[i - 1] + (direction * distanceMade);
+                spawnedParticles[particleCounter].active = true;
+
+                particleCounter++;
+
                 distanceMade += particleGap;
             }
         }
 
         currentPath.ClearCorners();
     }
+    void AddPoint()
+    {
+        spawnedParticles.Add(new Particle(particlePrefab, spawnedParticles.Count));
+        //spawnedParticles[spawnedParticles.Count - 1].SetActive(false); //shouldnt be needed?
+    }
 
     void DestroyPoints()
     {
-        foreach (GameObject particle in spawnedParticles)
-            Destroy(particle);
-        spawnedParticles.Clear();
+        for (int i = 0; i < spawnedParticles.Count; i++)
+        {
+            spawnedParticles[i].targetPos = Vector3.down * 100;
+            spawnedParticles[i].active = false;
+        }
+        //spawnedParticles.Clear();
     }
 }

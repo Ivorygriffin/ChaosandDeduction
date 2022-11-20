@@ -13,12 +13,16 @@ public class spriteSwap : MonoBehaviour
     public pinManager pinManager;
     public bool pin;
     public AudioSource pinOn, pinOff;
-    
+
+    public void Start()
+    {
+        pin = true;
+    }
     public void setTaskName()
     {
         pinManager.taskName = string.Empty;
         pinManager.taskName = taskName;
-        Debug.Log(taskName);
+        //Debug.Log(taskName);
     }
 
     public void SpriteSwap()
@@ -29,6 +33,7 @@ public class spriteSwap : MonoBehaviour
             pin = true;
             button.GetComponent<Image>().sprite = added;
             pinOn.Play();
+
             
         }
         else if (pin)
@@ -40,10 +45,10 @@ public class spriteSwap : MonoBehaviour
         }
         if (clickTimes == -1)
         {
-            Debug.Log("-1");
+            //Debug.Log("-1");
             foreach (GameObject go in pinManager.everymap)
             {
-                Debug.Log("turnoffallmap");
+                //Debug.Log("turnoffallmap");
                 go.SetActive(false);
             }
             pinManager.initialMap.SetActive(true);

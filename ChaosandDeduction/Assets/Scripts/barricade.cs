@@ -38,12 +38,12 @@ public class barricade : NetworkBehaviour
             if (barricade.GetComponent<Renderer>().material != newMaterial)
             {
                 barricade.GetComponent<Renderer>().material = newMaterial;
-                Debug.Log("newmat");
+                //Debug.Log("newmat");
             }
             else
             {
                 barricade.GetComponent<Renderer>().material = oldMaterial;
-                Debug.Log("oldmat");
+                //Debug.Log("oldmat");
             }
             
         }

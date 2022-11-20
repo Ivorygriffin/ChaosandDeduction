@@ -52,53 +52,54 @@ public class villagerwalk : MonoBehaviour
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, paths[currentIndex].transform.position) < 0.2)
-        {
-            if ((currentIndex + 1 >= paths.Length && !hasRotated) || (currentIndex - 1 < 0 && hasRotated))
-                hasRotated = true;
-            else
-            {
-                currentIndex += hasRotated ? -1 : 1;
-            }
-        }
+
+        //if (Vector3.Distance(transform.position, paths[currentIndex].transform.position) < 0.2)
+        //{
+        //    if ((currentIndex + 1 >= paths.Length && !hasRotated) || (currentIndex - 1 < 0 && hasRotated))
+        //        hasRotated = true;
+        //    else
+        //    {
+        //        currentIndex += hasRotated ? -1 : 1;
+        //    }
+        //}
 
 
-        if (currentIndex <= paths.Length - 1 && ReachedEnd == false)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
-        }
-        if (transform.position == paths[0].transform.position && runOnce == true && hasRotated == false)
-        {
-            transform.Rotate(0, 180, 0);
-            hasRotated = true;
-        }
-        if (transform.position == paths[currentIndex].transform.position && ReachedEnd == false)
-        {
-            currentIndex += 1;
-            hasRotated = false;
-            runOnce = true;
-        }
-        if (currentIndex == paths.Length)
-        {
-            ReachedEnd = true;
-            //idle animation switch here
-            //wait for 2 seconds
-            transform.Rotate(0, 180, 0);
-            //swich animation back
-            currentIndex -= 1;
-        }
-        if (ReachedEnd)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
-        }
-        if (ReachedEnd && transform.position == paths[currentIndex].transform.position)
-        {
-            currentIndex -= 1;
-        }
-        if (currentIndex == 0)
-        {
-            ReachedEnd = false;
-        }
+        //if (currentIndex <= paths.Length - 1 && ReachedEnd == false)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
+        //}
+        //if (transform.position == paths[0].transform.position && runOnce == true && hasRotated == false)
+        //{
+        //    transform.Rotate(0, 180, 0);
+        //    hasRotated = true;
+        //}
+        //if (transform.position == paths[currentIndex].transform.position && ReachedEnd == false)
+        //{
+        //    currentIndex += 1;
+        //    hasRotated = false;
+        //    runOnce = true;
+        //}
+        //if (currentIndex == paths.Length)
+        //{
+        //    ReachedEnd = true;
+        //    //idle animation switch here
+        //    //wait for 2 seconds
+        //    transform.Rotate(0, 180, 0);
+        //    //swich animation back
+        //    currentIndex -= 1;
+        //}
+        //if (ReachedEnd)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, paths[currentIndex].transform.position, moveSpeed * Time.deltaTime);
+        //}
+        //if (ReachedEnd && transform.position == paths[currentIndex].transform.position)
+        //{
+        //    currentIndex -= 1;
+        //}
+        //if (currentIndex == 0)
+        //{
+        //    ReachedEnd = false;
+        //}
     }
 
 

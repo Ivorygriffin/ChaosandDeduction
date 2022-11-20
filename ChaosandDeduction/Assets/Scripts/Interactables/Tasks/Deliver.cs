@@ -137,6 +137,7 @@ public class Deliver : PickUp
 
             //StartCoroutine(DelayDestroy());
             //Destroy(gameObject); 
+            transform.position = Vector3.down * 10;
 
             reward.LocalReward();
             StartCoroutine(DelayedEvent());
@@ -145,9 +146,10 @@ public class Deliver : PickUp
             CmdReward();
         }
         else if (heldTask)
+        {
             heldTask.isComplete[heldTaskStage] = false;
-
-        resetTimer = resetMaxTimer;
+            resetTimer = resetMaxTimer;
+        }
     }
 
 
