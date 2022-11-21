@@ -23,7 +23,7 @@ public class PPQuality : MonoBehaviour
     public void OnQualityChange(int qualityLevel)
     {
         for (int i = 0; i < levels[qualityLevel].enabled.Length; i++)
-            pp.profile.components[i].active = true;
+            pp.profile.components[i].active = levels[qualityLevel].enabled[i];
     }
 
 #if UNITY_EDITOR
