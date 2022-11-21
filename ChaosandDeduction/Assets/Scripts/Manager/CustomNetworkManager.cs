@@ -138,4 +138,28 @@ public class CustomNetworkManager : NetworkManager
             LoadingScreenManager.instance.LoadScreen();
     }
 
+    public short voted;
+    public short traitor;
+    public short villagerTasks;
+    public short villagerTasksDone;
+    public short traitorTasks;
+    public short traitorTasksDone;
+    public void AssignResults(short voted, short traitor, short villagerTasks, short villagerTasksDone, short traitorTasks, short traitorTasksDone)
+    {
+        this.voted = voted;
+        this.traitor = traitor;
+        this.villagerTasks = villagerTasks;
+        this.villagerTasksDone = villagerTasksDone;
+        this.traitorTasks = traitorTasks;
+        this.traitorTasksDone = traitorTasksDone;
+    }
+    public void GetResults(out short voted, out short traitor, out short villagerTasks, out short villagerTasksDone, out short traitorTasks, out short traitorTasksDone)
+    {
+        voted = this.voted;
+        traitor = this.traitor;
+        villagerTasks = this.villagerTasks;
+        villagerTasksDone = this.villagerTasksDone;
+        traitorTasks = this.traitorTasks;
+        traitorTasksDone = this.traitorTasksDone;
+    }
 }

@@ -149,21 +149,8 @@ public class TaskManager : NetworkBehaviour
     //}
 
     //Should only get called when a task is completed TODO: ensure this is correct by checking all tasks
-    public void CheckTaskComplete()
+    public int CheckTraitorTasks()
     {
-        int villagerTasksComplete = 0;
-        for (int i = 0; i < villagerTasks.Count; i++)
-        {
-
-            if (villagerTasks[i].isComplete[villagerTasks[i].isComplete.Length - 1])
-            {
-                //villagerTasks.RemoveAt(i);
-                //i--;
-                villagerTasksComplete++;
-                //UpdateVillagerString();
-            }
-        }
-
         int traitorTasksComplete = 0;
         for (int i = 0; i < traitorTasks.Count; i++)
         {
@@ -176,10 +163,28 @@ public class TaskManager : NetworkBehaviour
                 //UpdateTraitorString();
             }
         }
-
-        if (traitorTasks.Count <= traitorTasksComplete)
+        return traitorTasksComplete;
+    }
+    public int CheckVillagerTasks()
+    {
+        int villagerTasksComplete = 0;
+        for (int i = 0; i < villagerTasks.Count; i++)
+        {
+            if (villagerTasks[i].isComplete[villagerTasks[i].isComplete.Length - 1])
+            {
+                //villagerTasks.RemoveAt(i);
+                //i--;
+                villagerTasksComplete++;
+                //UpdateVillagerString();
+            }
+        }
+        return villagerTasksComplete;
+    }
+    public void CheckTaskComplete()
+    {
+        if (traitorTasks.Count <= CheckTraitorTasks())
             tTaskComplete = true;
-        if (villagerTasks.Count <= villagerTasksComplete)
+        if (villagerTasks.Count <= CheckVillagerTasks())
             vTaskComplete = true;
 
         TaskUpdate.Invoke();
