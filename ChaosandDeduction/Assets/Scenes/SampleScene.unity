@@ -3240,14 +3240,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1890037168}
     m_Modifications:
-    - target: {fileID: 8912545090767893320, guid: 7e32f4b498ebb0245a4f0234fc15b750, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5e452490c6e8a934f9a86d6e73527794, type: 3}
-    - target: {fileID: 8912545091567166815, guid: 7e32f4b498ebb0245a4f0234fc15b750, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: a0581296e9fc8154da3fb96353e78127, type: 3}
     - target: {fileID: 8912545091618297379, guid: 7e32f4b498ebb0245a4f0234fc15b750, type: 3}
       propertyPath: m_Name
       value: Sound _ Music 1
@@ -3296,10 +3288,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8912545091618297381, guid: 7e32f4b498ebb0245a4f0234fc15b750, type: 3}
-      propertyPath: gameplayVoteMusic
-      value: 
-      objectReference: {fileID: 2011020640}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e32f4b498ebb0245a4f0234fc15b750, type: 3}
 --- !u!82 &93158543 stripped
@@ -17416,16 +17404,16 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c7b0222122d02494eaa1d70bbc582c80, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 232
   DopplerLevel: 1
-  MinDistance: 4.766199
-  MaxDistance: 500
+  MinDistance: 1
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -17460,7 +17448,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -22701,7 +22689,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1613456562}
   m_HandleRect: {fileID: 1613456561}
   m_Direction: 3
-  m_Value: 0.9999996
+  m_Value: 0.99999976
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -47687,6 +47675,10 @@ PrefabInstance:
     - target: {fileID: 8334217430156678873, guid: 7a03c76cd6df4a1408a56de1e9573d2c, type: 3}
       propertyPath: m_Name
       value: BurnBook (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8334217430156678873, guid: 7a03c76cd6df4a1408a56de1e9573d2c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8464056586540290450, guid: 7a03c76cd6df4a1408a56de1e9573d2c, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -77081,7 +77073,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bdc84a757a2079c439e891337660d431, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.206
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -77089,8 +77081,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 199
   DopplerLevel: 1
-  MinDistance: 5.802993
-  MaxDistance: 100
+  MinDistance: 1
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -77125,7 +77117,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
