@@ -16,6 +16,7 @@ public class CutsceneManager : MonoBehaviour
     bool thirdStage = false;
     bool fourthStage = false;
     bool fifthStage = false;
+    bool sixthStage = false;
 
 
     [Header("Cages")]
@@ -25,10 +26,15 @@ public class CutsceneManager : MonoBehaviour
 
     [Header("UI")]
     public RectTransform villagerUI;
-    public TMP_Text vTask;
+    public TMP_Text vTaskDone;
+    public TMP_Text vTaskTotal;
 
     public RectTransform traitorUI;
-    public TMP_Text tTask;
+    public TMP_Text tTaskDone;
+    public TMP_Text tTaskTotal;
+
+    public RectTransform winUI;
+    public TMP_Text winText;
 
     [Header("Light")]
     public Light spotLight;
@@ -46,6 +52,14 @@ public class CutsceneManager : MonoBehaviour
 
     const float transitionTime = 0.15f;
 
+    [Header("Sounds")]
+    public AudioClip drumRoll;
+    public AudioClip cageSound;
+    public AudioClip[] characterCagedSound;
+    public AudioClip themeSound;
+
+    public AudioSource audioSource;
+
     short voted = -1;
     short traitor = -1;
     short villagerTasksDone = -1;
@@ -54,6 +68,8 @@ public class CutsceneManager : MonoBehaviour
     short traitorTasksDone = -1;
     short traitorTasksTemp = 0;
     short traitorTasks = -1;
+
+    CustomNetworkManager customNetworkManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,17 +88,38 @@ public class CutsceneManager : MonoBehaviour
         //traitorTasks = PlayerPrefs.GetInt("TraitorTasks", -1);
         //PlayerPrefs.DeleteKey("TraitorTasks");
 
-        CustomNetworkManager customNetworkManager = (CustomNetworkManager)NetworkManager.singleton;
-        customNetworkManager.GetResults(out voted, out traitor, out villagerTasks, out villagerTasksDone, out traitorTasks, out traitorTasksDone);
+        customNetworkManager = (CustomNetworkManager)NetworkManager.singleton;
+#if UNITY_EDITOR
+        if (customNetworkManager == null)
+        {
+            voted = 0;
+            traitor = 0;
+            villagerTasksDone = 12;
+            villagerTasks = 13;
+            traitorTasks = 4;
+            traitorTasksDone = 4;
+        }
+        else
+#endif
+            customNetworkManager.GetResults(out voted, out traitor, out villagerTasks, out villagerTasksDone, out traitorTasks, out traitorTasksDone);
 
         UpdateVillagerText();
         UpdateTraitorText();
+
+        if (voted == traitor && villagerTasks == villagerTasksDone)
+            winText.text = "The Villagers Wins";
+        else if (voted != traitor && traitorTasks == traitorTasksDone)
+            winText.text = "The Traitor Wins";
+        else
+            winText.text = "The game beats you all";
 
 
         for (int i = 0; i < characters.Length; i++)
         {
             characters[i].CrossFade("Anxious", transitionTime);
         }
+
+        audioSource.PlayOneShot(drumRoll);
     }
 
     // Update is called once per frame
@@ -90,12 +127,18 @@ public class CutsceneManager : MonoBehaviour
     {
         if (firstStage && FirstStage())
         {
+            audioSource.PlayOneShot(cageSound);
+
             firstStage = false;
+
+            //audioSource.time = 0.7f;
             secondStage = true;
         }
 
         if (secondStage && SecondStage())
         {
+            audioSource.PlayOneShot(characterCagedSound[voted]);
+
             secondStage = false;
             cageTime = 0;
             StartCoroutine(DelayThirdStage());
@@ -103,7 +146,13 @@ public class CutsceneManager : MonoBehaviour
 
         if (thirdStage && ThirdStage())
         {
+            if (voted != traitor)
+                for (int i = 0; i < characters.Length; i++)
+                if (i != voted && i != traitor)
+                    audioSource.PlayOneShot(characterCagedSound[i]);
+
             thirdStage = false;
+
             cageTime = 0;
             if (voted == traitor)
                 StartCoroutine(DisplayVillagerNumber());
@@ -113,13 +162,33 @@ public class CutsceneManager : MonoBehaviour
 
         if (fourthStage && FourthStage())
         {
+            if (voted == traitor)
+            {
+                if (villagerTasksDone < villagerTasks)
+                    for (int i = 0; i < characters.Length; i++)
+                        if (i != voted)
+                            audioSource.PlayOneShot(characterCagedSound[i]);
+            }
+            else
+            {
+                if (traitorTasksDone < traitorTasks)
+                    audioSource.PlayOneShot(characterCagedSound[traitor]);
+            }
+
             fourthStage = false;
             cageTime = 0;
+
             fifthStage = true;
         }
         if (fifthStage && FifthStage())
         {
             fifthStage = false;
+            StartCoroutine(DelaySixthStage());
+        }
+        if (sixthStage && SixthStage())
+        {
+            sixthStage = false;
+            StartCoroutine(DelayLobby());
 
             //TODO: End game after delay?
         }
@@ -133,11 +202,13 @@ public class CutsceneManager : MonoBehaviour
 
     void UpdateVillagerText()
     {
-        vTask.text = villagerTasksTemp.ToString() + " " + villagerTasks.ToString();
+        vTaskDone.text = villagerTasksTemp.ToString();
+        vTaskTotal.text = villagerTasks.ToString();
     }
     void UpdateTraitorText()
     {
-        tTask.text = traitorTasksTemp.ToString() + " " + traitorTasks.ToString();
+        tTaskDone.text = traitorTasksTemp.ToString();
+        tTaskTotal.text = traitorTasks.ToString();
     }
 
     bool FirstStage() //Move spotlight over witches, land on voted player
@@ -275,11 +346,28 @@ public class CutsceneManager : MonoBehaviour
             return true;
         return false;
     }
+    bool SixthStage() //Win text
+    {
+        cageTime += Time.deltaTime * cageSpeed;
+        winUI.anchoredPosition = new Vector2(0, Mathf.Lerp(-100, 200, cageTime));
+
+        if (voted == traitor)
+            villagerUI.anchoredPosition = new Vector2(0, Mathf.Lerp(100, -100, cageTime));
+        else
+            traitorUI.anchoredPosition = new Vector2(0, Mathf.Lerp(100, -100, cageTime));
+
+        if (cageTime >= 1)
+            return true;
+        return false;
+    }
 
     IEnumerator DelayThirdStage()
     {
         yield return new WaitForSeconds(3);
         thirdStage = true;
+
+        if (voted != traitor)
+            audioSource.PlayOneShot(cageSound);
 
         spotLight.color = Color.red;
         spotLight.transform.position = spotLightPositions[traitor];
@@ -287,7 +375,30 @@ public class CutsceneManager : MonoBehaviour
     IEnumerator DelayFourthStage()
     {
         yield return new WaitForSeconds(1);
+
+        if (voted == traitor)
+        {
+            if (villagerTasksDone < villagerTasks)
+                audioSource.PlayOneShot(cageSound);
+        }
+        else
+        {
+            if (traitorTasksDone < traitorTasks)
+                audioSource.PlayOneShot(cageSound);
+        }
         fourthStage = true;
+    }
+    IEnumerator DelaySixthStage()
+    {
+        yield return new WaitForSeconds(1);
+
+        audioSource.PlayOneShot(themeSound);
+        sixthStage = true;
+    }
+    IEnumerator DelayLobby()
+    {
+        yield return new WaitForSeconds(8);
+        customNetworkManager.ServerChangeScene("Lobby");
     }
 
     IEnumerator DisplayVillagerNumber() //TODO: determine if this a terrible way to run a delayed incremeting of a variable
