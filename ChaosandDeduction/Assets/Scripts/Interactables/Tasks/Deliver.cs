@@ -163,9 +163,11 @@ public class Deliver : PickUp
 
     IEnumerator DelayDestroy()
     {
-        yield return new WaitForSeconds(cooldown + 1); //delay a second to prevent deleting before event is invoked below?
+        yield return new WaitForSeconds(cooldown);
 
         reward.ServerReward(transform);
+
+        yield return new WaitForSeconds(1); //delay a second to prevent deleting before event is invoked below?
         if (destroyOnArrival)
             NetworkServer.Destroy(gameObject);
     }
