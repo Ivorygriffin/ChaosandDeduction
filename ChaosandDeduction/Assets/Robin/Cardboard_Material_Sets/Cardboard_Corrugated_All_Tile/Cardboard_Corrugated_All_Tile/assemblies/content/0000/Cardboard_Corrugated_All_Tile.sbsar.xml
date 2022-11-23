@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sbsdescription SYSTEM "sbsdescription.dtd">
+<sbsdescription formatversion="2.1" asmuid="2284871481" cookerbuild="2004373288" content="full">
+	<graphs count="1">
+		<graph pkgurl="pkg://Cardboard_Material" label="Cardboard_Material" graphtype="material">
+			<sbspresets count="0">
+			</sbspresets>
+			<guigroups/>
+			<outputs count="6">
+				<output uid="4104157970" identifier="basecolor"
+					type="5" format="16" width="256" height="256" mipmaps="0" dynamicsize="yes">
+					<outputgui label="Base Color" group="Material" typegui="image">
+						<channels>
+							<channel names="baseColor" colorspace=""/>
+						</channels>
+					</outputgui>
+				</output>
+				<output uid="4104157968" identifier="normal"
+					type="5" format="16" width="256" height="256" mipmaps="0" dynamicsize="yes">
+					<outputgui label="Normal" group="Material" typegui="image">
+						<channels>
+							<channel names="normal" colorspace=""/>
+						</channels>
+					</outputgui>
+				</output>
+				<output uid="4104157974" identifier="roughness"
+					type="5" format="28" width="256" height="256" mipmaps="0" dynamicsize="yes">
+					<outputgui label="Roughness" group="Material" typegui="image">
+						<channels>
+							<channel names="roughness" colorspace=""/>
+						</channels>
+					</outputgui>
+				</output>
+				<output uid="4104157972" identifier="metallic"
+					type="5" format="12" width="256" height="256" mipmaps="0" dynamicsize="yes">
+					<outputgui label="Metallic" group="Material" typegui="image">
+						<channels>
+							<channel names="metallic" colorspace=""/>
+						</channels>
+					</outputgui>
+				</output>
+				<output uid="4040118757" identifier="height"
+					type="5" format="28" width="256" height="256" mipmaps="0" dynamicsize="yes">
+					<outputgui label="Height" group="Material" typegui="image">
+						<channels>
+							<channel names="height" colorspace=""/>
+						</channels>
+					</outputgui>
+				</output>
+				<output uid="3992102955" identifier="ambientocclusion"
+					type="5" format="28" width="256" height="256" mipmaps="0" dynamicsize="yes">
+					<outputgui label="Ambient Occlusion" group="Material" typegui="image">
+						<channels>
+							<channel names="ambientOcclusion" colorspace=""/>
+						</channels>
+					</outputgui>
+				</output>
+			</outputs>
+			<inputs count="2">
+				<input uid="2250702115" identifier="$outputsize"
+					type="8" default="8,8" alteroutputs="3992102955,4040118757,4104157968,4104157970,4104157972,4104157974" alternodes="0"/>
+				<input uid="3512003441" identifier="$randomseed"
+					type="4" default="0" alteroutputs="3992102955,4040118757,4104157968,4104157970,4104157974" alternodes="0"/>
+			</inputs>
+		</graph>
+	</graphs>
+</sbsdescription>
