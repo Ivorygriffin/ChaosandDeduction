@@ -137,6 +137,7 @@ public class Deliver : PickUp
 
             //StartCoroutine(DelayDestroy());
             //Destroy(gameObject); 
+            transform.position = Vector3.down * 10;
 
             reward.LocalReward();
             StartCoroutine(DelayedEvent());
@@ -145,28 +146,30 @@ public class Deliver : PickUp
             CmdReward();
         }
         else if (heldTask)
+        {
             heldTask.isComplete[heldTaskStage] = false;
-
-        resetTimer = resetMaxTimer;
+            resetTimer = resetMaxTimer;
+        }
     }
 
 
     [Command(requiresAuthority = false)]
     void CmdReward()
     {
-        reward.ServerReward(transform);
-
         transform.position = Vector3.down * 10; //banish to the shadow realm (avoiding using setactive(false) to keep scripts from running)
 
-        if (destroyOnArrival)
-            StartCoroutine(DelayDestroy());
+        StartCoroutine(DelayDestroy());
     }
 
     IEnumerator DelayDestroy()
     {
-        yield return new WaitForSeconds(cooldown + 1); //delay a second to prevent deleting before event is invoked below?
+        yield return new WaitForSeconds(cooldown);
 
-        NetworkServer.Destroy(gameObject);
+        reward.ServerReward(transform);
+
+        yield return new WaitForSeconds(1); //delay a second to prevent deleting before event is invoked below?
+        if (destroyOnArrival)
+            NetworkServer.Destroy(gameObject);
     }
 
     IEnumerator DelayedEvent()

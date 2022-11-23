@@ -17,14 +17,13 @@ public class PPQuality : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < levels[0].enabled.Length; i++)
-            pp.profile.components[i].active = true;
+        OnQualityChange(PlayerPrefs.GetInt("Quality", 1));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnQualityChange(int qualityLevel)
     {
-
+        for (int i = 0; i < levels[qualityLevel].enabled.Length; i++)
+            pp.profile.components[i].active = levels[qualityLevel].enabled[i];
     }
 
 #if UNITY_EDITOR

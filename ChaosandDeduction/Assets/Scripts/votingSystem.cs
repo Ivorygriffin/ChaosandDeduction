@@ -60,23 +60,19 @@ public class votingSystem : NetworkBehaviour
     }
 
     [ClientRpc]
-    void RpcResults(bool traitor, bool vTaskComp, bool tTaskComp)
+    void RpcResults(short voted, short traitor, short villagerTasks, short villagerTasksDone, short traitorTasks, short traitorTasksDone)
     {
-        if (traitor && vTaskComp) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
-        {
-            UIManager.Instance.winScreenText.text = "The Witches Win";
-            //UIManager.Instance.WinScreen();
-        }
-        else if (!traitor && tTaskComp) //if traitor is found and, either all villager tasks are complete or the timer hasnt run out, villagers win
-        {
-            UIManager.Instance.winScreenText.text = "The Traitor Wins";
-            //UIManager.Instance.WinScreen();
-        }
-        else
-        {
-            UIManager.Instance.winScreenText.text = "The Game Has Beaten you all";
-            //UIManager.Instance.WinScreen();
-        }
+        CustomNetworkManager customNetworkManager = (CustomNetworkManager)NetworkManager.singleton;
+        customNetworkManager.AssignResults(voted, traitor, villagerTasks, villagerTasksDone, traitorTasks, traitorTasksDone);
+        //PlayerPrefs.SetInt("VotedWitch", voted); //TODO: determine if we should use playerPrefs for this
+        //PlayerPrefs.SetInt("TraitorWitch", traitor);
+
+        //PlayerPrefs.SetInt("VillagerTasksDone", villagerTasks);
+        //PlayerPrefs.SetInt("VillagerTasks", villagerTasksDone);
+
+        //PlayerPrefs.SetInt("TraitorTasksDone", traitorTasks);
+        //PlayerPrefs.SetInt("TraitorTasks", traitorTasksDone);
+
         UIManager.Instance.WinScreen();
     }
 
@@ -127,20 +123,19 @@ public class votingSystem : NetworkBehaviour
                 CustomNetworkManager customNetworkManager = (CustomNetworkManager)NetworkManager.singleton;
                 //PlayerManager.Instance.allPlayers[selectedPlayer].GetComponent<CharacterInteraction>().alignment
 
-                switch (customNetworkManager.playerArray[i].alignment)
-                {
-                    case Alignment.Villager:
-                        //lost
-                        RpcResults(false, TaskManager.instance.vTaskComplete, TaskManager.instance.tTaskComplete);
-                        break;
-                    case Alignment.Traitor:
-                        //win
-                        RpcResults(true, TaskManager.instance.vTaskComplete, TaskManager.instance.tTaskComplete);
-                        break;
-                    default:
-                        //RpcResults(false);
-                        break;
-                }
+                short vTasks = (short)(DifficultyManager.instance.GetVTasks());
+                short vTasksDone = (short)(TaskManager.instance.CheckVillagerTasks());
+
+                short tTasks = (short)(DifficultyManager.instance.GetTTasks());
+                short tTasksDone = (short)(TaskManager.instance.CheckTraitorTasks());
+
+                short traitor = -1;
+                for (short j = 0; j < 4; j++)
+                    if (customNetworkManager.playerArray[j].alignment == Alignment.Traitor)
+                        traitor = customNetworkManager.playerArray[j].modelIndex;
+
+                RpcResults(customNetworkManager.playerArray[i].modelIndex, traitor, vTasks, vTasksDone, tTasks, tTasksDone);
+
                 return; //Halt rest of script (as the rest will handle what happens if draw / spread out votes
             }
         }

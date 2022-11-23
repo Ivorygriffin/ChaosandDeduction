@@ -63,7 +63,7 @@ public class UIManager : NetworkBehaviour
             InteractCanvas.enabled = false;
 
             roleRevealCanvas.enabled = false;
-            fireButton.SetActive(false);
+            //fireButton.SetActive(false);
         }
         else
         {
@@ -120,7 +120,7 @@ public class UIManager : NetworkBehaviour
             replayTimer -= Time.deltaTime;
             if (replayTimer <= 0)
             {
-                NetworkManager.singleton.ServerChangeScene("Lobby");
+
             }
         }
         //TraitorTaskListText();
@@ -143,11 +143,12 @@ public class UIManager : NetworkBehaviour
 
     public void WinScreen()
     {
-        winScreen.enabled = true;
-        voteScreen.enabled = false;
-        InteractCanvas.enabled = false;
+        //winScreen.enabled = true;
+        //voteScreen.enabled = false;
+        //InteractCanvas.enabled = false;
 
-        replayTimer = replayMaxTime;
+        //TODO: add loading screen
+        NetworkManager.singleton.ServerChangeScene("EndingCutscene");
     }
 
     public void ThirdPerson(bool show)

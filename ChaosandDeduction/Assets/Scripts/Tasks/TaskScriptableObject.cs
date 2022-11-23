@@ -36,6 +36,9 @@ public class TaskScriptableObject : ScriptableObject
     {
         get
         {
+            if (isComplete[isComplete.Length - 1]) //if last was complete, assume all is complete
+                return -1;
+
             for (int i = 0; i < isComplete.Length; i++)
             {
                 if (!isComplete[i])

@@ -16,10 +16,10 @@ public class Autojoin : MonoBehaviour
 
     private void Start()
     {
-        if (networkManager == null) //just for editor so performance doesnt matter too much
-            networkManager = (CustomNetworkManager)NetworkManager.singleton;
-        if (discovery == null) //just for editor so performance doesnt matter too much
-            discovery = networkManager.gameObject.GetComponent<NetworkDiscoveryHUD>();
+        //TODO: not used in just editor, must replace this at some point?
+        // cant be assigned early / serialized, due to dont destroy on load?
+        networkManager = (CustomNetworkManager)NetworkManager.singleton;
+        discovery = networkManager.gameObject.GetComponent<NetworkDiscoveryHUD>();
     }
 
 #if UNITY_EDITOR
@@ -53,7 +53,7 @@ public class Autojoin : MonoBehaviour
         discovery.Host();
     }
 
-    
+
     //[UnityEditor.Callbacks.DidReloadScripts]
     //private static void OnScriptsReloaded()
     //{

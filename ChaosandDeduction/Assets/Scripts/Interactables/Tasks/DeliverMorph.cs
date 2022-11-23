@@ -36,8 +36,10 @@ public class DeliverMorph : Deliver
     protected void Start()
     {
         base.Start();
-        stages[0].SetActive(true);
-        stages[1].SetActive(false);
+        if (stages[0])
+            stages[0].SetActive(true);
+        if (stages[1])
+            stages[1].SetActive(false);
     }
 
     //  Methods ---------------------------------------
@@ -45,8 +47,10 @@ public class DeliverMorph : Deliver
     {
         if (Vector3.Distance(transform.position, deliverPoint) < deliverRadius)
         {
-            stages[0].SetActive(false);
-            stages[1].SetActive(true);
+            if (stages[0])
+                stages[0].SetActive(false);
+            if (stages[1])
+                stages[1].SetActive(true);
         }
         base.Dropped(character);
     }
