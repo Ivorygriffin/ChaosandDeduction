@@ -188,9 +188,10 @@ public class CutsceneManager : MonoBehaviour
         if (sixthStage && SixthStage())
         {
             sixthStage = false;
-            StartCoroutine(DelayLobby());
 
-            //TODO: End game after delay?
+            //Reassign traitors for next potential game
+            customNetworkManager.AssignTraitor();
+            StartCoroutine(DelayLobby());
         }
     }
 

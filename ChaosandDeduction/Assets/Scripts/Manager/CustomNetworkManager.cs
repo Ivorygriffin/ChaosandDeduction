@@ -137,6 +137,17 @@ public class CustomNetworkManager : NetworkManager
         if (LoadingScreenManager.instance)
             LoadingScreenManager.instance.LoadScreen();
     }
+    [Server]
+    public void AssignTraitor()
+    {
+        int traitorID = Random.Range(0, maxConnections);
+        playerArray[traitorID].alignment = Alignment.Traitor;
+        for (int i = 0; i < maxConnections; i++) //keep sorting through the array to find if the random ID is already used
+        {
+            if (i != traitorID)
+                playerArray[i].alignment = Alignment.Villager;
+        }
+    }
 
     public short voted;
     public short traitor;
