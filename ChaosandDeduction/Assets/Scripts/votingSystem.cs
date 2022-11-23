@@ -27,6 +27,7 @@ public class votingSystem : NetworkBehaviour
     [SyncVar]
     float voteTimer = 5;
     const float maxVoteTime = 5;
+    bool voteUIActive = false;
 
     private void Start()
     {
@@ -37,6 +38,8 @@ public class votingSystem : NetworkBehaviour
 
         if (isServer)
             numVoted.AddRange(new byte[4]);
+
+        timerText.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -55,7 +58,11 @@ public class votingSystem : NetworkBehaviour
             if (voteTimer <= 0)
                 TallyVotes();
         }
-
+        if (voteTimer < maxVoteTime != voteUIActive)
+        {
+            voteUIActive = voteTimer < maxVoteTime;
+            timerText.gameObject.SetActive(voteUIActive);
+        }
         timerText.text = ((int)voteTimer).ToString();
     }
 
